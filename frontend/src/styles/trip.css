@@ -1,0 +1,180 @@
+.trip-page {
+  min-height: 100vh;
+  background: #f8fbff;
+}
+
+.back-dashboard {
+  color: #2563eb;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.trip-content {
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 65px 30px 100px;
+}
+
+.trip-heading {
+  margin-bottom: 40px;
+}
+
+.trip-heading h1 {
+  font-size: 42px;
+  color: #172033;
+  margin-bottom: 12px;
+}
+
+.trip-heading > p:last-child {
+  color: #64748b;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.trip-form {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  padding: 40px;
+}
+
+.form-section {
+  padding-bottom: 32px;
+  margin-bottom: 32px;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.form-section:last-of-type {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.form-section h2 {
+  color: #172033;
+  font-size: 19px;
+  margin-bottom: 22px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group:last-child {
+  margin-bottom: 0;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #374151;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  outline: none;
+  background: white;
+  font-size: 15px;
+  color: #172033;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.form-group small {
+  display: block;
+  margin-top: 8px;
+  color: #94a3b8;
+  font-size: 12px;
+}
+
+.coordination-options {
+  display: grid;
+  gap: 15px;
+}
+
+.coordination-card {
+  display: flex;
+  gap: 15px;
+  padding: 18px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.coordination-card:hover {
+  border-color: #93c5fd;
+  background: #f8fbff;
+}
+
+.coordination-card input {
+  margin-top: 4px;
+  accent-color: #2563eb;
+}
+
+.coordination-card strong {
+  display: block;
+  color: #374151;
+  margin-bottom: 5px;
+}
+
+.coordination-card p {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.trip-submit {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 10px;
+}
+
+.dashboard-btn {
+  display: inline-block;
+  text-decoration: none;
+}
+
+
+/* Mobile */
+
+@media (max-width: 650px) {
+
+  .trip-content {
+    padding: 45px 20px;
+  }
+
+  .trip-heading h1 {
+    font-size: 34px;
+  }
+
+  .trip-form {
+    padding: 25px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .trip-submit {
+    justify-content: stretch;
+  }
+
+  .trip-submit .hero-btn {
+    width: 100%;
+  }
+}
