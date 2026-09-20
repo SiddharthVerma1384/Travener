@@ -1,21 +1,50 @@
+import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import '../styles/trip.css'
+
 function CreateTrip() {
   const navigate = useNavigate()
+
+  const [formData, setFormData] = useState({
+    source: '',
+    destination: '',
+    travelDate: '',
+    departureTime: '',
+    availableSeats: '1'
+  })
+
+  const handleChange = (event) => {
+    const { name, value } = event.target
+
+    setFormData((previous) => ({
+      ...previous,
+      [name]: value
+    }))
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault()
 
-    // Temporary
-    navigate('/search-trips')
+    // Temporary frontend demo.
+    // Later this will call the backend API.
+    const ride = {
+      source: formData.source,
+      destination: formData.destination,
+      travelDate: formData.travelDate,
+      departureTime: formData.departureTime,
+      availableSeats: Number(formData.availableSeats),
+      coordination: 'HAS_RIDE'
+    }
+
+    localStorage.setItem('myTrip', JSON.stringify(ride))
+
+    navigate('/dashboard')
   }
 
   return (
     <div className="trip-page">
 
-      {/* Header */}
       <header className="dashboard-header">
-
         <Link to="/" className="dashboard-logo">
           <div className="logo-icon">T</div>
           <span>Travener</span>
@@ -24,40 +53,27 @@ function CreateTrip() {
         <Link to="/dashboard" className="back-dashboard">
           ← Dashboard
         </Link>
-
       </header>
 
-
-      {/* Form */}
       <main className="trip-content">
 
         <div className="trip-heading">
+          <p className="section-label">OFFER A RIDE</p>
 
-          <p className="section-label">
-            CREATE A JOURNEY
-          </p>
-
-          <h1>
-            Tell us about your trip
-          </h1>
+          <h1>Create a Trip</h1>
 
           <p>
-            Add your travel details and Travener will
-            help you find compatible companions.
+            Already booked a cab? Share your journey and let other
+            travellers know that seats are available.
           </p>
-
         </div>
 
-
-        <form
-          className="trip-form"
-          onSubmit={handleSubmit}
-        >
+        <form className="trip-form" onSubmit={handleSubmit}>
 
           {/* Route */}
           <div className="form-section">
 
-            <h2>Where are you going?</h2>
+            <h2>Where is your cab going?</h2>
 
             <div className="form-row">
 
@@ -66,7 +82,10 @@ function CreateTrip() {
 
                 <input
                   type="text"
+                  name="source"
                   placeholder="e.g. VIT Vellore"
+                  value={formData.source}
+                  onChange={handleChange}
                   required
                 />
               </div>
@@ -76,7 +95,10 @@ function CreateTrip() {
 
                 <input
                   type="text"
+                  name="destination"
                   placeholder="e.g. Katpadi Railway Station"
+                  value={formData.destination}
+                  onChange={handleChange}
                   required
                 />
               </div>
@@ -85,8 +107,7 @@ function CreateTrip() {
 
           </div>
 
-
-          {/* Date & Time */}
+          {/* Date and time */}
           <div className="form-section">
 
             <h2>When are you travelling?</h2>
@@ -98,6 +119,9 @@ function CreateTrip() {
 
                 <input
                   type="date"
+                  name="travelDate"
+                  value={formData.travelDate}
+                  onChange={handleChange}
                   required
                 />
               </div>
@@ -107,6 +131,9 @@ function CreateTrip() {
 
                 <input
                   type="time"
+                  name="departureTime"
+                  value={formData.departureTime}
+                  onChange={handleChange}
                   required
                 />
               </div>
@@ -115,118 +142,41 @@ function CreateTrip() {
 
           </div>
 
-
-          {/* Transport */}
+          {/* Seats */}
           <div className="form-section">
 
-            <h2>How are you travelling?</h2>
+            <h2>Available seats</h2>
 
             <div className="form-group">
 
-              <label>Transport Mode</label>
+              <label>How many seats can you offer?</label>
 
-              <select required defaultValue="">
-                <option value="" disabled>
-                  Select transport mode
-                </option>
-
-                <option value="BUS">Bus</option>
-                <option value="TRAIN">Train</option>
-                <option value="FLIGHT">Flight</option>
-                <option value="CAB">Cab</option>
-                <option value="OTHER">Other</option>
-              </select>
-
-            </div>
-
-          </div>
-
-
-          {/* Arrival preference */}
-          <div className="form-section">
-
-            <h2>Arrival preference</h2>
-
-            <div className="form-group">
-
-              <label>
-                How early would you like to arrive?
-              </label>
-
-              <select defaultValue="30">
-                <option value="15">15 minutes early</option>
-                <option value="30">30 minutes early</option>
-                <option value="45">45 minutes early</option>
-                <option value="60">1 hour early</option>
-                <option value="90">1.5 hours early</option>
-                <option value="120">2 hours early</option>
+              <select
+                name="availableSeats"
+                value={formData.availableSeats}
+                onChange={handleChange}
+                required
+              >
+                <option value="1">1 seat</option>
+                <option value="2">2 seats</option>
+                <option value="3">3 seats</option>
+                <option value="4">4 seats</option>
               </select>
 
               <small>
-                Travener uses this preference when finding compatible journeys.
+                Only include seats that are actually available for other
+                Travener users.
               </small>
 
             </div>
 
           </div>
 
-
-          {/* Coordination */}
-          <div className="form-section">
-
-            <h2>What are you looking for?</h2>
-
-            <div className="coordination-options">
-
-              <label className="coordination-card">
-
-                <input
-                  type="radio"
-                  name="coordination"
-                  value="LOOKING_FOR_RIDE"
-                  defaultChecked
-                />
-
-                <div>
-                  <strong>I'm looking for a ride</strong>
-                  <p>
-                    Find someone who can share their ride with me.
-                  </p>
-                </div>
-
-              </label>
-
-
-              <label className="coordination-card">
-
-                <input
-                  type="radio"
-                  name="coordination"
-                  value="HAS_RIDE"
-                />
-
-                <div>
-                  <strong>I have a ride</strong>
-                  <p>
-                    I have seats available and want to share my journey.
-                  </p>
-                </div>
-
-              </label>
-
-            </div>
-
-          </div>
-
-
           {/* Submit */}
           <div className="trip-submit">
 
-            <button
-              type="submit"
-              className="hero-btn"
-            >
-              Find Travel Companions →
+            <button type="submit" className="hero-btn">
+              Offer Ride →
             </button>
 
           </div>
@@ -234,7 +184,6 @@ function CreateTrip() {
         </form>
 
       </main>
-
     </div>
   )
 }

@@ -1,44 +1,41 @@
-import { Link } from 'react-router-dom'
+import { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import '../styles/search.css'
 
-const trips = [
-  {
-    id: 1,
-    name: 'Rahul',
-    source: 'VIT Vellore',
-    destination: 'Katpadi Railway Station',
-    date: '20 Sep 2026',
-    time: '5:30 PM',
-    mode: 'Cab',
-    compatibility: '95%'
-  },
-  {
-    id: 2,
-    name: 'Ananya',
-    source: 'VIT Vellore',
-    destination: 'Katpadi Railway Station',
-    date: '20 Sep 2026',
-    time: '5:45 PM',
-    mode: 'Cab',
-    compatibility: '91%'
-  },
-  {
-    id: 3,
-    name: 'Arjun',
-    source: 'Vellore',
-    destination: 'Katpadi Railway Station',
-    date: '20 Sep 2026',
-    time: '6:00 PM',
-    mode: 'Bus',
-    compatibility: '86%'
-  }
-]
-
 function SearchTrips() {
+  const navigate = useNavigate()
 
-  const handleConnect = (name) => {
-    alert(`Connection request sent to ${name}!`)
+  const [formData, setFormData] = useState({
+    source: '',
+    destination: '',
+    travelDate: '',
+    departureTime: '',
+    transportMode: '',
+    timeTolerance: '30'
+  })
+
+  const handleChange = (event) => {
+    const { name, value } = event.target
+
+    setFormData((previous) => ({
+      ...previous,
+      [name]: value
+    }))
   }
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+
+    // Temporary frontend demo.
+    // Later this will call the backend API.
+    console.log('Travel plan:', formData)
+
+    navigate('/search-trips')
+  }
+
+  const handleTicketUpload = () => {
+  navigate('/upload-ticket')
+}
 
   return (
     <div className="trip-page">
@@ -51,169 +48,266 @@ function SearchTrips() {
           <span>Travener</span>
         </Link>
 
-        <Link
-          to="/dashboard"
-          className="back-dashboard"
-        >
+        <Link to="/dashboard" className="back-dashboard">
           ← Dashboard
         </Link>
 
       </header>
 
 
-      {/* Main content */}
       <main className="search-content">
 
+        {/* Heading */}
         <div className="search-heading">
 
-          <p className="section-label">
-            FIND A JOURNEY
-          </p>
+          <p className="section-label">FIND A TRIP</p>
 
-          <h1>
-            People travelling your way
-          </h1>
+          <h1>Where are you going?</h1>
 
           <p>
-            We found journeys that are compatible
-            with your travel plans.
+            Enter your journey details and Travener will find
+            people travelling along a similar route.
           </p>
 
         </div>
 
 
-        {/* Search summary */}
-        <div className="search-summary">
+        {/* Journey form */}
+        <form
+          className="search-form"
+          onSubmit={handleSubmit}
+        >
 
-          <div>
-            <span>FROM</span>
-            <strong>VIT Vellore</strong>
-          </div>
+          {/* Route */}
+          <div className="search-form-section">
 
-          <div className="route-arrow">
-            →
-          </div>
+            <h2>Where are you going?</h2>
 
-          <div>
-            <span>TO</span>
-            <strong>Katpadi Railway Station</strong>
-          </div>
+            <div className="form-row">
 
-          <div>
-            <span>DATE</span>
-            <strong>20 Sep 2026</strong>
-          </div>
+              <div className="form-group">
 
-        </div>
+                <label>From</label>
 
-
-        {/* Results */}
-        <div className="results">
-
-          <div className="results-header">
-
-            <h2>
-              3 compatible journeys
-            </h2>
-
-            <span>
-              Sorted by compatibility
-            </span>
-
-          </div>
-
-
-          {trips.map((trip) => (
-
-            <div
-              className="trip-result"
-              key={trip.id}
-            >
-
-              {/* Traveller */}
-              <div className="traveller">
-
-                <div className="traveller-avatar">
-                  {trip.name.charAt(0)}
-                </div>
-
-                <div>
-                  <h3>{trip.name}</h3>
-
-                  <span>
-                    Travener member
-                  </span>
-                </div>
+                <input
+                  type="text"
+                  name="source"
+                  placeholder="e.g. VIT Vellore"
+                  value={formData.source}
+                  onChange={handleChange}
+                  required
+                />
 
               </div>
 
 
-              {/* Route */}
-              <div className="result-route">
+              <div className="form-group">
 
-                <div>
-                  <span>FROM</span>
-                  <strong>{trip.source}</strong>
-                </div>
+                <label>To</label>
 
-                <div className="small-arrow">
-                  →
-                </div>
-
-                <div>
-                  <span>TO</span>
-                  <strong>{trip.destination}</strong>
-                </div>
+                <input
+                  type="text"
+                  name="destination"
+                  placeholder="e.g. Katpadi Railway Station"
+                  value={formData.destination}
+                  onChange={handleChange}
+                  required
+                />
 
               </div>
-
-
-              {/* Details */}
-              <div className="result-details">
-
-                <div>
-                  <span>DATE</span>
-                  <strong>{trip.date}</strong>
-                </div>
-
-                <div>
-                  <span>TIME</span>
-                  <strong>{trip.time}</strong>
-                </div>
-
-                <div>
-                  <span>MODE</span>
-                  <strong>{trip.mode}</strong>
-                </div>
-
-              </div>
-
-
-              {/* Match score */}
-              <div className="match-score">
-
-                <span>MATCH</span>
-
-                <strong>
-                  {trip.compatibility}
-                </strong>
-
-              </div>
-
-
-              {/* Connect */}
-              <button
-                className="connect-btn"
-                onClick={() => handleConnect(trip.name)}
-              >
-                Connect →
-              </button>
 
             </div>
 
-          ))}
+          </div>
 
-        </div>
+
+          {/* Date and time */}
+          <div className="search-form-section">
+
+            <h2>When are you travelling?</h2>
+
+            <div className="form-row">
+
+              <div className="form-group">
+
+                <label>Travel Date</label>
+
+                <input
+                  type="date"
+                  name="travelDate"
+                  value={formData.travelDate}
+                  onChange={handleChange}
+                  required
+                />
+
+              </div>
+
+
+              <div className="form-group">
+
+                <label>Departure Time</label>
+
+                <input
+                  type="time"
+                  name="departureTime"
+                  value={formData.departureTime}
+                  onChange={handleChange}
+                  required
+                />
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          {/* Transport */}
+          <div className="search-form-section">
+
+            <h2>How are you travelling?</h2>
+
+            <div className="form-group">
+
+              <label>Transport Mode</label>
+
+              <select
+                name="transportMode"
+                value={formData.transportMode}
+                onChange={handleChange}
+                required
+              >
+
+                <option value="" disabled>
+                  Select transport mode
+                </option>
+
+                <option value="BUS">
+                  Bus
+                </option>
+
+                <option value="TRAIN">
+                  Train
+                </option>
+
+                <option value="FLIGHT">
+                  Flight
+                </option>
+
+                <option value="CAB">
+                  Cab
+                </option>
+
+                <option value="OTHER">
+                  Other
+                </option>
+
+              </select>
+
+            </div>
+
+          </div>
+
+
+          {/* Arrival preference */}
+          <div className="search-form-section">
+
+            <h2>Arrival preference</h2>
+
+            <div className="form-group">
+
+              <label>
+                How early would you like to arrive?
+              </label>
+
+              <select
+                name="timeTolerance"
+                value={formData.timeTolerance}
+                onChange={handleChange}
+              >
+
+                <option value="15">
+                  15 minutes early
+                </option>
+
+                <option value="30">
+                  30 minutes early
+                </option>
+
+                <option value="45">
+                  45 minutes early
+                </option>
+
+                <option value="60">
+                  1 hour early
+                </option>
+
+                <option value="90">
+                  1.5 hours early
+                </option>
+
+                <option value="120">
+                  2 hours early
+                </option>
+
+              </select>
+
+              <small>
+                Travener uses this preference when finding
+                compatible journeys.
+              </small>
+
+            </div>
+
+          </div>
+
+
+          {/* Optional ticket upload */}
+          <div className="ticket-upload-section">
+
+            <div className="ticket-upload-icon">
+              📄
+            </div>
+
+            <div className="ticket-upload-content">
+
+              <h2>Have a travel ticket?</h2>
+
+              <p>
+                Upload your ticket and Travener can
+                automatically extract your journey details.
+              </p>
+
+              <button
+                type="button"
+                className="ticket-upload-btn"
+                onClick={handleTicketUpload}
+              >
+                Upload Ticket
+              </button>
+
+              <small>
+                Optional · PDF, JPG or PNG
+              </small>
+
+            </div>
+
+          </div>
+
+
+          {/* Submit */}
+          <div className="search-submit">
+
+            <button
+              type="submit"
+              className="hero-btn"
+            >
+              Find Matches →
+            </button>
+
+          </div>
+
+        </form>
 
       </main>
 

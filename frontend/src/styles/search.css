@@ -1,231 +1,228 @@
 .search-content {
-  max-width: 1150px;
+  max-width: 850px;
   margin: 0 auto;
-  padding: 60px 30px 100px;
+  padding: 65px 30px 100px;
 }
 
 .search-heading {
-  margin-bottom: 35px;
+  margin-bottom: 40px;
+}
+
+.search-heading .section-label {
+  color: #2563eb;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 18px;
 }
 
 .search-heading h1 {
-  font-size: 40px;
+  font-size: 42px;
+  line-height: 1.1;
   color: #172033;
   margin-bottom: 12px;
 }
 
-.search-heading p:last-child {
+.search-heading > p:last-child {
   color: #64748b;
   font-size: 17px;
+  line-height: 1.6;
 }
 
-.search-summary {
-  background: white;
-  border: 1px solid #e5e7eb;
-  border-radius: 15px;
-  padding: 25px 30px;
-  display: flex;
-  align-items: center;
-  gap: 30px;
-  margin-bottom: 35px;
-}
 
-.search-summary div {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
+/* Main form */
 
-.search-summary span,
-.result-route span,
-.result-details span,
-.match-score span {
-  color: #94a3b8;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 1px;
-}
-
-.search-summary strong {
-  color: #374151;
-  font-size: 15px;
-}
-
-.route-arrow {
-  font-size: 22px;
-  color: #2563eb;
-}
-
-.results {
-  background: white;
+.search-form {
+  background: #ffffff;
   border: 1px solid #e5e7eb;
   border-radius: 18px;
-  overflow: hidden;
+  padding: 40px;
 }
 
-.results-header {
-  padding: 23px 28px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+
+/* Form sections */
+
+.search-form-section {
+  padding-bottom: 32px;
+  margin-bottom: 32px;
   border-bottom: 1px solid #eeeeee;
 }
 
-.results-header h2 {
-  color: #172033;
-  font-size: 19px;
-}
-
-.results-header span {
-  color: #94a3b8;
-  font-size: 13px;
-}
-
-.trip-result {
-  padding: 25px 28px;
-  display: grid;
-  grid-template-columns: 1.1fr 1.6fr 1.4fr 0.6fr auto;
-  gap: 25px;
-  align-items: center;
-  border-bottom: 1px solid #eeeeee;
-}
-
-.trip-result:last-child {
+.search-form-section:last-of-type {
   border-bottom: none;
 }
 
-.traveller {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+.search-form-section h2 {
+  color: #172033;
+  font-size: 19px;
+  margin-bottom: 22px;
 }
 
-.traveller-avatar {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
+
+/* Form row */
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+
+/* Inputs */
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group:last-child {
+  margin-bottom: 0;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #374151;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  outline: none;
+  background: #ffffff;
+  font-size: 15px;
+  color: #172033;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.form-group small {
+  display: block;
+  margin-top: 8px;
+  color: #94a3b8;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+
+/* Ticket upload */
+
+.ticket-upload-section {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 25px;
+  margin-top: 5px;
+  margin-bottom: 30px;
+  background: #f8fbff;
+  border: 1px dashed #bfdbfe;
+  border-radius: 14px;
+}
+
+.ticket-upload-icon {
+  width: 50px;
+  height: 50px;
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   background: #eff6ff;
-  color: #2563eb;
-  font-weight: 700;
+  border-radius: 12px;
+  font-size: 23px;
 }
 
-.traveller h3 {
-  color: #374151;
-  font-size: 15px;
-  margin-bottom: 4px;
+.ticket-upload-content {
+  flex: 1;
 }
 
-.traveller span {
-  color: #94a3b8;
-  font-size: 12px;
-}
-
-.result-route {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.result-route div:not(.small-arrow) {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.result-route strong {
-  color: #374151;
-  font-size: 13px;
-}
-
-.small-arrow {
-  color: #2563eb;
-}
-
-.result-details {
-  display: flex;
-  gap: 18px;
-}
-
-.result-details div {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.result-details strong {
-  color: #374151;
-  font-size: 12px;
-}
-
-.match-score {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 5px;
-}
-
-.match-score strong {
-  color: #2563eb;
+.ticket-upload-content h2 {
+  color: #172033;
   font-size: 18px;
+  margin-bottom: 7px;
 }
 
-.connect-btn {
-  padding: 10px 15px;
-  border: none;
-  border-radius: 8px;
-  background: #2563eb;
-  color: white;
+.ticket-upload-content p {
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.ticket-upload-btn {
+  padding: 9px 16px;
+  border: 1px solid #2563eb;
+  border-radius: 7px;
+  background: #ffffff;
+  color: #2563eb;
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
 }
 
-.connect-btn:hover {
-  background: #1d4ed8;
+.ticket-upload-btn:hover {
+  background: #eff6ff;
 }
 
-@media (max-width: 900px) {
-  .trip-result {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .result-route,
-  .result-details {
-    grid-column: span 2;
-  }
+.ticket-upload-content small {
+  display: block;
+  margin-top: 8px;
+  color: #94a3b8;
+  font-size: 12px;
 }
 
-@media (max-width: 600px) {
+
+/* Submit */
+
+.search-submit {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.search-submit .hero-btn {
+  border: none;
+  cursor: pointer;
+}
+
+
+/* Mobile */
+
+@media (max-width: 650px) {
+
   .search-content {
-    padding: 45px 20px;
+    padding: 45px 20px 80px;
   }
 
   .search-heading h1 {
-    font-size: 32px;
+    font-size: 34px;
   }
 
-  .search-summary {
-    flex-direction: column;
+  .search-form {
+    padding: 25px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .ticket-upload-section {
     align-items: flex-start;
   }
 
-  .route-arrow {
-    transform: rotate(90deg);
+  .search-submit {
+    justify-content: stretch;
   }
 
-  .trip-result {
-    grid-template-columns: 1fr;
+  .search-submit .hero-btn {
+    width: 100%;
   }
 
-  .result-route,
-  .result-details {
-    grid-column: auto;
-  }
-
-  .result-details {
-    flex-wrap: wrap;
-  }
 }

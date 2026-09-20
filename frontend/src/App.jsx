@@ -1,5 +1,7 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import './App.css'
+import UploadTicket from './pages/uploadTicket'
+import ReviewOCR from './pages/reviewOCR'
 
 import Login from './pages/login'
 import Signup from './pages/signup'
@@ -328,6 +330,16 @@ function App() {
           path="/dashboard"
           element={<Dashboard />}
         />
+
+        <Route
+         path="/upload-ticket" 
+         element={<UploadTicket />} 
+        />
+
+        <Route
+  path="/review-ocr"
+  element={<ReviewOCR />}
+/>
 
         <Route
   path="/create-trip"
