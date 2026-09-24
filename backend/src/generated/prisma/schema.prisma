@@ -1,0 +1,70 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum UserStatus {
+  ACTIVE
+  SUSPENDED
+  DELETED
+}
+
+enum UserRole {
+  STUDENT
+  ADMIN
+}
+
+enum Gender {
+  MALE
+  FEMALE
+  NON_BINARY
+  PREFER_NOT_TO_SAY
+}
+
+enum AuthProvider {
+  LOCAL
+  GOOGLE
+}
+
+//User Model
+
+model User {
+  id String @id @default(cuid())
+
+  name         String
+  email        String  @unique
+  passwordHash String?
+
+  phoneNumber String?
+  gender      Gender?
+
+  role   UserRole   @default(STUDENT)
+  status UserStatus @default(ACTIVE)
+
+  authProvider AuthProvider @default(LOCAL)
+  googleId     String?      @unique
+
+  emailVerified Boolean @default(false)
+
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  refreshSessions RefreshSession[]
+}
+
+//Refresh Session 
+model RefreshSession {
+  id String @id @default(cuid())
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  tokenHash String    @unique
+  expiresAt DateTime
+  revokedAt DateTime?
+
+  createdAt DateTime @default(now())
+}
