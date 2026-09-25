@@ -38,8 +38,33 @@ const loginValidator = () => {
     ]
 }
 
+const profileValidator = () => {
+    return[
+
+        body("phoneNumber")
+            .trim()
+            .notEmpty()
+            .withMessage("Phone number is required")
+            .matches(/^[6-9]\d{9}$/)
+            .withMessage("Please provide a valid 10-digit phone number"),
+
+        body("gender")
+            .notEmpty()
+            .withMessage("Gender is required")
+            .isIn([
+                "MALE",
+                "FEMALE",
+                "NON_BINARY",
+                "PREFER_NOT_TO_SAY"
+            ])
+            .withMessage("Invalid gender value")
+    ];
+}
+
+
 
 export {
     registerValidator,
-    loginValidator
+    loginValidator,
+    profileValidator 
 };

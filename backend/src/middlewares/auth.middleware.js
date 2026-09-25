@@ -35,6 +35,7 @@ export const verifyJWT = asyncHandler(async (req, res, next) => {
                 email: true,
                 phoneNumber: true,
                 gender: true,
+                profileCompleted: true,
                 role: true,
                 status: true,
                 emailVerified: true,

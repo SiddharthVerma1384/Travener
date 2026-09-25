@@ -50,9 +50,10 @@ model User {
 
   emailVerified Boolean @default(false)
 
-  createdAt       DateTime         @default(now())
-  updatedAt       DateTime         @updatedAt
-  refreshSessions RefreshSession[]
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+  refreshSessions  RefreshSession[]
+  profileCompleted Boolean          @default(false)
 }
 
 //Refresh Session 

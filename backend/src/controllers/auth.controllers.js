@@ -44,6 +44,7 @@ const registerUser = asyncHandler(async(req, res) => {
             email: true,
             authProvider: true,
             emailVerified: true,
+            profileCompleted: true,
             role: true,
             status: true,
             createdAt: true
@@ -112,7 +113,8 @@ const loginUser = asyncHandler(async(req, res) => {
             email: true,
             role: true,
             status: true,
-            authProvider: true
+            authProvider: true,
+            profileCompleted: true
         }
     });   
     
@@ -418,6 +420,7 @@ const googleCallback = asyncHandler(async (req, res) => {
                 role: true,
                 status: true,
                 emailVerified: true,
+                profileCompleted: true,
                 authProvider: true,
                 createdAt: true,
                 updatedAt: true

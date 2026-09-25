@@ -1095,6 +1095,7 @@ export namespace Prisma {
     emailVerified: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
+    profileCompleted: boolean | null
   }
 
   export type UserMaxAggregateOutputType = {
@@ -1111,6 +1112,7 @@ export namespace Prisma {
     emailVerified: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
+    profileCompleted: boolean | null
   }
 
   export type UserCountAggregateOutputType = {
@@ -1127,6 +1129,7 @@ export namespace Prisma {
     emailVerified: number
     createdAt: number
     updatedAt: number
+    profileCompleted: number
     _all: number
   }
 
@@ -1145,6 +1148,7 @@ export namespace Prisma {
     emailVerified?: true
     createdAt?: true
     updatedAt?: true
+    profileCompleted?: true
   }
 
   export type UserMaxAggregateInputType = {
@@ -1161,6 +1165,7 @@ export namespace Prisma {
     emailVerified?: true
     createdAt?: true
     updatedAt?: true
+    profileCompleted?: true
   }
 
   export type UserCountAggregateInputType = {
@@ -1177,6 +1182,7 @@ export namespace Prisma {
     emailVerified?: true
     createdAt?: true
     updatedAt?: true
+    profileCompleted?: true
     _all?: true
   }
 
@@ -1266,6 +1272,7 @@ export namespace Prisma {
     emailVerified: boolean
     createdAt: Date
     updatedAt: Date
+    profileCompleted: boolean
     _count: UserCountAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
@@ -1299,6 +1306,7 @@ export namespace Prisma {
     emailVerified?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    profileCompleted?: boolean
     refreshSessions?: boolean | User$refreshSessionsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
@@ -1317,6 +1325,7 @@ export namespace Prisma {
     emailVerified?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    profileCompleted?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1333,6 +1342,7 @@ export namespace Prisma {
     emailVerified?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    profileCompleted?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
@@ -1349,9 +1359,10 @@ export namespace Prisma {
     emailVerified?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    profileCompleted?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "passwordHash" | "phoneNumber" | "gender" | "role" | "status" | "authProvider" | "googleId" | "emailVerified" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "passwordHash" | "phoneNumber" | "gender" | "role" | "status" | "authProvider" | "googleId" | "emailVerified" | "createdAt" | "updatedAt" | "profileCompleted", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     refreshSessions?: boolean | User$refreshSessionsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -1378,6 +1389,7 @@ export namespace Prisma {
       emailVerified: boolean
       createdAt: Date
       updatedAt: Date
+      profileCompleted: boolean
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -1815,6 +1827,7 @@ export namespace Prisma {
     readonly emailVerified: FieldRef<"User", 'Boolean'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
+    readonly profileCompleted: FieldRef<"User", 'Boolean'>
   }
     
 
@@ -3353,7 +3366,8 @@ export namespace Prisma {
     googleId: 'googleId',
     emailVerified: 'emailVerified',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    profileCompleted: 'profileCompleted'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -3525,6 +3539,7 @@ export namespace Prisma {
     emailVerified?: BoolFilter<"User"> | boolean
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
+    profileCompleted?: BoolFilter<"User"> | boolean
     refreshSessions?: RefreshSessionListRelationFilter
   }
 
@@ -3542,6 +3557,7 @@ export namespace Prisma {
     emailVerified?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    profileCompleted?: SortOrder
     refreshSessions?: RefreshSessionOrderByRelationAggregateInput
   }
 
@@ -3562,6 +3578,7 @@ export namespace Prisma {
     emailVerified?: BoolFilter<"User"> | boolean
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
+    profileCompleted?: BoolFilter<"User"> | boolean
     refreshSessions?: RefreshSessionListRelationFilter
   }, "id" | "email" | "googleId">
 
@@ -3579,6 +3596,7 @@ export namespace Prisma {
     emailVerified?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    profileCompleted?: SortOrder
     _count?: UserCountOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
     _min?: UserMinOrderByAggregateInput
@@ -3601,6 +3619,7 @@ export namespace Prisma {
     emailVerified?: BoolWithAggregatesFilter<"User"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
+    profileCompleted?: BoolWithAggregatesFilter<"User"> | boolean
   }
 
   export type RefreshSessionWhereInput = {
@@ -3677,6 +3696,7 @@ export namespace Prisma {
     emailVerified?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    profileCompleted?: boolean
     refreshSessions?: RefreshSessionCreateNestedManyWithoutUserInput
   }
 
@@ -3694,6 +3714,7 @@ export namespace Prisma {
     emailVerified?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    profileCompleted?: boolean
     refreshSessions?: RefreshSessionUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -3711,6 +3732,7 @@ export namespace Prisma {
     emailVerified?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    profileCompleted?: BoolFieldUpdateOperationsInput | boolean
     refreshSessions?: RefreshSessionUpdateManyWithoutUserNestedInput
   }
 
@@ -3728,6 +3750,7 @@ export namespace Prisma {
     emailVerified?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    profileCompleted?: BoolFieldUpdateOperationsInput | boolean
     refreshSessions?: RefreshSessionUncheckedUpdateManyWithoutUserNestedInput
   }
 
@@ -3745,6 +3768,7 @@ export namespace Prisma {
     emailVerified?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    profileCompleted?: boolean
   }
 
   export type UserUpdateManyMutationInput = {
@@ -3761,6 +3785,7 @@ export namespace Prisma {
     emailVerified?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    profileCompleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type UserUncheckedUpdateManyInput = {
@@ -3777,6 +3802,7 @@ export namespace Prisma {
     emailVerified?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    profileCompleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type RefreshSessionCreateInput = {
@@ -3944,6 +3970,7 @@ export namespace Prisma {
     emailVerified?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    profileCompleted?: SortOrder
   }
 
   export type UserMaxOrderByAggregateInput = {
@@ -3960,6 +3987,7 @@ export namespace Prisma {
     emailVerified?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    profileCompleted?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
@@ -3976,6 +4004,7 @@ export namespace Prisma {
     emailVerified?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    profileCompleted?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -4508,6 +4537,7 @@ export namespace Prisma {
     emailVerified?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    profileCompleted?: boolean
   }
 
   export type UserUncheckedCreateWithoutRefreshSessionsInput = {
@@ -4524,6 +4554,7 @@ export namespace Prisma {
     emailVerified?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    profileCompleted?: boolean
   }
 
   export type UserCreateOrConnectWithoutRefreshSessionsInput = {
@@ -4556,6 +4587,7 @@ export namespace Prisma {
     emailVerified?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    profileCompleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type UserUncheckedUpdateWithoutRefreshSessionsInput = {
@@ -4572,6 +4604,7 @@ export namespace Prisma {
     emailVerified?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    profileCompleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type RefreshSessionCreateManyUserInput = {

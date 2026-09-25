@@ -133,7 +133,8 @@ exports.Prisma.UserScalarFieldEnum = {
   googleId: 'googleId',
   emailVerified: 'emailVerified',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  profileCompleted: 'profileCompleted'
 };
 
 exports.Prisma.RefreshSessionScalarFieldEnum = {
