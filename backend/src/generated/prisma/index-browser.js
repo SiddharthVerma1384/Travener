@@ -146,6 +146,47 @@ exports.Prisma.RefreshSessionScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.TravelOfferScalarFieldEnum = {
+  id: 'id',
+  ownerId: 'ownerId',
+  source: 'source',
+  destination: 'destination',
+  departureAt: 'departureAt',
+  expiresAt: 'expiresAt',
+  transportMode: 'transportMode',
+  availableSeats: 'availableSeats',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.TravelRequestScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  source: 'source',
+  destination: 'destination',
+  departureAt: 'departureAt',
+  expiresAt: 'expiresAt',
+  transportMode: 'transportMode',
+  passengersRequired: 'passengersRequired',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.CompanionRequestScalarFieldEnum = {
+  id: 'id',
+  senderId: 'senderId',
+  recipientId: 'recipientId',
+  travelRequestId: 'travelRequestId',
+  offerId: 'offerId',
+  status: 'status',
+  expiresAt: 'expiresAt',
+  respondedAt: 'respondedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -183,9 +224,29 @@ exports.AuthProvider = exports.$Enums.AuthProvider = {
   GOOGLE: 'GOOGLE'
 };
 
+exports.TransportMode = exports.$Enums.TransportMode = {
+  CAB: 'CAB',
+  BUS: 'BUS',
+  TRAIN: 'TRAIN',
+  FLIGHT: 'FLIGHT',
+  CAR: 'CAR',
+  OTHER: 'OTHER'
+};
+
+exports.CompanionRequestStatus = exports.$Enums.CompanionRequestStatus = {
+  PENDING: 'PENDING',
+  ACCEPTED: 'ACCEPTED',
+  REJECTED: 'REJECTED',
+  CANCELLED: 'CANCELLED',
+  EXPIRED: 'EXPIRED'
+};
+
 exports.Prisma.ModelName = {
   User: 'User',
-  RefreshSession: 'RefreshSession'
+  RefreshSession: 'RefreshSession',
+  TravelOffer: 'TravelOffer',
+  TravelRequest: 'TravelRequest',
+  CompanionRequest: 'CompanionRequest'
 };
 
 /**

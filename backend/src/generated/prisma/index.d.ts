@@ -23,6 +23,21 @@ export type User = $Result.DefaultSelection<Prisma.$UserPayload>
  * 
  */
 export type RefreshSession = $Result.DefaultSelection<Prisma.$RefreshSessionPayload>
+/**
+ * Model TravelOffer
+ * 
+ */
+export type TravelOffer = $Result.DefaultSelection<Prisma.$TravelOfferPayload>
+/**
+ * Model TravelRequest
+ * 
+ */
+export type TravelRequest = $Result.DefaultSelection<Prisma.$TravelRequestPayload>
+/**
+ * Model CompanionRequest
+ * 
+ */
+export type CompanionRequest = $Result.DefaultSelection<Prisma.$CompanionRequestPayload>
 
 /**
  * Enums
@@ -62,6 +77,29 @@ export const AuthProvider: {
 
 export type AuthProvider = (typeof AuthProvider)[keyof typeof AuthProvider]
 
+
+export const TransportMode: {
+  CAB: 'CAB',
+  BUS: 'BUS',
+  TRAIN: 'TRAIN',
+  FLIGHT: 'FLIGHT',
+  CAR: 'CAR',
+  OTHER: 'OTHER'
+};
+
+export type TransportMode = (typeof TransportMode)[keyof typeof TransportMode]
+
+
+export const CompanionRequestStatus: {
+  PENDING: 'PENDING',
+  ACCEPTED: 'ACCEPTED',
+  REJECTED: 'REJECTED',
+  CANCELLED: 'CANCELLED',
+  EXPIRED: 'EXPIRED'
+};
+
+export type CompanionRequestStatus = (typeof CompanionRequestStatus)[keyof typeof CompanionRequestStatus]
+
 }
 
 export type UserStatus = $Enums.UserStatus
@@ -79,6 +117,14 @@ export const Gender: typeof $Enums.Gender
 export type AuthProvider = $Enums.AuthProvider
 
 export const AuthProvider: typeof $Enums.AuthProvider
+
+export type TransportMode = $Enums.TransportMode
+
+export const TransportMode: typeof $Enums.TransportMode
+
+export type CompanionRequestStatus = $Enums.CompanionRequestStatus
+
+export const CompanionRequestStatus: typeof $Enums.CompanionRequestStatus
 
 /**
  * ##  Prisma Client ʲˢ
@@ -220,6 +266,36 @@ export class PrismaClient<
     * ```
     */
   get refreshSession(): Prisma.RefreshSessionDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.travelOffer`: Exposes CRUD operations for the **TravelOffer** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more TravelOffers
+    * const travelOffers = await prisma.travelOffer.findMany()
+    * ```
+    */
+  get travelOffer(): Prisma.TravelOfferDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.travelRequest`: Exposes CRUD operations for the **TravelRequest** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more TravelRequests
+    * const travelRequests = await prisma.travelRequest.findMany()
+    * ```
+    */
+  get travelRequest(): Prisma.TravelRequestDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.companionRequest`: Exposes CRUD operations for the **CompanionRequest** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more CompanionRequests
+    * const companionRequests = await prisma.companionRequest.findMany()
+    * ```
+    */
+  get companionRequest(): Prisma.CompanionRequestDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -668,7 +744,10 @@ export namespace Prisma {
 
   export const ModelName: {
     User: 'User',
-    RefreshSession: 'RefreshSession'
+    RefreshSession: 'RefreshSession',
+    TravelOffer: 'TravelOffer',
+    TravelRequest: 'TravelRequest',
+    CompanionRequest: 'CompanionRequest'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -684,7 +763,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "refreshSession"
+      modelProps: "user" | "refreshSession" | "travelOffer" | "travelRequest" | "companionRequest"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -836,6 +915,228 @@ export namespace Prisma {
           }
         }
       }
+      TravelOffer: {
+        payload: Prisma.$TravelOfferPayload<ExtArgs>
+        fields: Prisma.TravelOfferFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TravelOfferFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TravelOfferPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TravelOfferFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TravelOfferPayload>
+          }
+          findFirst: {
+            args: Prisma.TravelOfferFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TravelOfferPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TravelOfferFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TravelOfferPayload>
+          }
+          findMany: {
+            args: Prisma.TravelOfferFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TravelOfferPayload>[]
+          }
+          create: {
+            args: Prisma.TravelOfferCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TravelOfferPayload>
+          }
+          createMany: {
+            args: Prisma.TravelOfferCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.TravelOfferCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TravelOfferPayload>[]
+          }
+          delete: {
+            args: Prisma.TravelOfferDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TravelOfferPayload>
+          }
+          update: {
+            args: Prisma.TravelOfferUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TravelOfferPayload>
+          }
+          deleteMany: {
+            args: Prisma.TravelOfferDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TravelOfferUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.TravelOfferUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TravelOfferPayload>[]
+          }
+          upsert: {
+            args: Prisma.TravelOfferUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TravelOfferPayload>
+          }
+          aggregate: {
+            args: Prisma.TravelOfferAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTravelOffer>
+          }
+          groupBy: {
+            args: Prisma.TravelOfferGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TravelOfferGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TravelOfferCountArgs<ExtArgs>
+            result: $Utils.Optional<TravelOfferCountAggregateOutputType> | number
+          }
+        }
+      }
+      TravelRequest: {
+        payload: Prisma.$TravelRequestPayload<ExtArgs>
+        fields: Prisma.TravelRequestFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TravelRequestFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TravelRequestPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TravelRequestFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TravelRequestPayload>
+          }
+          findFirst: {
+            args: Prisma.TravelRequestFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TravelRequestPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TravelRequestFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TravelRequestPayload>
+          }
+          findMany: {
+            args: Prisma.TravelRequestFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TravelRequestPayload>[]
+          }
+          create: {
+            args: Prisma.TravelRequestCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TravelRequestPayload>
+          }
+          createMany: {
+            args: Prisma.TravelRequestCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.TravelRequestCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TravelRequestPayload>[]
+          }
+          delete: {
+            args: Prisma.TravelRequestDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TravelRequestPayload>
+          }
+          update: {
+            args: Prisma.TravelRequestUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TravelRequestPayload>
+          }
+          deleteMany: {
+            args: Prisma.TravelRequestDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TravelRequestUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.TravelRequestUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TravelRequestPayload>[]
+          }
+          upsert: {
+            args: Prisma.TravelRequestUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TravelRequestPayload>
+          }
+          aggregate: {
+            args: Prisma.TravelRequestAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTravelRequest>
+          }
+          groupBy: {
+            args: Prisma.TravelRequestGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TravelRequestGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TravelRequestCountArgs<ExtArgs>
+            result: $Utils.Optional<TravelRequestCountAggregateOutputType> | number
+          }
+        }
+      }
+      CompanionRequest: {
+        payload: Prisma.$CompanionRequestPayload<ExtArgs>
+        fields: Prisma.CompanionRequestFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CompanionRequestFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompanionRequestPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CompanionRequestFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompanionRequestPayload>
+          }
+          findFirst: {
+            args: Prisma.CompanionRequestFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompanionRequestPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CompanionRequestFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompanionRequestPayload>
+          }
+          findMany: {
+            args: Prisma.CompanionRequestFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompanionRequestPayload>[]
+          }
+          create: {
+            args: Prisma.CompanionRequestCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompanionRequestPayload>
+          }
+          createMany: {
+            args: Prisma.CompanionRequestCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CompanionRequestCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompanionRequestPayload>[]
+          }
+          delete: {
+            args: Prisma.CompanionRequestDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompanionRequestPayload>
+          }
+          update: {
+            args: Prisma.CompanionRequestUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompanionRequestPayload>
+          }
+          deleteMany: {
+            args: Prisma.CompanionRequestDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CompanionRequestUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CompanionRequestUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompanionRequestPayload>[]
+          }
+          upsert: {
+            args: Prisma.CompanionRequestUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompanionRequestPayload>
+          }
+          aggregate: {
+            args: Prisma.CompanionRequestAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCompanionRequest>
+          }
+          groupBy: {
+            args: Prisma.CompanionRequestGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CompanionRequestGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CompanionRequestCountArgs<ExtArgs>
+            result: $Utils.Optional<CompanionRequestCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -961,6 +1262,9 @@ export namespace Prisma {
   export type GlobalOmitConfig = {
     user?: UserOmit
     refreshSession?: RefreshSessionOmit
+    travelOffer?: TravelOfferOmit
+    travelRequest?: TravelRequestOmit
+    companionRequest?: CompanionRequestOmit
   }
 
   /* Types for Logging */
@@ -1042,10 +1346,18 @@ export namespace Prisma {
 
   export type UserCountOutputType = {
     refreshSessions: number
+    travelOffers: number
+    travelRequests: number
+    companionRequestsSent: number
+    companionRequestsReceived: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     refreshSessions?: boolean | UserCountOutputTypeCountRefreshSessionsArgs
+    travelOffers?: boolean | UserCountOutputTypeCountTravelOffersArgs
+    travelRequests?: boolean | UserCountOutputTypeCountTravelRequestsArgs
+    companionRequestsSent?: boolean | UserCountOutputTypeCountCompanionRequestsSentArgs
+    companionRequestsReceived?: boolean | UserCountOutputTypeCountCompanionRequestsReceivedArgs
   }
 
   // Custom InputTypes
@@ -1064,6 +1376,96 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountRefreshSessionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: RefreshSessionWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountTravelOffersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TravelOfferWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountTravelRequestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TravelRequestWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountCompanionRequestsSentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CompanionRequestWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountCompanionRequestsReceivedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CompanionRequestWhereInput
+  }
+
+
+  /**
+   * Count Type TravelOfferCountOutputType
+   */
+
+  export type TravelOfferCountOutputType = {
+    companionRequests: number
+  }
+
+  export type TravelOfferCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    companionRequests?: boolean | TravelOfferCountOutputTypeCountCompanionRequestsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * TravelOfferCountOutputType without action
+   */
+  export type TravelOfferCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TravelOfferCountOutputType
+     */
+    select?: TravelOfferCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * TravelOfferCountOutputType without action
+   */
+  export type TravelOfferCountOutputTypeCountCompanionRequestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CompanionRequestWhereInput
+  }
+
+
+  /**
+   * Count Type TravelRequestCountOutputType
+   */
+
+  export type TravelRequestCountOutputType = {
+    companionRequests: number
+  }
+
+  export type TravelRequestCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    companionRequests?: boolean | TravelRequestCountOutputTypeCountCompanionRequestsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * TravelRequestCountOutputType without action
+   */
+  export type TravelRequestCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TravelRequestCountOutputType
+     */
+    select?: TravelRequestCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * TravelRequestCountOutputType without action
+   */
+  export type TravelRequestCountOutputTypeCountCompanionRequestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CompanionRequestWhereInput
   }
 
 
@@ -1308,6 +1710,10 @@ export namespace Prisma {
     updatedAt?: boolean
     profileCompleted?: boolean
     refreshSessions?: boolean | User$refreshSessionsArgs<ExtArgs>
+    travelOffers?: boolean | User$travelOffersArgs<ExtArgs>
+    travelRequests?: boolean | User$travelRequestsArgs<ExtArgs>
+    companionRequestsSent?: boolean | User$companionRequestsSentArgs<ExtArgs>
+    companionRequestsReceived?: boolean | User$companionRequestsReceivedArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1365,6 +1771,10 @@ export namespace Prisma {
   export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "passwordHash" | "phoneNumber" | "gender" | "role" | "status" | "authProvider" | "googleId" | "emailVerified" | "createdAt" | "updatedAt" | "profileCompleted", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     refreshSessions?: boolean | User$refreshSessionsArgs<ExtArgs>
+    travelOffers?: boolean | User$travelOffersArgs<ExtArgs>
+    travelRequests?: boolean | User$travelRequestsArgs<ExtArgs>
+    companionRequestsSent?: boolean | User$companionRequestsSentArgs<ExtArgs>
+    companionRequestsReceived?: boolean | User$companionRequestsReceivedArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1374,6 +1784,10 @@ export namespace Prisma {
     name: "User"
     objects: {
       refreshSessions: Prisma.$RefreshSessionPayload<ExtArgs>[]
+      travelOffers: Prisma.$TravelOfferPayload<ExtArgs>[]
+      travelRequests: Prisma.$TravelRequestPayload<ExtArgs>[]
+      companionRequestsSent: Prisma.$CompanionRequestPayload<ExtArgs>[]
+      companionRequestsReceived: Prisma.$CompanionRequestPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -1785,6 +2199,10 @@ export namespace Prisma {
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     refreshSessions<T extends User$refreshSessionsArgs<ExtArgs> = {}>(args?: Subset<T, User$refreshSessionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RefreshSessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    travelOffers<T extends User$travelOffersArgs<ExtArgs> = {}>(args?: Subset<T, User$travelOffersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TravelOfferPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    travelRequests<T extends User$travelRequestsArgs<ExtArgs> = {}>(args?: Subset<T, User$travelRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TravelRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    companionRequestsSent<T extends User$companionRequestsSentArgs<ExtArgs> = {}>(args?: Subset<T, User$companionRequestsSentArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompanionRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    companionRequestsReceived<T extends User$companionRequestsReceivedArgs<ExtArgs> = {}>(args?: Subset<T, User$companionRequestsReceivedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompanionRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2242,6 +2660,102 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: RefreshSessionScalarFieldEnum | RefreshSessionScalarFieldEnum[]
+  }
+
+  /**
+   * User.travelOffers
+   */
+  export type User$travelOffersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TravelOffer
+     */
+    select?: TravelOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TravelOffer
+     */
+    omit?: TravelOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TravelOfferInclude<ExtArgs> | null
+    where?: TravelOfferWhereInput
+    orderBy?: TravelOfferOrderByWithRelationInput | TravelOfferOrderByWithRelationInput[]
+    cursor?: TravelOfferWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TravelOfferScalarFieldEnum | TravelOfferScalarFieldEnum[]
+  }
+
+  /**
+   * User.travelRequests
+   */
+  export type User$travelRequestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TravelRequest
+     */
+    select?: TravelRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TravelRequest
+     */
+    omit?: TravelRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TravelRequestInclude<ExtArgs> | null
+    where?: TravelRequestWhereInput
+    orderBy?: TravelRequestOrderByWithRelationInput | TravelRequestOrderByWithRelationInput[]
+    cursor?: TravelRequestWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TravelRequestScalarFieldEnum | TravelRequestScalarFieldEnum[]
+  }
+
+  /**
+   * User.companionRequestsSent
+   */
+  export type User$companionRequestsSentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanionRequest
+     */
+    select?: CompanionRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompanionRequest
+     */
+    omit?: CompanionRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanionRequestInclude<ExtArgs> | null
+    where?: CompanionRequestWhereInput
+    orderBy?: CompanionRequestOrderByWithRelationInput | CompanionRequestOrderByWithRelationInput[]
+    cursor?: CompanionRequestWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CompanionRequestScalarFieldEnum | CompanionRequestScalarFieldEnum[]
+  }
+
+  /**
+   * User.companionRequestsReceived
+   */
+  export type User$companionRequestsReceivedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanionRequest
+     */
+    select?: CompanionRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompanionRequest
+     */
+    omit?: CompanionRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanionRequestInclude<ExtArgs> | null
+    where?: CompanionRequestWhereInput
+    orderBy?: CompanionRequestOrderByWithRelationInput | CompanionRequestOrderByWithRelationInput[]
+    cursor?: CompanionRequestWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CompanionRequestScalarFieldEnum | CompanionRequestScalarFieldEnum[]
   }
 
   /**
@@ -3340,6 +3854,3568 @@ export namespace Prisma {
 
 
   /**
+   * Model TravelOffer
+   */
+
+  export type AggregateTravelOffer = {
+    _count: TravelOfferCountAggregateOutputType | null
+    _avg: TravelOfferAvgAggregateOutputType | null
+    _sum: TravelOfferSumAggregateOutputType | null
+    _min: TravelOfferMinAggregateOutputType | null
+    _max: TravelOfferMaxAggregateOutputType | null
+  }
+
+  export type TravelOfferAvgAggregateOutputType = {
+    availableSeats: number | null
+  }
+
+  export type TravelOfferSumAggregateOutputType = {
+    availableSeats: number | null
+  }
+
+  export type TravelOfferMinAggregateOutputType = {
+    id: string | null
+    ownerId: string | null
+    source: string | null
+    destination: string | null
+    departureAt: Date | null
+    expiresAt: Date | null
+    transportMode: $Enums.TransportMode | null
+    availableSeats: number | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type TravelOfferMaxAggregateOutputType = {
+    id: string | null
+    ownerId: string | null
+    source: string | null
+    destination: string | null
+    departureAt: Date | null
+    expiresAt: Date | null
+    transportMode: $Enums.TransportMode | null
+    availableSeats: number | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type TravelOfferCountAggregateOutputType = {
+    id: number
+    ownerId: number
+    source: number
+    destination: number
+    departureAt: number
+    expiresAt: number
+    transportMode: number
+    availableSeats: number
+    isActive: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type TravelOfferAvgAggregateInputType = {
+    availableSeats?: true
+  }
+
+  export type TravelOfferSumAggregateInputType = {
+    availableSeats?: true
+  }
+
+  export type TravelOfferMinAggregateInputType = {
+    id?: true
+    ownerId?: true
+    source?: true
+    destination?: true
+    departureAt?: true
+    expiresAt?: true
+    transportMode?: true
+    availableSeats?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type TravelOfferMaxAggregateInputType = {
+    id?: true
+    ownerId?: true
+    source?: true
+    destination?: true
+    departureAt?: true
+    expiresAt?: true
+    transportMode?: true
+    availableSeats?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type TravelOfferCountAggregateInputType = {
+    id?: true
+    ownerId?: true
+    source?: true
+    destination?: true
+    departureAt?: true
+    expiresAt?: true
+    transportMode?: true
+    availableSeats?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type TravelOfferAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TravelOffer to aggregate.
+     */
+    where?: TravelOfferWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TravelOffers to fetch.
+     */
+    orderBy?: TravelOfferOrderByWithRelationInput | TravelOfferOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TravelOfferWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TravelOffers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TravelOffers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned TravelOffers
+    **/
+    _count?: true | TravelOfferCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: TravelOfferAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: TravelOfferSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TravelOfferMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TravelOfferMaxAggregateInputType
+  }
+
+  export type GetTravelOfferAggregateType<T extends TravelOfferAggregateArgs> = {
+        [P in keyof T & keyof AggregateTravelOffer]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTravelOffer[P]>
+      : GetScalarType<T[P], AggregateTravelOffer[P]>
+  }
+
+
+
+
+  export type TravelOfferGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TravelOfferWhereInput
+    orderBy?: TravelOfferOrderByWithAggregationInput | TravelOfferOrderByWithAggregationInput[]
+    by: TravelOfferScalarFieldEnum[] | TravelOfferScalarFieldEnum
+    having?: TravelOfferScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TravelOfferCountAggregateInputType | true
+    _avg?: TravelOfferAvgAggregateInputType
+    _sum?: TravelOfferSumAggregateInputType
+    _min?: TravelOfferMinAggregateInputType
+    _max?: TravelOfferMaxAggregateInputType
+  }
+
+  export type TravelOfferGroupByOutputType = {
+    id: string
+    ownerId: string
+    source: string
+    destination: string
+    departureAt: Date
+    expiresAt: Date
+    transportMode: $Enums.TransportMode
+    availableSeats: number
+    isActive: boolean
+    createdAt: Date
+    updatedAt: Date
+    _count: TravelOfferCountAggregateOutputType | null
+    _avg: TravelOfferAvgAggregateOutputType | null
+    _sum: TravelOfferSumAggregateOutputType | null
+    _min: TravelOfferMinAggregateOutputType | null
+    _max: TravelOfferMaxAggregateOutputType | null
+  }
+
+  type GetTravelOfferGroupByPayload<T extends TravelOfferGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TravelOfferGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TravelOfferGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TravelOfferGroupByOutputType[P]>
+            : GetScalarType<T[P], TravelOfferGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TravelOfferSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    ownerId?: boolean
+    source?: boolean
+    destination?: boolean
+    departureAt?: boolean
+    expiresAt?: boolean
+    transportMode?: boolean
+    availableSeats?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    owner?: boolean | UserDefaultArgs<ExtArgs>
+    companionRequests?: boolean | TravelOffer$companionRequestsArgs<ExtArgs>
+    _count?: boolean | TravelOfferCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["travelOffer"]>
+
+  export type TravelOfferSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    ownerId?: boolean
+    source?: boolean
+    destination?: boolean
+    departureAt?: boolean
+    expiresAt?: boolean
+    transportMode?: boolean
+    availableSeats?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    owner?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["travelOffer"]>
+
+  export type TravelOfferSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    ownerId?: boolean
+    source?: boolean
+    destination?: boolean
+    departureAt?: boolean
+    expiresAt?: boolean
+    transportMode?: boolean
+    availableSeats?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    owner?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["travelOffer"]>
+
+  export type TravelOfferSelectScalar = {
+    id?: boolean
+    ownerId?: boolean
+    source?: boolean
+    destination?: boolean
+    departureAt?: boolean
+    expiresAt?: boolean
+    transportMode?: boolean
+    availableSeats?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type TravelOfferOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "ownerId" | "source" | "destination" | "departureAt" | "expiresAt" | "transportMode" | "availableSeats" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["travelOffer"]>
+  export type TravelOfferInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    owner?: boolean | UserDefaultArgs<ExtArgs>
+    companionRequests?: boolean | TravelOffer$companionRequestsArgs<ExtArgs>
+    _count?: boolean | TravelOfferCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type TravelOfferIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    owner?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type TravelOfferIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    owner?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $TravelOfferPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "TravelOffer"
+    objects: {
+      owner: Prisma.$UserPayload<ExtArgs>
+      companionRequests: Prisma.$CompanionRequestPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      ownerId: string
+      source: string
+      destination: string
+      departureAt: Date
+      expiresAt: Date
+      transportMode: $Enums.TransportMode
+      availableSeats: number
+      isActive: boolean
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["travelOffer"]>
+    composites: {}
+  }
+
+  type TravelOfferGetPayload<S extends boolean | null | undefined | TravelOfferDefaultArgs> = $Result.GetResult<Prisma.$TravelOfferPayload, S>
+
+  type TravelOfferCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TravelOfferFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TravelOfferCountAggregateInputType | true
+    }
+
+  export interface TravelOfferDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TravelOffer'], meta: { name: 'TravelOffer' } }
+    /**
+     * Find zero or one TravelOffer that matches the filter.
+     * @param {TravelOfferFindUniqueArgs} args - Arguments to find a TravelOffer
+     * @example
+     * // Get one TravelOffer
+     * const travelOffer = await prisma.travelOffer.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TravelOfferFindUniqueArgs>(args: SelectSubset<T, TravelOfferFindUniqueArgs<ExtArgs>>): Prisma__TravelOfferClient<$Result.GetResult<Prisma.$TravelOfferPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one TravelOffer that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {TravelOfferFindUniqueOrThrowArgs} args - Arguments to find a TravelOffer
+     * @example
+     * // Get one TravelOffer
+     * const travelOffer = await prisma.travelOffer.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TravelOfferFindUniqueOrThrowArgs>(args: SelectSubset<T, TravelOfferFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TravelOfferClient<$Result.GetResult<Prisma.$TravelOfferPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TravelOffer that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TravelOfferFindFirstArgs} args - Arguments to find a TravelOffer
+     * @example
+     * // Get one TravelOffer
+     * const travelOffer = await prisma.travelOffer.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TravelOfferFindFirstArgs>(args?: SelectSubset<T, TravelOfferFindFirstArgs<ExtArgs>>): Prisma__TravelOfferClient<$Result.GetResult<Prisma.$TravelOfferPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TravelOffer that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TravelOfferFindFirstOrThrowArgs} args - Arguments to find a TravelOffer
+     * @example
+     * // Get one TravelOffer
+     * const travelOffer = await prisma.travelOffer.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TravelOfferFindFirstOrThrowArgs>(args?: SelectSubset<T, TravelOfferFindFirstOrThrowArgs<ExtArgs>>): Prisma__TravelOfferClient<$Result.GetResult<Prisma.$TravelOfferPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more TravelOffers that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TravelOfferFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all TravelOffers
+     * const travelOffers = await prisma.travelOffer.findMany()
+     * 
+     * // Get first 10 TravelOffers
+     * const travelOffers = await prisma.travelOffer.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const travelOfferWithIdOnly = await prisma.travelOffer.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TravelOfferFindManyArgs>(args?: SelectSubset<T, TravelOfferFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TravelOfferPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a TravelOffer.
+     * @param {TravelOfferCreateArgs} args - Arguments to create a TravelOffer.
+     * @example
+     * // Create one TravelOffer
+     * const TravelOffer = await prisma.travelOffer.create({
+     *   data: {
+     *     // ... data to create a TravelOffer
+     *   }
+     * })
+     * 
+     */
+    create<T extends TravelOfferCreateArgs>(args: SelectSubset<T, TravelOfferCreateArgs<ExtArgs>>): Prisma__TravelOfferClient<$Result.GetResult<Prisma.$TravelOfferPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many TravelOffers.
+     * @param {TravelOfferCreateManyArgs} args - Arguments to create many TravelOffers.
+     * @example
+     * // Create many TravelOffers
+     * const travelOffer = await prisma.travelOffer.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TravelOfferCreateManyArgs>(args?: SelectSubset<T, TravelOfferCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many TravelOffers and returns the data saved in the database.
+     * @param {TravelOfferCreateManyAndReturnArgs} args - Arguments to create many TravelOffers.
+     * @example
+     * // Create many TravelOffers
+     * const travelOffer = await prisma.travelOffer.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many TravelOffers and only return the `id`
+     * const travelOfferWithIdOnly = await prisma.travelOffer.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends TravelOfferCreateManyAndReturnArgs>(args?: SelectSubset<T, TravelOfferCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TravelOfferPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a TravelOffer.
+     * @param {TravelOfferDeleteArgs} args - Arguments to delete one TravelOffer.
+     * @example
+     * // Delete one TravelOffer
+     * const TravelOffer = await prisma.travelOffer.delete({
+     *   where: {
+     *     // ... filter to delete one TravelOffer
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TravelOfferDeleteArgs>(args: SelectSubset<T, TravelOfferDeleteArgs<ExtArgs>>): Prisma__TravelOfferClient<$Result.GetResult<Prisma.$TravelOfferPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one TravelOffer.
+     * @param {TravelOfferUpdateArgs} args - Arguments to update one TravelOffer.
+     * @example
+     * // Update one TravelOffer
+     * const travelOffer = await prisma.travelOffer.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TravelOfferUpdateArgs>(args: SelectSubset<T, TravelOfferUpdateArgs<ExtArgs>>): Prisma__TravelOfferClient<$Result.GetResult<Prisma.$TravelOfferPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more TravelOffers.
+     * @param {TravelOfferDeleteManyArgs} args - Arguments to filter TravelOffers to delete.
+     * @example
+     * // Delete a few TravelOffers
+     * const { count } = await prisma.travelOffer.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TravelOfferDeleteManyArgs>(args?: SelectSubset<T, TravelOfferDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TravelOffers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TravelOfferUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many TravelOffers
+     * const travelOffer = await prisma.travelOffer.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TravelOfferUpdateManyArgs>(args: SelectSubset<T, TravelOfferUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TravelOffers and returns the data updated in the database.
+     * @param {TravelOfferUpdateManyAndReturnArgs} args - Arguments to update many TravelOffers.
+     * @example
+     * // Update many TravelOffers
+     * const travelOffer = await prisma.travelOffer.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more TravelOffers and only return the `id`
+     * const travelOfferWithIdOnly = await prisma.travelOffer.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends TravelOfferUpdateManyAndReturnArgs>(args: SelectSubset<T, TravelOfferUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TravelOfferPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one TravelOffer.
+     * @param {TravelOfferUpsertArgs} args - Arguments to update or create a TravelOffer.
+     * @example
+     * // Update or create a TravelOffer
+     * const travelOffer = await prisma.travelOffer.upsert({
+     *   create: {
+     *     // ... data to create a TravelOffer
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the TravelOffer we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TravelOfferUpsertArgs>(args: SelectSubset<T, TravelOfferUpsertArgs<ExtArgs>>): Prisma__TravelOfferClient<$Result.GetResult<Prisma.$TravelOfferPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of TravelOffers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TravelOfferCountArgs} args - Arguments to filter TravelOffers to count.
+     * @example
+     * // Count the number of TravelOffers
+     * const count = await prisma.travelOffer.count({
+     *   where: {
+     *     // ... the filter for the TravelOffers we want to count
+     *   }
+     * })
+    **/
+    count<T extends TravelOfferCountArgs>(
+      args?: Subset<T, TravelOfferCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TravelOfferCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a TravelOffer.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TravelOfferAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TravelOfferAggregateArgs>(args: Subset<T, TravelOfferAggregateArgs>): Prisma.PrismaPromise<GetTravelOfferAggregateType<T>>
+
+    /**
+     * Group by TravelOffer.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TravelOfferGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TravelOfferGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TravelOfferGroupByArgs['orderBy'] }
+        : { orderBy?: TravelOfferGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TravelOfferGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTravelOfferGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the TravelOffer model
+   */
+  readonly fields: TravelOfferFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for TravelOffer.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TravelOfferClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    owner<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    companionRequests<T extends TravelOffer$companionRequestsArgs<ExtArgs> = {}>(args?: Subset<T, TravelOffer$companionRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompanionRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the TravelOffer model
+   */
+  interface TravelOfferFieldRefs {
+    readonly id: FieldRef<"TravelOffer", 'String'>
+    readonly ownerId: FieldRef<"TravelOffer", 'String'>
+    readonly source: FieldRef<"TravelOffer", 'String'>
+    readonly destination: FieldRef<"TravelOffer", 'String'>
+    readonly departureAt: FieldRef<"TravelOffer", 'DateTime'>
+    readonly expiresAt: FieldRef<"TravelOffer", 'DateTime'>
+    readonly transportMode: FieldRef<"TravelOffer", 'TransportMode'>
+    readonly availableSeats: FieldRef<"TravelOffer", 'Int'>
+    readonly isActive: FieldRef<"TravelOffer", 'Boolean'>
+    readonly createdAt: FieldRef<"TravelOffer", 'DateTime'>
+    readonly updatedAt: FieldRef<"TravelOffer", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * TravelOffer findUnique
+   */
+  export type TravelOfferFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TravelOffer
+     */
+    select?: TravelOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TravelOffer
+     */
+    omit?: TravelOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TravelOfferInclude<ExtArgs> | null
+    /**
+     * Filter, which TravelOffer to fetch.
+     */
+    where: TravelOfferWhereUniqueInput
+  }
+
+  /**
+   * TravelOffer findUniqueOrThrow
+   */
+  export type TravelOfferFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TravelOffer
+     */
+    select?: TravelOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TravelOffer
+     */
+    omit?: TravelOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TravelOfferInclude<ExtArgs> | null
+    /**
+     * Filter, which TravelOffer to fetch.
+     */
+    where: TravelOfferWhereUniqueInput
+  }
+
+  /**
+   * TravelOffer findFirst
+   */
+  export type TravelOfferFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TravelOffer
+     */
+    select?: TravelOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TravelOffer
+     */
+    omit?: TravelOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TravelOfferInclude<ExtArgs> | null
+    /**
+     * Filter, which TravelOffer to fetch.
+     */
+    where?: TravelOfferWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TravelOffers to fetch.
+     */
+    orderBy?: TravelOfferOrderByWithRelationInput | TravelOfferOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TravelOffers.
+     */
+    cursor?: TravelOfferWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TravelOffers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TravelOffers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TravelOffers.
+     */
+    distinct?: TravelOfferScalarFieldEnum | TravelOfferScalarFieldEnum[]
+  }
+
+  /**
+   * TravelOffer findFirstOrThrow
+   */
+  export type TravelOfferFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TravelOffer
+     */
+    select?: TravelOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TravelOffer
+     */
+    omit?: TravelOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TravelOfferInclude<ExtArgs> | null
+    /**
+     * Filter, which TravelOffer to fetch.
+     */
+    where?: TravelOfferWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TravelOffers to fetch.
+     */
+    orderBy?: TravelOfferOrderByWithRelationInput | TravelOfferOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TravelOffers.
+     */
+    cursor?: TravelOfferWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TravelOffers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TravelOffers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TravelOffers.
+     */
+    distinct?: TravelOfferScalarFieldEnum | TravelOfferScalarFieldEnum[]
+  }
+
+  /**
+   * TravelOffer findMany
+   */
+  export type TravelOfferFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TravelOffer
+     */
+    select?: TravelOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TravelOffer
+     */
+    omit?: TravelOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TravelOfferInclude<ExtArgs> | null
+    /**
+     * Filter, which TravelOffers to fetch.
+     */
+    where?: TravelOfferWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TravelOffers to fetch.
+     */
+    orderBy?: TravelOfferOrderByWithRelationInput | TravelOfferOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing TravelOffers.
+     */
+    cursor?: TravelOfferWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TravelOffers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TravelOffers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TravelOffers.
+     */
+    distinct?: TravelOfferScalarFieldEnum | TravelOfferScalarFieldEnum[]
+  }
+
+  /**
+   * TravelOffer create
+   */
+  export type TravelOfferCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TravelOffer
+     */
+    select?: TravelOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TravelOffer
+     */
+    omit?: TravelOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TravelOfferInclude<ExtArgs> | null
+    /**
+     * The data needed to create a TravelOffer.
+     */
+    data: XOR<TravelOfferCreateInput, TravelOfferUncheckedCreateInput>
+  }
+
+  /**
+   * TravelOffer createMany
+   */
+  export type TravelOfferCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many TravelOffers.
+     */
+    data: TravelOfferCreateManyInput | TravelOfferCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * TravelOffer createManyAndReturn
+   */
+  export type TravelOfferCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TravelOffer
+     */
+    select?: TravelOfferSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TravelOffer
+     */
+    omit?: TravelOfferOmit<ExtArgs> | null
+    /**
+     * The data used to create many TravelOffers.
+     */
+    data: TravelOfferCreateManyInput | TravelOfferCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TravelOfferIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * TravelOffer update
+   */
+  export type TravelOfferUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TravelOffer
+     */
+    select?: TravelOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TravelOffer
+     */
+    omit?: TravelOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TravelOfferInclude<ExtArgs> | null
+    /**
+     * The data needed to update a TravelOffer.
+     */
+    data: XOR<TravelOfferUpdateInput, TravelOfferUncheckedUpdateInput>
+    /**
+     * Choose, which TravelOffer to update.
+     */
+    where: TravelOfferWhereUniqueInput
+  }
+
+  /**
+   * TravelOffer updateMany
+   */
+  export type TravelOfferUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update TravelOffers.
+     */
+    data: XOR<TravelOfferUpdateManyMutationInput, TravelOfferUncheckedUpdateManyInput>
+    /**
+     * Filter which TravelOffers to update
+     */
+    where?: TravelOfferWhereInput
+    /**
+     * Limit how many TravelOffers to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TravelOffer updateManyAndReturn
+   */
+  export type TravelOfferUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TravelOffer
+     */
+    select?: TravelOfferSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TravelOffer
+     */
+    omit?: TravelOfferOmit<ExtArgs> | null
+    /**
+     * The data used to update TravelOffers.
+     */
+    data: XOR<TravelOfferUpdateManyMutationInput, TravelOfferUncheckedUpdateManyInput>
+    /**
+     * Filter which TravelOffers to update
+     */
+    where?: TravelOfferWhereInput
+    /**
+     * Limit how many TravelOffers to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TravelOfferIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * TravelOffer upsert
+   */
+  export type TravelOfferUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TravelOffer
+     */
+    select?: TravelOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TravelOffer
+     */
+    omit?: TravelOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TravelOfferInclude<ExtArgs> | null
+    /**
+     * The filter to search for the TravelOffer to update in case it exists.
+     */
+    where: TravelOfferWhereUniqueInput
+    /**
+     * In case the TravelOffer found by the `where` argument doesn't exist, create a new TravelOffer with this data.
+     */
+    create: XOR<TravelOfferCreateInput, TravelOfferUncheckedCreateInput>
+    /**
+     * In case the TravelOffer was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TravelOfferUpdateInput, TravelOfferUncheckedUpdateInput>
+  }
+
+  /**
+   * TravelOffer delete
+   */
+  export type TravelOfferDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TravelOffer
+     */
+    select?: TravelOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TravelOffer
+     */
+    omit?: TravelOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TravelOfferInclude<ExtArgs> | null
+    /**
+     * Filter which TravelOffer to delete.
+     */
+    where: TravelOfferWhereUniqueInput
+  }
+
+  /**
+   * TravelOffer deleteMany
+   */
+  export type TravelOfferDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TravelOffers to delete
+     */
+    where?: TravelOfferWhereInput
+    /**
+     * Limit how many TravelOffers to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * TravelOffer.companionRequests
+   */
+  export type TravelOffer$companionRequestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanionRequest
+     */
+    select?: CompanionRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompanionRequest
+     */
+    omit?: CompanionRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanionRequestInclude<ExtArgs> | null
+    where?: CompanionRequestWhereInput
+    orderBy?: CompanionRequestOrderByWithRelationInput | CompanionRequestOrderByWithRelationInput[]
+    cursor?: CompanionRequestWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CompanionRequestScalarFieldEnum | CompanionRequestScalarFieldEnum[]
+  }
+
+  /**
+   * TravelOffer without action
+   */
+  export type TravelOfferDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TravelOffer
+     */
+    select?: TravelOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TravelOffer
+     */
+    omit?: TravelOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TravelOfferInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model TravelRequest
+   */
+
+  export type AggregateTravelRequest = {
+    _count: TravelRequestCountAggregateOutputType | null
+    _avg: TravelRequestAvgAggregateOutputType | null
+    _sum: TravelRequestSumAggregateOutputType | null
+    _min: TravelRequestMinAggregateOutputType | null
+    _max: TravelRequestMaxAggregateOutputType | null
+  }
+
+  export type TravelRequestAvgAggregateOutputType = {
+    passengersRequired: number | null
+  }
+
+  export type TravelRequestSumAggregateOutputType = {
+    passengersRequired: number | null
+  }
+
+  export type TravelRequestMinAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    source: string | null
+    destination: string | null
+    departureAt: Date | null
+    expiresAt: Date | null
+    transportMode: $Enums.TransportMode | null
+    passengersRequired: number | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type TravelRequestMaxAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    source: string | null
+    destination: string | null
+    departureAt: Date | null
+    expiresAt: Date | null
+    transportMode: $Enums.TransportMode | null
+    passengersRequired: number | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type TravelRequestCountAggregateOutputType = {
+    id: number
+    userId: number
+    source: number
+    destination: number
+    departureAt: number
+    expiresAt: number
+    transportMode: number
+    passengersRequired: number
+    isActive: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type TravelRequestAvgAggregateInputType = {
+    passengersRequired?: true
+  }
+
+  export type TravelRequestSumAggregateInputType = {
+    passengersRequired?: true
+  }
+
+  export type TravelRequestMinAggregateInputType = {
+    id?: true
+    userId?: true
+    source?: true
+    destination?: true
+    departureAt?: true
+    expiresAt?: true
+    transportMode?: true
+    passengersRequired?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type TravelRequestMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    source?: true
+    destination?: true
+    departureAt?: true
+    expiresAt?: true
+    transportMode?: true
+    passengersRequired?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type TravelRequestCountAggregateInputType = {
+    id?: true
+    userId?: true
+    source?: true
+    destination?: true
+    departureAt?: true
+    expiresAt?: true
+    transportMode?: true
+    passengersRequired?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type TravelRequestAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TravelRequest to aggregate.
+     */
+    where?: TravelRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TravelRequests to fetch.
+     */
+    orderBy?: TravelRequestOrderByWithRelationInput | TravelRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TravelRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TravelRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TravelRequests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned TravelRequests
+    **/
+    _count?: true | TravelRequestCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: TravelRequestAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: TravelRequestSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TravelRequestMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TravelRequestMaxAggregateInputType
+  }
+
+  export type GetTravelRequestAggregateType<T extends TravelRequestAggregateArgs> = {
+        [P in keyof T & keyof AggregateTravelRequest]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTravelRequest[P]>
+      : GetScalarType<T[P], AggregateTravelRequest[P]>
+  }
+
+
+
+
+  export type TravelRequestGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TravelRequestWhereInput
+    orderBy?: TravelRequestOrderByWithAggregationInput | TravelRequestOrderByWithAggregationInput[]
+    by: TravelRequestScalarFieldEnum[] | TravelRequestScalarFieldEnum
+    having?: TravelRequestScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TravelRequestCountAggregateInputType | true
+    _avg?: TravelRequestAvgAggregateInputType
+    _sum?: TravelRequestSumAggregateInputType
+    _min?: TravelRequestMinAggregateInputType
+    _max?: TravelRequestMaxAggregateInputType
+  }
+
+  export type TravelRequestGroupByOutputType = {
+    id: string
+    userId: string
+    source: string
+    destination: string
+    departureAt: Date
+    expiresAt: Date
+    transportMode: $Enums.TransportMode | null
+    passengersRequired: number
+    isActive: boolean
+    createdAt: Date
+    updatedAt: Date
+    _count: TravelRequestCountAggregateOutputType | null
+    _avg: TravelRequestAvgAggregateOutputType | null
+    _sum: TravelRequestSumAggregateOutputType | null
+    _min: TravelRequestMinAggregateOutputType | null
+    _max: TravelRequestMaxAggregateOutputType | null
+  }
+
+  type GetTravelRequestGroupByPayload<T extends TravelRequestGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TravelRequestGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TravelRequestGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TravelRequestGroupByOutputType[P]>
+            : GetScalarType<T[P], TravelRequestGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TravelRequestSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    source?: boolean
+    destination?: boolean
+    departureAt?: boolean
+    expiresAt?: boolean
+    transportMode?: boolean
+    passengersRequired?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    companionRequests?: boolean | TravelRequest$companionRequestsArgs<ExtArgs>
+    _count?: boolean | TravelRequestCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["travelRequest"]>
+
+  export type TravelRequestSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    source?: boolean
+    destination?: boolean
+    departureAt?: boolean
+    expiresAt?: boolean
+    transportMode?: boolean
+    passengersRequired?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["travelRequest"]>
+
+  export type TravelRequestSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    source?: boolean
+    destination?: boolean
+    departureAt?: boolean
+    expiresAt?: boolean
+    transportMode?: boolean
+    passengersRequired?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["travelRequest"]>
+
+  export type TravelRequestSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    source?: boolean
+    destination?: boolean
+    departureAt?: boolean
+    expiresAt?: boolean
+    transportMode?: boolean
+    passengersRequired?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type TravelRequestOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "source" | "destination" | "departureAt" | "expiresAt" | "transportMode" | "passengersRequired" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["travelRequest"]>
+  export type TravelRequestInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    companionRequests?: boolean | TravelRequest$companionRequestsArgs<ExtArgs>
+    _count?: boolean | TravelRequestCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type TravelRequestIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type TravelRequestIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $TravelRequestPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "TravelRequest"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+      companionRequests: Prisma.$CompanionRequestPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userId: string
+      source: string
+      destination: string
+      departureAt: Date
+      expiresAt: Date
+      transportMode: $Enums.TransportMode | null
+      passengersRequired: number
+      isActive: boolean
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["travelRequest"]>
+    composites: {}
+  }
+
+  type TravelRequestGetPayload<S extends boolean | null | undefined | TravelRequestDefaultArgs> = $Result.GetResult<Prisma.$TravelRequestPayload, S>
+
+  type TravelRequestCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TravelRequestFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TravelRequestCountAggregateInputType | true
+    }
+
+  export interface TravelRequestDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TravelRequest'], meta: { name: 'TravelRequest' } }
+    /**
+     * Find zero or one TravelRequest that matches the filter.
+     * @param {TravelRequestFindUniqueArgs} args - Arguments to find a TravelRequest
+     * @example
+     * // Get one TravelRequest
+     * const travelRequest = await prisma.travelRequest.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TravelRequestFindUniqueArgs>(args: SelectSubset<T, TravelRequestFindUniqueArgs<ExtArgs>>): Prisma__TravelRequestClient<$Result.GetResult<Prisma.$TravelRequestPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one TravelRequest that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {TravelRequestFindUniqueOrThrowArgs} args - Arguments to find a TravelRequest
+     * @example
+     * // Get one TravelRequest
+     * const travelRequest = await prisma.travelRequest.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TravelRequestFindUniqueOrThrowArgs>(args: SelectSubset<T, TravelRequestFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TravelRequestClient<$Result.GetResult<Prisma.$TravelRequestPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TravelRequest that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TravelRequestFindFirstArgs} args - Arguments to find a TravelRequest
+     * @example
+     * // Get one TravelRequest
+     * const travelRequest = await prisma.travelRequest.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TravelRequestFindFirstArgs>(args?: SelectSubset<T, TravelRequestFindFirstArgs<ExtArgs>>): Prisma__TravelRequestClient<$Result.GetResult<Prisma.$TravelRequestPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TravelRequest that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TravelRequestFindFirstOrThrowArgs} args - Arguments to find a TravelRequest
+     * @example
+     * // Get one TravelRequest
+     * const travelRequest = await prisma.travelRequest.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TravelRequestFindFirstOrThrowArgs>(args?: SelectSubset<T, TravelRequestFindFirstOrThrowArgs<ExtArgs>>): Prisma__TravelRequestClient<$Result.GetResult<Prisma.$TravelRequestPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more TravelRequests that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TravelRequestFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all TravelRequests
+     * const travelRequests = await prisma.travelRequest.findMany()
+     * 
+     * // Get first 10 TravelRequests
+     * const travelRequests = await prisma.travelRequest.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const travelRequestWithIdOnly = await prisma.travelRequest.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TravelRequestFindManyArgs>(args?: SelectSubset<T, TravelRequestFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TravelRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a TravelRequest.
+     * @param {TravelRequestCreateArgs} args - Arguments to create a TravelRequest.
+     * @example
+     * // Create one TravelRequest
+     * const TravelRequest = await prisma.travelRequest.create({
+     *   data: {
+     *     // ... data to create a TravelRequest
+     *   }
+     * })
+     * 
+     */
+    create<T extends TravelRequestCreateArgs>(args: SelectSubset<T, TravelRequestCreateArgs<ExtArgs>>): Prisma__TravelRequestClient<$Result.GetResult<Prisma.$TravelRequestPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many TravelRequests.
+     * @param {TravelRequestCreateManyArgs} args - Arguments to create many TravelRequests.
+     * @example
+     * // Create many TravelRequests
+     * const travelRequest = await prisma.travelRequest.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TravelRequestCreateManyArgs>(args?: SelectSubset<T, TravelRequestCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many TravelRequests and returns the data saved in the database.
+     * @param {TravelRequestCreateManyAndReturnArgs} args - Arguments to create many TravelRequests.
+     * @example
+     * // Create many TravelRequests
+     * const travelRequest = await prisma.travelRequest.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many TravelRequests and only return the `id`
+     * const travelRequestWithIdOnly = await prisma.travelRequest.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends TravelRequestCreateManyAndReturnArgs>(args?: SelectSubset<T, TravelRequestCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TravelRequestPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a TravelRequest.
+     * @param {TravelRequestDeleteArgs} args - Arguments to delete one TravelRequest.
+     * @example
+     * // Delete one TravelRequest
+     * const TravelRequest = await prisma.travelRequest.delete({
+     *   where: {
+     *     // ... filter to delete one TravelRequest
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TravelRequestDeleteArgs>(args: SelectSubset<T, TravelRequestDeleteArgs<ExtArgs>>): Prisma__TravelRequestClient<$Result.GetResult<Prisma.$TravelRequestPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one TravelRequest.
+     * @param {TravelRequestUpdateArgs} args - Arguments to update one TravelRequest.
+     * @example
+     * // Update one TravelRequest
+     * const travelRequest = await prisma.travelRequest.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TravelRequestUpdateArgs>(args: SelectSubset<T, TravelRequestUpdateArgs<ExtArgs>>): Prisma__TravelRequestClient<$Result.GetResult<Prisma.$TravelRequestPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more TravelRequests.
+     * @param {TravelRequestDeleteManyArgs} args - Arguments to filter TravelRequests to delete.
+     * @example
+     * // Delete a few TravelRequests
+     * const { count } = await prisma.travelRequest.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TravelRequestDeleteManyArgs>(args?: SelectSubset<T, TravelRequestDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TravelRequests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TravelRequestUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many TravelRequests
+     * const travelRequest = await prisma.travelRequest.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TravelRequestUpdateManyArgs>(args: SelectSubset<T, TravelRequestUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TravelRequests and returns the data updated in the database.
+     * @param {TravelRequestUpdateManyAndReturnArgs} args - Arguments to update many TravelRequests.
+     * @example
+     * // Update many TravelRequests
+     * const travelRequest = await prisma.travelRequest.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more TravelRequests and only return the `id`
+     * const travelRequestWithIdOnly = await prisma.travelRequest.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends TravelRequestUpdateManyAndReturnArgs>(args: SelectSubset<T, TravelRequestUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TravelRequestPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one TravelRequest.
+     * @param {TravelRequestUpsertArgs} args - Arguments to update or create a TravelRequest.
+     * @example
+     * // Update or create a TravelRequest
+     * const travelRequest = await prisma.travelRequest.upsert({
+     *   create: {
+     *     // ... data to create a TravelRequest
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the TravelRequest we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TravelRequestUpsertArgs>(args: SelectSubset<T, TravelRequestUpsertArgs<ExtArgs>>): Prisma__TravelRequestClient<$Result.GetResult<Prisma.$TravelRequestPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of TravelRequests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TravelRequestCountArgs} args - Arguments to filter TravelRequests to count.
+     * @example
+     * // Count the number of TravelRequests
+     * const count = await prisma.travelRequest.count({
+     *   where: {
+     *     // ... the filter for the TravelRequests we want to count
+     *   }
+     * })
+    **/
+    count<T extends TravelRequestCountArgs>(
+      args?: Subset<T, TravelRequestCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TravelRequestCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a TravelRequest.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TravelRequestAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TravelRequestAggregateArgs>(args: Subset<T, TravelRequestAggregateArgs>): Prisma.PrismaPromise<GetTravelRequestAggregateType<T>>
+
+    /**
+     * Group by TravelRequest.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TravelRequestGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TravelRequestGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TravelRequestGroupByArgs['orderBy'] }
+        : { orderBy?: TravelRequestGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TravelRequestGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTravelRequestGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the TravelRequest model
+   */
+  readonly fields: TravelRequestFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for TravelRequest.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TravelRequestClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    companionRequests<T extends TravelRequest$companionRequestsArgs<ExtArgs> = {}>(args?: Subset<T, TravelRequest$companionRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompanionRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the TravelRequest model
+   */
+  interface TravelRequestFieldRefs {
+    readonly id: FieldRef<"TravelRequest", 'String'>
+    readonly userId: FieldRef<"TravelRequest", 'String'>
+    readonly source: FieldRef<"TravelRequest", 'String'>
+    readonly destination: FieldRef<"TravelRequest", 'String'>
+    readonly departureAt: FieldRef<"TravelRequest", 'DateTime'>
+    readonly expiresAt: FieldRef<"TravelRequest", 'DateTime'>
+    readonly transportMode: FieldRef<"TravelRequest", 'TransportMode'>
+    readonly passengersRequired: FieldRef<"TravelRequest", 'Int'>
+    readonly isActive: FieldRef<"TravelRequest", 'Boolean'>
+    readonly createdAt: FieldRef<"TravelRequest", 'DateTime'>
+    readonly updatedAt: FieldRef<"TravelRequest", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * TravelRequest findUnique
+   */
+  export type TravelRequestFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TravelRequest
+     */
+    select?: TravelRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TravelRequest
+     */
+    omit?: TravelRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TravelRequestInclude<ExtArgs> | null
+    /**
+     * Filter, which TravelRequest to fetch.
+     */
+    where: TravelRequestWhereUniqueInput
+  }
+
+  /**
+   * TravelRequest findUniqueOrThrow
+   */
+  export type TravelRequestFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TravelRequest
+     */
+    select?: TravelRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TravelRequest
+     */
+    omit?: TravelRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TravelRequestInclude<ExtArgs> | null
+    /**
+     * Filter, which TravelRequest to fetch.
+     */
+    where: TravelRequestWhereUniqueInput
+  }
+
+  /**
+   * TravelRequest findFirst
+   */
+  export type TravelRequestFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TravelRequest
+     */
+    select?: TravelRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TravelRequest
+     */
+    omit?: TravelRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TravelRequestInclude<ExtArgs> | null
+    /**
+     * Filter, which TravelRequest to fetch.
+     */
+    where?: TravelRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TravelRequests to fetch.
+     */
+    orderBy?: TravelRequestOrderByWithRelationInput | TravelRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TravelRequests.
+     */
+    cursor?: TravelRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TravelRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TravelRequests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TravelRequests.
+     */
+    distinct?: TravelRequestScalarFieldEnum | TravelRequestScalarFieldEnum[]
+  }
+
+  /**
+   * TravelRequest findFirstOrThrow
+   */
+  export type TravelRequestFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TravelRequest
+     */
+    select?: TravelRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TravelRequest
+     */
+    omit?: TravelRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TravelRequestInclude<ExtArgs> | null
+    /**
+     * Filter, which TravelRequest to fetch.
+     */
+    where?: TravelRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TravelRequests to fetch.
+     */
+    orderBy?: TravelRequestOrderByWithRelationInput | TravelRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TravelRequests.
+     */
+    cursor?: TravelRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TravelRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TravelRequests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TravelRequests.
+     */
+    distinct?: TravelRequestScalarFieldEnum | TravelRequestScalarFieldEnum[]
+  }
+
+  /**
+   * TravelRequest findMany
+   */
+  export type TravelRequestFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TravelRequest
+     */
+    select?: TravelRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TravelRequest
+     */
+    omit?: TravelRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TravelRequestInclude<ExtArgs> | null
+    /**
+     * Filter, which TravelRequests to fetch.
+     */
+    where?: TravelRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TravelRequests to fetch.
+     */
+    orderBy?: TravelRequestOrderByWithRelationInput | TravelRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing TravelRequests.
+     */
+    cursor?: TravelRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TravelRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TravelRequests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TravelRequests.
+     */
+    distinct?: TravelRequestScalarFieldEnum | TravelRequestScalarFieldEnum[]
+  }
+
+  /**
+   * TravelRequest create
+   */
+  export type TravelRequestCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TravelRequest
+     */
+    select?: TravelRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TravelRequest
+     */
+    omit?: TravelRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TravelRequestInclude<ExtArgs> | null
+    /**
+     * The data needed to create a TravelRequest.
+     */
+    data: XOR<TravelRequestCreateInput, TravelRequestUncheckedCreateInput>
+  }
+
+  /**
+   * TravelRequest createMany
+   */
+  export type TravelRequestCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many TravelRequests.
+     */
+    data: TravelRequestCreateManyInput | TravelRequestCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * TravelRequest createManyAndReturn
+   */
+  export type TravelRequestCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TravelRequest
+     */
+    select?: TravelRequestSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TravelRequest
+     */
+    omit?: TravelRequestOmit<ExtArgs> | null
+    /**
+     * The data used to create many TravelRequests.
+     */
+    data: TravelRequestCreateManyInput | TravelRequestCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TravelRequestIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * TravelRequest update
+   */
+  export type TravelRequestUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TravelRequest
+     */
+    select?: TravelRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TravelRequest
+     */
+    omit?: TravelRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TravelRequestInclude<ExtArgs> | null
+    /**
+     * The data needed to update a TravelRequest.
+     */
+    data: XOR<TravelRequestUpdateInput, TravelRequestUncheckedUpdateInput>
+    /**
+     * Choose, which TravelRequest to update.
+     */
+    where: TravelRequestWhereUniqueInput
+  }
+
+  /**
+   * TravelRequest updateMany
+   */
+  export type TravelRequestUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update TravelRequests.
+     */
+    data: XOR<TravelRequestUpdateManyMutationInput, TravelRequestUncheckedUpdateManyInput>
+    /**
+     * Filter which TravelRequests to update
+     */
+    where?: TravelRequestWhereInput
+    /**
+     * Limit how many TravelRequests to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TravelRequest updateManyAndReturn
+   */
+  export type TravelRequestUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TravelRequest
+     */
+    select?: TravelRequestSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TravelRequest
+     */
+    omit?: TravelRequestOmit<ExtArgs> | null
+    /**
+     * The data used to update TravelRequests.
+     */
+    data: XOR<TravelRequestUpdateManyMutationInput, TravelRequestUncheckedUpdateManyInput>
+    /**
+     * Filter which TravelRequests to update
+     */
+    where?: TravelRequestWhereInput
+    /**
+     * Limit how many TravelRequests to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TravelRequestIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * TravelRequest upsert
+   */
+  export type TravelRequestUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TravelRequest
+     */
+    select?: TravelRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TravelRequest
+     */
+    omit?: TravelRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TravelRequestInclude<ExtArgs> | null
+    /**
+     * The filter to search for the TravelRequest to update in case it exists.
+     */
+    where: TravelRequestWhereUniqueInput
+    /**
+     * In case the TravelRequest found by the `where` argument doesn't exist, create a new TravelRequest with this data.
+     */
+    create: XOR<TravelRequestCreateInput, TravelRequestUncheckedCreateInput>
+    /**
+     * In case the TravelRequest was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TravelRequestUpdateInput, TravelRequestUncheckedUpdateInput>
+  }
+
+  /**
+   * TravelRequest delete
+   */
+  export type TravelRequestDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TravelRequest
+     */
+    select?: TravelRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TravelRequest
+     */
+    omit?: TravelRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TravelRequestInclude<ExtArgs> | null
+    /**
+     * Filter which TravelRequest to delete.
+     */
+    where: TravelRequestWhereUniqueInput
+  }
+
+  /**
+   * TravelRequest deleteMany
+   */
+  export type TravelRequestDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TravelRequests to delete
+     */
+    where?: TravelRequestWhereInput
+    /**
+     * Limit how many TravelRequests to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * TravelRequest.companionRequests
+   */
+  export type TravelRequest$companionRequestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanionRequest
+     */
+    select?: CompanionRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompanionRequest
+     */
+    omit?: CompanionRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanionRequestInclude<ExtArgs> | null
+    where?: CompanionRequestWhereInput
+    orderBy?: CompanionRequestOrderByWithRelationInput | CompanionRequestOrderByWithRelationInput[]
+    cursor?: CompanionRequestWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CompanionRequestScalarFieldEnum | CompanionRequestScalarFieldEnum[]
+  }
+
+  /**
+   * TravelRequest without action
+   */
+  export type TravelRequestDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TravelRequest
+     */
+    select?: TravelRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TravelRequest
+     */
+    omit?: TravelRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TravelRequestInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model CompanionRequest
+   */
+
+  export type AggregateCompanionRequest = {
+    _count: CompanionRequestCountAggregateOutputType | null
+    _min: CompanionRequestMinAggregateOutputType | null
+    _max: CompanionRequestMaxAggregateOutputType | null
+  }
+
+  export type CompanionRequestMinAggregateOutputType = {
+    id: string | null
+    senderId: string | null
+    recipientId: string | null
+    travelRequestId: string | null
+    offerId: string | null
+    status: $Enums.CompanionRequestStatus | null
+    expiresAt: Date | null
+    respondedAt: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type CompanionRequestMaxAggregateOutputType = {
+    id: string | null
+    senderId: string | null
+    recipientId: string | null
+    travelRequestId: string | null
+    offerId: string | null
+    status: $Enums.CompanionRequestStatus | null
+    expiresAt: Date | null
+    respondedAt: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type CompanionRequestCountAggregateOutputType = {
+    id: number
+    senderId: number
+    recipientId: number
+    travelRequestId: number
+    offerId: number
+    status: number
+    expiresAt: number
+    respondedAt: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type CompanionRequestMinAggregateInputType = {
+    id?: true
+    senderId?: true
+    recipientId?: true
+    travelRequestId?: true
+    offerId?: true
+    status?: true
+    expiresAt?: true
+    respondedAt?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type CompanionRequestMaxAggregateInputType = {
+    id?: true
+    senderId?: true
+    recipientId?: true
+    travelRequestId?: true
+    offerId?: true
+    status?: true
+    expiresAt?: true
+    respondedAt?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type CompanionRequestCountAggregateInputType = {
+    id?: true
+    senderId?: true
+    recipientId?: true
+    travelRequestId?: true
+    offerId?: true
+    status?: true
+    expiresAt?: true
+    respondedAt?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type CompanionRequestAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CompanionRequest to aggregate.
+     */
+    where?: CompanionRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CompanionRequests to fetch.
+     */
+    orderBy?: CompanionRequestOrderByWithRelationInput | CompanionRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CompanionRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CompanionRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CompanionRequests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned CompanionRequests
+    **/
+    _count?: true | CompanionRequestCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CompanionRequestMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CompanionRequestMaxAggregateInputType
+  }
+
+  export type GetCompanionRequestAggregateType<T extends CompanionRequestAggregateArgs> = {
+        [P in keyof T & keyof AggregateCompanionRequest]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCompanionRequest[P]>
+      : GetScalarType<T[P], AggregateCompanionRequest[P]>
+  }
+
+
+
+
+  export type CompanionRequestGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CompanionRequestWhereInput
+    orderBy?: CompanionRequestOrderByWithAggregationInput | CompanionRequestOrderByWithAggregationInput[]
+    by: CompanionRequestScalarFieldEnum[] | CompanionRequestScalarFieldEnum
+    having?: CompanionRequestScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CompanionRequestCountAggregateInputType | true
+    _min?: CompanionRequestMinAggregateInputType
+    _max?: CompanionRequestMaxAggregateInputType
+  }
+
+  export type CompanionRequestGroupByOutputType = {
+    id: string
+    senderId: string
+    recipientId: string
+    travelRequestId: string
+    offerId: string
+    status: $Enums.CompanionRequestStatus
+    expiresAt: Date
+    respondedAt: Date | null
+    createdAt: Date
+    updatedAt: Date
+    _count: CompanionRequestCountAggregateOutputType | null
+    _min: CompanionRequestMinAggregateOutputType | null
+    _max: CompanionRequestMaxAggregateOutputType | null
+  }
+
+  type GetCompanionRequestGroupByPayload<T extends CompanionRequestGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CompanionRequestGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CompanionRequestGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CompanionRequestGroupByOutputType[P]>
+            : GetScalarType<T[P], CompanionRequestGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CompanionRequestSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    senderId?: boolean
+    recipientId?: boolean
+    travelRequestId?: boolean
+    offerId?: boolean
+    status?: boolean
+    expiresAt?: boolean
+    respondedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    sender?: boolean | UserDefaultArgs<ExtArgs>
+    recipient?: boolean | UserDefaultArgs<ExtArgs>
+    travelRequest?: boolean | TravelRequestDefaultArgs<ExtArgs>
+    offer?: boolean | TravelOfferDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["companionRequest"]>
+
+  export type CompanionRequestSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    senderId?: boolean
+    recipientId?: boolean
+    travelRequestId?: boolean
+    offerId?: boolean
+    status?: boolean
+    expiresAt?: boolean
+    respondedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    sender?: boolean | UserDefaultArgs<ExtArgs>
+    recipient?: boolean | UserDefaultArgs<ExtArgs>
+    travelRequest?: boolean | TravelRequestDefaultArgs<ExtArgs>
+    offer?: boolean | TravelOfferDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["companionRequest"]>
+
+  export type CompanionRequestSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    senderId?: boolean
+    recipientId?: boolean
+    travelRequestId?: boolean
+    offerId?: boolean
+    status?: boolean
+    expiresAt?: boolean
+    respondedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    sender?: boolean | UserDefaultArgs<ExtArgs>
+    recipient?: boolean | UserDefaultArgs<ExtArgs>
+    travelRequest?: boolean | TravelRequestDefaultArgs<ExtArgs>
+    offer?: boolean | TravelOfferDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["companionRequest"]>
+
+  export type CompanionRequestSelectScalar = {
+    id?: boolean
+    senderId?: boolean
+    recipientId?: boolean
+    travelRequestId?: boolean
+    offerId?: boolean
+    status?: boolean
+    expiresAt?: boolean
+    respondedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type CompanionRequestOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "senderId" | "recipientId" | "travelRequestId" | "offerId" | "status" | "expiresAt" | "respondedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["companionRequest"]>
+  export type CompanionRequestInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    sender?: boolean | UserDefaultArgs<ExtArgs>
+    recipient?: boolean | UserDefaultArgs<ExtArgs>
+    travelRequest?: boolean | TravelRequestDefaultArgs<ExtArgs>
+    offer?: boolean | TravelOfferDefaultArgs<ExtArgs>
+  }
+  export type CompanionRequestIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    sender?: boolean | UserDefaultArgs<ExtArgs>
+    recipient?: boolean | UserDefaultArgs<ExtArgs>
+    travelRequest?: boolean | TravelRequestDefaultArgs<ExtArgs>
+    offer?: boolean | TravelOfferDefaultArgs<ExtArgs>
+  }
+  export type CompanionRequestIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    sender?: boolean | UserDefaultArgs<ExtArgs>
+    recipient?: boolean | UserDefaultArgs<ExtArgs>
+    travelRequest?: boolean | TravelRequestDefaultArgs<ExtArgs>
+    offer?: boolean | TravelOfferDefaultArgs<ExtArgs>
+  }
+
+  export type $CompanionRequestPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CompanionRequest"
+    objects: {
+      sender: Prisma.$UserPayload<ExtArgs>
+      recipient: Prisma.$UserPayload<ExtArgs>
+      travelRequest: Prisma.$TravelRequestPayload<ExtArgs>
+      offer: Prisma.$TravelOfferPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      senderId: string
+      recipientId: string
+      travelRequestId: string
+      offerId: string
+      status: $Enums.CompanionRequestStatus
+      expiresAt: Date
+      respondedAt: Date | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["companionRequest"]>
+    composites: {}
+  }
+
+  type CompanionRequestGetPayload<S extends boolean | null | undefined | CompanionRequestDefaultArgs> = $Result.GetResult<Prisma.$CompanionRequestPayload, S>
+
+  type CompanionRequestCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CompanionRequestFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CompanionRequestCountAggregateInputType | true
+    }
+
+  export interface CompanionRequestDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CompanionRequest'], meta: { name: 'CompanionRequest' } }
+    /**
+     * Find zero or one CompanionRequest that matches the filter.
+     * @param {CompanionRequestFindUniqueArgs} args - Arguments to find a CompanionRequest
+     * @example
+     * // Get one CompanionRequest
+     * const companionRequest = await prisma.companionRequest.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CompanionRequestFindUniqueArgs>(args: SelectSubset<T, CompanionRequestFindUniqueArgs<ExtArgs>>): Prisma__CompanionRequestClient<$Result.GetResult<Prisma.$CompanionRequestPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one CompanionRequest that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CompanionRequestFindUniqueOrThrowArgs} args - Arguments to find a CompanionRequest
+     * @example
+     * // Get one CompanionRequest
+     * const companionRequest = await prisma.companionRequest.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CompanionRequestFindUniqueOrThrowArgs>(args: SelectSubset<T, CompanionRequestFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CompanionRequestClient<$Result.GetResult<Prisma.$CompanionRequestPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CompanionRequest that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CompanionRequestFindFirstArgs} args - Arguments to find a CompanionRequest
+     * @example
+     * // Get one CompanionRequest
+     * const companionRequest = await prisma.companionRequest.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CompanionRequestFindFirstArgs>(args?: SelectSubset<T, CompanionRequestFindFirstArgs<ExtArgs>>): Prisma__CompanionRequestClient<$Result.GetResult<Prisma.$CompanionRequestPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CompanionRequest that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CompanionRequestFindFirstOrThrowArgs} args - Arguments to find a CompanionRequest
+     * @example
+     * // Get one CompanionRequest
+     * const companionRequest = await prisma.companionRequest.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CompanionRequestFindFirstOrThrowArgs>(args?: SelectSubset<T, CompanionRequestFindFirstOrThrowArgs<ExtArgs>>): Prisma__CompanionRequestClient<$Result.GetResult<Prisma.$CompanionRequestPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more CompanionRequests that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CompanionRequestFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all CompanionRequests
+     * const companionRequests = await prisma.companionRequest.findMany()
+     * 
+     * // Get first 10 CompanionRequests
+     * const companionRequests = await prisma.companionRequest.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const companionRequestWithIdOnly = await prisma.companionRequest.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CompanionRequestFindManyArgs>(args?: SelectSubset<T, CompanionRequestFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompanionRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a CompanionRequest.
+     * @param {CompanionRequestCreateArgs} args - Arguments to create a CompanionRequest.
+     * @example
+     * // Create one CompanionRequest
+     * const CompanionRequest = await prisma.companionRequest.create({
+     *   data: {
+     *     // ... data to create a CompanionRequest
+     *   }
+     * })
+     * 
+     */
+    create<T extends CompanionRequestCreateArgs>(args: SelectSubset<T, CompanionRequestCreateArgs<ExtArgs>>): Prisma__CompanionRequestClient<$Result.GetResult<Prisma.$CompanionRequestPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many CompanionRequests.
+     * @param {CompanionRequestCreateManyArgs} args - Arguments to create many CompanionRequests.
+     * @example
+     * // Create many CompanionRequests
+     * const companionRequest = await prisma.companionRequest.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CompanionRequestCreateManyArgs>(args?: SelectSubset<T, CompanionRequestCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many CompanionRequests and returns the data saved in the database.
+     * @param {CompanionRequestCreateManyAndReturnArgs} args - Arguments to create many CompanionRequests.
+     * @example
+     * // Create many CompanionRequests
+     * const companionRequest = await prisma.companionRequest.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many CompanionRequests and only return the `id`
+     * const companionRequestWithIdOnly = await prisma.companionRequest.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CompanionRequestCreateManyAndReturnArgs>(args?: SelectSubset<T, CompanionRequestCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompanionRequestPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a CompanionRequest.
+     * @param {CompanionRequestDeleteArgs} args - Arguments to delete one CompanionRequest.
+     * @example
+     * // Delete one CompanionRequest
+     * const CompanionRequest = await prisma.companionRequest.delete({
+     *   where: {
+     *     // ... filter to delete one CompanionRequest
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CompanionRequestDeleteArgs>(args: SelectSubset<T, CompanionRequestDeleteArgs<ExtArgs>>): Prisma__CompanionRequestClient<$Result.GetResult<Prisma.$CompanionRequestPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one CompanionRequest.
+     * @param {CompanionRequestUpdateArgs} args - Arguments to update one CompanionRequest.
+     * @example
+     * // Update one CompanionRequest
+     * const companionRequest = await prisma.companionRequest.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CompanionRequestUpdateArgs>(args: SelectSubset<T, CompanionRequestUpdateArgs<ExtArgs>>): Prisma__CompanionRequestClient<$Result.GetResult<Prisma.$CompanionRequestPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more CompanionRequests.
+     * @param {CompanionRequestDeleteManyArgs} args - Arguments to filter CompanionRequests to delete.
+     * @example
+     * // Delete a few CompanionRequests
+     * const { count } = await prisma.companionRequest.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CompanionRequestDeleteManyArgs>(args?: SelectSubset<T, CompanionRequestDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CompanionRequests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CompanionRequestUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many CompanionRequests
+     * const companionRequest = await prisma.companionRequest.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CompanionRequestUpdateManyArgs>(args: SelectSubset<T, CompanionRequestUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CompanionRequests and returns the data updated in the database.
+     * @param {CompanionRequestUpdateManyAndReturnArgs} args - Arguments to update many CompanionRequests.
+     * @example
+     * // Update many CompanionRequests
+     * const companionRequest = await prisma.companionRequest.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more CompanionRequests and only return the `id`
+     * const companionRequestWithIdOnly = await prisma.companionRequest.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CompanionRequestUpdateManyAndReturnArgs>(args: SelectSubset<T, CompanionRequestUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompanionRequestPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one CompanionRequest.
+     * @param {CompanionRequestUpsertArgs} args - Arguments to update or create a CompanionRequest.
+     * @example
+     * // Update or create a CompanionRequest
+     * const companionRequest = await prisma.companionRequest.upsert({
+     *   create: {
+     *     // ... data to create a CompanionRequest
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the CompanionRequest we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CompanionRequestUpsertArgs>(args: SelectSubset<T, CompanionRequestUpsertArgs<ExtArgs>>): Prisma__CompanionRequestClient<$Result.GetResult<Prisma.$CompanionRequestPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of CompanionRequests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CompanionRequestCountArgs} args - Arguments to filter CompanionRequests to count.
+     * @example
+     * // Count the number of CompanionRequests
+     * const count = await prisma.companionRequest.count({
+     *   where: {
+     *     // ... the filter for the CompanionRequests we want to count
+     *   }
+     * })
+    **/
+    count<T extends CompanionRequestCountArgs>(
+      args?: Subset<T, CompanionRequestCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CompanionRequestCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a CompanionRequest.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CompanionRequestAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CompanionRequestAggregateArgs>(args: Subset<T, CompanionRequestAggregateArgs>): Prisma.PrismaPromise<GetCompanionRequestAggregateType<T>>
+
+    /**
+     * Group by CompanionRequest.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CompanionRequestGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CompanionRequestGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CompanionRequestGroupByArgs['orderBy'] }
+        : { orderBy?: CompanionRequestGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CompanionRequestGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCompanionRequestGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the CompanionRequest model
+   */
+  readonly fields: CompanionRequestFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for CompanionRequest.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CompanionRequestClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    sender<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    recipient<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    travelRequest<T extends TravelRequestDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TravelRequestDefaultArgs<ExtArgs>>): Prisma__TravelRequestClient<$Result.GetResult<Prisma.$TravelRequestPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    offer<T extends TravelOfferDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TravelOfferDefaultArgs<ExtArgs>>): Prisma__TravelOfferClient<$Result.GetResult<Prisma.$TravelOfferPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the CompanionRequest model
+   */
+  interface CompanionRequestFieldRefs {
+    readonly id: FieldRef<"CompanionRequest", 'String'>
+    readonly senderId: FieldRef<"CompanionRequest", 'String'>
+    readonly recipientId: FieldRef<"CompanionRequest", 'String'>
+    readonly travelRequestId: FieldRef<"CompanionRequest", 'String'>
+    readonly offerId: FieldRef<"CompanionRequest", 'String'>
+    readonly status: FieldRef<"CompanionRequest", 'CompanionRequestStatus'>
+    readonly expiresAt: FieldRef<"CompanionRequest", 'DateTime'>
+    readonly respondedAt: FieldRef<"CompanionRequest", 'DateTime'>
+    readonly createdAt: FieldRef<"CompanionRequest", 'DateTime'>
+    readonly updatedAt: FieldRef<"CompanionRequest", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * CompanionRequest findUnique
+   */
+  export type CompanionRequestFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanionRequest
+     */
+    select?: CompanionRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompanionRequest
+     */
+    omit?: CompanionRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanionRequestInclude<ExtArgs> | null
+    /**
+     * Filter, which CompanionRequest to fetch.
+     */
+    where: CompanionRequestWhereUniqueInput
+  }
+
+  /**
+   * CompanionRequest findUniqueOrThrow
+   */
+  export type CompanionRequestFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanionRequest
+     */
+    select?: CompanionRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompanionRequest
+     */
+    omit?: CompanionRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanionRequestInclude<ExtArgs> | null
+    /**
+     * Filter, which CompanionRequest to fetch.
+     */
+    where: CompanionRequestWhereUniqueInput
+  }
+
+  /**
+   * CompanionRequest findFirst
+   */
+  export type CompanionRequestFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanionRequest
+     */
+    select?: CompanionRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompanionRequest
+     */
+    omit?: CompanionRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanionRequestInclude<ExtArgs> | null
+    /**
+     * Filter, which CompanionRequest to fetch.
+     */
+    where?: CompanionRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CompanionRequests to fetch.
+     */
+    orderBy?: CompanionRequestOrderByWithRelationInput | CompanionRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CompanionRequests.
+     */
+    cursor?: CompanionRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CompanionRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CompanionRequests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CompanionRequests.
+     */
+    distinct?: CompanionRequestScalarFieldEnum | CompanionRequestScalarFieldEnum[]
+  }
+
+  /**
+   * CompanionRequest findFirstOrThrow
+   */
+  export type CompanionRequestFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanionRequest
+     */
+    select?: CompanionRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompanionRequest
+     */
+    omit?: CompanionRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanionRequestInclude<ExtArgs> | null
+    /**
+     * Filter, which CompanionRequest to fetch.
+     */
+    where?: CompanionRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CompanionRequests to fetch.
+     */
+    orderBy?: CompanionRequestOrderByWithRelationInput | CompanionRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CompanionRequests.
+     */
+    cursor?: CompanionRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CompanionRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CompanionRequests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CompanionRequests.
+     */
+    distinct?: CompanionRequestScalarFieldEnum | CompanionRequestScalarFieldEnum[]
+  }
+
+  /**
+   * CompanionRequest findMany
+   */
+  export type CompanionRequestFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanionRequest
+     */
+    select?: CompanionRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompanionRequest
+     */
+    omit?: CompanionRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanionRequestInclude<ExtArgs> | null
+    /**
+     * Filter, which CompanionRequests to fetch.
+     */
+    where?: CompanionRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CompanionRequests to fetch.
+     */
+    orderBy?: CompanionRequestOrderByWithRelationInput | CompanionRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing CompanionRequests.
+     */
+    cursor?: CompanionRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CompanionRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CompanionRequests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CompanionRequests.
+     */
+    distinct?: CompanionRequestScalarFieldEnum | CompanionRequestScalarFieldEnum[]
+  }
+
+  /**
+   * CompanionRequest create
+   */
+  export type CompanionRequestCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanionRequest
+     */
+    select?: CompanionRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompanionRequest
+     */
+    omit?: CompanionRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanionRequestInclude<ExtArgs> | null
+    /**
+     * The data needed to create a CompanionRequest.
+     */
+    data: XOR<CompanionRequestCreateInput, CompanionRequestUncheckedCreateInput>
+  }
+
+  /**
+   * CompanionRequest createMany
+   */
+  export type CompanionRequestCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many CompanionRequests.
+     */
+    data: CompanionRequestCreateManyInput | CompanionRequestCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CompanionRequest createManyAndReturn
+   */
+  export type CompanionRequestCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanionRequest
+     */
+    select?: CompanionRequestSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompanionRequest
+     */
+    omit?: CompanionRequestOmit<ExtArgs> | null
+    /**
+     * The data used to create many CompanionRequests.
+     */
+    data: CompanionRequestCreateManyInput | CompanionRequestCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanionRequestIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CompanionRequest update
+   */
+  export type CompanionRequestUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanionRequest
+     */
+    select?: CompanionRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompanionRequest
+     */
+    omit?: CompanionRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanionRequestInclude<ExtArgs> | null
+    /**
+     * The data needed to update a CompanionRequest.
+     */
+    data: XOR<CompanionRequestUpdateInput, CompanionRequestUncheckedUpdateInput>
+    /**
+     * Choose, which CompanionRequest to update.
+     */
+    where: CompanionRequestWhereUniqueInput
+  }
+
+  /**
+   * CompanionRequest updateMany
+   */
+  export type CompanionRequestUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update CompanionRequests.
+     */
+    data: XOR<CompanionRequestUpdateManyMutationInput, CompanionRequestUncheckedUpdateManyInput>
+    /**
+     * Filter which CompanionRequests to update
+     */
+    where?: CompanionRequestWhereInput
+    /**
+     * Limit how many CompanionRequests to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CompanionRequest updateManyAndReturn
+   */
+  export type CompanionRequestUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanionRequest
+     */
+    select?: CompanionRequestSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompanionRequest
+     */
+    omit?: CompanionRequestOmit<ExtArgs> | null
+    /**
+     * The data used to update CompanionRequests.
+     */
+    data: XOR<CompanionRequestUpdateManyMutationInput, CompanionRequestUncheckedUpdateManyInput>
+    /**
+     * Filter which CompanionRequests to update
+     */
+    where?: CompanionRequestWhereInput
+    /**
+     * Limit how many CompanionRequests to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanionRequestIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CompanionRequest upsert
+   */
+  export type CompanionRequestUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanionRequest
+     */
+    select?: CompanionRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompanionRequest
+     */
+    omit?: CompanionRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanionRequestInclude<ExtArgs> | null
+    /**
+     * The filter to search for the CompanionRequest to update in case it exists.
+     */
+    where: CompanionRequestWhereUniqueInput
+    /**
+     * In case the CompanionRequest found by the `where` argument doesn't exist, create a new CompanionRequest with this data.
+     */
+    create: XOR<CompanionRequestCreateInput, CompanionRequestUncheckedCreateInput>
+    /**
+     * In case the CompanionRequest was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CompanionRequestUpdateInput, CompanionRequestUncheckedUpdateInput>
+  }
+
+  /**
+   * CompanionRequest delete
+   */
+  export type CompanionRequestDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanionRequest
+     */
+    select?: CompanionRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompanionRequest
+     */
+    omit?: CompanionRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanionRequestInclude<ExtArgs> | null
+    /**
+     * Filter which CompanionRequest to delete.
+     */
+    where: CompanionRequestWhereUniqueInput
+  }
+
+  /**
+   * CompanionRequest deleteMany
+   */
+  export type CompanionRequestDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CompanionRequests to delete
+     */
+    where?: CompanionRequestWhereInput
+    /**
+     * Limit how many CompanionRequests to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * CompanionRequest without action
+   */
+  export type CompanionRequestDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanionRequest
+     */
+    select?: CompanionRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompanionRequest
+     */
+    omit?: CompanionRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanionRequestInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -3383,6 +7459,56 @@ export namespace Prisma {
   };
 
   export type RefreshSessionScalarFieldEnum = (typeof RefreshSessionScalarFieldEnum)[keyof typeof RefreshSessionScalarFieldEnum]
+
+
+  export const TravelOfferScalarFieldEnum: {
+    id: 'id',
+    ownerId: 'ownerId',
+    source: 'source',
+    destination: 'destination',
+    departureAt: 'departureAt',
+    expiresAt: 'expiresAt',
+    transportMode: 'transportMode',
+    availableSeats: 'availableSeats',
+    isActive: 'isActive',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type TravelOfferScalarFieldEnum = (typeof TravelOfferScalarFieldEnum)[keyof typeof TravelOfferScalarFieldEnum]
+
+
+  export const TravelRequestScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    source: 'source',
+    destination: 'destination',
+    departureAt: 'departureAt',
+    expiresAt: 'expiresAt',
+    transportMode: 'transportMode',
+    passengersRequired: 'passengersRequired',
+    isActive: 'isActive',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type TravelRequestScalarFieldEnum = (typeof TravelRequestScalarFieldEnum)[keyof typeof TravelRequestScalarFieldEnum]
+
+
+  export const CompanionRequestScalarFieldEnum: {
+    id: 'id',
+    senderId: 'senderId',
+    recipientId: 'recipientId',
+    travelRequestId: 'travelRequestId',
+    offerId: 'offerId',
+    status: 'status',
+    expiresAt: 'expiresAt',
+    respondedAt: 'respondedAt',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type CompanionRequestScalarFieldEnum = (typeof CompanionRequestScalarFieldEnum)[keyof typeof CompanionRequestScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -3506,6 +7632,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'TransportMode'
+   */
+  export type EnumTransportModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TransportMode'>
+    
+
+
+  /**
+   * Reference to a field of type 'TransportMode[]'
+   */
+  export type ListEnumTransportModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TransportMode[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Int'
    */
   export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
@@ -3516,6 +7656,34 @@ export namespace Prisma {
    * Reference to a field of type 'Int[]'
    */
   export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'CompanionRequestStatus'
+   */
+  export type EnumCompanionRequestStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CompanionRequestStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'CompanionRequestStatus[]'
+   */
+  export type ListEnumCompanionRequestStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CompanionRequestStatus[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float'
+   */
+  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float[]'
+   */
+  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
     
   /**
    * Deep Input Types
@@ -3541,6 +7709,10 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"User"> | Date | string
     profileCompleted?: BoolFilter<"User"> | boolean
     refreshSessions?: RefreshSessionListRelationFilter
+    travelOffers?: TravelOfferListRelationFilter
+    travelRequests?: TravelRequestListRelationFilter
+    companionRequestsSent?: CompanionRequestListRelationFilter
+    companionRequestsReceived?: CompanionRequestListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -3559,6 +7731,10 @@ export namespace Prisma {
     updatedAt?: SortOrder
     profileCompleted?: SortOrder
     refreshSessions?: RefreshSessionOrderByRelationAggregateInput
+    travelOffers?: TravelOfferOrderByRelationAggregateInput
+    travelRequests?: TravelRequestOrderByRelationAggregateInput
+    companionRequestsSent?: CompanionRequestOrderByRelationAggregateInput
+    companionRequestsReceived?: CompanionRequestOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -3580,6 +7756,10 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"User"> | Date | string
     profileCompleted?: BoolFilter<"User"> | boolean
     refreshSessions?: RefreshSessionListRelationFilter
+    travelOffers?: TravelOfferListRelationFilter
+    travelRequests?: TravelRequestListRelationFilter
+    companionRequestsSent?: CompanionRequestListRelationFilter
+    companionRequestsReceived?: CompanionRequestListRelationFilter
   }, "id" | "email" | "googleId">
 
   export type UserOrderByWithAggregationInput = {
@@ -3682,6 +7862,275 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"RefreshSession"> | Date | string
   }
 
+  export type TravelOfferWhereInput = {
+    AND?: TravelOfferWhereInput | TravelOfferWhereInput[]
+    OR?: TravelOfferWhereInput[]
+    NOT?: TravelOfferWhereInput | TravelOfferWhereInput[]
+    id?: StringFilter<"TravelOffer"> | string
+    ownerId?: StringFilter<"TravelOffer"> | string
+    source?: StringFilter<"TravelOffer"> | string
+    destination?: StringFilter<"TravelOffer"> | string
+    departureAt?: DateTimeFilter<"TravelOffer"> | Date | string
+    expiresAt?: DateTimeFilter<"TravelOffer"> | Date | string
+    transportMode?: EnumTransportModeFilter<"TravelOffer"> | $Enums.TransportMode
+    availableSeats?: IntFilter<"TravelOffer"> | number
+    isActive?: BoolFilter<"TravelOffer"> | boolean
+    createdAt?: DateTimeFilter<"TravelOffer"> | Date | string
+    updatedAt?: DateTimeFilter<"TravelOffer"> | Date | string
+    owner?: XOR<UserScalarRelationFilter, UserWhereInput>
+    companionRequests?: CompanionRequestListRelationFilter
+  }
+
+  export type TravelOfferOrderByWithRelationInput = {
+    id?: SortOrder
+    ownerId?: SortOrder
+    source?: SortOrder
+    destination?: SortOrder
+    departureAt?: SortOrder
+    expiresAt?: SortOrder
+    transportMode?: SortOrder
+    availableSeats?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    owner?: UserOrderByWithRelationInput
+    companionRequests?: CompanionRequestOrderByRelationAggregateInput
+  }
+
+  export type TravelOfferWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: TravelOfferWhereInput | TravelOfferWhereInput[]
+    OR?: TravelOfferWhereInput[]
+    NOT?: TravelOfferWhereInput | TravelOfferWhereInput[]
+    ownerId?: StringFilter<"TravelOffer"> | string
+    source?: StringFilter<"TravelOffer"> | string
+    destination?: StringFilter<"TravelOffer"> | string
+    departureAt?: DateTimeFilter<"TravelOffer"> | Date | string
+    expiresAt?: DateTimeFilter<"TravelOffer"> | Date | string
+    transportMode?: EnumTransportModeFilter<"TravelOffer"> | $Enums.TransportMode
+    availableSeats?: IntFilter<"TravelOffer"> | number
+    isActive?: BoolFilter<"TravelOffer"> | boolean
+    createdAt?: DateTimeFilter<"TravelOffer"> | Date | string
+    updatedAt?: DateTimeFilter<"TravelOffer"> | Date | string
+    owner?: XOR<UserScalarRelationFilter, UserWhereInput>
+    companionRequests?: CompanionRequestListRelationFilter
+  }, "id">
+
+  export type TravelOfferOrderByWithAggregationInput = {
+    id?: SortOrder
+    ownerId?: SortOrder
+    source?: SortOrder
+    destination?: SortOrder
+    departureAt?: SortOrder
+    expiresAt?: SortOrder
+    transportMode?: SortOrder
+    availableSeats?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: TravelOfferCountOrderByAggregateInput
+    _avg?: TravelOfferAvgOrderByAggregateInput
+    _max?: TravelOfferMaxOrderByAggregateInput
+    _min?: TravelOfferMinOrderByAggregateInput
+    _sum?: TravelOfferSumOrderByAggregateInput
+  }
+
+  export type TravelOfferScalarWhereWithAggregatesInput = {
+    AND?: TravelOfferScalarWhereWithAggregatesInput | TravelOfferScalarWhereWithAggregatesInput[]
+    OR?: TravelOfferScalarWhereWithAggregatesInput[]
+    NOT?: TravelOfferScalarWhereWithAggregatesInput | TravelOfferScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"TravelOffer"> | string
+    ownerId?: StringWithAggregatesFilter<"TravelOffer"> | string
+    source?: StringWithAggregatesFilter<"TravelOffer"> | string
+    destination?: StringWithAggregatesFilter<"TravelOffer"> | string
+    departureAt?: DateTimeWithAggregatesFilter<"TravelOffer"> | Date | string
+    expiresAt?: DateTimeWithAggregatesFilter<"TravelOffer"> | Date | string
+    transportMode?: EnumTransportModeWithAggregatesFilter<"TravelOffer"> | $Enums.TransportMode
+    availableSeats?: IntWithAggregatesFilter<"TravelOffer"> | number
+    isActive?: BoolWithAggregatesFilter<"TravelOffer"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"TravelOffer"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"TravelOffer"> | Date | string
+  }
+
+  export type TravelRequestWhereInput = {
+    AND?: TravelRequestWhereInput | TravelRequestWhereInput[]
+    OR?: TravelRequestWhereInput[]
+    NOT?: TravelRequestWhereInput | TravelRequestWhereInput[]
+    id?: StringFilter<"TravelRequest"> | string
+    userId?: StringFilter<"TravelRequest"> | string
+    source?: StringFilter<"TravelRequest"> | string
+    destination?: StringFilter<"TravelRequest"> | string
+    departureAt?: DateTimeFilter<"TravelRequest"> | Date | string
+    expiresAt?: DateTimeFilter<"TravelRequest"> | Date | string
+    transportMode?: EnumTransportModeNullableFilter<"TravelRequest"> | $Enums.TransportMode | null
+    passengersRequired?: IntFilter<"TravelRequest"> | number
+    isActive?: BoolFilter<"TravelRequest"> | boolean
+    createdAt?: DateTimeFilter<"TravelRequest"> | Date | string
+    updatedAt?: DateTimeFilter<"TravelRequest"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    companionRequests?: CompanionRequestListRelationFilter
+  }
+
+  export type TravelRequestOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    source?: SortOrder
+    destination?: SortOrder
+    departureAt?: SortOrder
+    expiresAt?: SortOrder
+    transportMode?: SortOrderInput | SortOrder
+    passengersRequired?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+    companionRequests?: CompanionRequestOrderByRelationAggregateInput
+  }
+
+  export type TravelRequestWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: TravelRequestWhereInput | TravelRequestWhereInput[]
+    OR?: TravelRequestWhereInput[]
+    NOT?: TravelRequestWhereInput | TravelRequestWhereInput[]
+    userId?: StringFilter<"TravelRequest"> | string
+    source?: StringFilter<"TravelRequest"> | string
+    destination?: StringFilter<"TravelRequest"> | string
+    departureAt?: DateTimeFilter<"TravelRequest"> | Date | string
+    expiresAt?: DateTimeFilter<"TravelRequest"> | Date | string
+    transportMode?: EnumTransportModeNullableFilter<"TravelRequest"> | $Enums.TransportMode | null
+    passengersRequired?: IntFilter<"TravelRequest"> | number
+    isActive?: BoolFilter<"TravelRequest"> | boolean
+    createdAt?: DateTimeFilter<"TravelRequest"> | Date | string
+    updatedAt?: DateTimeFilter<"TravelRequest"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    companionRequests?: CompanionRequestListRelationFilter
+  }, "id">
+
+  export type TravelRequestOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    source?: SortOrder
+    destination?: SortOrder
+    departureAt?: SortOrder
+    expiresAt?: SortOrder
+    transportMode?: SortOrderInput | SortOrder
+    passengersRequired?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: TravelRequestCountOrderByAggregateInput
+    _avg?: TravelRequestAvgOrderByAggregateInput
+    _max?: TravelRequestMaxOrderByAggregateInput
+    _min?: TravelRequestMinOrderByAggregateInput
+    _sum?: TravelRequestSumOrderByAggregateInput
+  }
+
+  export type TravelRequestScalarWhereWithAggregatesInput = {
+    AND?: TravelRequestScalarWhereWithAggregatesInput | TravelRequestScalarWhereWithAggregatesInput[]
+    OR?: TravelRequestScalarWhereWithAggregatesInput[]
+    NOT?: TravelRequestScalarWhereWithAggregatesInput | TravelRequestScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"TravelRequest"> | string
+    userId?: StringWithAggregatesFilter<"TravelRequest"> | string
+    source?: StringWithAggregatesFilter<"TravelRequest"> | string
+    destination?: StringWithAggregatesFilter<"TravelRequest"> | string
+    departureAt?: DateTimeWithAggregatesFilter<"TravelRequest"> | Date | string
+    expiresAt?: DateTimeWithAggregatesFilter<"TravelRequest"> | Date | string
+    transportMode?: EnumTransportModeNullableWithAggregatesFilter<"TravelRequest"> | $Enums.TransportMode | null
+    passengersRequired?: IntWithAggregatesFilter<"TravelRequest"> | number
+    isActive?: BoolWithAggregatesFilter<"TravelRequest"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"TravelRequest"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"TravelRequest"> | Date | string
+  }
+
+  export type CompanionRequestWhereInput = {
+    AND?: CompanionRequestWhereInput | CompanionRequestWhereInput[]
+    OR?: CompanionRequestWhereInput[]
+    NOT?: CompanionRequestWhereInput | CompanionRequestWhereInput[]
+    id?: StringFilter<"CompanionRequest"> | string
+    senderId?: StringFilter<"CompanionRequest"> | string
+    recipientId?: StringFilter<"CompanionRequest"> | string
+    travelRequestId?: StringFilter<"CompanionRequest"> | string
+    offerId?: StringFilter<"CompanionRequest"> | string
+    status?: EnumCompanionRequestStatusFilter<"CompanionRequest"> | $Enums.CompanionRequestStatus
+    expiresAt?: DateTimeFilter<"CompanionRequest"> | Date | string
+    respondedAt?: DateTimeNullableFilter<"CompanionRequest"> | Date | string | null
+    createdAt?: DateTimeFilter<"CompanionRequest"> | Date | string
+    updatedAt?: DateTimeFilter<"CompanionRequest"> | Date | string
+    sender?: XOR<UserScalarRelationFilter, UserWhereInput>
+    recipient?: XOR<UserScalarRelationFilter, UserWhereInput>
+    travelRequest?: XOR<TravelRequestScalarRelationFilter, TravelRequestWhereInput>
+    offer?: XOR<TravelOfferScalarRelationFilter, TravelOfferWhereInput>
+  }
+
+  export type CompanionRequestOrderByWithRelationInput = {
+    id?: SortOrder
+    senderId?: SortOrder
+    recipientId?: SortOrder
+    travelRequestId?: SortOrder
+    offerId?: SortOrder
+    status?: SortOrder
+    expiresAt?: SortOrder
+    respondedAt?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    sender?: UserOrderByWithRelationInput
+    recipient?: UserOrderByWithRelationInput
+    travelRequest?: TravelRequestOrderByWithRelationInput
+    offer?: TravelOfferOrderByWithRelationInput
+  }
+
+  export type CompanionRequestWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: CompanionRequestWhereInput | CompanionRequestWhereInput[]
+    OR?: CompanionRequestWhereInput[]
+    NOT?: CompanionRequestWhereInput | CompanionRequestWhereInput[]
+    senderId?: StringFilter<"CompanionRequest"> | string
+    recipientId?: StringFilter<"CompanionRequest"> | string
+    travelRequestId?: StringFilter<"CompanionRequest"> | string
+    offerId?: StringFilter<"CompanionRequest"> | string
+    status?: EnumCompanionRequestStatusFilter<"CompanionRequest"> | $Enums.CompanionRequestStatus
+    expiresAt?: DateTimeFilter<"CompanionRequest"> | Date | string
+    respondedAt?: DateTimeNullableFilter<"CompanionRequest"> | Date | string | null
+    createdAt?: DateTimeFilter<"CompanionRequest"> | Date | string
+    updatedAt?: DateTimeFilter<"CompanionRequest"> | Date | string
+    sender?: XOR<UserScalarRelationFilter, UserWhereInput>
+    recipient?: XOR<UserScalarRelationFilter, UserWhereInput>
+    travelRequest?: XOR<TravelRequestScalarRelationFilter, TravelRequestWhereInput>
+    offer?: XOR<TravelOfferScalarRelationFilter, TravelOfferWhereInput>
+  }, "id">
+
+  export type CompanionRequestOrderByWithAggregationInput = {
+    id?: SortOrder
+    senderId?: SortOrder
+    recipientId?: SortOrder
+    travelRequestId?: SortOrder
+    offerId?: SortOrder
+    status?: SortOrder
+    expiresAt?: SortOrder
+    respondedAt?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: CompanionRequestCountOrderByAggregateInput
+    _max?: CompanionRequestMaxOrderByAggregateInput
+    _min?: CompanionRequestMinOrderByAggregateInput
+  }
+
+  export type CompanionRequestScalarWhereWithAggregatesInput = {
+    AND?: CompanionRequestScalarWhereWithAggregatesInput | CompanionRequestScalarWhereWithAggregatesInput[]
+    OR?: CompanionRequestScalarWhereWithAggregatesInput[]
+    NOT?: CompanionRequestScalarWhereWithAggregatesInput | CompanionRequestScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"CompanionRequest"> | string
+    senderId?: StringWithAggregatesFilter<"CompanionRequest"> | string
+    recipientId?: StringWithAggregatesFilter<"CompanionRequest"> | string
+    travelRequestId?: StringWithAggregatesFilter<"CompanionRequest"> | string
+    offerId?: StringWithAggregatesFilter<"CompanionRequest"> | string
+    status?: EnumCompanionRequestStatusWithAggregatesFilter<"CompanionRequest"> | $Enums.CompanionRequestStatus
+    expiresAt?: DateTimeWithAggregatesFilter<"CompanionRequest"> | Date | string
+    respondedAt?: DateTimeNullableWithAggregatesFilter<"CompanionRequest"> | Date | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"CompanionRequest"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"CompanionRequest"> | Date | string
+  }
+
   export type UserCreateInput = {
     id?: string
     name: string
@@ -3698,6 +8147,10 @@ export namespace Prisma {
     updatedAt?: Date | string
     profileCompleted?: boolean
     refreshSessions?: RefreshSessionCreateNestedManyWithoutUserInput
+    travelOffers?: TravelOfferCreateNestedManyWithoutOwnerInput
+    travelRequests?: TravelRequestCreateNestedManyWithoutUserInput
+    companionRequestsSent?: CompanionRequestCreateNestedManyWithoutSenderInput
+    companionRequestsReceived?: CompanionRequestCreateNestedManyWithoutRecipientInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -3716,6 +8169,10 @@ export namespace Prisma {
     updatedAt?: Date | string
     profileCompleted?: boolean
     refreshSessions?: RefreshSessionUncheckedCreateNestedManyWithoutUserInput
+    travelOffers?: TravelOfferUncheckedCreateNestedManyWithoutOwnerInput
+    travelRequests?: TravelRequestUncheckedCreateNestedManyWithoutUserInput
+    companionRequestsSent?: CompanionRequestUncheckedCreateNestedManyWithoutSenderInput
+    companionRequestsReceived?: CompanionRequestUncheckedCreateNestedManyWithoutRecipientInput
   }
 
   export type UserUpdateInput = {
@@ -3734,6 +8191,10 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     profileCompleted?: BoolFieldUpdateOperationsInput | boolean
     refreshSessions?: RefreshSessionUpdateManyWithoutUserNestedInput
+    travelOffers?: TravelOfferUpdateManyWithoutOwnerNestedInput
+    travelRequests?: TravelRequestUpdateManyWithoutUserNestedInput
+    companionRequestsSent?: CompanionRequestUpdateManyWithoutSenderNestedInput
+    companionRequestsReceived?: CompanionRequestUpdateManyWithoutRecipientNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -3752,6 +8213,10 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     profileCompleted?: BoolFieldUpdateOperationsInput | boolean
     refreshSessions?: RefreshSessionUncheckedUpdateManyWithoutUserNestedInput
+    travelOffers?: TravelOfferUncheckedUpdateManyWithoutOwnerNestedInput
+    travelRequests?: TravelRequestUncheckedUpdateManyWithoutUserNestedInput
+    companionRequestsSent?: CompanionRequestUncheckedUpdateManyWithoutSenderNestedInput
+    companionRequestsReceived?: CompanionRequestUncheckedUpdateManyWithoutRecipientNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -3867,6 +8332,295 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type TravelOfferCreateInput = {
+    id?: string
+    source: string
+    destination: string
+    departureAt: Date | string
+    expiresAt: Date | string
+    transportMode: $Enums.TransportMode
+    availableSeats: number
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    owner: UserCreateNestedOneWithoutTravelOffersInput
+    companionRequests?: CompanionRequestCreateNestedManyWithoutOfferInput
+  }
+
+  export type TravelOfferUncheckedCreateInput = {
+    id?: string
+    ownerId: string
+    source: string
+    destination: string
+    departureAt: Date | string
+    expiresAt: Date | string
+    transportMode: $Enums.TransportMode
+    availableSeats: number
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    companionRequests?: CompanionRequestUncheckedCreateNestedManyWithoutOfferInput
+  }
+
+  export type TravelOfferUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    source?: StringFieldUpdateOperationsInput | string
+    destination?: StringFieldUpdateOperationsInput | string
+    departureAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    transportMode?: EnumTransportModeFieldUpdateOperationsInput | $Enums.TransportMode
+    availableSeats?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    owner?: UserUpdateOneRequiredWithoutTravelOffersNestedInput
+    companionRequests?: CompanionRequestUpdateManyWithoutOfferNestedInput
+  }
+
+  export type TravelOfferUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ownerId?: StringFieldUpdateOperationsInput | string
+    source?: StringFieldUpdateOperationsInput | string
+    destination?: StringFieldUpdateOperationsInput | string
+    departureAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    transportMode?: EnumTransportModeFieldUpdateOperationsInput | $Enums.TransportMode
+    availableSeats?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    companionRequests?: CompanionRequestUncheckedUpdateManyWithoutOfferNestedInput
+  }
+
+  export type TravelOfferCreateManyInput = {
+    id?: string
+    ownerId: string
+    source: string
+    destination: string
+    departureAt: Date | string
+    expiresAt: Date | string
+    transportMode: $Enums.TransportMode
+    availableSeats: number
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type TravelOfferUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    source?: StringFieldUpdateOperationsInput | string
+    destination?: StringFieldUpdateOperationsInput | string
+    departureAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    transportMode?: EnumTransportModeFieldUpdateOperationsInput | $Enums.TransportMode
+    availableSeats?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TravelOfferUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ownerId?: StringFieldUpdateOperationsInput | string
+    source?: StringFieldUpdateOperationsInput | string
+    destination?: StringFieldUpdateOperationsInput | string
+    departureAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    transportMode?: EnumTransportModeFieldUpdateOperationsInput | $Enums.TransportMode
+    availableSeats?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TravelRequestCreateInput = {
+    id?: string
+    source: string
+    destination: string
+    departureAt: Date | string
+    expiresAt: Date | string
+    transportMode?: $Enums.TransportMode | null
+    passengersRequired?: number
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutTravelRequestsInput
+    companionRequests?: CompanionRequestCreateNestedManyWithoutTravelRequestInput
+  }
+
+  export type TravelRequestUncheckedCreateInput = {
+    id?: string
+    userId: string
+    source: string
+    destination: string
+    departureAt: Date | string
+    expiresAt: Date | string
+    transportMode?: $Enums.TransportMode | null
+    passengersRequired?: number
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    companionRequests?: CompanionRequestUncheckedCreateNestedManyWithoutTravelRequestInput
+  }
+
+  export type TravelRequestUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    source?: StringFieldUpdateOperationsInput | string
+    destination?: StringFieldUpdateOperationsInput | string
+    departureAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    transportMode?: NullableEnumTransportModeFieldUpdateOperationsInput | $Enums.TransportMode | null
+    passengersRequired?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutTravelRequestsNestedInput
+    companionRequests?: CompanionRequestUpdateManyWithoutTravelRequestNestedInput
+  }
+
+  export type TravelRequestUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    source?: StringFieldUpdateOperationsInput | string
+    destination?: StringFieldUpdateOperationsInput | string
+    departureAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    transportMode?: NullableEnumTransportModeFieldUpdateOperationsInput | $Enums.TransportMode | null
+    passengersRequired?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    companionRequests?: CompanionRequestUncheckedUpdateManyWithoutTravelRequestNestedInput
+  }
+
+  export type TravelRequestCreateManyInput = {
+    id?: string
+    userId: string
+    source: string
+    destination: string
+    departureAt: Date | string
+    expiresAt: Date | string
+    transportMode?: $Enums.TransportMode | null
+    passengersRequired?: number
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type TravelRequestUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    source?: StringFieldUpdateOperationsInput | string
+    destination?: StringFieldUpdateOperationsInput | string
+    departureAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    transportMode?: NullableEnumTransportModeFieldUpdateOperationsInput | $Enums.TransportMode | null
+    passengersRequired?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TravelRequestUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    source?: StringFieldUpdateOperationsInput | string
+    destination?: StringFieldUpdateOperationsInput | string
+    departureAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    transportMode?: NullableEnumTransportModeFieldUpdateOperationsInput | $Enums.TransportMode | null
+    passengersRequired?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CompanionRequestCreateInput = {
+    id?: string
+    status?: $Enums.CompanionRequestStatus
+    expiresAt: Date | string
+    respondedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    sender: UserCreateNestedOneWithoutCompanionRequestsSentInput
+    recipient: UserCreateNestedOneWithoutCompanionRequestsReceivedInput
+    travelRequest: TravelRequestCreateNestedOneWithoutCompanionRequestsInput
+    offer: TravelOfferCreateNestedOneWithoutCompanionRequestsInput
+  }
+
+  export type CompanionRequestUncheckedCreateInput = {
+    id?: string
+    senderId: string
+    recipientId: string
+    travelRequestId: string
+    offerId: string
+    status?: $Enums.CompanionRequestStatus
+    expiresAt: Date | string
+    respondedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CompanionRequestUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: EnumCompanionRequestStatusFieldUpdateOperationsInput | $Enums.CompanionRequestStatus
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    respondedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sender?: UserUpdateOneRequiredWithoutCompanionRequestsSentNestedInput
+    recipient?: UserUpdateOneRequiredWithoutCompanionRequestsReceivedNestedInput
+    travelRequest?: TravelRequestUpdateOneRequiredWithoutCompanionRequestsNestedInput
+    offer?: TravelOfferUpdateOneRequiredWithoutCompanionRequestsNestedInput
+  }
+
+  export type CompanionRequestUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    senderId?: StringFieldUpdateOperationsInput | string
+    recipientId?: StringFieldUpdateOperationsInput | string
+    travelRequestId?: StringFieldUpdateOperationsInput | string
+    offerId?: StringFieldUpdateOperationsInput | string
+    status?: EnumCompanionRequestStatusFieldUpdateOperationsInput | $Enums.CompanionRequestStatus
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    respondedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CompanionRequestCreateManyInput = {
+    id?: string
+    senderId: string
+    recipientId: string
+    travelRequestId: string
+    offerId: string
+    status?: $Enums.CompanionRequestStatus
+    expiresAt: Date | string
+    respondedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CompanionRequestUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: EnumCompanionRequestStatusFieldUpdateOperationsInput | $Enums.CompanionRequestStatus
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    respondedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CompanionRequestUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    senderId?: StringFieldUpdateOperationsInput | string
+    recipientId?: StringFieldUpdateOperationsInput | string
+    travelRequestId?: StringFieldUpdateOperationsInput | string
+    offerId?: StringFieldUpdateOperationsInput | string
+    status?: EnumCompanionRequestStatusFieldUpdateOperationsInput | $Enums.CompanionRequestStatus
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    respondedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -3947,12 +8701,42 @@ export namespace Prisma {
     none?: RefreshSessionWhereInput
   }
 
+  export type TravelOfferListRelationFilter = {
+    every?: TravelOfferWhereInput
+    some?: TravelOfferWhereInput
+    none?: TravelOfferWhereInput
+  }
+
+  export type TravelRequestListRelationFilter = {
+    every?: TravelRequestWhereInput
+    some?: TravelRequestWhereInput
+    none?: TravelRequestWhereInput
+  }
+
+  export type CompanionRequestListRelationFilter = {
+    every?: CompanionRequestWhereInput
+    some?: CompanionRequestWhereInput
+    none?: CompanionRequestWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
   }
 
   export type RefreshSessionOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type TravelOfferOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type TravelRequestOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type CompanionRequestOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -4162,6 +8946,233 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
+  export type EnumTransportModeFilter<$PrismaModel = never> = {
+    equals?: $Enums.TransportMode | EnumTransportModeFieldRefInput<$PrismaModel>
+    in?: $Enums.TransportMode[] | ListEnumTransportModeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.TransportMode[] | ListEnumTransportModeFieldRefInput<$PrismaModel>
+    not?: NestedEnumTransportModeFilter<$PrismaModel> | $Enums.TransportMode
+  }
+
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type TravelOfferCountOrderByAggregateInput = {
+    id?: SortOrder
+    ownerId?: SortOrder
+    source?: SortOrder
+    destination?: SortOrder
+    departureAt?: SortOrder
+    expiresAt?: SortOrder
+    transportMode?: SortOrder
+    availableSeats?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type TravelOfferAvgOrderByAggregateInput = {
+    availableSeats?: SortOrder
+  }
+
+  export type TravelOfferMaxOrderByAggregateInput = {
+    id?: SortOrder
+    ownerId?: SortOrder
+    source?: SortOrder
+    destination?: SortOrder
+    departureAt?: SortOrder
+    expiresAt?: SortOrder
+    transportMode?: SortOrder
+    availableSeats?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type TravelOfferMinOrderByAggregateInput = {
+    id?: SortOrder
+    ownerId?: SortOrder
+    source?: SortOrder
+    destination?: SortOrder
+    departureAt?: SortOrder
+    expiresAt?: SortOrder
+    transportMode?: SortOrder
+    availableSeats?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type TravelOfferSumOrderByAggregateInput = {
+    availableSeats?: SortOrder
+  }
+
+  export type EnumTransportModeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TransportMode | EnumTransportModeFieldRefInput<$PrismaModel>
+    in?: $Enums.TransportMode[] | ListEnumTransportModeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.TransportMode[] | ListEnumTransportModeFieldRefInput<$PrismaModel>
+    not?: NestedEnumTransportModeWithAggregatesFilter<$PrismaModel> | $Enums.TransportMode
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumTransportModeFilter<$PrismaModel>
+    _max?: NestedEnumTransportModeFilter<$PrismaModel>
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type EnumTransportModeNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.TransportMode | EnumTransportModeFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TransportMode[] | ListEnumTransportModeFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TransportMode[] | ListEnumTransportModeFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTransportModeNullableFilter<$PrismaModel> | $Enums.TransportMode | null
+  }
+
+  export type TravelRequestCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    source?: SortOrder
+    destination?: SortOrder
+    departureAt?: SortOrder
+    expiresAt?: SortOrder
+    transportMode?: SortOrder
+    passengersRequired?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type TravelRequestAvgOrderByAggregateInput = {
+    passengersRequired?: SortOrder
+  }
+
+  export type TravelRequestMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    source?: SortOrder
+    destination?: SortOrder
+    departureAt?: SortOrder
+    expiresAt?: SortOrder
+    transportMode?: SortOrder
+    passengersRequired?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type TravelRequestMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    source?: SortOrder
+    destination?: SortOrder
+    departureAt?: SortOrder
+    expiresAt?: SortOrder
+    transportMode?: SortOrder
+    passengersRequired?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type TravelRequestSumOrderByAggregateInput = {
+    passengersRequired?: SortOrder
+  }
+
+  export type EnumTransportModeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TransportMode | EnumTransportModeFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TransportMode[] | ListEnumTransportModeFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TransportMode[] | ListEnumTransportModeFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTransportModeNullableWithAggregatesFilter<$PrismaModel> | $Enums.TransportMode | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumTransportModeNullableFilter<$PrismaModel>
+    _max?: NestedEnumTransportModeNullableFilter<$PrismaModel>
+  }
+
+  export type EnumCompanionRequestStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.CompanionRequestStatus | EnumCompanionRequestStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.CompanionRequestStatus[] | ListEnumCompanionRequestStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.CompanionRequestStatus[] | ListEnumCompanionRequestStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumCompanionRequestStatusFilter<$PrismaModel> | $Enums.CompanionRequestStatus
+  }
+
+  export type TravelRequestScalarRelationFilter = {
+    is?: TravelRequestWhereInput
+    isNot?: TravelRequestWhereInput
+  }
+
+  export type TravelOfferScalarRelationFilter = {
+    is?: TravelOfferWhereInput
+    isNot?: TravelOfferWhereInput
+  }
+
+  export type CompanionRequestCountOrderByAggregateInput = {
+    id?: SortOrder
+    senderId?: SortOrder
+    recipientId?: SortOrder
+    travelRequestId?: SortOrder
+    offerId?: SortOrder
+    status?: SortOrder
+    expiresAt?: SortOrder
+    respondedAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CompanionRequestMaxOrderByAggregateInput = {
+    id?: SortOrder
+    senderId?: SortOrder
+    recipientId?: SortOrder
+    travelRequestId?: SortOrder
+    offerId?: SortOrder
+    status?: SortOrder
+    expiresAt?: SortOrder
+    respondedAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CompanionRequestMinOrderByAggregateInput = {
+    id?: SortOrder
+    senderId?: SortOrder
+    recipientId?: SortOrder
+    travelRequestId?: SortOrder
+    offerId?: SortOrder
+    status?: SortOrder
+    expiresAt?: SortOrder
+    respondedAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type EnumCompanionRequestStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.CompanionRequestStatus | EnumCompanionRequestStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.CompanionRequestStatus[] | ListEnumCompanionRequestStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.CompanionRequestStatus[] | ListEnumCompanionRequestStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumCompanionRequestStatusWithAggregatesFilter<$PrismaModel> | $Enums.CompanionRequestStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumCompanionRequestStatusFilter<$PrismaModel>
+    _max?: NestedEnumCompanionRequestStatusFilter<$PrismaModel>
+  }
+
   export type RefreshSessionCreateNestedManyWithoutUserInput = {
     create?: XOR<RefreshSessionCreateWithoutUserInput, RefreshSessionUncheckedCreateWithoutUserInput> | RefreshSessionCreateWithoutUserInput[] | RefreshSessionUncheckedCreateWithoutUserInput[]
     connectOrCreate?: RefreshSessionCreateOrConnectWithoutUserInput | RefreshSessionCreateOrConnectWithoutUserInput[]
@@ -4169,11 +9180,67 @@ export namespace Prisma {
     connect?: RefreshSessionWhereUniqueInput | RefreshSessionWhereUniqueInput[]
   }
 
+  export type TravelOfferCreateNestedManyWithoutOwnerInput = {
+    create?: XOR<TravelOfferCreateWithoutOwnerInput, TravelOfferUncheckedCreateWithoutOwnerInput> | TravelOfferCreateWithoutOwnerInput[] | TravelOfferUncheckedCreateWithoutOwnerInput[]
+    connectOrCreate?: TravelOfferCreateOrConnectWithoutOwnerInput | TravelOfferCreateOrConnectWithoutOwnerInput[]
+    createMany?: TravelOfferCreateManyOwnerInputEnvelope
+    connect?: TravelOfferWhereUniqueInput | TravelOfferWhereUniqueInput[]
+  }
+
+  export type TravelRequestCreateNestedManyWithoutUserInput = {
+    create?: XOR<TravelRequestCreateWithoutUserInput, TravelRequestUncheckedCreateWithoutUserInput> | TravelRequestCreateWithoutUserInput[] | TravelRequestUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: TravelRequestCreateOrConnectWithoutUserInput | TravelRequestCreateOrConnectWithoutUserInput[]
+    createMany?: TravelRequestCreateManyUserInputEnvelope
+    connect?: TravelRequestWhereUniqueInput | TravelRequestWhereUniqueInput[]
+  }
+
+  export type CompanionRequestCreateNestedManyWithoutSenderInput = {
+    create?: XOR<CompanionRequestCreateWithoutSenderInput, CompanionRequestUncheckedCreateWithoutSenderInput> | CompanionRequestCreateWithoutSenderInput[] | CompanionRequestUncheckedCreateWithoutSenderInput[]
+    connectOrCreate?: CompanionRequestCreateOrConnectWithoutSenderInput | CompanionRequestCreateOrConnectWithoutSenderInput[]
+    createMany?: CompanionRequestCreateManySenderInputEnvelope
+    connect?: CompanionRequestWhereUniqueInput | CompanionRequestWhereUniqueInput[]
+  }
+
+  export type CompanionRequestCreateNestedManyWithoutRecipientInput = {
+    create?: XOR<CompanionRequestCreateWithoutRecipientInput, CompanionRequestUncheckedCreateWithoutRecipientInput> | CompanionRequestCreateWithoutRecipientInput[] | CompanionRequestUncheckedCreateWithoutRecipientInput[]
+    connectOrCreate?: CompanionRequestCreateOrConnectWithoutRecipientInput | CompanionRequestCreateOrConnectWithoutRecipientInput[]
+    createMany?: CompanionRequestCreateManyRecipientInputEnvelope
+    connect?: CompanionRequestWhereUniqueInput | CompanionRequestWhereUniqueInput[]
+  }
+
   export type RefreshSessionUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<RefreshSessionCreateWithoutUserInput, RefreshSessionUncheckedCreateWithoutUserInput> | RefreshSessionCreateWithoutUserInput[] | RefreshSessionUncheckedCreateWithoutUserInput[]
     connectOrCreate?: RefreshSessionCreateOrConnectWithoutUserInput | RefreshSessionCreateOrConnectWithoutUserInput[]
     createMany?: RefreshSessionCreateManyUserInputEnvelope
     connect?: RefreshSessionWhereUniqueInput | RefreshSessionWhereUniqueInput[]
+  }
+
+  export type TravelOfferUncheckedCreateNestedManyWithoutOwnerInput = {
+    create?: XOR<TravelOfferCreateWithoutOwnerInput, TravelOfferUncheckedCreateWithoutOwnerInput> | TravelOfferCreateWithoutOwnerInput[] | TravelOfferUncheckedCreateWithoutOwnerInput[]
+    connectOrCreate?: TravelOfferCreateOrConnectWithoutOwnerInput | TravelOfferCreateOrConnectWithoutOwnerInput[]
+    createMany?: TravelOfferCreateManyOwnerInputEnvelope
+    connect?: TravelOfferWhereUniqueInput | TravelOfferWhereUniqueInput[]
+  }
+
+  export type TravelRequestUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<TravelRequestCreateWithoutUserInput, TravelRequestUncheckedCreateWithoutUserInput> | TravelRequestCreateWithoutUserInput[] | TravelRequestUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: TravelRequestCreateOrConnectWithoutUserInput | TravelRequestCreateOrConnectWithoutUserInput[]
+    createMany?: TravelRequestCreateManyUserInputEnvelope
+    connect?: TravelRequestWhereUniqueInput | TravelRequestWhereUniqueInput[]
+  }
+
+  export type CompanionRequestUncheckedCreateNestedManyWithoutSenderInput = {
+    create?: XOR<CompanionRequestCreateWithoutSenderInput, CompanionRequestUncheckedCreateWithoutSenderInput> | CompanionRequestCreateWithoutSenderInput[] | CompanionRequestUncheckedCreateWithoutSenderInput[]
+    connectOrCreate?: CompanionRequestCreateOrConnectWithoutSenderInput | CompanionRequestCreateOrConnectWithoutSenderInput[]
+    createMany?: CompanionRequestCreateManySenderInputEnvelope
+    connect?: CompanionRequestWhereUniqueInput | CompanionRequestWhereUniqueInput[]
+  }
+
+  export type CompanionRequestUncheckedCreateNestedManyWithoutRecipientInput = {
+    create?: XOR<CompanionRequestCreateWithoutRecipientInput, CompanionRequestUncheckedCreateWithoutRecipientInput> | CompanionRequestCreateWithoutRecipientInput[] | CompanionRequestUncheckedCreateWithoutRecipientInput[]
+    connectOrCreate?: CompanionRequestCreateOrConnectWithoutRecipientInput | CompanionRequestCreateOrConnectWithoutRecipientInput[]
+    createMany?: CompanionRequestCreateManyRecipientInputEnvelope
+    connect?: CompanionRequestWhereUniqueInput | CompanionRequestWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -4222,6 +9289,62 @@ export namespace Prisma {
     deleteMany?: RefreshSessionScalarWhereInput | RefreshSessionScalarWhereInput[]
   }
 
+  export type TravelOfferUpdateManyWithoutOwnerNestedInput = {
+    create?: XOR<TravelOfferCreateWithoutOwnerInput, TravelOfferUncheckedCreateWithoutOwnerInput> | TravelOfferCreateWithoutOwnerInput[] | TravelOfferUncheckedCreateWithoutOwnerInput[]
+    connectOrCreate?: TravelOfferCreateOrConnectWithoutOwnerInput | TravelOfferCreateOrConnectWithoutOwnerInput[]
+    upsert?: TravelOfferUpsertWithWhereUniqueWithoutOwnerInput | TravelOfferUpsertWithWhereUniqueWithoutOwnerInput[]
+    createMany?: TravelOfferCreateManyOwnerInputEnvelope
+    set?: TravelOfferWhereUniqueInput | TravelOfferWhereUniqueInput[]
+    disconnect?: TravelOfferWhereUniqueInput | TravelOfferWhereUniqueInput[]
+    delete?: TravelOfferWhereUniqueInput | TravelOfferWhereUniqueInput[]
+    connect?: TravelOfferWhereUniqueInput | TravelOfferWhereUniqueInput[]
+    update?: TravelOfferUpdateWithWhereUniqueWithoutOwnerInput | TravelOfferUpdateWithWhereUniqueWithoutOwnerInput[]
+    updateMany?: TravelOfferUpdateManyWithWhereWithoutOwnerInput | TravelOfferUpdateManyWithWhereWithoutOwnerInput[]
+    deleteMany?: TravelOfferScalarWhereInput | TravelOfferScalarWhereInput[]
+  }
+
+  export type TravelRequestUpdateManyWithoutUserNestedInput = {
+    create?: XOR<TravelRequestCreateWithoutUserInput, TravelRequestUncheckedCreateWithoutUserInput> | TravelRequestCreateWithoutUserInput[] | TravelRequestUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: TravelRequestCreateOrConnectWithoutUserInput | TravelRequestCreateOrConnectWithoutUserInput[]
+    upsert?: TravelRequestUpsertWithWhereUniqueWithoutUserInput | TravelRequestUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: TravelRequestCreateManyUserInputEnvelope
+    set?: TravelRequestWhereUniqueInput | TravelRequestWhereUniqueInput[]
+    disconnect?: TravelRequestWhereUniqueInput | TravelRequestWhereUniqueInput[]
+    delete?: TravelRequestWhereUniqueInput | TravelRequestWhereUniqueInput[]
+    connect?: TravelRequestWhereUniqueInput | TravelRequestWhereUniqueInput[]
+    update?: TravelRequestUpdateWithWhereUniqueWithoutUserInput | TravelRequestUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: TravelRequestUpdateManyWithWhereWithoutUserInput | TravelRequestUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: TravelRequestScalarWhereInput | TravelRequestScalarWhereInput[]
+  }
+
+  export type CompanionRequestUpdateManyWithoutSenderNestedInput = {
+    create?: XOR<CompanionRequestCreateWithoutSenderInput, CompanionRequestUncheckedCreateWithoutSenderInput> | CompanionRequestCreateWithoutSenderInput[] | CompanionRequestUncheckedCreateWithoutSenderInput[]
+    connectOrCreate?: CompanionRequestCreateOrConnectWithoutSenderInput | CompanionRequestCreateOrConnectWithoutSenderInput[]
+    upsert?: CompanionRequestUpsertWithWhereUniqueWithoutSenderInput | CompanionRequestUpsertWithWhereUniqueWithoutSenderInput[]
+    createMany?: CompanionRequestCreateManySenderInputEnvelope
+    set?: CompanionRequestWhereUniqueInput | CompanionRequestWhereUniqueInput[]
+    disconnect?: CompanionRequestWhereUniqueInput | CompanionRequestWhereUniqueInput[]
+    delete?: CompanionRequestWhereUniqueInput | CompanionRequestWhereUniqueInput[]
+    connect?: CompanionRequestWhereUniqueInput | CompanionRequestWhereUniqueInput[]
+    update?: CompanionRequestUpdateWithWhereUniqueWithoutSenderInput | CompanionRequestUpdateWithWhereUniqueWithoutSenderInput[]
+    updateMany?: CompanionRequestUpdateManyWithWhereWithoutSenderInput | CompanionRequestUpdateManyWithWhereWithoutSenderInput[]
+    deleteMany?: CompanionRequestScalarWhereInput | CompanionRequestScalarWhereInput[]
+  }
+
+  export type CompanionRequestUpdateManyWithoutRecipientNestedInput = {
+    create?: XOR<CompanionRequestCreateWithoutRecipientInput, CompanionRequestUncheckedCreateWithoutRecipientInput> | CompanionRequestCreateWithoutRecipientInput[] | CompanionRequestUncheckedCreateWithoutRecipientInput[]
+    connectOrCreate?: CompanionRequestCreateOrConnectWithoutRecipientInput | CompanionRequestCreateOrConnectWithoutRecipientInput[]
+    upsert?: CompanionRequestUpsertWithWhereUniqueWithoutRecipientInput | CompanionRequestUpsertWithWhereUniqueWithoutRecipientInput[]
+    createMany?: CompanionRequestCreateManyRecipientInputEnvelope
+    set?: CompanionRequestWhereUniqueInput | CompanionRequestWhereUniqueInput[]
+    disconnect?: CompanionRequestWhereUniqueInput | CompanionRequestWhereUniqueInput[]
+    delete?: CompanionRequestWhereUniqueInput | CompanionRequestWhereUniqueInput[]
+    connect?: CompanionRequestWhereUniqueInput | CompanionRequestWhereUniqueInput[]
+    update?: CompanionRequestUpdateWithWhereUniqueWithoutRecipientInput | CompanionRequestUpdateWithWhereUniqueWithoutRecipientInput[]
+    updateMany?: CompanionRequestUpdateManyWithWhereWithoutRecipientInput | CompanionRequestUpdateManyWithWhereWithoutRecipientInput[]
+    deleteMany?: CompanionRequestScalarWhereInput | CompanionRequestScalarWhereInput[]
+  }
+
   export type RefreshSessionUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<RefreshSessionCreateWithoutUserInput, RefreshSessionUncheckedCreateWithoutUserInput> | RefreshSessionCreateWithoutUserInput[] | RefreshSessionUncheckedCreateWithoutUserInput[]
     connectOrCreate?: RefreshSessionCreateOrConnectWithoutUserInput | RefreshSessionCreateOrConnectWithoutUserInput[]
@@ -4234,6 +9357,62 @@ export namespace Prisma {
     update?: RefreshSessionUpdateWithWhereUniqueWithoutUserInput | RefreshSessionUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: RefreshSessionUpdateManyWithWhereWithoutUserInput | RefreshSessionUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: RefreshSessionScalarWhereInput | RefreshSessionScalarWhereInput[]
+  }
+
+  export type TravelOfferUncheckedUpdateManyWithoutOwnerNestedInput = {
+    create?: XOR<TravelOfferCreateWithoutOwnerInput, TravelOfferUncheckedCreateWithoutOwnerInput> | TravelOfferCreateWithoutOwnerInput[] | TravelOfferUncheckedCreateWithoutOwnerInput[]
+    connectOrCreate?: TravelOfferCreateOrConnectWithoutOwnerInput | TravelOfferCreateOrConnectWithoutOwnerInput[]
+    upsert?: TravelOfferUpsertWithWhereUniqueWithoutOwnerInput | TravelOfferUpsertWithWhereUniqueWithoutOwnerInput[]
+    createMany?: TravelOfferCreateManyOwnerInputEnvelope
+    set?: TravelOfferWhereUniqueInput | TravelOfferWhereUniqueInput[]
+    disconnect?: TravelOfferWhereUniqueInput | TravelOfferWhereUniqueInput[]
+    delete?: TravelOfferWhereUniqueInput | TravelOfferWhereUniqueInput[]
+    connect?: TravelOfferWhereUniqueInput | TravelOfferWhereUniqueInput[]
+    update?: TravelOfferUpdateWithWhereUniqueWithoutOwnerInput | TravelOfferUpdateWithWhereUniqueWithoutOwnerInput[]
+    updateMany?: TravelOfferUpdateManyWithWhereWithoutOwnerInput | TravelOfferUpdateManyWithWhereWithoutOwnerInput[]
+    deleteMany?: TravelOfferScalarWhereInput | TravelOfferScalarWhereInput[]
+  }
+
+  export type TravelRequestUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<TravelRequestCreateWithoutUserInput, TravelRequestUncheckedCreateWithoutUserInput> | TravelRequestCreateWithoutUserInput[] | TravelRequestUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: TravelRequestCreateOrConnectWithoutUserInput | TravelRequestCreateOrConnectWithoutUserInput[]
+    upsert?: TravelRequestUpsertWithWhereUniqueWithoutUserInput | TravelRequestUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: TravelRequestCreateManyUserInputEnvelope
+    set?: TravelRequestWhereUniqueInput | TravelRequestWhereUniqueInput[]
+    disconnect?: TravelRequestWhereUniqueInput | TravelRequestWhereUniqueInput[]
+    delete?: TravelRequestWhereUniqueInput | TravelRequestWhereUniqueInput[]
+    connect?: TravelRequestWhereUniqueInput | TravelRequestWhereUniqueInput[]
+    update?: TravelRequestUpdateWithWhereUniqueWithoutUserInput | TravelRequestUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: TravelRequestUpdateManyWithWhereWithoutUserInput | TravelRequestUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: TravelRequestScalarWhereInput | TravelRequestScalarWhereInput[]
+  }
+
+  export type CompanionRequestUncheckedUpdateManyWithoutSenderNestedInput = {
+    create?: XOR<CompanionRequestCreateWithoutSenderInput, CompanionRequestUncheckedCreateWithoutSenderInput> | CompanionRequestCreateWithoutSenderInput[] | CompanionRequestUncheckedCreateWithoutSenderInput[]
+    connectOrCreate?: CompanionRequestCreateOrConnectWithoutSenderInput | CompanionRequestCreateOrConnectWithoutSenderInput[]
+    upsert?: CompanionRequestUpsertWithWhereUniqueWithoutSenderInput | CompanionRequestUpsertWithWhereUniqueWithoutSenderInput[]
+    createMany?: CompanionRequestCreateManySenderInputEnvelope
+    set?: CompanionRequestWhereUniqueInput | CompanionRequestWhereUniqueInput[]
+    disconnect?: CompanionRequestWhereUniqueInput | CompanionRequestWhereUniqueInput[]
+    delete?: CompanionRequestWhereUniqueInput | CompanionRequestWhereUniqueInput[]
+    connect?: CompanionRequestWhereUniqueInput | CompanionRequestWhereUniqueInput[]
+    update?: CompanionRequestUpdateWithWhereUniqueWithoutSenderInput | CompanionRequestUpdateWithWhereUniqueWithoutSenderInput[]
+    updateMany?: CompanionRequestUpdateManyWithWhereWithoutSenderInput | CompanionRequestUpdateManyWithWhereWithoutSenderInput[]
+    deleteMany?: CompanionRequestScalarWhereInput | CompanionRequestScalarWhereInput[]
+  }
+
+  export type CompanionRequestUncheckedUpdateManyWithoutRecipientNestedInput = {
+    create?: XOR<CompanionRequestCreateWithoutRecipientInput, CompanionRequestUncheckedCreateWithoutRecipientInput> | CompanionRequestCreateWithoutRecipientInput[] | CompanionRequestUncheckedCreateWithoutRecipientInput[]
+    connectOrCreate?: CompanionRequestCreateOrConnectWithoutRecipientInput | CompanionRequestCreateOrConnectWithoutRecipientInput[]
+    upsert?: CompanionRequestUpsertWithWhereUniqueWithoutRecipientInput | CompanionRequestUpsertWithWhereUniqueWithoutRecipientInput[]
+    createMany?: CompanionRequestCreateManyRecipientInputEnvelope
+    set?: CompanionRequestWhereUniqueInput | CompanionRequestWhereUniqueInput[]
+    disconnect?: CompanionRequestWhereUniqueInput | CompanionRequestWhereUniqueInput[]
+    delete?: CompanionRequestWhereUniqueInput | CompanionRequestWhereUniqueInput[]
+    connect?: CompanionRequestWhereUniqueInput | CompanionRequestWhereUniqueInput[]
+    update?: CompanionRequestUpdateWithWhereUniqueWithoutRecipientInput | CompanionRequestUpdateWithWhereUniqueWithoutRecipientInput[]
+    updateMany?: CompanionRequestUpdateManyWithWhereWithoutRecipientInput | CompanionRequestUpdateManyWithWhereWithoutRecipientInput[]
+    deleteMany?: CompanionRequestScalarWhereInput | CompanionRequestScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutRefreshSessionsInput = {
@@ -4252,6 +9431,194 @@ export namespace Prisma {
     upsert?: UserUpsertWithoutRefreshSessionsInput
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutRefreshSessionsInput, UserUpdateWithoutRefreshSessionsInput>, UserUncheckedUpdateWithoutRefreshSessionsInput>
+  }
+
+  export type UserCreateNestedOneWithoutTravelOffersInput = {
+    create?: XOR<UserCreateWithoutTravelOffersInput, UserUncheckedCreateWithoutTravelOffersInput>
+    connectOrCreate?: UserCreateOrConnectWithoutTravelOffersInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type CompanionRequestCreateNestedManyWithoutOfferInput = {
+    create?: XOR<CompanionRequestCreateWithoutOfferInput, CompanionRequestUncheckedCreateWithoutOfferInput> | CompanionRequestCreateWithoutOfferInput[] | CompanionRequestUncheckedCreateWithoutOfferInput[]
+    connectOrCreate?: CompanionRequestCreateOrConnectWithoutOfferInput | CompanionRequestCreateOrConnectWithoutOfferInput[]
+    createMany?: CompanionRequestCreateManyOfferInputEnvelope
+    connect?: CompanionRequestWhereUniqueInput | CompanionRequestWhereUniqueInput[]
+  }
+
+  export type CompanionRequestUncheckedCreateNestedManyWithoutOfferInput = {
+    create?: XOR<CompanionRequestCreateWithoutOfferInput, CompanionRequestUncheckedCreateWithoutOfferInput> | CompanionRequestCreateWithoutOfferInput[] | CompanionRequestUncheckedCreateWithoutOfferInput[]
+    connectOrCreate?: CompanionRequestCreateOrConnectWithoutOfferInput | CompanionRequestCreateOrConnectWithoutOfferInput[]
+    createMany?: CompanionRequestCreateManyOfferInputEnvelope
+    connect?: CompanionRequestWhereUniqueInput | CompanionRequestWhereUniqueInput[]
+  }
+
+  export type EnumTransportModeFieldUpdateOperationsInput = {
+    set?: $Enums.TransportMode
+  }
+
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type UserUpdateOneRequiredWithoutTravelOffersNestedInput = {
+    create?: XOR<UserCreateWithoutTravelOffersInput, UserUncheckedCreateWithoutTravelOffersInput>
+    connectOrCreate?: UserCreateOrConnectWithoutTravelOffersInput
+    upsert?: UserUpsertWithoutTravelOffersInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutTravelOffersInput, UserUpdateWithoutTravelOffersInput>, UserUncheckedUpdateWithoutTravelOffersInput>
+  }
+
+  export type CompanionRequestUpdateManyWithoutOfferNestedInput = {
+    create?: XOR<CompanionRequestCreateWithoutOfferInput, CompanionRequestUncheckedCreateWithoutOfferInput> | CompanionRequestCreateWithoutOfferInput[] | CompanionRequestUncheckedCreateWithoutOfferInput[]
+    connectOrCreate?: CompanionRequestCreateOrConnectWithoutOfferInput | CompanionRequestCreateOrConnectWithoutOfferInput[]
+    upsert?: CompanionRequestUpsertWithWhereUniqueWithoutOfferInput | CompanionRequestUpsertWithWhereUniqueWithoutOfferInput[]
+    createMany?: CompanionRequestCreateManyOfferInputEnvelope
+    set?: CompanionRequestWhereUniqueInput | CompanionRequestWhereUniqueInput[]
+    disconnect?: CompanionRequestWhereUniqueInput | CompanionRequestWhereUniqueInput[]
+    delete?: CompanionRequestWhereUniqueInput | CompanionRequestWhereUniqueInput[]
+    connect?: CompanionRequestWhereUniqueInput | CompanionRequestWhereUniqueInput[]
+    update?: CompanionRequestUpdateWithWhereUniqueWithoutOfferInput | CompanionRequestUpdateWithWhereUniqueWithoutOfferInput[]
+    updateMany?: CompanionRequestUpdateManyWithWhereWithoutOfferInput | CompanionRequestUpdateManyWithWhereWithoutOfferInput[]
+    deleteMany?: CompanionRequestScalarWhereInput | CompanionRequestScalarWhereInput[]
+  }
+
+  export type CompanionRequestUncheckedUpdateManyWithoutOfferNestedInput = {
+    create?: XOR<CompanionRequestCreateWithoutOfferInput, CompanionRequestUncheckedCreateWithoutOfferInput> | CompanionRequestCreateWithoutOfferInput[] | CompanionRequestUncheckedCreateWithoutOfferInput[]
+    connectOrCreate?: CompanionRequestCreateOrConnectWithoutOfferInput | CompanionRequestCreateOrConnectWithoutOfferInput[]
+    upsert?: CompanionRequestUpsertWithWhereUniqueWithoutOfferInput | CompanionRequestUpsertWithWhereUniqueWithoutOfferInput[]
+    createMany?: CompanionRequestCreateManyOfferInputEnvelope
+    set?: CompanionRequestWhereUniqueInput | CompanionRequestWhereUniqueInput[]
+    disconnect?: CompanionRequestWhereUniqueInput | CompanionRequestWhereUniqueInput[]
+    delete?: CompanionRequestWhereUniqueInput | CompanionRequestWhereUniqueInput[]
+    connect?: CompanionRequestWhereUniqueInput | CompanionRequestWhereUniqueInput[]
+    update?: CompanionRequestUpdateWithWhereUniqueWithoutOfferInput | CompanionRequestUpdateWithWhereUniqueWithoutOfferInput[]
+    updateMany?: CompanionRequestUpdateManyWithWhereWithoutOfferInput | CompanionRequestUpdateManyWithWhereWithoutOfferInput[]
+    deleteMany?: CompanionRequestScalarWhereInput | CompanionRequestScalarWhereInput[]
+  }
+
+  export type UserCreateNestedOneWithoutTravelRequestsInput = {
+    create?: XOR<UserCreateWithoutTravelRequestsInput, UserUncheckedCreateWithoutTravelRequestsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutTravelRequestsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type CompanionRequestCreateNestedManyWithoutTravelRequestInput = {
+    create?: XOR<CompanionRequestCreateWithoutTravelRequestInput, CompanionRequestUncheckedCreateWithoutTravelRequestInput> | CompanionRequestCreateWithoutTravelRequestInput[] | CompanionRequestUncheckedCreateWithoutTravelRequestInput[]
+    connectOrCreate?: CompanionRequestCreateOrConnectWithoutTravelRequestInput | CompanionRequestCreateOrConnectWithoutTravelRequestInput[]
+    createMany?: CompanionRequestCreateManyTravelRequestInputEnvelope
+    connect?: CompanionRequestWhereUniqueInput | CompanionRequestWhereUniqueInput[]
+  }
+
+  export type CompanionRequestUncheckedCreateNestedManyWithoutTravelRequestInput = {
+    create?: XOR<CompanionRequestCreateWithoutTravelRequestInput, CompanionRequestUncheckedCreateWithoutTravelRequestInput> | CompanionRequestCreateWithoutTravelRequestInput[] | CompanionRequestUncheckedCreateWithoutTravelRequestInput[]
+    connectOrCreate?: CompanionRequestCreateOrConnectWithoutTravelRequestInput | CompanionRequestCreateOrConnectWithoutTravelRequestInput[]
+    createMany?: CompanionRequestCreateManyTravelRequestInputEnvelope
+    connect?: CompanionRequestWhereUniqueInput | CompanionRequestWhereUniqueInput[]
+  }
+
+  export type NullableEnumTransportModeFieldUpdateOperationsInput = {
+    set?: $Enums.TransportMode | null
+  }
+
+  export type UserUpdateOneRequiredWithoutTravelRequestsNestedInput = {
+    create?: XOR<UserCreateWithoutTravelRequestsInput, UserUncheckedCreateWithoutTravelRequestsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutTravelRequestsInput
+    upsert?: UserUpsertWithoutTravelRequestsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutTravelRequestsInput, UserUpdateWithoutTravelRequestsInput>, UserUncheckedUpdateWithoutTravelRequestsInput>
+  }
+
+  export type CompanionRequestUpdateManyWithoutTravelRequestNestedInput = {
+    create?: XOR<CompanionRequestCreateWithoutTravelRequestInput, CompanionRequestUncheckedCreateWithoutTravelRequestInput> | CompanionRequestCreateWithoutTravelRequestInput[] | CompanionRequestUncheckedCreateWithoutTravelRequestInput[]
+    connectOrCreate?: CompanionRequestCreateOrConnectWithoutTravelRequestInput | CompanionRequestCreateOrConnectWithoutTravelRequestInput[]
+    upsert?: CompanionRequestUpsertWithWhereUniqueWithoutTravelRequestInput | CompanionRequestUpsertWithWhereUniqueWithoutTravelRequestInput[]
+    createMany?: CompanionRequestCreateManyTravelRequestInputEnvelope
+    set?: CompanionRequestWhereUniqueInput | CompanionRequestWhereUniqueInput[]
+    disconnect?: CompanionRequestWhereUniqueInput | CompanionRequestWhereUniqueInput[]
+    delete?: CompanionRequestWhereUniqueInput | CompanionRequestWhereUniqueInput[]
+    connect?: CompanionRequestWhereUniqueInput | CompanionRequestWhereUniqueInput[]
+    update?: CompanionRequestUpdateWithWhereUniqueWithoutTravelRequestInput | CompanionRequestUpdateWithWhereUniqueWithoutTravelRequestInput[]
+    updateMany?: CompanionRequestUpdateManyWithWhereWithoutTravelRequestInput | CompanionRequestUpdateManyWithWhereWithoutTravelRequestInput[]
+    deleteMany?: CompanionRequestScalarWhereInput | CompanionRequestScalarWhereInput[]
+  }
+
+  export type CompanionRequestUncheckedUpdateManyWithoutTravelRequestNestedInput = {
+    create?: XOR<CompanionRequestCreateWithoutTravelRequestInput, CompanionRequestUncheckedCreateWithoutTravelRequestInput> | CompanionRequestCreateWithoutTravelRequestInput[] | CompanionRequestUncheckedCreateWithoutTravelRequestInput[]
+    connectOrCreate?: CompanionRequestCreateOrConnectWithoutTravelRequestInput | CompanionRequestCreateOrConnectWithoutTravelRequestInput[]
+    upsert?: CompanionRequestUpsertWithWhereUniqueWithoutTravelRequestInput | CompanionRequestUpsertWithWhereUniqueWithoutTravelRequestInput[]
+    createMany?: CompanionRequestCreateManyTravelRequestInputEnvelope
+    set?: CompanionRequestWhereUniqueInput | CompanionRequestWhereUniqueInput[]
+    disconnect?: CompanionRequestWhereUniqueInput | CompanionRequestWhereUniqueInput[]
+    delete?: CompanionRequestWhereUniqueInput | CompanionRequestWhereUniqueInput[]
+    connect?: CompanionRequestWhereUniqueInput | CompanionRequestWhereUniqueInput[]
+    update?: CompanionRequestUpdateWithWhereUniqueWithoutTravelRequestInput | CompanionRequestUpdateWithWhereUniqueWithoutTravelRequestInput[]
+    updateMany?: CompanionRequestUpdateManyWithWhereWithoutTravelRequestInput | CompanionRequestUpdateManyWithWhereWithoutTravelRequestInput[]
+    deleteMany?: CompanionRequestScalarWhereInput | CompanionRequestScalarWhereInput[]
+  }
+
+  export type UserCreateNestedOneWithoutCompanionRequestsSentInput = {
+    create?: XOR<UserCreateWithoutCompanionRequestsSentInput, UserUncheckedCreateWithoutCompanionRequestsSentInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCompanionRequestsSentInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutCompanionRequestsReceivedInput = {
+    create?: XOR<UserCreateWithoutCompanionRequestsReceivedInput, UserUncheckedCreateWithoutCompanionRequestsReceivedInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCompanionRequestsReceivedInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type TravelRequestCreateNestedOneWithoutCompanionRequestsInput = {
+    create?: XOR<TravelRequestCreateWithoutCompanionRequestsInput, TravelRequestUncheckedCreateWithoutCompanionRequestsInput>
+    connectOrCreate?: TravelRequestCreateOrConnectWithoutCompanionRequestsInput
+    connect?: TravelRequestWhereUniqueInput
+  }
+
+  export type TravelOfferCreateNestedOneWithoutCompanionRequestsInput = {
+    create?: XOR<TravelOfferCreateWithoutCompanionRequestsInput, TravelOfferUncheckedCreateWithoutCompanionRequestsInput>
+    connectOrCreate?: TravelOfferCreateOrConnectWithoutCompanionRequestsInput
+    connect?: TravelOfferWhereUniqueInput
+  }
+
+  export type EnumCompanionRequestStatusFieldUpdateOperationsInput = {
+    set?: $Enums.CompanionRequestStatus
+  }
+
+  export type UserUpdateOneRequiredWithoutCompanionRequestsSentNestedInput = {
+    create?: XOR<UserCreateWithoutCompanionRequestsSentInput, UserUncheckedCreateWithoutCompanionRequestsSentInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCompanionRequestsSentInput
+    upsert?: UserUpsertWithoutCompanionRequestsSentInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutCompanionRequestsSentInput, UserUpdateWithoutCompanionRequestsSentInput>, UserUncheckedUpdateWithoutCompanionRequestsSentInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutCompanionRequestsReceivedNestedInput = {
+    create?: XOR<UserCreateWithoutCompanionRequestsReceivedInput, UserUncheckedCreateWithoutCompanionRequestsReceivedInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCompanionRequestsReceivedInput
+    upsert?: UserUpsertWithoutCompanionRequestsReceivedInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutCompanionRequestsReceivedInput, UserUpdateWithoutCompanionRequestsReceivedInput>, UserUncheckedUpdateWithoutCompanionRequestsReceivedInput>
+  }
+
+  export type TravelRequestUpdateOneRequiredWithoutCompanionRequestsNestedInput = {
+    create?: XOR<TravelRequestCreateWithoutCompanionRequestsInput, TravelRequestUncheckedCreateWithoutCompanionRequestsInput>
+    connectOrCreate?: TravelRequestCreateOrConnectWithoutCompanionRequestsInput
+    upsert?: TravelRequestUpsertWithoutCompanionRequestsInput
+    connect?: TravelRequestWhereUniqueInput
+    update?: XOR<XOR<TravelRequestUpdateToOneWithWhereWithoutCompanionRequestsInput, TravelRequestUpdateWithoutCompanionRequestsInput>, TravelRequestUncheckedUpdateWithoutCompanionRequestsInput>
+  }
+
+  export type TravelOfferUpdateOneRequiredWithoutCompanionRequestsNestedInput = {
+    create?: XOR<TravelOfferCreateWithoutCompanionRequestsInput, TravelOfferUncheckedCreateWithoutCompanionRequestsInput>
+    connectOrCreate?: TravelOfferCreateOrConnectWithoutCompanionRequestsInput
+    upsert?: TravelOfferUpsertWithoutCompanionRequestsInput
+    connect?: TravelOfferWhereUniqueInput
+    update?: XOR<XOR<TravelOfferUpdateToOneWithWhereWithoutCompanionRequestsInput, TravelOfferUpdateWithoutCompanionRequestsInput>, TravelOfferUncheckedUpdateWithoutCompanionRequestsInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -4469,6 +9836,84 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
+  export type NestedEnumTransportModeFilter<$PrismaModel = never> = {
+    equals?: $Enums.TransportMode | EnumTransportModeFieldRefInput<$PrismaModel>
+    in?: $Enums.TransportMode[] | ListEnumTransportModeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.TransportMode[] | ListEnumTransportModeFieldRefInput<$PrismaModel>
+    not?: NestedEnumTransportModeFilter<$PrismaModel> | $Enums.TransportMode
+  }
+
+  export type NestedEnumTransportModeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TransportMode | EnumTransportModeFieldRefInput<$PrismaModel>
+    in?: $Enums.TransportMode[] | ListEnumTransportModeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.TransportMode[] | ListEnumTransportModeFieldRefInput<$PrismaModel>
+    not?: NestedEnumTransportModeWithAggregatesFilter<$PrismaModel> | $Enums.TransportMode
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumTransportModeFilter<$PrismaModel>
+    _max?: NestedEnumTransportModeFilter<$PrismaModel>
+  }
+
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type NestedEnumTransportModeNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.TransportMode | EnumTransportModeFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TransportMode[] | ListEnumTransportModeFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TransportMode[] | ListEnumTransportModeFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTransportModeNullableFilter<$PrismaModel> | $Enums.TransportMode | null
+  }
+
+  export type NestedEnumTransportModeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TransportMode | EnumTransportModeFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TransportMode[] | ListEnumTransportModeFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TransportMode[] | ListEnumTransportModeFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTransportModeNullableWithAggregatesFilter<$PrismaModel> | $Enums.TransportMode | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumTransportModeNullableFilter<$PrismaModel>
+    _max?: NestedEnumTransportModeNullableFilter<$PrismaModel>
+  }
+
+  export type NestedEnumCompanionRequestStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.CompanionRequestStatus | EnumCompanionRequestStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.CompanionRequestStatus[] | ListEnumCompanionRequestStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.CompanionRequestStatus[] | ListEnumCompanionRequestStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumCompanionRequestStatusFilter<$PrismaModel> | $Enums.CompanionRequestStatus
+  }
+
+  export type NestedEnumCompanionRequestStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.CompanionRequestStatus | EnumCompanionRequestStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.CompanionRequestStatus[] | ListEnumCompanionRequestStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.CompanionRequestStatus[] | ListEnumCompanionRequestStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumCompanionRequestStatusWithAggregatesFilter<$PrismaModel> | $Enums.CompanionRequestStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumCompanionRequestStatusFilter<$PrismaModel>
+    _max?: NestedEnumCompanionRequestStatusFilter<$PrismaModel>
+  }
+
   export type RefreshSessionCreateWithoutUserInput = {
     id?: string
     tokenHash: string
@@ -4492,6 +9937,150 @@ export namespace Prisma {
 
   export type RefreshSessionCreateManyUserInputEnvelope = {
     data: RefreshSessionCreateManyUserInput | RefreshSessionCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type TravelOfferCreateWithoutOwnerInput = {
+    id?: string
+    source: string
+    destination: string
+    departureAt: Date | string
+    expiresAt: Date | string
+    transportMode: $Enums.TransportMode
+    availableSeats: number
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    companionRequests?: CompanionRequestCreateNestedManyWithoutOfferInput
+  }
+
+  export type TravelOfferUncheckedCreateWithoutOwnerInput = {
+    id?: string
+    source: string
+    destination: string
+    departureAt: Date | string
+    expiresAt: Date | string
+    transportMode: $Enums.TransportMode
+    availableSeats: number
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    companionRequests?: CompanionRequestUncheckedCreateNestedManyWithoutOfferInput
+  }
+
+  export type TravelOfferCreateOrConnectWithoutOwnerInput = {
+    where: TravelOfferWhereUniqueInput
+    create: XOR<TravelOfferCreateWithoutOwnerInput, TravelOfferUncheckedCreateWithoutOwnerInput>
+  }
+
+  export type TravelOfferCreateManyOwnerInputEnvelope = {
+    data: TravelOfferCreateManyOwnerInput | TravelOfferCreateManyOwnerInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type TravelRequestCreateWithoutUserInput = {
+    id?: string
+    source: string
+    destination: string
+    departureAt: Date | string
+    expiresAt: Date | string
+    transportMode?: $Enums.TransportMode | null
+    passengersRequired?: number
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    companionRequests?: CompanionRequestCreateNestedManyWithoutTravelRequestInput
+  }
+
+  export type TravelRequestUncheckedCreateWithoutUserInput = {
+    id?: string
+    source: string
+    destination: string
+    departureAt: Date | string
+    expiresAt: Date | string
+    transportMode?: $Enums.TransportMode | null
+    passengersRequired?: number
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    companionRequests?: CompanionRequestUncheckedCreateNestedManyWithoutTravelRequestInput
+  }
+
+  export type TravelRequestCreateOrConnectWithoutUserInput = {
+    where: TravelRequestWhereUniqueInput
+    create: XOR<TravelRequestCreateWithoutUserInput, TravelRequestUncheckedCreateWithoutUserInput>
+  }
+
+  export type TravelRequestCreateManyUserInputEnvelope = {
+    data: TravelRequestCreateManyUserInput | TravelRequestCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CompanionRequestCreateWithoutSenderInput = {
+    id?: string
+    status?: $Enums.CompanionRequestStatus
+    expiresAt: Date | string
+    respondedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    recipient: UserCreateNestedOneWithoutCompanionRequestsReceivedInput
+    travelRequest: TravelRequestCreateNestedOneWithoutCompanionRequestsInput
+    offer: TravelOfferCreateNestedOneWithoutCompanionRequestsInput
+  }
+
+  export type CompanionRequestUncheckedCreateWithoutSenderInput = {
+    id?: string
+    recipientId: string
+    travelRequestId: string
+    offerId: string
+    status?: $Enums.CompanionRequestStatus
+    expiresAt: Date | string
+    respondedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CompanionRequestCreateOrConnectWithoutSenderInput = {
+    where: CompanionRequestWhereUniqueInput
+    create: XOR<CompanionRequestCreateWithoutSenderInput, CompanionRequestUncheckedCreateWithoutSenderInput>
+  }
+
+  export type CompanionRequestCreateManySenderInputEnvelope = {
+    data: CompanionRequestCreateManySenderInput | CompanionRequestCreateManySenderInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CompanionRequestCreateWithoutRecipientInput = {
+    id?: string
+    status?: $Enums.CompanionRequestStatus
+    expiresAt: Date | string
+    respondedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    sender: UserCreateNestedOneWithoutCompanionRequestsSentInput
+    travelRequest: TravelRequestCreateNestedOneWithoutCompanionRequestsInput
+    offer: TravelOfferCreateNestedOneWithoutCompanionRequestsInput
+  }
+
+  export type CompanionRequestUncheckedCreateWithoutRecipientInput = {
+    id?: string
+    senderId: string
+    travelRequestId: string
+    offerId: string
+    status?: $Enums.CompanionRequestStatus
+    expiresAt: Date | string
+    respondedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CompanionRequestCreateOrConnectWithoutRecipientInput = {
+    where: CompanionRequestWhereUniqueInput
+    create: XOR<CompanionRequestCreateWithoutRecipientInput, CompanionRequestUncheckedCreateWithoutRecipientInput>
+  }
+
+  export type CompanionRequestCreateManyRecipientInputEnvelope = {
+    data: CompanionRequestCreateManyRecipientInput | CompanionRequestCreateManyRecipientInput[]
     skipDuplicates?: boolean
   }
 
@@ -4523,6 +10112,120 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"RefreshSession"> | Date | string
   }
 
+  export type TravelOfferUpsertWithWhereUniqueWithoutOwnerInput = {
+    where: TravelOfferWhereUniqueInput
+    update: XOR<TravelOfferUpdateWithoutOwnerInput, TravelOfferUncheckedUpdateWithoutOwnerInput>
+    create: XOR<TravelOfferCreateWithoutOwnerInput, TravelOfferUncheckedCreateWithoutOwnerInput>
+  }
+
+  export type TravelOfferUpdateWithWhereUniqueWithoutOwnerInput = {
+    where: TravelOfferWhereUniqueInput
+    data: XOR<TravelOfferUpdateWithoutOwnerInput, TravelOfferUncheckedUpdateWithoutOwnerInput>
+  }
+
+  export type TravelOfferUpdateManyWithWhereWithoutOwnerInput = {
+    where: TravelOfferScalarWhereInput
+    data: XOR<TravelOfferUpdateManyMutationInput, TravelOfferUncheckedUpdateManyWithoutOwnerInput>
+  }
+
+  export type TravelOfferScalarWhereInput = {
+    AND?: TravelOfferScalarWhereInput | TravelOfferScalarWhereInput[]
+    OR?: TravelOfferScalarWhereInput[]
+    NOT?: TravelOfferScalarWhereInput | TravelOfferScalarWhereInput[]
+    id?: StringFilter<"TravelOffer"> | string
+    ownerId?: StringFilter<"TravelOffer"> | string
+    source?: StringFilter<"TravelOffer"> | string
+    destination?: StringFilter<"TravelOffer"> | string
+    departureAt?: DateTimeFilter<"TravelOffer"> | Date | string
+    expiresAt?: DateTimeFilter<"TravelOffer"> | Date | string
+    transportMode?: EnumTransportModeFilter<"TravelOffer"> | $Enums.TransportMode
+    availableSeats?: IntFilter<"TravelOffer"> | number
+    isActive?: BoolFilter<"TravelOffer"> | boolean
+    createdAt?: DateTimeFilter<"TravelOffer"> | Date | string
+    updatedAt?: DateTimeFilter<"TravelOffer"> | Date | string
+  }
+
+  export type TravelRequestUpsertWithWhereUniqueWithoutUserInput = {
+    where: TravelRequestWhereUniqueInput
+    update: XOR<TravelRequestUpdateWithoutUserInput, TravelRequestUncheckedUpdateWithoutUserInput>
+    create: XOR<TravelRequestCreateWithoutUserInput, TravelRequestUncheckedCreateWithoutUserInput>
+  }
+
+  export type TravelRequestUpdateWithWhereUniqueWithoutUserInput = {
+    where: TravelRequestWhereUniqueInput
+    data: XOR<TravelRequestUpdateWithoutUserInput, TravelRequestUncheckedUpdateWithoutUserInput>
+  }
+
+  export type TravelRequestUpdateManyWithWhereWithoutUserInput = {
+    where: TravelRequestScalarWhereInput
+    data: XOR<TravelRequestUpdateManyMutationInput, TravelRequestUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type TravelRequestScalarWhereInput = {
+    AND?: TravelRequestScalarWhereInput | TravelRequestScalarWhereInput[]
+    OR?: TravelRequestScalarWhereInput[]
+    NOT?: TravelRequestScalarWhereInput | TravelRequestScalarWhereInput[]
+    id?: StringFilter<"TravelRequest"> | string
+    userId?: StringFilter<"TravelRequest"> | string
+    source?: StringFilter<"TravelRequest"> | string
+    destination?: StringFilter<"TravelRequest"> | string
+    departureAt?: DateTimeFilter<"TravelRequest"> | Date | string
+    expiresAt?: DateTimeFilter<"TravelRequest"> | Date | string
+    transportMode?: EnumTransportModeNullableFilter<"TravelRequest"> | $Enums.TransportMode | null
+    passengersRequired?: IntFilter<"TravelRequest"> | number
+    isActive?: BoolFilter<"TravelRequest"> | boolean
+    createdAt?: DateTimeFilter<"TravelRequest"> | Date | string
+    updatedAt?: DateTimeFilter<"TravelRequest"> | Date | string
+  }
+
+  export type CompanionRequestUpsertWithWhereUniqueWithoutSenderInput = {
+    where: CompanionRequestWhereUniqueInput
+    update: XOR<CompanionRequestUpdateWithoutSenderInput, CompanionRequestUncheckedUpdateWithoutSenderInput>
+    create: XOR<CompanionRequestCreateWithoutSenderInput, CompanionRequestUncheckedCreateWithoutSenderInput>
+  }
+
+  export type CompanionRequestUpdateWithWhereUniqueWithoutSenderInput = {
+    where: CompanionRequestWhereUniqueInput
+    data: XOR<CompanionRequestUpdateWithoutSenderInput, CompanionRequestUncheckedUpdateWithoutSenderInput>
+  }
+
+  export type CompanionRequestUpdateManyWithWhereWithoutSenderInput = {
+    where: CompanionRequestScalarWhereInput
+    data: XOR<CompanionRequestUpdateManyMutationInput, CompanionRequestUncheckedUpdateManyWithoutSenderInput>
+  }
+
+  export type CompanionRequestScalarWhereInput = {
+    AND?: CompanionRequestScalarWhereInput | CompanionRequestScalarWhereInput[]
+    OR?: CompanionRequestScalarWhereInput[]
+    NOT?: CompanionRequestScalarWhereInput | CompanionRequestScalarWhereInput[]
+    id?: StringFilter<"CompanionRequest"> | string
+    senderId?: StringFilter<"CompanionRequest"> | string
+    recipientId?: StringFilter<"CompanionRequest"> | string
+    travelRequestId?: StringFilter<"CompanionRequest"> | string
+    offerId?: StringFilter<"CompanionRequest"> | string
+    status?: EnumCompanionRequestStatusFilter<"CompanionRequest"> | $Enums.CompanionRequestStatus
+    expiresAt?: DateTimeFilter<"CompanionRequest"> | Date | string
+    respondedAt?: DateTimeNullableFilter<"CompanionRequest"> | Date | string | null
+    createdAt?: DateTimeFilter<"CompanionRequest"> | Date | string
+    updatedAt?: DateTimeFilter<"CompanionRequest"> | Date | string
+  }
+
+  export type CompanionRequestUpsertWithWhereUniqueWithoutRecipientInput = {
+    where: CompanionRequestWhereUniqueInput
+    update: XOR<CompanionRequestUpdateWithoutRecipientInput, CompanionRequestUncheckedUpdateWithoutRecipientInput>
+    create: XOR<CompanionRequestCreateWithoutRecipientInput, CompanionRequestUncheckedCreateWithoutRecipientInput>
+  }
+
+  export type CompanionRequestUpdateWithWhereUniqueWithoutRecipientInput = {
+    where: CompanionRequestWhereUniqueInput
+    data: XOR<CompanionRequestUpdateWithoutRecipientInput, CompanionRequestUncheckedUpdateWithoutRecipientInput>
+  }
+
+  export type CompanionRequestUpdateManyWithWhereWithoutRecipientInput = {
+    where: CompanionRequestScalarWhereInput
+    data: XOR<CompanionRequestUpdateManyMutationInput, CompanionRequestUncheckedUpdateManyWithoutRecipientInput>
+  }
+
   export type UserCreateWithoutRefreshSessionsInput = {
     id?: string
     name: string
@@ -4538,6 +10241,10 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     profileCompleted?: boolean
+    travelOffers?: TravelOfferCreateNestedManyWithoutOwnerInput
+    travelRequests?: TravelRequestCreateNestedManyWithoutUserInput
+    companionRequestsSent?: CompanionRequestCreateNestedManyWithoutSenderInput
+    companionRequestsReceived?: CompanionRequestCreateNestedManyWithoutRecipientInput
   }
 
   export type UserUncheckedCreateWithoutRefreshSessionsInput = {
@@ -4555,6 +10262,10 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     profileCompleted?: boolean
+    travelOffers?: TravelOfferUncheckedCreateNestedManyWithoutOwnerInput
+    travelRequests?: TravelRequestUncheckedCreateNestedManyWithoutUserInput
+    companionRequestsSent?: CompanionRequestUncheckedCreateNestedManyWithoutSenderInput
+    companionRequestsReceived?: CompanionRequestUncheckedCreateNestedManyWithoutRecipientInput
   }
 
   export type UserCreateOrConnectWithoutRefreshSessionsInput = {
@@ -4588,6 +10299,10 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     profileCompleted?: BoolFieldUpdateOperationsInput | boolean
+    travelOffers?: TravelOfferUpdateManyWithoutOwnerNestedInput
+    travelRequests?: TravelRequestUpdateManyWithoutUserNestedInput
+    companionRequestsSent?: CompanionRequestUpdateManyWithoutSenderNestedInput
+    companionRequestsReceived?: CompanionRequestUpdateManyWithoutRecipientNestedInput
   }
 
   export type UserUncheckedUpdateWithoutRefreshSessionsInput = {
@@ -4605,6 +10320,654 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     profileCompleted?: BoolFieldUpdateOperationsInput | boolean
+    travelOffers?: TravelOfferUncheckedUpdateManyWithoutOwnerNestedInput
+    travelRequests?: TravelRequestUncheckedUpdateManyWithoutUserNestedInput
+    companionRequestsSent?: CompanionRequestUncheckedUpdateManyWithoutSenderNestedInput
+    companionRequestsReceived?: CompanionRequestUncheckedUpdateManyWithoutRecipientNestedInput
+  }
+
+  export type UserCreateWithoutTravelOffersInput = {
+    id?: string
+    name: string
+    email: string
+    passwordHash?: string | null
+    phoneNumber?: string | null
+    gender?: $Enums.Gender | null
+    role?: $Enums.UserRole
+    status?: $Enums.UserStatus
+    authProvider?: $Enums.AuthProvider
+    googleId?: string | null
+    emailVerified?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    profileCompleted?: boolean
+    refreshSessions?: RefreshSessionCreateNestedManyWithoutUserInput
+    travelRequests?: TravelRequestCreateNestedManyWithoutUserInput
+    companionRequestsSent?: CompanionRequestCreateNestedManyWithoutSenderInput
+    companionRequestsReceived?: CompanionRequestCreateNestedManyWithoutRecipientInput
+  }
+
+  export type UserUncheckedCreateWithoutTravelOffersInput = {
+    id?: string
+    name: string
+    email: string
+    passwordHash?: string | null
+    phoneNumber?: string | null
+    gender?: $Enums.Gender | null
+    role?: $Enums.UserRole
+    status?: $Enums.UserStatus
+    authProvider?: $Enums.AuthProvider
+    googleId?: string | null
+    emailVerified?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    profileCompleted?: boolean
+    refreshSessions?: RefreshSessionUncheckedCreateNestedManyWithoutUserInput
+    travelRequests?: TravelRequestUncheckedCreateNestedManyWithoutUserInput
+    companionRequestsSent?: CompanionRequestUncheckedCreateNestedManyWithoutSenderInput
+    companionRequestsReceived?: CompanionRequestUncheckedCreateNestedManyWithoutRecipientInput
+  }
+
+  export type UserCreateOrConnectWithoutTravelOffersInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutTravelOffersInput, UserUncheckedCreateWithoutTravelOffersInput>
+  }
+
+  export type CompanionRequestCreateWithoutOfferInput = {
+    id?: string
+    status?: $Enums.CompanionRequestStatus
+    expiresAt: Date | string
+    respondedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    sender: UserCreateNestedOneWithoutCompanionRequestsSentInput
+    recipient: UserCreateNestedOneWithoutCompanionRequestsReceivedInput
+    travelRequest: TravelRequestCreateNestedOneWithoutCompanionRequestsInput
+  }
+
+  export type CompanionRequestUncheckedCreateWithoutOfferInput = {
+    id?: string
+    senderId: string
+    recipientId: string
+    travelRequestId: string
+    status?: $Enums.CompanionRequestStatus
+    expiresAt: Date | string
+    respondedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CompanionRequestCreateOrConnectWithoutOfferInput = {
+    where: CompanionRequestWhereUniqueInput
+    create: XOR<CompanionRequestCreateWithoutOfferInput, CompanionRequestUncheckedCreateWithoutOfferInput>
+  }
+
+  export type CompanionRequestCreateManyOfferInputEnvelope = {
+    data: CompanionRequestCreateManyOfferInput | CompanionRequestCreateManyOfferInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserUpsertWithoutTravelOffersInput = {
+    update: XOR<UserUpdateWithoutTravelOffersInput, UserUncheckedUpdateWithoutTravelOffersInput>
+    create: XOR<UserCreateWithoutTravelOffersInput, UserUncheckedCreateWithoutTravelOffersInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutTravelOffersInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutTravelOffersInput, UserUncheckedUpdateWithoutTravelOffersInput>
+  }
+
+  export type UserUpdateWithoutTravelOffersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    authProvider?: EnumAuthProviderFieldUpdateOperationsInput | $Enums.AuthProvider
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    profileCompleted?: BoolFieldUpdateOperationsInput | boolean
+    refreshSessions?: RefreshSessionUpdateManyWithoutUserNestedInput
+    travelRequests?: TravelRequestUpdateManyWithoutUserNestedInput
+    companionRequestsSent?: CompanionRequestUpdateManyWithoutSenderNestedInput
+    companionRequestsReceived?: CompanionRequestUpdateManyWithoutRecipientNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutTravelOffersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    authProvider?: EnumAuthProviderFieldUpdateOperationsInput | $Enums.AuthProvider
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    profileCompleted?: BoolFieldUpdateOperationsInput | boolean
+    refreshSessions?: RefreshSessionUncheckedUpdateManyWithoutUserNestedInput
+    travelRequests?: TravelRequestUncheckedUpdateManyWithoutUserNestedInput
+    companionRequestsSent?: CompanionRequestUncheckedUpdateManyWithoutSenderNestedInput
+    companionRequestsReceived?: CompanionRequestUncheckedUpdateManyWithoutRecipientNestedInput
+  }
+
+  export type CompanionRequestUpsertWithWhereUniqueWithoutOfferInput = {
+    where: CompanionRequestWhereUniqueInput
+    update: XOR<CompanionRequestUpdateWithoutOfferInput, CompanionRequestUncheckedUpdateWithoutOfferInput>
+    create: XOR<CompanionRequestCreateWithoutOfferInput, CompanionRequestUncheckedCreateWithoutOfferInput>
+  }
+
+  export type CompanionRequestUpdateWithWhereUniqueWithoutOfferInput = {
+    where: CompanionRequestWhereUniqueInput
+    data: XOR<CompanionRequestUpdateWithoutOfferInput, CompanionRequestUncheckedUpdateWithoutOfferInput>
+  }
+
+  export type CompanionRequestUpdateManyWithWhereWithoutOfferInput = {
+    where: CompanionRequestScalarWhereInput
+    data: XOR<CompanionRequestUpdateManyMutationInput, CompanionRequestUncheckedUpdateManyWithoutOfferInput>
+  }
+
+  export type UserCreateWithoutTravelRequestsInput = {
+    id?: string
+    name: string
+    email: string
+    passwordHash?: string | null
+    phoneNumber?: string | null
+    gender?: $Enums.Gender | null
+    role?: $Enums.UserRole
+    status?: $Enums.UserStatus
+    authProvider?: $Enums.AuthProvider
+    googleId?: string | null
+    emailVerified?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    profileCompleted?: boolean
+    refreshSessions?: RefreshSessionCreateNestedManyWithoutUserInput
+    travelOffers?: TravelOfferCreateNestedManyWithoutOwnerInput
+    companionRequestsSent?: CompanionRequestCreateNestedManyWithoutSenderInput
+    companionRequestsReceived?: CompanionRequestCreateNestedManyWithoutRecipientInput
+  }
+
+  export type UserUncheckedCreateWithoutTravelRequestsInput = {
+    id?: string
+    name: string
+    email: string
+    passwordHash?: string | null
+    phoneNumber?: string | null
+    gender?: $Enums.Gender | null
+    role?: $Enums.UserRole
+    status?: $Enums.UserStatus
+    authProvider?: $Enums.AuthProvider
+    googleId?: string | null
+    emailVerified?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    profileCompleted?: boolean
+    refreshSessions?: RefreshSessionUncheckedCreateNestedManyWithoutUserInput
+    travelOffers?: TravelOfferUncheckedCreateNestedManyWithoutOwnerInput
+    companionRequestsSent?: CompanionRequestUncheckedCreateNestedManyWithoutSenderInput
+    companionRequestsReceived?: CompanionRequestUncheckedCreateNestedManyWithoutRecipientInput
+  }
+
+  export type UserCreateOrConnectWithoutTravelRequestsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutTravelRequestsInput, UserUncheckedCreateWithoutTravelRequestsInput>
+  }
+
+  export type CompanionRequestCreateWithoutTravelRequestInput = {
+    id?: string
+    status?: $Enums.CompanionRequestStatus
+    expiresAt: Date | string
+    respondedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    sender: UserCreateNestedOneWithoutCompanionRequestsSentInput
+    recipient: UserCreateNestedOneWithoutCompanionRequestsReceivedInput
+    offer: TravelOfferCreateNestedOneWithoutCompanionRequestsInput
+  }
+
+  export type CompanionRequestUncheckedCreateWithoutTravelRequestInput = {
+    id?: string
+    senderId: string
+    recipientId: string
+    offerId: string
+    status?: $Enums.CompanionRequestStatus
+    expiresAt: Date | string
+    respondedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CompanionRequestCreateOrConnectWithoutTravelRequestInput = {
+    where: CompanionRequestWhereUniqueInput
+    create: XOR<CompanionRequestCreateWithoutTravelRequestInput, CompanionRequestUncheckedCreateWithoutTravelRequestInput>
+  }
+
+  export type CompanionRequestCreateManyTravelRequestInputEnvelope = {
+    data: CompanionRequestCreateManyTravelRequestInput | CompanionRequestCreateManyTravelRequestInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserUpsertWithoutTravelRequestsInput = {
+    update: XOR<UserUpdateWithoutTravelRequestsInput, UserUncheckedUpdateWithoutTravelRequestsInput>
+    create: XOR<UserCreateWithoutTravelRequestsInput, UserUncheckedCreateWithoutTravelRequestsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutTravelRequestsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutTravelRequestsInput, UserUncheckedUpdateWithoutTravelRequestsInput>
+  }
+
+  export type UserUpdateWithoutTravelRequestsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    authProvider?: EnumAuthProviderFieldUpdateOperationsInput | $Enums.AuthProvider
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    profileCompleted?: BoolFieldUpdateOperationsInput | boolean
+    refreshSessions?: RefreshSessionUpdateManyWithoutUserNestedInput
+    travelOffers?: TravelOfferUpdateManyWithoutOwnerNestedInput
+    companionRequestsSent?: CompanionRequestUpdateManyWithoutSenderNestedInput
+    companionRequestsReceived?: CompanionRequestUpdateManyWithoutRecipientNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutTravelRequestsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    authProvider?: EnumAuthProviderFieldUpdateOperationsInput | $Enums.AuthProvider
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    profileCompleted?: BoolFieldUpdateOperationsInput | boolean
+    refreshSessions?: RefreshSessionUncheckedUpdateManyWithoutUserNestedInput
+    travelOffers?: TravelOfferUncheckedUpdateManyWithoutOwnerNestedInput
+    companionRequestsSent?: CompanionRequestUncheckedUpdateManyWithoutSenderNestedInput
+    companionRequestsReceived?: CompanionRequestUncheckedUpdateManyWithoutRecipientNestedInput
+  }
+
+  export type CompanionRequestUpsertWithWhereUniqueWithoutTravelRequestInput = {
+    where: CompanionRequestWhereUniqueInput
+    update: XOR<CompanionRequestUpdateWithoutTravelRequestInput, CompanionRequestUncheckedUpdateWithoutTravelRequestInput>
+    create: XOR<CompanionRequestCreateWithoutTravelRequestInput, CompanionRequestUncheckedCreateWithoutTravelRequestInput>
+  }
+
+  export type CompanionRequestUpdateWithWhereUniqueWithoutTravelRequestInput = {
+    where: CompanionRequestWhereUniqueInput
+    data: XOR<CompanionRequestUpdateWithoutTravelRequestInput, CompanionRequestUncheckedUpdateWithoutTravelRequestInput>
+  }
+
+  export type CompanionRequestUpdateManyWithWhereWithoutTravelRequestInput = {
+    where: CompanionRequestScalarWhereInput
+    data: XOR<CompanionRequestUpdateManyMutationInput, CompanionRequestUncheckedUpdateManyWithoutTravelRequestInput>
+  }
+
+  export type UserCreateWithoutCompanionRequestsSentInput = {
+    id?: string
+    name: string
+    email: string
+    passwordHash?: string | null
+    phoneNumber?: string | null
+    gender?: $Enums.Gender | null
+    role?: $Enums.UserRole
+    status?: $Enums.UserStatus
+    authProvider?: $Enums.AuthProvider
+    googleId?: string | null
+    emailVerified?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    profileCompleted?: boolean
+    refreshSessions?: RefreshSessionCreateNestedManyWithoutUserInput
+    travelOffers?: TravelOfferCreateNestedManyWithoutOwnerInput
+    travelRequests?: TravelRequestCreateNestedManyWithoutUserInput
+    companionRequestsReceived?: CompanionRequestCreateNestedManyWithoutRecipientInput
+  }
+
+  export type UserUncheckedCreateWithoutCompanionRequestsSentInput = {
+    id?: string
+    name: string
+    email: string
+    passwordHash?: string | null
+    phoneNumber?: string | null
+    gender?: $Enums.Gender | null
+    role?: $Enums.UserRole
+    status?: $Enums.UserStatus
+    authProvider?: $Enums.AuthProvider
+    googleId?: string | null
+    emailVerified?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    profileCompleted?: boolean
+    refreshSessions?: RefreshSessionUncheckedCreateNestedManyWithoutUserInput
+    travelOffers?: TravelOfferUncheckedCreateNestedManyWithoutOwnerInput
+    travelRequests?: TravelRequestUncheckedCreateNestedManyWithoutUserInput
+    companionRequestsReceived?: CompanionRequestUncheckedCreateNestedManyWithoutRecipientInput
+  }
+
+  export type UserCreateOrConnectWithoutCompanionRequestsSentInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutCompanionRequestsSentInput, UserUncheckedCreateWithoutCompanionRequestsSentInput>
+  }
+
+  export type UserCreateWithoutCompanionRequestsReceivedInput = {
+    id?: string
+    name: string
+    email: string
+    passwordHash?: string | null
+    phoneNumber?: string | null
+    gender?: $Enums.Gender | null
+    role?: $Enums.UserRole
+    status?: $Enums.UserStatus
+    authProvider?: $Enums.AuthProvider
+    googleId?: string | null
+    emailVerified?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    profileCompleted?: boolean
+    refreshSessions?: RefreshSessionCreateNestedManyWithoutUserInput
+    travelOffers?: TravelOfferCreateNestedManyWithoutOwnerInput
+    travelRequests?: TravelRequestCreateNestedManyWithoutUserInput
+    companionRequestsSent?: CompanionRequestCreateNestedManyWithoutSenderInput
+  }
+
+  export type UserUncheckedCreateWithoutCompanionRequestsReceivedInput = {
+    id?: string
+    name: string
+    email: string
+    passwordHash?: string | null
+    phoneNumber?: string | null
+    gender?: $Enums.Gender | null
+    role?: $Enums.UserRole
+    status?: $Enums.UserStatus
+    authProvider?: $Enums.AuthProvider
+    googleId?: string | null
+    emailVerified?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    profileCompleted?: boolean
+    refreshSessions?: RefreshSessionUncheckedCreateNestedManyWithoutUserInput
+    travelOffers?: TravelOfferUncheckedCreateNestedManyWithoutOwnerInput
+    travelRequests?: TravelRequestUncheckedCreateNestedManyWithoutUserInput
+    companionRequestsSent?: CompanionRequestUncheckedCreateNestedManyWithoutSenderInput
+  }
+
+  export type UserCreateOrConnectWithoutCompanionRequestsReceivedInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutCompanionRequestsReceivedInput, UserUncheckedCreateWithoutCompanionRequestsReceivedInput>
+  }
+
+  export type TravelRequestCreateWithoutCompanionRequestsInput = {
+    id?: string
+    source: string
+    destination: string
+    departureAt: Date | string
+    expiresAt: Date | string
+    transportMode?: $Enums.TransportMode | null
+    passengersRequired?: number
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutTravelRequestsInput
+  }
+
+  export type TravelRequestUncheckedCreateWithoutCompanionRequestsInput = {
+    id?: string
+    userId: string
+    source: string
+    destination: string
+    departureAt: Date | string
+    expiresAt: Date | string
+    transportMode?: $Enums.TransportMode | null
+    passengersRequired?: number
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type TravelRequestCreateOrConnectWithoutCompanionRequestsInput = {
+    where: TravelRequestWhereUniqueInput
+    create: XOR<TravelRequestCreateWithoutCompanionRequestsInput, TravelRequestUncheckedCreateWithoutCompanionRequestsInput>
+  }
+
+  export type TravelOfferCreateWithoutCompanionRequestsInput = {
+    id?: string
+    source: string
+    destination: string
+    departureAt: Date | string
+    expiresAt: Date | string
+    transportMode: $Enums.TransportMode
+    availableSeats: number
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    owner: UserCreateNestedOneWithoutTravelOffersInput
+  }
+
+  export type TravelOfferUncheckedCreateWithoutCompanionRequestsInput = {
+    id?: string
+    ownerId: string
+    source: string
+    destination: string
+    departureAt: Date | string
+    expiresAt: Date | string
+    transportMode: $Enums.TransportMode
+    availableSeats: number
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type TravelOfferCreateOrConnectWithoutCompanionRequestsInput = {
+    where: TravelOfferWhereUniqueInput
+    create: XOR<TravelOfferCreateWithoutCompanionRequestsInput, TravelOfferUncheckedCreateWithoutCompanionRequestsInput>
+  }
+
+  export type UserUpsertWithoutCompanionRequestsSentInput = {
+    update: XOR<UserUpdateWithoutCompanionRequestsSentInput, UserUncheckedUpdateWithoutCompanionRequestsSentInput>
+    create: XOR<UserCreateWithoutCompanionRequestsSentInput, UserUncheckedCreateWithoutCompanionRequestsSentInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutCompanionRequestsSentInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutCompanionRequestsSentInput, UserUncheckedUpdateWithoutCompanionRequestsSentInput>
+  }
+
+  export type UserUpdateWithoutCompanionRequestsSentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    authProvider?: EnumAuthProviderFieldUpdateOperationsInput | $Enums.AuthProvider
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    profileCompleted?: BoolFieldUpdateOperationsInput | boolean
+    refreshSessions?: RefreshSessionUpdateManyWithoutUserNestedInput
+    travelOffers?: TravelOfferUpdateManyWithoutOwnerNestedInput
+    travelRequests?: TravelRequestUpdateManyWithoutUserNestedInput
+    companionRequestsReceived?: CompanionRequestUpdateManyWithoutRecipientNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutCompanionRequestsSentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    authProvider?: EnumAuthProviderFieldUpdateOperationsInput | $Enums.AuthProvider
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    profileCompleted?: BoolFieldUpdateOperationsInput | boolean
+    refreshSessions?: RefreshSessionUncheckedUpdateManyWithoutUserNestedInput
+    travelOffers?: TravelOfferUncheckedUpdateManyWithoutOwnerNestedInput
+    travelRequests?: TravelRequestUncheckedUpdateManyWithoutUserNestedInput
+    companionRequestsReceived?: CompanionRequestUncheckedUpdateManyWithoutRecipientNestedInput
+  }
+
+  export type UserUpsertWithoutCompanionRequestsReceivedInput = {
+    update: XOR<UserUpdateWithoutCompanionRequestsReceivedInput, UserUncheckedUpdateWithoutCompanionRequestsReceivedInput>
+    create: XOR<UserCreateWithoutCompanionRequestsReceivedInput, UserUncheckedCreateWithoutCompanionRequestsReceivedInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutCompanionRequestsReceivedInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutCompanionRequestsReceivedInput, UserUncheckedUpdateWithoutCompanionRequestsReceivedInput>
+  }
+
+  export type UserUpdateWithoutCompanionRequestsReceivedInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    authProvider?: EnumAuthProviderFieldUpdateOperationsInput | $Enums.AuthProvider
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    profileCompleted?: BoolFieldUpdateOperationsInput | boolean
+    refreshSessions?: RefreshSessionUpdateManyWithoutUserNestedInput
+    travelOffers?: TravelOfferUpdateManyWithoutOwnerNestedInput
+    travelRequests?: TravelRequestUpdateManyWithoutUserNestedInput
+    companionRequestsSent?: CompanionRequestUpdateManyWithoutSenderNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutCompanionRequestsReceivedInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    authProvider?: EnumAuthProviderFieldUpdateOperationsInput | $Enums.AuthProvider
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    profileCompleted?: BoolFieldUpdateOperationsInput | boolean
+    refreshSessions?: RefreshSessionUncheckedUpdateManyWithoutUserNestedInput
+    travelOffers?: TravelOfferUncheckedUpdateManyWithoutOwnerNestedInput
+    travelRequests?: TravelRequestUncheckedUpdateManyWithoutUserNestedInput
+    companionRequestsSent?: CompanionRequestUncheckedUpdateManyWithoutSenderNestedInput
+  }
+
+  export type TravelRequestUpsertWithoutCompanionRequestsInput = {
+    update: XOR<TravelRequestUpdateWithoutCompanionRequestsInput, TravelRequestUncheckedUpdateWithoutCompanionRequestsInput>
+    create: XOR<TravelRequestCreateWithoutCompanionRequestsInput, TravelRequestUncheckedCreateWithoutCompanionRequestsInput>
+    where?: TravelRequestWhereInput
+  }
+
+  export type TravelRequestUpdateToOneWithWhereWithoutCompanionRequestsInput = {
+    where?: TravelRequestWhereInput
+    data: XOR<TravelRequestUpdateWithoutCompanionRequestsInput, TravelRequestUncheckedUpdateWithoutCompanionRequestsInput>
+  }
+
+  export type TravelRequestUpdateWithoutCompanionRequestsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    source?: StringFieldUpdateOperationsInput | string
+    destination?: StringFieldUpdateOperationsInput | string
+    departureAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    transportMode?: NullableEnumTransportModeFieldUpdateOperationsInput | $Enums.TransportMode | null
+    passengersRequired?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutTravelRequestsNestedInput
+  }
+
+  export type TravelRequestUncheckedUpdateWithoutCompanionRequestsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    source?: StringFieldUpdateOperationsInput | string
+    destination?: StringFieldUpdateOperationsInput | string
+    departureAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    transportMode?: NullableEnumTransportModeFieldUpdateOperationsInput | $Enums.TransportMode | null
+    passengersRequired?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TravelOfferUpsertWithoutCompanionRequestsInput = {
+    update: XOR<TravelOfferUpdateWithoutCompanionRequestsInput, TravelOfferUncheckedUpdateWithoutCompanionRequestsInput>
+    create: XOR<TravelOfferCreateWithoutCompanionRequestsInput, TravelOfferUncheckedCreateWithoutCompanionRequestsInput>
+    where?: TravelOfferWhereInput
+  }
+
+  export type TravelOfferUpdateToOneWithWhereWithoutCompanionRequestsInput = {
+    where?: TravelOfferWhereInput
+    data: XOR<TravelOfferUpdateWithoutCompanionRequestsInput, TravelOfferUncheckedUpdateWithoutCompanionRequestsInput>
+  }
+
+  export type TravelOfferUpdateWithoutCompanionRequestsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    source?: StringFieldUpdateOperationsInput | string
+    destination?: StringFieldUpdateOperationsInput | string
+    departureAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    transportMode?: EnumTransportModeFieldUpdateOperationsInput | $Enums.TransportMode
+    availableSeats?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    owner?: UserUpdateOneRequiredWithoutTravelOffersNestedInput
+  }
+
+  export type TravelOfferUncheckedUpdateWithoutCompanionRequestsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ownerId?: StringFieldUpdateOperationsInput | string
+    source?: StringFieldUpdateOperationsInput | string
+    destination?: StringFieldUpdateOperationsInput | string
+    departureAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    transportMode?: EnumTransportModeFieldUpdateOperationsInput | $Enums.TransportMode
+    availableSeats?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type RefreshSessionCreateManyUserInput = {
@@ -4613,6 +10976,56 @@ export namespace Prisma {
     expiresAt: Date | string
     revokedAt?: Date | string | null
     createdAt?: Date | string
+  }
+
+  export type TravelOfferCreateManyOwnerInput = {
+    id?: string
+    source: string
+    destination: string
+    departureAt: Date | string
+    expiresAt: Date | string
+    transportMode: $Enums.TransportMode
+    availableSeats: number
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type TravelRequestCreateManyUserInput = {
+    id?: string
+    source: string
+    destination: string
+    departureAt: Date | string
+    expiresAt: Date | string
+    transportMode?: $Enums.TransportMode | null
+    passengersRequired?: number
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CompanionRequestCreateManySenderInput = {
+    id?: string
+    recipientId: string
+    travelRequestId: string
+    offerId: string
+    status?: $Enums.CompanionRequestStatus
+    expiresAt: Date | string
+    respondedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CompanionRequestCreateManyRecipientInput = {
+    id?: string
+    senderId: string
+    travelRequestId: string
+    offerId: string
+    status?: $Enums.CompanionRequestStatus
+    expiresAt: Date | string
+    respondedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type RefreshSessionUpdateWithoutUserInput = {
@@ -4637,6 +11050,256 @@ export namespace Prisma {
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
     revokedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TravelOfferUpdateWithoutOwnerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    source?: StringFieldUpdateOperationsInput | string
+    destination?: StringFieldUpdateOperationsInput | string
+    departureAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    transportMode?: EnumTransportModeFieldUpdateOperationsInput | $Enums.TransportMode
+    availableSeats?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    companionRequests?: CompanionRequestUpdateManyWithoutOfferNestedInput
+  }
+
+  export type TravelOfferUncheckedUpdateWithoutOwnerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    source?: StringFieldUpdateOperationsInput | string
+    destination?: StringFieldUpdateOperationsInput | string
+    departureAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    transportMode?: EnumTransportModeFieldUpdateOperationsInput | $Enums.TransportMode
+    availableSeats?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    companionRequests?: CompanionRequestUncheckedUpdateManyWithoutOfferNestedInput
+  }
+
+  export type TravelOfferUncheckedUpdateManyWithoutOwnerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    source?: StringFieldUpdateOperationsInput | string
+    destination?: StringFieldUpdateOperationsInput | string
+    departureAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    transportMode?: EnumTransportModeFieldUpdateOperationsInput | $Enums.TransportMode
+    availableSeats?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TravelRequestUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    source?: StringFieldUpdateOperationsInput | string
+    destination?: StringFieldUpdateOperationsInput | string
+    departureAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    transportMode?: NullableEnumTransportModeFieldUpdateOperationsInput | $Enums.TransportMode | null
+    passengersRequired?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    companionRequests?: CompanionRequestUpdateManyWithoutTravelRequestNestedInput
+  }
+
+  export type TravelRequestUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    source?: StringFieldUpdateOperationsInput | string
+    destination?: StringFieldUpdateOperationsInput | string
+    departureAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    transportMode?: NullableEnumTransportModeFieldUpdateOperationsInput | $Enums.TransportMode | null
+    passengersRequired?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    companionRequests?: CompanionRequestUncheckedUpdateManyWithoutTravelRequestNestedInput
+  }
+
+  export type TravelRequestUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    source?: StringFieldUpdateOperationsInput | string
+    destination?: StringFieldUpdateOperationsInput | string
+    departureAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    transportMode?: NullableEnumTransportModeFieldUpdateOperationsInput | $Enums.TransportMode | null
+    passengersRequired?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CompanionRequestUpdateWithoutSenderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: EnumCompanionRequestStatusFieldUpdateOperationsInput | $Enums.CompanionRequestStatus
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    respondedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    recipient?: UserUpdateOneRequiredWithoutCompanionRequestsReceivedNestedInput
+    travelRequest?: TravelRequestUpdateOneRequiredWithoutCompanionRequestsNestedInput
+    offer?: TravelOfferUpdateOneRequiredWithoutCompanionRequestsNestedInput
+  }
+
+  export type CompanionRequestUncheckedUpdateWithoutSenderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    recipientId?: StringFieldUpdateOperationsInput | string
+    travelRequestId?: StringFieldUpdateOperationsInput | string
+    offerId?: StringFieldUpdateOperationsInput | string
+    status?: EnumCompanionRequestStatusFieldUpdateOperationsInput | $Enums.CompanionRequestStatus
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    respondedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CompanionRequestUncheckedUpdateManyWithoutSenderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    recipientId?: StringFieldUpdateOperationsInput | string
+    travelRequestId?: StringFieldUpdateOperationsInput | string
+    offerId?: StringFieldUpdateOperationsInput | string
+    status?: EnumCompanionRequestStatusFieldUpdateOperationsInput | $Enums.CompanionRequestStatus
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    respondedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CompanionRequestUpdateWithoutRecipientInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: EnumCompanionRequestStatusFieldUpdateOperationsInput | $Enums.CompanionRequestStatus
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    respondedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sender?: UserUpdateOneRequiredWithoutCompanionRequestsSentNestedInput
+    travelRequest?: TravelRequestUpdateOneRequiredWithoutCompanionRequestsNestedInput
+    offer?: TravelOfferUpdateOneRequiredWithoutCompanionRequestsNestedInput
+  }
+
+  export type CompanionRequestUncheckedUpdateWithoutRecipientInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    senderId?: StringFieldUpdateOperationsInput | string
+    travelRequestId?: StringFieldUpdateOperationsInput | string
+    offerId?: StringFieldUpdateOperationsInput | string
+    status?: EnumCompanionRequestStatusFieldUpdateOperationsInput | $Enums.CompanionRequestStatus
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    respondedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CompanionRequestUncheckedUpdateManyWithoutRecipientInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    senderId?: StringFieldUpdateOperationsInput | string
+    travelRequestId?: StringFieldUpdateOperationsInput | string
+    offerId?: StringFieldUpdateOperationsInput | string
+    status?: EnumCompanionRequestStatusFieldUpdateOperationsInput | $Enums.CompanionRequestStatus
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    respondedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CompanionRequestCreateManyOfferInput = {
+    id?: string
+    senderId: string
+    recipientId: string
+    travelRequestId: string
+    status?: $Enums.CompanionRequestStatus
+    expiresAt: Date | string
+    respondedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CompanionRequestUpdateWithoutOfferInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: EnumCompanionRequestStatusFieldUpdateOperationsInput | $Enums.CompanionRequestStatus
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    respondedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sender?: UserUpdateOneRequiredWithoutCompanionRequestsSentNestedInput
+    recipient?: UserUpdateOneRequiredWithoutCompanionRequestsReceivedNestedInput
+    travelRequest?: TravelRequestUpdateOneRequiredWithoutCompanionRequestsNestedInput
+  }
+
+  export type CompanionRequestUncheckedUpdateWithoutOfferInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    senderId?: StringFieldUpdateOperationsInput | string
+    recipientId?: StringFieldUpdateOperationsInput | string
+    travelRequestId?: StringFieldUpdateOperationsInput | string
+    status?: EnumCompanionRequestStatusFieldUpdateOperationsInput | $Enums.CompanionRequestStatus
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    respondedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CompanionRequestUncheckedUpdateManyWithoutOfferInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    senderId?: StringFieldUpdateOperationsInput | string
+    recipientId?: StringFieldUpdateOperationsInput | string
+    travelRequestId?: StringFieldUpdateOperationsInput | string
+    status?: EnumCompanionRequestStatusFieldUpdateOperationsInput | $Enums.CompanionRequestStatus
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    respondedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CompanionRequestCreateManyTravelRequestInput = {
+    id?: string
+    senderId: string
+    recipientId: string
+    offerId: string
+    status?: $Enums.CompanionRequestStatus
+    expiresAt: Date | string
+    respondedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CompanionRequestUpdateWithoutTravelRequestInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: EnumCompanionRequestStatusFieldUpdateOperationsInput | $Enums.CompanionRequestStatus
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    respondedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sender?: UserUpdateOneRequiredWithoutCompanionRequestsSentNestedInput
+    recipient?: UserUpdateOneRequiredWithoutCompanionRequestsReceivedNestedInput
+    offer?: TravelOfferUpdateOneRequiredWithoutCompanionRequestsNestedInput
+  }
+
+  export type CompanionRequestUncheckedUpdateWithoutTravelRequestInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    senderId?: StringFieldUpdateOperationsInput | string
+    recipientId?: StringFieldUpdateOperationsInput | string
+    offerId?: StringFieldUpdateOperationsInput | string
+    status?: EnumCompanionRequestStatusFieldUpdateOperationsInput | $Enums.CompanionRequestStatus
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    respondedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CompanionRequestUncheckedUpdateManyWithoutTravelRequestInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    senderId?: StringFieldUpdateOperationsInput | string
+    recipientId?: StringFieldUpdateOperationsInput | string
+    offerId?: StringFieldUpdateOperationsInput | string
+    status?: EnumCompanionRequestStatusFieldUpdateOperationsInput | $Enums.CompanionRequestStatus
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    respondedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 

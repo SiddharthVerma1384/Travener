@@ -30,6 +30,23 @@ enum AuthProvider {
   GOOGLE
 }
 
+enum TransportMode {
+  CAB
+  BUS
+  TRAIN
+  FLIGHT
+  CAR
+  OTHER
+}
+
+enum CompanionRequestStatus {
+  PENDING
+  ACCEPTED
+  REJECTED
+  CANCELLED
+  EXPIRED
+}
+
 //User Model
 
 model User {
@@ -50,10 +67,14 @@ model User {
 
   emailVerified Boolean @default(false)
 
-  createdAt        DateTime         @default(now())
-  updatedAt        DateTime         @updatedAt
-  refreshSessions  RefreshSession[]
-  profileCompleted Boolean          @default(false)
+  createdAt                 DateTime           @default(now())
+  updatedAt                 DateTime           @updatedAt
+  refreshSessions           RefreshSession[]
+  profileCompleted          Boolean            @default(false)
+  travelOffers              TravelOffer[]
+  travelRequests            TravelRequest[]
+  companionRequestsSent     CompanionRequest[] @relation("CompanionRequestSender")
+  companionRequestsReceived CompanionRequest[] @relation("CompanionRequestRecipient")
 }
 
 //Refresh Session 
@@ -68,4 +89,82 @@ model RefreshSession {
   revokedAt DateTime?
 
   createdAt DateTime @default(now())
+}
+
+model TravelOffer {
+  id String @id @default(cuid())
+
+  ownerId String
+  owner   User   @relation(fields: [ownerId], references: [id])
+
+  source         String
+  destination    String
+  departureAt    DateTime
+  expiresAt      DateTime
+  transportMode  TransportMode
+  availableSeats Int
+
+  isActive Boolean @default(true)
+
+  createdAt         DateTime           @default(now())
+  updatedAt         DateTime           @updatedAt
+  companionRequests CompanionRequest[]
+}
+
+model TravelRequest {
+  id     String @id @default(cuid())
+  userId String
+  user   User   @relation(fields: [userId], references: [id])
+
+  source      String
+  destination String
+  departureAt DateTime
+  expiresAt   DateTime
+
+  transportMode      TransportMode?
+  passengersRequired Int            @default(1)
+
+  isActive          Boolean            @default(true)
+  createdAt         DateTime           @default(now())
+  updatedAt         DateTime           @updatedAt
+  companionRequests CompanionRequest[]
+
+  @@index([userId])
+  @@index([isActive, departureAt])
+  @@index([source, destination, departureAt])
+}
+
+model CompanionRequest {
+  id String @id @default(cuid())
+
+  // Student initiating the request
+  senderId String
+  sender   User   @relation("CompanionRequestSender", fields: [senderId], references: [id], onDelete: Cascade)
+
+  // Student receiving the request
+  recipientId String
+  recipient   User   @relation("CompanionRequestRecipient", fields: [recipientId], references: [id], onDelete: Cascade)
+
+  // Travel request involved in the match
+  travelRequestId String
+  travelRequest   TravelRequest @relation(fields: [travelRequestId], references: [id], onDelete: Cascade)
+
+  // Selected travel offer
+  offerId String
+  offer   TravelOffer @relation(fields: [offerId], references: [id], onDelete: Cascade)
+
+  status CompanionRequestStatus @default(PENDING)
+
+  // Deadline for accepting the request
+  expiresAt   DateTime
+  respondedAt DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([senderId, status])
+  @@index([recipientId, status])
+  @@index([offerId, status])
+  @@index([travelRequestId])
+  @@index([status, expiresAt])
 }

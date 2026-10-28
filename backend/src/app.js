@@ -24,14 +24,17 @@ app.use(cors({
 
 import authRouter from "./routes/auth.routes.js"  
 import profileRouter from "./routes/profile.routes.js"
-
+import travelOfferRouter from "./routes/travelOffer.routes.js"
+import travelRequestRouter from "./routes/travelRequest.routes.js"
 
 app.use("/api/v1/auth", authRouter)
 app.use("/api/v1/profile", profileRouter)
+app.use("/api/v1/create-travel-offers", travelOfferRouter)
+app.use("/api/v1/travel-requests", travelRequestRouter)
 
 
 app.get("/", (req, res) => {
-    res.send("Hello Sir! You are using Express Js Framework")
+    res.send("Hello !! You are using Express Js Framework")
 })
 
 export default app

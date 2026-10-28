@@ -61,10 +61,72 @@ const profileValidator = () => {
     ];
 }
 
+const createTravelOfferValidator = () => {
+    return [
+        body("transportMode")
+            .isIn(["CAB", "BUS", "TRAIN", "FLIGHT", "CAR", "OTHER"])
+            .withMessage("Invalid transport mode"),
+        
+        body("availableSeats")
+            .notEmpty()
+            .withMessage("Available seats is required")
+            .isInt({ min: 1 })
+            .withMessage("Available seats must be at least 1"),
+
+        body("source")
+            .trim()
+            .notEmpty()
+            .withMessage("Source is required"),
+
+        body("destination")
+            .trim()
+            .notEmpty()
+            .withMessage("Destination is required"),
+
+        body("departureAt")
+            .notEmpty()
+            .withMessage("Departure time is required")
+            .isISO8601()
+            .withMessage("Departure time must be a valid ISO 8601 date"),
+    ]
+}
+
+const createTravelRequestValidator = () => {
+    return[
+        body("source")
+            .trim()
+            .notEmpty()
+            .withMessage("Source is required"),
+
+        body("destination")
+            .trim()
+            .notEmpty()
+            .withMessage("Destination is required"),
+
+        body("departureAt")
+            .notEmpty()
+            .withMessage("Departure time is required")
+            .isISO8601()
+            .withMessage("Departure time must be a valid ISO 8601 date"),
+
+        body("transportMode")
+            .optional({ nullable: true })
+            .isIn(["CAB", "BUS", "TRAIN", "FLIGHT", "CAR", "OTHER"])
+            .withMessage("Invalid transport mode"),
+
+        body("passengersRequired")
+            .optional()
+            .isInt({ min: 1 })
+            .withMessage("Passengers required must be a positive integer")
+    ]
+}
+
 
 
 export {
     registerValidator,
     loginValidator,
-    profileValidator 
+    profileValidator,
+    createTravelOfferValidator,
+    createTravelRequestValidator
 };
