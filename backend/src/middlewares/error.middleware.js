@@ -1,4 +1,4 @@
-import {ApiError} from "../utils/api-erro.jsr"
+import { ApiError } from "../utils/api-error.js"
 
 const errorHandler = (err, req, res, next) => {
     if (! (err instanceof ApiError)){

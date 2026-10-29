@@ -75,6 +75,12 @@ model User {
   travelRequests            TravelRequest[]
   companionRequestsSent     CompanionRequest[] @relation("CompanionRequestSender")
   companionRequestsReceived CompanionRequest[] @relation("CompanionRequestRecipient")
+  messagesSent Message[] @relation("MessageSender")
+  ratingsGiven Rating[] @relation("RatingAuthor")
+  ratingsReceived Rating[] @relation("RatingSubject")
+  reportsFiled Report[] @relation("ReportAuthor")
+  reportsReceived Report[] @relation("ReportSubject")
+  travelDocuments TravelDocument[]
 }
 
 //Refresh Session 
@@ -161,10 +167,104 @@ model CompanionRequest {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  journey Journey?
+  messages Message[]
 
   @@index([senderId, status])
   @@index([recipientId, status])
   @@index([offerId, status])
   @@index([travelRequestId])
   @@index([status, expiresAt])
+}
+enum JourneyStatus {
+  CONFIRMED
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+}
+
+enum ReportStatus {
+  OPEN
+  REVIEWED
+  RESOLVED
+  DISMISSED
+}
+enum TravelDocumentStatus {
+  PROCESSING
+  COMPLETED
+  FAILED
+  CONFIRMED
+}
+
+model Journey {
+  id String @id @default(cuid())
+  companionRequestId String @unique
+  companionRequest CompanionRequest @relation(fields: [companionRequestId], references: [id], onDelete: Cascade)
+  status JourneyStatus @default(CONFIRMED)
+  startedAt DateTime?
+  completedAt DateTime?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  messages Message[]
+  ratings Rating[]
+  reports Report[]
+}
+
+model Message {
+  id String @id @default(cuid())
+  journeyId String
+  journey Journey @relation(fields: [journeyId], references: [id], onDelete: Cascade)
+  requestId String
+  request CompanionRequest @relation(fields: [requestId], references: [id], onDelete: Cascade)
+  senderId String
+  sender User @relation("MessageSender", fields: [senderId], references: [id], onDelete: Cascade)
+  body String
+  createdAt DateTime @default(now())
+  @@index([journeyId, createdAt])
+}
+
+model Rating {
+  id String @id @default(cuid())
+  journeyId String
+  journey Journey @relation(fields: [journeyId], references: [id], onDelete: Cascade)
+  authorId String
+  author User @relation("RatingAuthor", fields: [authorId], references: [id], onDelete: Cascade)
+  subjectId String
+  subject User @relation("RatingSubject", fields: [subjectId], references: [id], onDelete: Cascade)
+  stars Int
+  comment String?
+  createdAt DateTime @default(now())
+  @@unique([journeyId, authorId])
+}
+
+model Report {
+  id String @id @default(cuid())
+  journeyId String?
+  journey Journey? @relation(fields: [journeyId], references: [id], onDelete: SetNull)
+  authorId String
+  author User @relation("ReportAuthor", fields: [authorId], references: [id], onDelete: Cascade)
+  subjectId String
+  subject User @relation("ReportSubject", fields: [subjectId], references: [id], onDelete: Cascade)
+  reason String
+  status ReportStatus @default(OPEN)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model TravelDocument {
+  id String @id @default(cuid())
+  userId String
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  originalName String
+  mimeType String
+  ocrStatus TravelDocumentStatus @default(PROCESSING)
+  rawText String?
+  source String?
+  destination String?
+  departureAt DateTime?
+  transportMode TransportMode?
+  errorMessage String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@index([userId, createdAt])
 }

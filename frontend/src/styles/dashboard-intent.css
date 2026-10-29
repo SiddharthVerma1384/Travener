@@ -1,0 +1,9 @@
+.ocr-intent-panel { margin-top: 1.25rem; padding: 1.25rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; border: 1px solid rgba(118, 93, 182, .18); border-radius: 18px; background: linear-gradient(135deg, #faf8ff, #fff); }
+.ocr-intent-panel h2, .ocr-intent-panel p { margin-top: .25rem; margin-bottom: .25rem; }
+.ocr-intent-buttons { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: .65rem; }
+.secondary-btn { background: #fff; color: #7356d8; border: 1px solid #7356d8; }
+.accepted-user-row { align-items: center; }
+.request-actions { display: flex; align-items: center; justify-content: flex-end; gap: .55rem; flex-wrap: wrap; }
+.chat-icon-button { min-width: 62px; display: inline-flex; align-items: center; justify-content: center; gap: .3rem; padding: .55rem .75rem; border-radius: 999px; background: #7356d8; color: #fff; text-decoration: none; font-weight: 700; box-shadow: 0 5px 14px rgba(115, 86, 216, .24); }
+.chat-icon-button span { font-size: .78rem; }
+@media (max-width: 700px) { .ocr-intent-panel { align-items: stretch; flex-direction: column; } .ocr-intent-buttons { justify-content: stretch; } .ocr-intent-buttons .dashboard-btn { flex: 1; text-align: center; } .accepted-user-row { align-items: flex-start; } }

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { apiRequest } from '../api/client'
 import { Link, useNavigate } from 'react-router-dom'
 import '../styles/trip.css'
 

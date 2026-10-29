@@ -1,13 +1,19 @@
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Link, Navigate } from 'react-router-dom'
+import UploadTicketPage from './pages/uploadTicketLive'
+import ReviewOCRPage from './pages/reviewOCRProper'
 import './App.css'
-import UploadTicket from './pages/uploadTicket'
-import ReviewOCR from './pages/reviewOCR'
+// Legacy ticket/OCR screens are not routed because the backend has no travel-documents API.
+ 
 
-import Login from './pages/login'
-import Signup from './pages/signup'
-import Dashboard from './pages/dashboard'
-import CreateTrip from './pages/createTrip'
-import SearchTrips from './pages/searchTrips'
+import Login from './pages/loginLive'
+import Signup from './pages/signupLive'
+import Dashboard from './pages/dashboardProper'
+import CreateTrip from './pages/createTripLive'
+import SearchTrips from './pages/searchTripsLive'
+import Journeys from './pages/journeysProper'
+import Admin from './pages/admin'
+const UploadTicket = UploadTicketPage
+const ReviewOCR = ReviewOCRPage
 
 function LandingPage() {
   return (
@@ -350,7 +356,7 @@ function App() {
   element={<SearchTrips />}
 />
 
-      </Routes>
+ <Route path="/journeys" element={<Journeys />} /> <Route path="/admin" element={<Admin />} /> </Routes>
 
     </BrowserRouter>
   )

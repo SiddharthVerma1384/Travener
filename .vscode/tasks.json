@@ -1,0 +1,274 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Travener frontend build",
+			"type": "shell",
+			"command": "npm --prefix frontend run build",
+			"problemMatcher": [
+				"$tsc"
+			],
+			"group": "build"
+		},
+		{
+			"label": "Travener backend syntax check",
+			"type": "shell",
+			"command": "node --check backend/src/app.js; node --check backend/src/controllers/companionRequest.controller.js; node --check backend/src/routes/companionRequest.routes.js",
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Travener Prisma schema validation",
+			"type": "shell",
+			"command": "npx prisma validate --schema backend/prisma/schema.prisma",
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Travener Prisma schema validation local",
+			"type": "shell",
+			"command": "backend/node_modules/.bin/prisma validate --schema backend/prisma/schema.prisma",
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Travener Prisma schema validation fixed",
+			"type": "shell",
+			"command": "backend/node_modules/.bin/prisma validate --schema backend/prisma/schema.prisma",
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Travener Prisma schema validation complete",
+			"type": "shell",
+			"command": "backend/node_modules/.bin/prisma validate --schema backend/prisma/schema.prisma",
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Travener Prisma complete model validation",
+			"type": "shell",
+			"command": "backend/node_modules/.bin/prisma validate --schema backend/prisma/schema.prisma",
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Travener Prisma migration",
+			"type": "shell",
+			"command": "backend/node_modules/.bin/prisma migrate dev --schema backend/prisma/schema.prisma --name journey-chat-rating-report",
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Read Prisma config",
+			"type": "shell",
+			"command": "Get-Content backend/prisma7.config.ts",
+			"problemMatcher": []
+		},
+		{
+			"label": "Travener Prisma migration from backend",
+			"type": "shell",
+			"command": "Set-Location backend; .\\node_modules\\.bin\\prisma migrate dev --schema prisma/schema.prisma --name journey-chat-rating-report",
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Travener Prisma client generation",
+			"type": "shell",
+			"command": "Set-Location backend; .\\node_modules\\.bin\\prisma generate --schema prisma/schema.prisma",
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Travener full frontend build",
+			"type": "shell",
+			"command": "npm --prefix frontend run build",
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Travener backend syntax validation",
+			"type": "shell",
+			"command": "node --check backend/src/app.js; node --check backend/src/controllers/companionRequest.controller.js; node --check backend/src/controllers/journey.controller.js; node --check backend/src/routes/companionRequest.routes.js; node --check backend/src/routes/journey.routes.js",
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Travener backend dev server",
+			"type": "shell",
+			"command": "npm --prefix backend run dev",
+			"isBackground": true,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Travener frontend dev server",
+			"type": "shell",
+			"command": "npm --prefix frontend run dev -- --host 0.0.0.0",
+			"isBackground": true,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Travener final frontend build",
+			"type": "shell",
+			"command": "npm --prefix frontend run build",
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Travener final Prisma validation",
+			"type": "shell",
+			"command": "Set-Location backend; .\\node_modules\\.bin\\prisma validate --schema prisma/schema.prisma",
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Travener final backend syntax",
+			"type": "shell",
+			"command": "node --check backend/src/app.js; node --check backend/src/controllers/companionRequest.controller.js; node --check backend/src/controllers/journey.controller.js; node --check backend/src/routes/journey.routes.js",
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Travener frontend OAuth build",
+			"type": "shell",
+			"command": "npm --prefix frontend run build",
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Travener backend OAuth syntax",
+			"type": "shell",
+			"command": "node --check backend/src/controllers/auth.controllers.js; node --check backend/src/app.js; node --check backend/src/controllers/journey.controller.js",
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Travener final frontend parity build",
+			"type": "shell",
+			"command": "npm --prefix frontend run build",
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Travener final backend parity syntax",
+			"type": "shell",
+			"command": "node --check backend/src/app.js; node --check backend/src/controllers/auth.controllers.js; node --check backend/src/controllers/journey.controller.js; node --check backend/src/middlewares/error.middleware.js; node --check backend/src/routes/auth.routes.js; node --check backend/src/routes/journey.routes.js",
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Travener final Prisma parity validation",
+			"type": "shell",
+			"command": "Set-Location backend; .\\node_modules\\.bin\\prisma validate --schema prisma/schema.prisma",
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Install OCR backend dependencies",
+			"type": "shell",
+			"command": "npm --prefix backend install multer tesseract.js pdf-parse",
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Validate OCR Prisma schema",
+			"type": "shell",
+			"command": "Set-Location backend; .\\node_modules\\.bin\\prisma validate --schema prisma/schema.prisma",
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Travener backend OCR tests",
+			"type": "shell",
+			"command": "npm --prefix backend test",
+			"problemMatcher": [],
+			"group": "test"
+		},
+		{
+			"label": "Travener OCR database migration",
+			"type": "shell",
+			"command": "Set-Location backend; npx prisma migrate dev --schema prisma/schema.prisma --name travel_documents_ocr",
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Travener Prisma client generation 2",
+			"type": "shell",
+			"command": "Set-Location backend; npx prisma generate --schema prisma/schema.prisma",
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Travener backend OCR tests 2",
+			"type": "shell",
+			"command": "npm --prefix backend test",
+			"problemMatcher": [],
+			"group": "test"
+		},
+		{
+			"label": "Travener frontend build OCR verification",
+			"type": "shell",
+			"command": "npm --prefix frontend run build",
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Travener OCR module runtime check",
+			"type": "shell",
+			"command": "Set-Location backend; node -e \"import('./src/controllers/travelDocument.controller.js').then(() => console.log('OCR controller loaded'))\"",
+			"problemMatcher": [],
+			"group": "test"
+		},
+		{
+			"label": "Travener chat OCR final build",
+			"type": "shell",
+			"command": "npm --prefix frontend run build",
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Travener OCR regression tests",
+			"type": "shell",
+			"command": "npm --prefix backend test",
+			"problemMatcher": [],
+			"group": "test"
+		},
+		{
+			"label": "Travener final integration verification 20261029",
+			"type": "shell",
+			"command": "npm --prefix frontend run build; npm --prefix backend test",
+			"problemMatcher": [],
+			"group": "test"
+		},
+		{
+			"label": "Travener intent navigation and chat icon build",
+			"type": "shell",
+			"command": "npm --prefix frontend run build; npm --prefix backend test",
+			"problemMatcher": [],
+			"group": "test"
+		},
+		{
+			"label": "Travener train OCR regression 20261029",
+			"type": "shell",
+			"command": "npm --prefix backend test",
+			"problemMatcher": [],
+			"group": "test"
+		},
+		{
+			"label": "Travener final OCR chat integration 20261029",
+			"type": "shell",
+			"command": "npm --prefix frontend run build; npm --prefix backend test",
+			"problemMatcher": [],
+			"group": "test"
+		},
+		{
+			"label": "Travener ticket layout regression 20261029",
+			"type": "shell",
+			"command": "npm --prefix backend test",
+			"problemMatcher": [],
+			"group": "test"
+		}
+	]
+}

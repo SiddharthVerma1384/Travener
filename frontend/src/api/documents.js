@@ -1,6 +1,6 @@
 import { API_BASE_URL } from './config'
 
-export async function uploadTicket(file, token) {
+export async function uploadTicket(file) {
   const formData = new FormData()
 
   formData.append('file', file)
@@ -10,9 +10,7 @@ export async function uploadTicket(file, token) {
     `${API_BASE_URL}/travel-documents`,
     {
       method: 'POST',
-      headers: {
-        Authorization: `Bearer ${token}`
-      },
+      credentials: 'include',
       body: formData
     }
   )
@@ -29,11 +27,7 @@ export async function uploadTicket(file, token) {
 }
 
 
-export async function confirmOCR(
-  documentId,
-  corrections,
-  token
-) {
+export async function confirmOCR(documentId, corrections) {
   const body = {
     confirmed: true
   }
@@ -46,9 +40,9 @@ export async function confirmOCR(
     `${API_BASE_URL}/travel-documents/${documentId}/confirm`,
     {
       method: 'POST',
+      credentials: 'include',
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify(body)
     }

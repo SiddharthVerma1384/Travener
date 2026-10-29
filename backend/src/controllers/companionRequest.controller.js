@@ -192,3 +192,57 @@ export const createCompanionRequest = asyncHandler(async (req, res) => {
         )
     );
 });
+
+export const getCompanionRequests = asyncHandler(async (req, res) => {
+  const requests = await prisma.companionRequest.findMany({
+    where: { OR: [{ senderId: req.user.id }, { recipientId: req.user.id }] },
+    orderBy: { createdAt: "desc" },
+    include: {
+      sender: { select: { id: true, name: true } },
+      recipient: { select: { id: true, name: true } },
+      travelRequest: { select: { id: true, source: true, destination: true, departureAt: true, passengersRequired: true } },
+      offer: { select: { id: true, source: true, destination: true, departureAt: true, transportMode: true, availableSeats: true } }
+    }
+  });
+
+  return res.status(200).json(new ApiResponse(200, requests, "Companion requests fetched successfully"));
+});
+
+export const respondToCompanionRequest = asyncHandler(async (req, res) => {
+  const { requestId } = req.params;
+  const { status } = req.body;
+  if (!["ACCEPTED", "REJECTED"].includes(status)) {
+    throw new ApiError(400, "Status must be ACCEPTED or REJECTED");
+  }
+
+  const request = await prisma.companionRequest.findUnique({ where: { id: requestId } });
+  if (!request) throw new ApiError(404, "Companion request not found");
+  if (request.recipientId !== req.user.id) throw new ApiError(403, "You cannot respond to this request");
+  if (request.status !== "PENDING") throw new ApiError(409, "This request has already been resolved");
+  if (request.expiresAt <= new Date()) throw new ApiError(409, "This request has expired");
+
+  const updatedRequest = await prisma.$transaction(async (transaction) => {
+    if (status === "ACCEPTED") {
+      const offer = await transaction.travelOffer.findUnique({ where: { id: request.offerId } });
+      const travelRequest = await transaction.travelRequest.findUnique({ where: { id: request.travelRequestId } });
+      if (!offer || !travelRequest || offer.availableSeats < travelRequest.passengersRequired) {
+        throw new ApiError(409, "There are no longer enough seats for this journey");
+      }
+      await transaction.travelOffer.update({
+        where: { id: offer.id },
+        data: { availableSeats: { decrement: travelRequest.passengersRequired }, isActive: offer.availableSeats === travelRequest.passengersRequired ? false : true }
+      });
+    }
+    const updated = await transaction.companionRequest.update({
+      where: { id: request.id },
+      data: { status, respondedAt: new Date() },
+      include: { sender: { select: { id: true, name: true } }, recipient: { select: { id: true, name: true } } }
+    });
+    if (status === "ACCEPTED") {
+      await transaction.journey.create({ data: { companionRequestId: request.id } });
+    }
+    return updated;
+  });
+
+  return res.status(200).json(new ApiResponse(200, updatedRequest, `Companion request ${status.toLowerCase()} successfully`));
+});

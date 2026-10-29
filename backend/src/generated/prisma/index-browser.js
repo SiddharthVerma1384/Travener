@@ -187,6 +187,62 @@ exports.Prisma.CompanionRequestScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.JourneyScalarFieldEnum = {
+  id: 'id',
+  companionRequestId: 'companionRequestId',
+  status: 'status',
+  startedAt: 'startedAt',
+  completedAt: 'completedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.MessageScalarFieldEnum = {
+  id: 'id',
+  journeyId: 'journeyId',
+  requestId: 'requestId',
+  senderId: 'senderId',
+  body: 'body',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.RatingScalarFieldEnum = {
+  id: 'id',
+  journeyId: 'journeyId',
+  authorId: 'authorId',
+  subjectId: 'subjectId',
+  stars: 'stars',
+  comment: 'comment',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.ReportScalarFieldEnum = {
+  id: 'id',
+  journeyId: 'journeyId',
+  authorId: 'authorId',
+  subjectId: 'subjectId',
+  reason: 'reason',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.TravelDocumentScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  originalName: 'originalName',
+  mimeType: 'mimeType',
+  ocrStatus: 'ocrStatus',
+  rawText: 'rawText',
+  source: 'source',
+  destination: 'destination',
+  departureAt: 'departureAt',
+  transportMode: 'transportMode',
+  errorMessage: 'errorMessage',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -241,12 +297,38 @@ exports.CompanionRequestStatus = exports.$Enums.CompanionRequestStatus = {
   EXPIRED: 'EXPIRED'
 };
 
+exports.JourneyStatus = exports.$Enums.JourneyStatus = {
+  CONFIRMED: 'CONFIRMED',
+  IN_PROGRESS: 'IN_PROGRESS',
+  COMPLETED: 'COMPLETED',
+  CANCELLED: 'CANCELLED'
+};
+
+exports.ReportStatus = exports.$Enums.ReportStatus = {
+  OPEN: 'OPEN',
+  REVIEWED: 'REVIEWED',
+  RESOLVED: 'RESOLVED',
+  DISMISSED: 'DISMISSED'
+};
+
+exports.TravelDocumentStatus = exports.$Enums.TravelDocumentStatus = {
+  PROCESSING: 'PROCESSING',
+  COMPLETED: 'COMPLETED',
+  FAILED: 'FAILED',
+  CONFIRMED: 'CONFIRMED'
+};
+
 exports.Prisma.ModelName = {
   User: 'User',
   RefreshSession: 'RefreshSession',
   TravelOffer: 'TravelOffer',
   TravelRequest: 'TravelRequest',
-  CompanionRequest: 'CompanionRequest'
+  CompanionRequest: 'CompanionRequest',
+  Journey: 'Journey',
+  Message: 'Message',
+  Rating: 'Rating',
+  Report: 'Report',
+  TravelDocument: 'TravelDocument'
 };
 
 /**

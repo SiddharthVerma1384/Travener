@@ -38,6 +38,31 @@ export type TravelRequest = $Result.DefaultSelection<Prisma.$TravelRequestPayloa
  * 
  */
 export type CompanionRequest = $Result.DefaultSelection<Prisma.$CompanionRequestPayload>
+/**
+ * Model Journey
+ * 
+ */
+export type Journey = $Result.DefaultSelection<Prisma.$JourneyPayload>
+/**
+ * Model Message
+ * 
+ */
+export type Message = $Result.DefaultSelection<Prisma.$MessagePayload>
+/**
+ * Model Rating
+ * 
+ */
+export type Rating = $Result.DefaultSelection<Prisma.$RatingPayload>
+/**
+ * Model Report
+ * 
+ */
+export type Report = $Result.DefaultSelection<Prisma.$ReportPayload>
+/**
+ * Model TravelDocument
+ * 
+ */
+export type TravelDocument = $Result.DefaultSelection<Prisma.$TravelDocumentPayload>
 
 /**
  * Enums
@@ -100,6 +125,36 @@ export const CompanionRequestStatus: {
 
 export type CompanionRequestStatus = (typeof CompanionRequestStatus)[keyof typeof CompanionRequestStatus]
 
+
+export const JourneyStatus: {
+  CONFIRMED: 'CONFIRMED',
+  IN_PROGRESS: 'IN_PROGRESS',
+  COMPLETED: 'COMPLETED',
+  CANCELLED: 'CANCELLED'
+};
+
+export type JourneyStatus = (typeof JourneyStatus)[keyof typeof JourneyStatus]
+
+
+export const ReportStatus: {
+  OPEN: 'OPEN',
+  REVIEWED: 'REVIEWED',
+  RESOLVED: 'RESOLVED',
+  DISMISSED: 'DISMISSED'
+};
+
+export type ReportStatus = (typeof ReportStatus)[keyof typeof ReportStatus]
+
+
+export const TravelDocumentStatus: {
+  PROCESSING: 'PROCESSING',
+  COMPLETED: 'COMPLETED',
+  FAILED: 'FAILED',
+  CONFIRMED: 'CONFIRMED'
+};
+
+export type TravelDocumentStatus = (typeof TravelDocumentStatus)[keyof typeof TravelDocumentStatus]
+
 }
 
 export type UserStatus = $Enums.UserStatus
@@ -125,6 +180,18 @@ export const TransportMode: typeof $Enums.TransportMode
 export type CompanionRequestStatus = $Enums.CompanionRequestStatus
 
 export const CompanionRequestStatus: typeof $Enums.CompanionRequestStatus
+
+export type JourneyStatus = $Enums.JourneyStatus
+
+export const JourneyStatus: typeof $Enums.JourneyStatus
+
+export type ReportStatus = $Enums.ReportStatus
+
+export const ReportStatus: typeof $Enums.ReportStatus
+
+export type TravelDocumentStatus = $Enums.TravelDocumentStatus
+
+export const TravelDocumentStatus: typeof $Enums.TravelDocumentStatus
 
 /**
  * ##  Prisma Client ʲˢ
@@ -296,6 +363,56 @@ export class PrismaClient<
     * ```
     */
   get companionRequest(): Prisma.CompanionRequestDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.journey`: Exposes CRUD operations for the **Journey** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Journeys
+    * const journeys = await prisma.journey.findMany()
+    * ```
+    */
+  get journey(): Prisma.JourneyDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.message`: Exposes CRUD operations for the **Message** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Messages
+    * const messages = await prisma.message.findMany()
+    * ```
+    */
+  get message(): Prisma.MessageDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.rating`: Exposes CRUD operations for the **Rating** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Ratings
+    * const ratings = await prisma.rating.findMany()
+    * ```
+    */
+  get rating(): Prisma.RatingDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.report`: Exposes CRUD operations for the **Report** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Reports
+    * const reports = await prisma.report.findMany()
+    * ```
+    */
+  get report(): Prisma.ReportDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.travelDocument`: Exposes CRUD operations for the **TravelDocument** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more TravelDocuments
+    * const travelDocuments = await prisma.travelDocument.findMany()
+    * ```
+    */
+  get travelDocument(): Prisma.TravelDocumentDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -747,7 +864,12 @@ export namespace Prisma {
     RefreshSession: 'RefreshSession',
     TravelOffer: 'TravelOffer',
     TravelRequest: 'TravelRequest',
-    CompanionRequest: 'CompanionRequest'
+    CompanionRequest: 'CompanionRequest',
+    Journey: 'Journey',
+    Message: 'Message',
+    Rating: 'Rating',
+    Report: 'Report',
+    TravelDocument: 'TravelDocument'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -763,7 +885,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "refreshSession" | "travelOffer" | "travelRequest" | "companionRequest"
+      modelProps: "user" | "refreshSession" | "travelOffer" | "travelRequest" | "companionRequest" | "journey" | "message" | "rating" | "report" | "travelDocument"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1137,6 +1259,376 @@ export namespace Prisma {
           }
         }
       }
+      Journey: {
+        payload: Prisma.$JourneyPayload<ExtArgs>
+        fields: Prisma.JourneyFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.JourneyFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$JourneyPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.JourneyFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$JourneyPayload>
+          }
+          findFirst: {
+            args: Prisma.JourneyFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$JourneyPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.JourneyFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$JourneyPayload>
+          }
+          findMany: {
+            args: Prisma.JourneyFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$JourneyPayload>[]
+          }
+          create: {
+            args: Prisma.JourneyCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$JourneyPayload>
+          }
+          createMany: {
+            args: Prisma.JourneyCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.JourneyCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$JourneyPayload>[]
+          }
+          delete: {
+            args: Prisma.JourneyDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$JourneyPayload>
+          }
+          update: {
+            args: Prisma.JourneyUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$JourneyPayload>
+          }
+          deleteMany: {
+            args: Prisma.JourneyDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.JourneyUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.JourneyUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$JourneyPayload>[]
+          }
+          upsert: {
+            args: Prisma.JourneyUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$JourneyPayload>
+          }
+          aggregate: {
+            args: Prisma.JourneyAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateJourney>
+          }
+          groupBy: {
+            args: Prisma.JourneyGroupByArgs<ExtArgs>
+            result: $Utils.Optional<JourneyGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.JourneyCountArgs<ExtArgs>
+            result: $Utils.Optional<JourneyCountAggregateOutputType> | number
+          }
+        }
+      }
+      Message: {
+        payload: Prisma.$MessagePayload<ExtArgs>
+        fields: Prisma.MessageFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.MessageFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MessagePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.MessageFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MessagePayload>
+          }
+          findFirst: {
+            args: Prisma.MessageFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MessagePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.MessageFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MessagePayload>
+          }
+          findMany: {
+            args: Prisma.MessageFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MessagePayload>[]
+          }
+          create: {
+            args: Prisma.MessageCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MessagePayload>
+          }
+          createMany: {
+            args: Prisma.MessageCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.MessageCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MessagePayload>[]
+          }
+          delete: {
+            args: Prisma.MessageDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MessagePayload>
+          }
+          update: {
+            args: Prisma.MessageUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MessagePayload>
+          }
+          deleteMany: {
+            args: Prisma.MessageDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.MessageUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.MessageUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MessagePayload>[]
+          }
+          upsert: {
+            args: Prisma.MessageUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MessagePayload>
+          }
+          aggregate: {
+            args: Prisma.MessageAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateMessage>
+          }
+          groupBy: {
+            args: Prisma.MessageGroupByArgs<ExtArgs>
+            result: $Utils.Optional<MessageGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.MessageCountArgs<ExtArgs>
+            result: $Utils.Optional<MessageCountAggregateOutputType> | number
+          }
+        }
+      }
+      Rating: {
+        payload: Prisma.$RatingPayload<ExtArgs>
+        fields: Prisma.RatingFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.RatingFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RatingPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.RatingFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RatingPayload>
+          }
+          findFirst: {
+            args: Prisma.RatingFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RatingPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.RatingFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RatingPayload>
+          }
+          findMany: {
+            args: Prisma.RatingFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RatingPayload>[]
+          }
+          create: {
+            args: Prisma.RatingCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RatingPayload>
+          }
+          createMany: {
+            args: Prisma.RatingCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.RatingCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RatingPayload>[]
+          }
+          delete: {
+            args: Prisma.RatingDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RatingPayload>
+          }
+          update: {
+            args: Prisma.RatingUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RatingPayload>
+          }
+          deleteMany: {
+            args: Prisma.RatingDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.RatingUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.RatingUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RatingPayload>[]
+          }
+          upsert: {
+            args: Prisma.RatingUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RatingPayload>
+          }
+          aggregate: {
+            args: Prisma.RatingAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateRating>
+          }
+          groupBy: {
+            args: Prisma.RatingGroupByArgs<ExtArgs>
+            result: $Utils.Optional<RatingGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.RatingCountArgs<ExtArgs>
+            result: $Utils.Optional<RatingCountAggregateOutputType> | number
+          }
+        }
+      }
+      Report: {
+        payload: Prisma.$ReportPayload<ExtArgs>
+        fields: Prisma.ReportFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ReportFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReportPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ReportFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReportPayload>
+          }
+          findFirst: {
+            args: Prisma.ReportFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReportPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ReportFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReportPayload>
+          }
+          findMany: {
+            args: Prisma.ReportFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReportPayload>[]
+          }
+          create: {
+            args: Prisma.ReportCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReportPayload>
+          }
+          createMany: {
+            args: Prisma.ReportCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ReportCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReportPayload>[]
+          }
+          delete: {
+            args: Prisma.ReportDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReportPayload>
+          }
+          update: {
+            args: Prisma.ReportUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReportPayload>
+          }
+          deleteMany: {
+            args: Prisma.ReportDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ReportUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ReportUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReportPayload>[]
+          }
+          upsert: {
+            args: Prisma.ReportUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReportPayload>
+          }
+          aggregate: {
+            args: Prisma.ReportAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateReport>
+          }
+          groupBy: {
+            args: Prisma.ReportGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ReportGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ReportCountArgs<ExtArgs>
+            result: $Utils.Optional<ReportCountAggregateOutputType> | number
+          }
+        }
+      }
+      TravelDocument: {
+        payload: Prisma.$TravelDocumentPayload<ExtArgs>
+        fields: Prisma.TravelDocumentFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TravelDocumentFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TravelDocumentPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TravelDocumentFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TravelDocumentPayload>
+          }
+          findFirst: {
+            args: Prisma.TravelDocumentFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TravelDocumentPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TravelDocumentFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TravelDocumentPayload>
+          }
+          findMany: {
+            args: Prisma.TravelDocumentFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TravelDocumentPayload>[]
+          }
+          create: {
+            args: Prisma.TravelDocumentCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TravelDocumentPayload>
+          }
+          createMany: {
+            args: Prisma.TravelDocumentCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.TravelDocumentCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TravelDocumentPayload>[]
+          }
+          delete: {
+            args: Prisma.TravelDocumentDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TravelDocumentPayload>
+          }
+          update: {
+            args: Prisma.TravelDocumentUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TravelDocumentPayload>
+          }
+          deleteMany: {
+            args: Prisma.TravelDocumentDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TravelDocumentUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.TravelDocumentUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TravelDocumentPayload>[]
+          }
+          upsert: {
+            args: Prisma.TravelDocumentUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TravelDocumentPayload>
+          }
+          aggregate: {
+            args: Prisma.TravelDocumentAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTravelDocument>
+          }
+          groupBy: {
+            args: Prisma.TravelDocumentGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TravelDocumentGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TravelDocumentCountArgs<ExtArgs>
+            result: $Utils.Optional<TravelDocumentCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1265,6 +1757,11 @@ export namespace Prisma {
     travelOffer?: TravelOfferOmit
     travelRequest?: TravelRequestOmit
     companionRequest?: CompanionRequestOmit
+    journey?: JourneyOmit
+    message?: MessageOmit
+    rating?: RatingOmit
+    report?: ReportOmit
+    travelDocument?: TravelDocumentOmit
   }
 
   /* Types for Logging */
@@ -1350,6 +1847,12 @@ export namespace Prisma {
     travelRequests: number
     companionRequestsSent: number
     companionRequestsReceived: number
+    messagesSent: number
+    ratingsGiven: number
+    ratingsReceived: number
+    reportsFiled: number
+    reportsReceived: number
+    travelDocuments: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1358,6 +1861,12 @@ export namespace Prisma {
     travelRequests?: boolean | UserCountOutputTypeCountTravelRequestsArgs
     companionRequestsSent?: boolean | UserCountOutputTypeCountCompanionRequestsSentArgs
     companionRequestsReceived?: boolean | UserCountOutputTypeCountCompanionRequestsReceivedArgs
+    messagesSent?: boolean | UserCountOutputTypeCountMessagesSentArgs
+    ratingsGiven?: boolean | UserCountOutputTypeCountRatingsGivenArgs
+    ratingsReceived?: boolean | UserCountOutputTypeCountRatingsReceivedArgs
+    reportsFiled?: boolean | UserCountOutputTypeCountReportsFiledArgs
+    reportsReceived?: boolean | UserCountOutputTypeCountReportsReceivedArgs
+    travelDocuments?: boolean | UserCountOutputTypeCountTravelDocumentsArgs
   }
 
   // Custom InputTypes
@@ -1404,6 +1913,48 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountCompanionRequestsReceivedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: CompanionRequestWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountMessagesSentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MessageWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountRatingsGivenArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RatingWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountRatingsReceivedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RatingWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountReportsFiledArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ReportWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountReportsReceivedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ReportWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountTravelDocumentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TravelDocumentWhereInput
   }
 
 
@@ -1466,6 +2017,86 @@ export namespace Prisma {
    */
   export type TravelRequestCountOutputTypeCountCompanionRequestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: CompanionRequestWhereInput
+  }
+
+
+  /**
+   * Count Type CompanionRequestCountOutputType
+   */
+
+  export type CompanionRequestCountOutputType = {
+    messages: number
+  }
+
+  export type CompanionRequestCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    messages?: boolean | CompanionRequestCountOutputTypeCountMessagesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * CompanionRequestCountOutputType without action
+   */
+  export type CompanionRequestCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanionRequestCountOutputType
+     */
+    select?: CompanionRequestCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * CompanionRequestCountOutputType without action
+   */
+  export type CompanionRequestCountOutputTypeCountMessagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MessageWhereInput
+  }
+
+
+  /**
+   * Count Type JourneyCountOutputType
+   */
+
+  export type JourneyCountOutputType = {
+    messages: number
+    ratings: number
+    reports: number
+  }
+
+  export type JourneyCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    messages?: boolean | JourneyCountOutputTypeCountMessagesArgs
+    ratings?: boolean | JourneyCountOutputTypeCountRatingsArgs
+    reports?: boolean | JourneyCountOutputTypeCountReportsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * JourneyCountOutputType without action
+   */
+  export type JourneyCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the JourneyCountOutputType
+     */
+    select?: JourneyCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * JourneyCountOutputType without action
+   */
+  export type JourneyCountOutputTypeCountMessagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MessageWhereInput
+  }
+
+  /**
+   * JourneyCountOutputType without action
+   */
+  export type JourneyCountOutputTypeCountRatingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RatingWhereInput
+  }
+
+  /**
+   * JourneyCountOutputType without action
+   */
+  export type JourneyCountOutputTypeCountReportsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ReportWhereInput
   }
 
 
@@ -1714,6 +2345,12 @@ export namespace Prisma {
     travelRequests?: boolean | User$travelRequestsArgs<ExtArgs>
     companionRequestsSent?: boolean | User$companionRequestsSentArgs<ExtArgs>
     companionRequestsReceived?: boolean | User$companionRequestsReceivedArgs<ExtArgs>
+    messagesSent?: boolean | User$messagesSentArgs<ExtArgs>
+    ratingsGiven?: boolean | User$ratingsGivenArgs<ExtArgs>
+    ratingsReceived?: boolean | User$ratingsReceivedArgs<ExtArgs>
+    reportsFiled?: boolean | User$reportsFiledArgs<ExtArgs>
+    reportsReceived?: boolean | User$reportsReceivedArgs<ExtArgs>
+    travelDocuments?: boolean | User$travelDocumentsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1775,6 +2412,12 @@ export namespace Prisma {
     travelRequests?: boolean | User$travelRequestsArgs<ExtArgs>
     companionRequestsSent?: boolean | User$companionRequestsSentArgs<ExtArgs>
     companionRequestsReceived?: boolean | User$companionRequestsReceivedArgs<ExtArgs>
+    messagesSent?: boolean | User$messagesSentArgs<ExtArgs>
+    ratingsGiven?: boolean | User$ratingsGivenArgs<ExtArgs>
+    ratingsReceived?: boolean | User$ratingsReceivedArgs<ExtArgs>
+    reportsFiled?: boolean | User$reportsFiledArgs<ExtArgs>
+    reportsReceived?: boolean | User$reportsReceivedArgs<ExtArgs>
+    travelDocuments?: boolean | User$travelDocumentsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1788,6 +2431,12 @@ export namespace Prisma {
       travelRequests: Prisma.$TravelRequestPayload<ExtArgs>[]
       companionRequestsSent: Prisma.$CompanionRequestPayload<ExtArgs>[]
       companionRequestsReceived: Prisma.$CompanionRequestPayload<ExtArgs>[]
+      messagesSent: Prisma.$MessagePayload<ExtArgs>[]
+      ratingsGiven: Prisma.$RatingPayload<ExtArgs>[]
+      ratingsReceived: Prisma.$RatingPayload<ExtArgs>[]
+      reportsFiled: Prisma.$ReportPayload<ExtArgs>[]
+      reportsReceived: Prisma.$ReportPayload<ExtArgs>[]
+      travelDocuments: Prisma.$TravelDocumentPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -2203,6 +2852,12 @@ export namespace Prisma {
     travelRequests<T extends User$travelRequestsArgs<ExtArgs> = {}>(args?: Subset<T, User$travelRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TravelRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     companionRequestsSent<T extends User$companionRequestsSentArgs<ExtArgs> = {}>(args?: Subset<T, User$companionRequestsSentArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompanionRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     companionRequestsReceived<T extends User$companionRequestsReceivedArgs<ExtArgs> = {}>(args?: Subset<T, User$companionRequestsReceivedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompanionRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    messagesSent<T extends User$messagesSentArgs<ExtArgs> = {}>(args?: Subset<T, User$messagesSentArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    ratingsGiven<T extends User$ratingsGivenArgs<ExtArgs> = {}>(args?: Subset<T, User$ratingsGivenArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RatingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    ratingsReceived<T extends User$ratingsReceivedArgs<ExtArgs> = {}>(args?: Subset<T, User$ratingsReceivedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RatingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    reportsFiled<T extends User$reportsFiledArgs<ExtArgs> = {}>(args?: Subset<T, User$reportsFiledArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReportPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    reportsReceived<T extends User$reportsReceivedArgs<ExtArgs> = {}>(args?: Subset<T, User$reportsReceivedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReportPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    travelDocuments<T extends User$travelDocumentsArgs<ExtArgs> = {}>(args?: Subset<T, User$travelDocumentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TravelDocumentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2756,6 +3411,150 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: CompanionRequestScalarFieldEnum | CompanionRequestScalarFieldEnum[]
+  }
+
+  /**
+   * User.messagesSent
+   */
+  export type User$messagesSentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Message
+     */
+    select?: MessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Message
+     */
+    omit?: MessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageInclude<ExtArgs> | null
+    where?: MessageWhereInput
+    orderBy?: MessageOrderByWithRelationInput | MessageOrderByWithRelationInput[]
+    cursor?: MessageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MessageScalarFieldEnum | MessageScalarFieldEnum[]
+  }
+
+  /**
+   * User.ratingsGiven
+   */
+  export type User$ratingsGivenArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Rating
+     */
+    select?: RatingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Rating
+     */
+    omit?: RatingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RatingInclude<ExtArgs> | null
+    where?: RatingWhereInput
+    orderBy?: RatingOrderByWithRelationInput | RatingOrderByWithRelationInput[]
+    cursor?: RatingWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: RatingScalarFieldEnum | RatingScalarFieldEnum[]
+  }
+
+  /**
+   * User.ratingsReceived
+   */
+  export type User$ratingsReceivedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Rating
+     */
+    select?: RatingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Rating
+     */
+    omit?: RatingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RatingInclude<ExtArgs> | null
+    where?: RatingWhereInput
+    orderBy?: RatingOrderByWithRelationInput | RatingOrderByWithRelationInput[]
+    cursor?: RatingWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: RatingScalarFieldEnum | RatingScalarFieldEnum[]
+  }
+
+  /**
+   * User.reportsFiled
+   */
+  export type User$reportsFiledArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Report
+     */
+    select?: ReportSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Report
+     */
+    omit?: ReportOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReportInclude<ExtArgs> | null
+    where?: ReportWhereInput
+    orderBy?: ReportOrderByWithRelationInput | ReportOrderByWithRelationInput[]
+    cursor?: ReportWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ReportScalarFieldEnum | ReportScalarFieldEnum[]
+  }
+
+  /**
+   * User.reportsReceived
+   */
+  export type User$reportsReceivedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Report
+     */
+    select?: ReportSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Report
+     */
+    omit?: ReportOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReportInclude<ExtArgs> | null
+    where?: ReportWhereInput
+    orderBy?: ReportOrderByWithRelationInput | ReportOrderByWithRelationInput[]
+    cursor?: ReportWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ReportScalarFieldEnum | ReportScalarFieldEnum[]
+  }
+
+  /**
+   * User.travelDocuments
+   */
+  export type User$travelDocumentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TravelDocument
+     */
+    select?: TravelDocumentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TravelDocument
+     */
+    omit?: TravelDocumentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TravelDocumentInclude<ExtArgs> | null
+    where?: TravelDocumentWhereInput
+    orderBy?: TravelDocumentOrderByWithRelationInput | TravelDocumentOrderByWithRelationInput[]
+    cursor?: TravelDocumentWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TravelDocumentScalarFieldEnum | TravelDocumentScalarFieldEnum[]
   }
 
   /**
@@ -6471,6 +7270,9 @@ export namespace Prisma {
     recipient?: boolean | UserDefaultArgs<ExtArgs>
     travelRequest?: boolean | TravelRequestDefaultArgs<ExtArgs>
     offer?: boolean | TravelOfferDefaultArgs<ExtArgs>
+    journey?: boolean | CompanionRequest$journeyArgs<ExtArgs>
+    messages?: boolean | CompanionRequest$messagesArgs<ExtArgs>
+    _count?: boolean | CompanionRequestCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["companionRequest"]>
 
   export type CompanionRequestSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -6526,6 +7328,9 @@ export namespace Prisma {
     recipient?: boolean | UserDefaultArgs<ExtArgs>
     travelRequest?: boolean | TravelRequestDefaultArgs<ExtArgs>
     offer?: boolean | TravelOfferDefaultArgs<ExtArgs>
+    journey?: boolean | CompanionRequest$journeyArgs<ExtArgs>
+    messages?: boolean | CompanionRequest$messagesArgs<ExtArgs>
+    _count?: boolean | CompanionRequestCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type CompanionRequestIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     sender?: boolean | UserDefaultArgs<ExtArgs>
@@ -6547,6 +7352,8 @@ export namespace Prisma {
       recipient: Prisma.$UserPayload<ExtArgs>
       travelRequest: Prisma.$TravelRequestPayload<ExtArgs>
       offer: Prisma.$TravelOfferPayload<ExtArgs>
+      journey: Prisma.$JourneyPayload<ExtArgs> | null
+      messages: Prisma.$MessagePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -6957,6 +7764,8 @@ export namespace Prisma {
     recipient<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     travelRequest<T extends TravelRequestDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TravelRequestDefaultArgs<ExtArgs>>): Prisma__TravelRequestClient<$Result.GetResult<Prisma.$TravelRequestPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     offer<T extends TravelOfferDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TravelOfferDefaultArgs<ExtArgs>>): Prisma__TravelOfferClient<$Result.GetResult<Prisma.$TravelOfferPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    journey<T extends CompanionRequest$journeyArgs<ExtArgs> = {}>(args?: Subset<T, CompanionRequest$journeyArgs<ExtArgs>>): Prisma__JourneyClient<$Result.GetResult<Prisma.$JourneyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    messages<T extends CompanionRequest$messagesArgs<ExtArgs> = {}>(args?: Subset<T, CompanionRequest$messagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -7397,6 +8206,49 @@ export namespace Prisma {
   }
 
   /**
+   * CompanionRequest.journey
+   */
+  export type CompanionRequest$journeyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Journey
+     */
+    select?: JourneySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Journey
+     */
+    omit?: JourneyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: JourneyInclude<ExtArgs> | null
+    where?: JourneyWhereInput
+  }
+
+  /**
+   * CompanionRequest.messages
+   */
+  export type CompanionRequest$messagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Message
+     */
+    select?: MessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Message
+     */
+    omit?: MessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageInclude<ExtArgs> | null
+    where?: MessageWhereInput
+    orderBy?: MessageOrderByWithRelationInput | MessageOrderByWithRelationInput[]
+    cursor?: MessageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MessageScalarFieldEnum | MessageScalarFieldEnum[]
+  }
+
+  /**
    * CompanionRequest without action
    */
   export type CompanionRequestDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -7412,6 +8264,5716 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: CompanionRequestInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Journey
+   */
+
+  export type AggregateJourney = {
+    _count: JourneyCountAggregateOutputType | null
+    _min: JourneyMinAggregateOutputType | null
+    _max: JourneyMaxAggregateOutputType | null
+  }
+
+  export type JourneyMinAggregateOutputType = {
+    id: string | null
+    companionRequestId: string | null
+    status: $Enums.JourneyStatus | null
+    startedAt: Date | null
+    completedAt: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type JourneyMaxAggregateOutputType = {
+    id: string | null
+    companionRequestId: string | null
+    status: $Enums.JourneyStatus | null
+    startedAt: Date | null
+    completedAt: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type JourneyCountAggregateOutputType = {
+    id: number
+    companionRequestId: number
+    status: number
+    startedAt: number
+    completedAt: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type JourneyMinAggregateInputType = {
+    id?: true
+    companionRequestId?: true
+    status?: true
+    startedAt?: true
+    completedAt?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type JourneyMaxAggregateInputType = {
+    id?: true
+    companionRequestId?: true
+    status?: true
+    startedAt?: true
+    completedAt?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type JourneyCountAggregateInputType = {
+    id?: true
+    companionRequestId?: true
+    status?: true
+    startedAt?: true
+    completedAt?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type JourneyAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Journey to aggregate.
+     */
+    where?: JourneyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Journeys to fetch.
+     */
+    orderBy?: JourneyOrderByWithRelationInput | JourneyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: JourneyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Journeys from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Journeys.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Journeys
+    **/
+    _count?: true | JourneyCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: JourneyMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: JourneyMaxAggregateInputType
+  }
+
+  export type GetJourneyAggregateType<T extends JourneyAggregateArgs> = {
+        [P in keyof T & keyof AggregateJourney]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateJourney[P]>
+      : GetScalarType<T[P], AggregateJourney[P]>
+  }
+
+
+
+
+  export type JourneyGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: JourneyWhereInput
+    orderBy?: JourneyOrderByWithAggregationInput | JourneyOrderByWithAggregationInput[]
+    by: JourneyScalarFieldEnum[] | JourneyScalarFieldEnum
+    having?: JourneyScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: JourneyCountAggregateInputType | true
+    _min?: JourneyMinAggregateInputType
+    _max?: JourneyMaxAggregateInputType
+  }
+
+  export type JourneyGroupByOutputType = {
+    id: string
+    companionRequestId: string
+    status: $Enums.JourneyStatus
+    startedAt: Date | null
+    completedAt: Date | null
+    createdAt: Date
+    updatedAt: Date
+    _count: JourneyCountAggregateOutputType | null
+    _min: JourneyMinAggregateOutputType | null
+    _max: JourneyMaxAggregateOutputType | null
+  }
+
+  type GetJourneyGroupByPayload<T extends JourneyGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<JourneyGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof JourneyGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], JourneyGroupByOutputType[P]>
+            : GetScalarType<T[P], JourneyGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type JourneySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    companionRequestId?: boolean
+    status?: boolean
+    startedAt?: boolean
+    completedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    companionRequest?: boolean | CompanionRequestDefaultArgs<ExtArgs>
+    messages?: boolean | Journey$messagesArgs<ExtArgs>
+    ratings?: boolean | Journey$ratingsArgs<ExtArgs>
+    reports?: boolean | Journey$reportsArgs<ExtArgs>
+    _count?: boolean | JourneyCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["journey"]>
+
+  export type JourneySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    companionRequestId?: boolean
+    status?: boolean
+    startedAt?: boolean
+    completedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    companionRequest?: boolean | CompanionRequestDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["journey"]>
+
+  export type JourneySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    companionRequestId?: boolean
+    status?: boolean
+    startedAt?: boolean
+    completedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    companionRequest?: boolean | CompanionRequestDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["journey"]>
+
+  export type JourneySelectScalar = {
+    id?: boolean
+    companionRequestId?: boolean
+    status?: boolean
+    startedAt?: boolean
+    completedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type JourneyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "companionRequestId" | "status" | "startedAt" | "completedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["journey"]>
+  export type JourneyInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    companionRequest?: boolean | CompanionRequestDefaultArgs<ExtArgs>
+    messages?: boolean | Journey$messagesArgs<ExtArgs>
+    ratings?: boolean | Journey$ratingsArgs<ExtArgs>
+    reports?: boolean | Journey$reportsArgs<ExtArgs>
+    _count?: boolean | JourneyCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type JourneyIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    companionRequest?: boolean | CompanionRequestDefaultArgs<ExtArgs>
+  }
+  export type JourneyIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    companionRequest?: boolean | CompanionRequestDefaultArgs<ExtArgs>
+  }
+
+  export type $JourneyPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Journey"
+    objects: {
+      companionRequest: Prisma.$CompanionRequestPayload<ExtArgs>
+      messages: Prisma.$MessagePayload<ExtArgs>[]
+      ratings: Prisma.$RatingPayload<ExtArgs>[]
+      reports: Prisma.$ReportPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      companionRequestId: string
+      status: $Enums.JourneyStatus
+      startedAt: Date | null
+      completedAt: Date | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["journey"]>
+    composites: {}
+  }
+
+  type JourneyGetPayload<S extends boolean | null | undefined | JourneyDefaultArgs> = $Result.GetResult<Prisma.$JourneyPayload, S>
+
+  type JourneyCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<JourneyFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: JourneyCountAggregateInputType | true
+    }
+
+  export interface JourneyDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Journey'], meta: { name: 'Journey' } }
+    /**
+     * Find zero or one Journey that matches the filter.
+     * @param {JourneyFindUniqueArgs} args - Arguments to find a Journey
+     * @example
+     * // Get one Journey
+     * const journey = await prisma.journey.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends JourneyFindUniqueArgs>(args: SelectSubset<T, JourneyFindUniqueArgs<ExtArgs>>): Prisma__JourneyClient<$Result.GetResult<Prisma.$JourneyPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Journey that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {JourneyFindUniqueOrThrowArgs} args - Arguments to find a Journey
+     * @example
+     * // Get one Journey
+     * const journey = await prisma.journey.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends JourneyFindUniqueOrThrowArgs>(args: SelectSubset<T, JourneyFindUniqueOrThrowArgs<ExtArgs>>): Prisma__JourneyClient<$Result.GetResult<Prisma.$JourneyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Journey that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {JourneyFindFirstArgs} args - Arguments to find a Journey
+     * @example
+     * // Get one Journey
+     * const journey = await prisma.journey.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends JourneyFindFirstArgs>(args?: SelectSubset<T, JourneyFindFirstArgs<ExtArgs>>): Prisma__JourneyClient<$Result.GetResult<Prisma.$JourneyPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Journey that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {JourneyFindFirstOrThrowArgs} args - Arguments to find a Journey
+     * @example
+     * // Get one Journey
+     * const journey = await prisma.journey.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends JourneyFindFirstOrThrowArgs>(args?: SelectSubset<T, JourneyFindFirstOrThrowArgs<ExtArgs>>): Prisma__JourneyClient<$Result.GetResult<Prisma.$JourneyPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Journeys that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {JourneyFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Journeys
+     * const journeys = await prisma.journey.findMany()
+     * 
+     * // Get first 10 Journeys
+     * const journeys = await prisma.journey.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const journeyWithIdOnly = await prisma.journey.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends JourneyFindManyArgs>(args?: SelectSubset<T, JourneyFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$JourneyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Journey.
+     * @param {JourneyCreateArgs} args - Arguments to create a Journey.
+     * @example
+     * // Create one Journey
+     * const Journey = await prisma.journey.create({
+     *   data: {
+     *     // ... data to create a Journey
+     *   }
+     * })
+     * 
+     */
+    create<T extends JourneyCreateArgs>(args: SelectSubset<T, JourneyCreateArgs<ExtArgs>>): Prisma__JourneyClient<$Result.GetResult<Prisma.$JourneyPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Journeys.
+     * @param {JourneyCreateManyArgs} args - Arguments to create many Journeys.
+     * @example
+     * // Create many Journeys
+     * const journey = await prisma.journey.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends JourneyCreateManyArgs>(args?: SelectSubset<T, JourneyCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Journeys and returns the data saved in the database.
+     * @param {JourneyCreateManyAndReturnArgs} args - Arguments to create many Journeys.
+     * @example
+     * // Create many Journeys
+     * const journey = await prisma.journey.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Journeys and only return the `id`
+     * const journeyWithIdOnly = await prisma.journey.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends JourneyCreateManyAndReturnArgs>(args?: SelectSubset<T, JourneyCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$JourneyPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Journey.
+     * @param {JourneyDeleteArgs} args - Arguments to delete one Journey.
+     * @example
+     * // Delete one Journey
+     * const Journey = await prisma.journey.delete({
+     *   where: {
+     *     // ... filter to delete one Journey
+     *   }
+     * })
+     * 
+     */
+    delete<T extends JourneyDeleteArgs>(args: SelectSubset<T, JourneyDeleteArgs<ExtArgs>>): Prisma__JourneyClient<$Result.GetResult<Prisma.$JourneyPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Journey.
+     * @param {JourneyUpdateArgs} args - Arguments to update one Journey.
+     * @example
+     * // Update one Journey
+     * const journey = await prisma.journey.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends JourneyUpdateArgs>(args: SelectSubset<T, JourneyUpdateArgs<ExtArgs>>): Prisma__JourneyClient<$Result.GetResult<Prisma.$JourneyPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Journeys.
+     * @param {JourneyDeleteManyArgs} args - Arguments to filter Journeys to delete.
+     * @example
+     * // Delete a few Journeys
+     * const { count } = await prisma.journey.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends JourneyDeleteManyArgs>(args?: SelectSubset<T, JourneyDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Journeys.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {JourneyUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Journeys
+     * const journey = await prisma.journey.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends JourneyUpdateManyArgs>(args: SelectSubset<T, JourneyUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Journeys and returns the data updated in the database.
+     * @param {JourneyUpdateManyAndReturnArgs} args - Arguments to update many Journeys.
+     * @example
+     * // Update many Journeys
+     * const journey = await prisma.journey.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Journeys and only return the `id`
+     * const journeyWithIdOnly = await prisma.journey.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends JourneyUpdateManyAndReturnArgs>(args: SelectSubset<T, JourneyUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$JourneyPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Journey.
+     * @param {JourneyUpsertArgs} args - Arguments to update or create a Journey.
+     * @example
+     * // Update or create a Journey
+     * const journey = await prisma.journey.upsert({
+     *   create: {
+     *     // ... data to create a Journey
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Journey we want to update
+     *   }
+     * })
+     */
+    upsert<T extends JourneyUpsertArgs>(args: SelectSubset<T, JourneyUpsertArgs<ExtArgs>>): Prisma__JourneyClient<$Result.GetResult<Prisma.$JourneyPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Journeys.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {JourneyCountArgs} args - Arguments to filter Journeys to count.
+     * @example
+     * // Count the number of Journeys
+     * const count = await prisma.journey.count({
+     *   where: {
+     *     // ... the filter for the Journeys we want to count
+     *   }
+     * })
+    **/
+    count<T extends JourneyCountArgs>(
+      args?: Subset<T, JourneyCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], JourneyCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Journey.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {JourneyAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends JourneyAggregateArgs>(args: Subset<T, JourneyAggregateArgs>): Prisma.PrismaPromise<GetJourneyAggregateType<T>>
+
+    /**
+     * Group by Journey.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {JourneyGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends JourneyGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: JourneyGroupByArgs['orderBy'] }
+        : { orderBy?: JourneyGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, JourneyGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetJourneyGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Journey model
+   */
+  readonly fields: JourneyFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Journey.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__JourneyClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    companionRequest<T extends CompanionRequestDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CompanionRequestDefaultArgs<ExtArgs>>): Prisma__CompanionRequestClient<$Result.GetResult<Prisma.$CompanionRequestPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    messages<T extends Journey$messagesArgs<ExtArgs> = {}>(args?: Subset<T, Journey$messagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    ratings<T extends Journey$ratingsArgs<ExtArgs> = {}>(args?: Subset<T, Journey$ratingsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RatingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    reports<T extends Journey$reportsArgs<ExtArgs> = {}>(args?: Subset<T, Journey$reportsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReportPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Journey model
+   */
+  interface JourneyFieldRefs {
+    readonly id: FieldRef<"Journey", 'String'>
+    readonly companionRequestId: FieldRef<"Journey", 'String'>
+    readonly status: FieldRef<"Journey", 'JourneyStatus'>
+    readonly startedAt: FieldRef<"Journey", 'DateTime'>
+    readonly completedAt: FieldRef<"Journey", 'DateTime'>
+    readonly createdAt: FieldRef<"Journey", 'DateTime'>
+    readonly updatedAt: FieldRef<"Journey", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Journey findUnique
+   */
+  export type JourneyFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Journey
+     */
+    select?: JourneySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Journey
+     */
+    omit?: JourneyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: JourneyInclude<ExtArgs> | null
+    /**
+     * Filter, which Journey to fetch.
+     */
+    where: JourneyWhereUniqueInput
+  }
+
+  /**
+   * Journey findUniqueOrThrow
+   */
+  export type JourneyFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Journey
+     */
+    select?: JourneySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Journey
+     */
+    omit?: JourneyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: JourneyInclude<ExtArgs> | null
+    /**
+     * Filter, which Journey to fetch.
+     */
+    where: JourneyWhereUniqueInput
+  }
+
+  /**
+   * Journey findFirst
+   */
+  export type JourneyFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Journey
+     */
+    select?: JourneySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Journey
+     */
+    omit?: JourneyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: JourneyInclude<ExtArgs> | null
+    /**
+     * Filter, which Journey to fetch.
+     */
+    where?: JourneyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Journeys to fetch.
+     */
+    orderBy?: JourneyOrderByWithRelationInput | JourneyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Journeys.
+     */
+    cursor?: JourneyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Journeys from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Journeys.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Journeys.
+     */
+    distinct?: JourneyScalarFieldEnum | JourneyScalarFieldEnum[]
+  }
+
+  /**
+   * Journey findFirstOrThrow
+   */
+  export type JourneyFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Journey
+     */
+    select?: JourneySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Journey
+     */
+    omit?: JourneyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: JourneyInclude<ExtArgs> | null
+    /**
+     * Filter, which Journey to fetch.
+     */
+    where?: JourneyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Journeys to fetch.
+     */
+    orderBy?: JourneyOrderByWithRelationInput | JourneyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Journeys.
+     */
+    cursor?: JourneyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Journeys from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Journeys.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Journeys.
+     */
+    distinct?: JourneyScalarFieldEnum | JourneyScalarFieldEnum[]
+  }
+
+  /**
+   * Journey findMany
+   */
+  export type JourneyFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Journey
+     */
+    select?: JourneySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Journey
+     */
+    omit?: JourneyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: JourneyInclude<ExtArgs> | null
+    /**
+     * Filter, which Journeys to fetch.
+     */
+    where?: JourneyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Journeys to fetch.
+     */
+    orderBy?: JourneyOrderByWithRelationInput | JourneyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Journeys.
+     */
+    cursor?: JourneyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Journeys from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Journeys.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Journeys.
+     */
+    distinct?: JourneyScalarFieldEnum | JourneyScalarFieldEnum[]
+  }
+
+  /**
+   * Journey create
+   */
+  export type JourneyCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Journey
+     */
+    select?: JourneySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Journey
+     */
+    omit?: JourneyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: JourneyInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Journey.
+     */
+    data: XOR<JourneyCreateInput, JourneyUncheckedCreateInput>
+  }
+
+  /**
+   * Journey createMany
+   */
+  export type JourneyCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Journeys.
+     */
+    data: JourneyCreateManyInput | JourneyCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Journey createManyAndReturn
+   */
+  export type JourneyCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Journey
+     */
+    select?: JourneySelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Journey
+     */
+    omit?: JourneyOmit<ExtArgs> | null
+    /**
+     * The data used to create many Journeys.
+     */
+    data: JourneyCreateManyInput | JourneyCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: JourneyIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Journey update
+   */
+  export type JourneyUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Journey
+     */
+    select?: JourneySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Journey
+     */
+    omit?: JourneyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: JourneyInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Journey.
+     */
+    data: XOR<JourneyUpdateInput, JourneyUncheckedUpdateInput>
+    /**
+     * Choose, which Journey to update.
+     */
+    where: JourneyWhereUniqueInput
+  }
+
+  /**
+   * Journey updateMany
+   */
+  export type JourneyUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Journeys.
+     */
+    data: XOR<JourneyUpdateManyMutationInput, JourneyUncheckedUpdateManyInput>
+    /**
+     * Filter which Journeys to update
+     */
+    where?: JourneyWhereInput
+    /**
+     * Limit how many Journeys to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Journey updateManyAndReturn
+   */
+  export type JourneyUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Journey
+     */
+    select?: JourneySelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Journey
+     */
+    omit?: JourneyOmit<ExtArgs> | null
+    /**
+     * The data used to update Journeys.
+     */
+    data: XOR<JourneyUpdateManyMutationInput, JourneyUncheckedUpdateManyInput>
+    /**
+     * Filter which Journeys to update
+     */
+    where?: JourneyWhereInput
+    /**
+     * Limit how many Journeys to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: JourneyIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Journey upsert
+   */
+  export type JourneyUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Journey
+     */
+    select?: JourneySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Journey
+     */
+    omit?: JourneyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: JourneyInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Journey to update in case it exists.
+     */
+    where: JourneyWhereUniqueInput
+    /**
+     * In case the Journey found by the `where` argument doesn't exist, create a new Journey with this data.
+     */
+    create: XOR<JourneyCreateInput, JourneyUncheckedCreateInput>
+    /**
+     * In case the Journey was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<JourneyUpdateInput, JourneyUncheckedUpdateInput>
+  }
+
+  /**
+   * Journey delete
+   */
+  export type JourneyDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Journey
+     */
+    select?: JourneySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Journey
+     */
+    omit?: JourneyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: JourneyInclude<ExtArgs> | null
+    /**
+     * Filter which Journey to delete.
+     */
+    where: JourneyWhereUniqueInput
+  }
+
+  /**
+   * Journey deleteMany
+   */
+  export type JourneyDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Journeys to delete
+     */
+    where?: JourneyWhereInput
+    /**
+     * Limit how many Journeys to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Journey.messages
+   */
+  export type Journey$messagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Message
+     */
+    select?: MessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Message
+     */
+    omit?: MessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageInclude<ExtArgs> | null
+    where?: MessageWhereInput
+    orderBy?: MessageOrderByWithRelationInput | MessageOrderByWithRelationInput[]
+    cursor?: MessageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MessageScalarFieldEnum | MessageScalarFieldEnum[]
+  }
+
+  /**
+   * Journey.ratings
+   */
+  export type Journey$ratingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Rating
+     */
+    select?: RatingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Rating
+     */
+    omit?: RatingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RatingInclude<ExtArgs> | null
+    where?: RatingWhereInput
+    orderBy?: RatingOrderByWithRelationInput | RatingOrderByWithRelationInput[]
+    cursor?: RatingWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: RatingScalarFieldEnum | RatingScalarFieldEnum[]
+  }
+
+  /**
+   * Journey.reports
+   */
+  export type Journey$reportsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Report
+     */
+    select?: ReportSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Report
+     */
+    omit?: ReportOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReportInclude<ExtArgs> | null
+    where?: ReportWhereInput
+    orderBy?: ReportOrderByWithRelationInput | ReportOrderByWithRelationInput[]
+    cursor?: ReportWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ReportScalarFieldEnum | ReportScalarFieldEnum[]
+  }
+
+  /**
+   * Journey without action
+   */
+  export type JourneyDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Journey
+     */
+    select?: JourneySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Journey
+     */
+    omit?: JourneyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: JourneyInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Message
+   */
+
+  export type AggregateMessage = {
+    _count: MessageCountAggregateOutputType | null
+    _min: MessageMinAggregateOutputType | null
+    _max: MessageMaxAggregateOutputType | null
+  }
+
+  export type MessageMinAggregateOutputType = {
+    id: string | null
+    journeyId: string | null
+    requestId: string | null
+    senderId: string | null
+    body: string | null
+    createdAt: Date | null
+  }
+
+  export type MessageMaxAggregateOutputType = {
+    id: string | null
+    journeyId: string | null
+    requestId: string | null
+    senderId: string | null
+    body: string | null
+    createdAt: Date | null
+  }
+
+  export type MessageCountAggregateOutputType = {
+    id: number
+    journeyId: number
+    requestId: number
+    senderId: number
+    body: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type MessageMinAggregateInputType = {
+    id?: true
+    journeyId?: true
+    requestId?: true
+    senderId?: true
+    body?: true
+    createdAt?: true
+  }
+
+  export type MessageMaxAggregateInputType = {
+    id?: true
+    journeyId?: true
+    requestId?: true
+    senderId?: true
+    body?: true
+    createdAt?: true
+  }
+
+  export type MessageCountAggregateInputType = {
+    id?: true
+    journeyId?: true
+    requestId?: true
+    senderId?: true
+    body?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type MessageAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Message to aggregate.
+     */
+    where?: MessageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Messages to fetch.
+     */
+    orderBy?: MessageOrderByWithRelationInput | MessageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: MessageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Messages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Messages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Messages
+    **/
+    _count?: true | MessageCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: MessageMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: MessageMaxAggregateInputType
+  }
+
+  export type GetMessageAggregateType<T extends MessageAggregateArgs> = {
+        [P in keyof T & keyof AggregateMessage]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMessage[P]>
+      : GetScalarType<T[P], AggregateMessage[P]>
+  }
+
+
+
+
+  export type MessageGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MessageWhereInput
+    orderBy?: MessageOrderByWithAggregationInput | MessageOrderByWithAggregationInput[]
+    by: MessageScalarFieldEnum[] | MessageScalarFieldEnum
+    having?: MessageScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: MessageCountAggregateInputType | true
+    _min?: MessageMinAggregateInputType
+    _max?: MessageMaxAggregateInputType
+  }
+
+  export type MessageGroupByOutputType = {
+    id: string
+    journeyId: string
+    requestId: string
+    senderId: string
+    body: string
+    createdAt: Date
+    _count: MessageCountAggregateOutputType | null
+    _min: MessageMinAggregateOutputType | null
+    _max: MessageMaxAggregateOutputType | null
+  }
+
+  type GetMessageGroupByPayload<T extends MessageGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<MessageGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof MessageGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], MessageGroupByOutputType[P]>
+            : GetScalarType<T[P], MessageGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type MessageSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    journeyId?: boolean
+    requestId?: boolean
+    senderId?: boolean
+    body?: boolean
+    createdAt?: boolean
+    journey?: boolean | JourneyDefaultArgs<ExtArgs>
+    request?: boolean | CompanionRequestDefaultArgs<ExtArgs>
+    sender?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["message"]>
+
+  export type MessageSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    journeyId?: boolean
+    requestId?: boolean
+    senderId?: boolean
+    body?: boolean
+    createdAt?: boolean
+    journey?: boolean | JourneyDefaultArgs<ExtArgs>
+    request?: boolean | CompanionRequestDefaultArgs<ExtArgs>
+    sender?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["message"]>
+
+  export type MessageSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    journeyId?: boolean
+    requestId?: boolean
+    senderId?: boolean
+    body?: boolean
+    createdAt?: boolean
+    journey?: boolean | JourneyDefaultArgs<ExtArgs>
+    request?: boolean | CompanionRequestDefaultArgs<ExtArgs>
+    sender?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["message"]>
+
+  export type MessageSelectScalar = {
+    id?: boolean
+    journeyId?: boolean
+    requestId?: boolean
+    senderId?: boolean
+    body?: boolean
+    createdAt?: boolean
+  }
+
+  export type MessageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "journeyId" | "requestId" | "senderId" | "body" | "createdAt", ExtArgs["result"]["message"]>
+  export type MessageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    journey?: boolean | JourneyDefaultArgs<ExtArgs>
+    request?: boolean | CompanionRequestDefaultArgs<ExtArgs>
+    sender?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type MessageIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    journey?: boolean | JourneyDefaultArgs<ExtArgs>
+    request?: boolean | CompanionRequestDefaultArgs<ExtArgs>
+    sender?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type MessageIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    journey?: boolean | JourneyDefaultArgs<ExtArgs>
+    request?: boolean | CompanionRequestDefaultArgs<ExtArgs>
+    sender?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $MessagePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Message"
+    objects: {
+      journey: Prisma.$JourneyPayload<ExtArgs>
+      request: Prisma.$CompanionRequestPayload<ExtArgs>
+      sender: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      journeyId: string
+      requestId: string
+      senderId: string
+      body: string
+      createdAt: Date
+    }, ExtArgs["result"]["message"]>
+    composites: {}
+  }
+
+  type MessageGetPayload<S extends boolean | null | undefined | MessageDefaultArgs> = $Result.GetResult<Prisma.$MessagePayload, S>
+
+  type MessageCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<MessageFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: MessageCountAggregateInputType | true
+    }
+
+  export interface MessageDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Message'], meta: { name: 'Message' } }
+    /**
+     * Find zero or one Message that matches the filter.
+     * @param {MessageFindUniqueArgs} args - Arguments to find a Message
+     * @example
+     * // Get one Message
+     * const message = await prisma.message.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends MessageFindUniqueArgs>(args: SelectSubset<T, MessageFindUniqueArgs<ExtArgs>>): Prisma__MessageClient<$Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Message that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {MessageFindUniqueOrThrowArgs} args - Arguments to find a Message
+     * @example
+     * // Get one Message
+     * const message = await prisma.message.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends MessageFindUniqueOrThrowArgs>(args: SelectSubset<T, MessageFindUniqueOrThrowArgs<ExtArgs>>): Prisma__MessageClient<$Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Message that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MessageFindFirstArgs} args - Arguments to find a Message
+     * @example
+     * // Get one Message
+     * const message = await prisma.message.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends MessageFindFirstArgs>(args?: SelectSubset<T, MessageFindFirstArgs<ExtArgs>>): Prisma__MessageClient<$Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Message that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MessageFindFirstOrThrowArgs} args - Arguments to find a Message
+     * @example
+     * // Get one Message
+     * const message = await prisma.message.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends MessageFindFirstOrThrowArgs>(args?: SelectSubset<T, MessageFindFirstOrThrowArgs<ExtArgs>>): Prisma__MessageClient<$Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Messages that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MessageFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Messages
+     * const messages = await prisma.message.findMany()
+     * 
+     * // Get first 10 Messages
+     * const messages = await prisma.message.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const messageWithIdOnly = await prisma.message.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends MessageFindManyArgs>(args?: SelectSubset<T, MessageFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Message.
+     * @param {MessageCreateArgs} args - Arguments to create a Message.
+     * @example
+     * // Create one Message
+     * const Message = await prisma.message.create({
+     *   data: {
+     *     // ... data to create a Message
+     *   }
+     * })
+     * 
+     */
+    create<T extends MessageCreateArgs>(args: SelectSubset<T, MessageCreateArgs<ExtArgs>>): Prisma__MessageClient<$Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Messages.
+     * @param {MessageCreateManyArgs} args - Arguments to create many Messages.
+     * @example
+     * // Create many Messages
+     * const message = await prisma.message.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends MessageCreateManyArgs>(args?: SelectSubset<T, MessageCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Messages and returns the data saved in the database.
+     * @param {MessageCreateManyAndReturnArgs} args - Arguments to create many Messages.
+     * @example
+     * // Create many Messages
+     * const message = await prisma.message.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Messages and only return the `id`
+     * const messageWithIdOnly = await prisma.message.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends MessageCreateManyAndReturnArgs>(args?: SelectSubset<T, MessageCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Message.
+     * @param {MessageDeleteArgs} args - Arguments to delete one Message.
+     * @example
+     * // Delete one Message
+     * const Message = await prisma.message.delete({
+     *   where: {
+     *     // ... filter to delete one Message
+     *   }
+     * })
+     * 
+     */
+    delete<T extends MessageDeleteArgs>(args: SelectSubset<T, MessageDeleteArgs<ExtArgs>>): Prisma__MessageClient<$Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Message.
+     * @param {MessageUpdateArgs} args - Arguments to update one Message.
+     * @example
+     * // Update one Message
+     * const message = await prisma.message.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends MessageUpdateArgs>(args: SelectSubset<T, MessageUpdateArgs<ExtArgs>>): Prisma__MessageClient<$Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Messages.
+     * @param {MessageDeleteManyArgs} args - Arguments to filter Messages to delete.
+     * @example
+     * // Delete a few Messages
+     * const { count } = await prisma.message.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends MessageDeleteManyArgs>(args?: SelectSubset<T, MessageDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Messages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MessageUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Messages
+     * const message = await prisma.message.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends MessageUpdateManyArgs>(args: SelectSubset<T, MessageUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Messages and returns the data updated in the database.
+     * @param {MessageUpdateManyAndReturnArgs} args - Arguments to update many Messages.
+     * @example
+     * // Update many Messages
+     * const message = await prisma.message.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Messages and only return the `id`
+     * const messageWithIdOnly = await prisma.message.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends MessageUpdateManyAndReturnArgs>(args: SelectSubset<T, MessageUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Message.
+     * @param {MessageUpsertArgs} args - Arguments to update or create a Message.
+     * @example
+     * // Update or create a Message
+     * const message = await prisma.message.upsert({
+     *   create: {
+     *     // ... data to create a Message
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Message we want to update
+     *   }
+     * })
+     */
+    upsert<T extends MessageUpsertArgs>(args: SelectSubset<T, MessageUpsertArgs<ExtArgs>>): Prisma__MessageClient<$Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Messages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MessageCountArgs} args - Arguments to filter Messages to count.
+     * @example
+     * // Count the number of Messages
+     * const count = await prisma.message.count({
+     *   where: {
+     *     // ... the filter for the Messages we want to count
+     *   }
+     * })
+    **/
+    count<T extends MessageCountArgs>(
+      args?: Subset<T, MessageCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], MessageCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Message.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MessageAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends MessageAggregateArgs>(args: Subset<T, MessageAggregateArgs>): Prisma.PrismaPromise<GetMessageAggregateType<T>>
+
+    /**
+     * Group by Message.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MessageGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends MessageGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: MessageGroupByArgs['orderBy'] }
+        : { orderBy?: MessageGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, MessageGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMessageGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Message model
+   */
+  readonly fields: MessageFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Message.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__MessageClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    journey<T extends JourneyDefaultArgs<ExtArgs> = {}>(args?: Subset<T, JourneyDefaultArgs<ExtArgs>>): Prisma__JourneyClient<$Result.GetResult<Prisma.$JourneyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    request<T extends CompanionRequestDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CompanionRequestDefaultArgs<ExtArgs>>): Prisma__CompanionRequestClient<$Result.GetResult<Prisma.$CompanionRequestPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    sender<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Message model
+   */
+  interface MessageFieldRefs {
+    readonly id: FieldRef<"Message", 'String'>
+    readonly journeyId: FieldRef<"Message", 'String'>
+    readonly requestId: FieldRef<"Message", 'String'>
+    readonly senderId: FieldRef<"Message", 'String'>
+    readonly body: FieldRef<"Message", 'String'>
+    readonly createdAt: FieldRef<"Message", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Message findUnique
+   */
+  export type MessageFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Message
+     */
+    select?: MessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Message
+     */
+    omit?: MessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageInclude<ExtArgs> | null
+    /**
+     * Filter, which Message to fetch.
+     */
+    where: MessageWhereUniqueInput
+  }
+
+  /**
+   * Message findUniqueOrThrow
+   */
+  export type MessageFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Message
+     */
+    select?: MessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Message
+     */
+    omit?: MessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageInclude<ExtArgs> | null
+    /**
+     * Filter, which Message to fetch.
+     */
+    where: MessageWhereUniqueInput
+  }
+
+  /**
+   * Message findFirst
+   */
+  export type MessageFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Message
+     */
+    select?: MessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Message
+     */
+    omit?: MessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageInclude<ExtArgs> | null
+    /**
+     * Filter, which Message to fetch.
+     */
+    where?: MessageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Messages to fetch.
+     */
+    orderBy?: MessageOrderByWithRelationInput | MessageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Messages.
+     */
+    cursor?: MessageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Messages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Messages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Messages.
+     */
+    distinct?: MessageScalarFieldEnum | MessageScalarFieldEnum[]
+  }
+
+  /**
+   * Message findFirstOrThrow
+   */
+  export type MessageFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Message
+     */
+    select?: MessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Message
+     */
+    omit?: MessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageInclude<ExtArgs> | null
+    /**
+     * Filter, which Message to fetch.
+     */
+    where?: MessageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Messages to fetch.
+     */
+    orderBy?: MessageOrderByWithRelationInput | MessageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Messages.
+     */
+    cursor?: MessageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Messages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Messages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Messages.
+     */
+    distinct?: MessageScalarFieldEnum | MessageScalarFieldEnum[]
+  }
+
+  /**
+   * Message findMany
+   */
+  export type MessageFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Message
+     */
+    select?: MessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Message
+     */
+    omit?: MessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageInclude<ExtArgs> | null
+    /**
+     * Filter, which Messages to fetch.
+     */
+    where?: MessageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Messages to fetch.
+     */
+    orderBy?: MessageOrderByWithRelationInput | MessageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Messages.
+     */
+    cursor?: MessageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Messages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Messages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Messages.
+     */
+    distinct?: MessageScalarFieldEnum | MessageScalarFieldEnum[]
+  }
+
+  /**
+   * Message create
+   */
+  export type MessageCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Message
+     */
+    select?: MessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Message
+     */
+    omit?: MessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Message.
+     */
+    data: XOR<MessageCreateInput, MessageUncheckedCreateInput>
+  }
+
+  /**
+   * Message createMany
+   */
+  export type MessageCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Messages.
+     */
+    data: MessageCreateManyInput | MessageCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Message createManyAndReturn
+   */
+  export type MessageCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Message
+     */
+    select?: MessageSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Message
+     */
+    omit?: MessageOmit<ExtArgs> | null
+    /**
+     * The data used to create many Messages.
+     */
+    data: MessageCreateManyInput | MessageCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Message update
+   */
+  export type MessageUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Message
+     */
+    select?: MessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Message
+     */
+    omit?: MessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Message.
+     */
+    data: XOR<MessageUpdateInput, MessageUncheckedUpdateInput>
+    /**
+     * Choose, which Message to update.
+     */
+    where: MessageWhereUniqueInput
+  }
+
+  /**
+   * Message updateMany
+   */
+  export type MessageUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Messages.
+     */
+    data: XOR<MessageUpdateManyMutationInput, MessageUncheckedUpdateManyInput>
+    /**
+     * Filter which Messages to update
+     */
+    where?: MessageWhereInput
+    /**
+     * Limit how many Messages to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Message updateManyAndReturn
+   */
+  export type MessageUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Message
+     */
+    select?: MessageSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Message
+     */
+    omit?: MessageOmit<ExtArgs> | null
+    /**
+     * The data used to update Messages.
+     */
+    data: XOR<MessageUpdateManyMutationInput, MessageUncheckedUpdateManyInput>
+    /**
+     * Filter which Messages to update
+     */
+    where?: MessageWhereInput
+    /**
+     * Limit how many Messages to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Message upsert
+   */
+  export type MessageUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Message
+     */
+    select?: MessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Message
+     */
+    omit?: MessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Message to update in case it exists.
+     */
+    where: MessageWhereUniqueInput
+    /**
+     * In case the Message found by the `where` argument doesn't exist, create a new Message with this data.
+     */
+    create: XOR<MessageCreateInput, MessageUncheckedCreateInput>
+    /**
+     * In case the Message was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<MessageUpdateInput, MessageUncheckedUpdateInput>
+  }
+
+  /**
+   * Message delete
+   */
+  export type MessageDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Message
+     */
+    select?: MessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Message
+     */
+    omit?: MessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageInclude<ExtArgs> | null
+    /**
+     * Filter which Message to delete.
+     */
+    where: MessageWhereUniqueInput
+  }
+
+  /**
+   * Message deleteMany
+   */
+  export type MessageDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Messages to delete
+     */
+    where?: MessageWhereInput
+    /**
+     * Limit how many Messages to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Message without action
+   */
+  export type MessageDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Message
+     */
+    select?: MessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Message
+     */
+    omit?: MessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Rating
+   */
+
+  export type AggregateRating = {
+    _count: RatingCountAggregateOutputType | null
+    _avg: RatingAvgAggregateOutputType | null
+    _sum: RatingSumAggregateOutputType | null
+    _min: RatingMinAggregateOutputType | null
+    _max: RatingMaxAggregateOutputType | null
+  }
+
+  export type RatingAvgAggregateOutputType = {
+    stars: number | null
+  }
+
+  export type RatingSumAggregateOutputType = {
+    stars: number | null
+  }
+
+  export type RatingMinAggregateOutputType = {
+    id: string | null
+    journeyId: string | null
+    authorId: string | null
+    subjectId: string | null
+    stars: number | null
+    comment: string | null
+    createdAt: Date | null
+  }
+
+  export type RatingMaxAggregateOutputType = {
+    id: string | null
+    journeyId: string | null
+    authorId: string | null
+    subjectId: string | null
+    stars: number | null
+    comment: string | null
+    createdAt: Date | null
+  }
+
+  export type RatingCountAggregateOutputType = {
+    id: number
+    journeyId: number
+    authorId: number
+    subjectId: number
+    stars: number
+    comment: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type RatingAvgAggregateInputType = {
+    stars?: true
+  }
+
+  export type RatingSumAggregateInputType = {
+    stars?: true
+  }
+
+  export type RatingMinAggregateInputType = {
+    id?: true
+    journeyId?: true
+    authorId?: true
+    subjectId?: true
+    stars?: true
+    comment?: true
+    createdAt?: true
+  }
+
+  export type RatingMaxAggregateInputType = {
+    id?: true
+    journeyId?: true
+    authorId?: true
+    subjectId?: true
+    stars?: true
+    comment?: true
+    createdAt?: true
+  }
+
+  export type RatingCountAggregateInputType = {
+    id?: true
+    journeyId?: true
+    authorId?: true
+    subjectId?: true
+    stars?: true
+    comment?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type RatingAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Rating to aggregate.
+     */
+    where?: RatingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Ratings to fetch.
+     */
+    orderBy?: RatingOrderByWithRelationInput | RatingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: RatingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Ratings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Ratings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Ratings
+    **/
+    _count?: true | RatingCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: RatingAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: RatingSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: RatingMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: RatingMaxAggregateInputType
+  }
+
+  export type GetRatingAggregateType<T extends RatingAggregateArgs> = {
+        [P in keyof T & keyof AggregateRating]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateRating[P]>
+      : GetScalarType<T[P], AggregateRating[P]>
+  }
+
+
+
+
+  export type RatingGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RatingWhereInput
+    orderBy?: RatingOrderByWithAggregationInput | RatingOrderByWithAggregationInput[]
+    by: RatingScalarFieldEnum[] | RatingScalarFieldEnum
+    having?: RatingScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: RatingCountAggregateInputType | true
+    _avg?: RatingAvgAggregateInputType
+    _sum?: RatingSumAggregateInputType
+    _min?: RatingMinAggregateInputType
+    _max?: RatingMaxAggregateInputType
+  }
+
+  export type RatingGroupByOutputType = {
+    id: string
+    journeyId: string
+    authorId: string
+    subjectId: string
+    stars: number
+    comment: string | null
+    createdAt: Date
+    _count: RatingCountAggregateOutputType | null
+    _avg: RatingAvgAggregateOutputType | null
+    _sum: RatingSumAggregateOutputType | null
+    _min: RatingMinAggregateOutputType | null
+    _max: RatingMaxAggregateOutputType | null
+  }
+
+  type GetRatingGroupByPayload<T extends RatingGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<RatingGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof RatingGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], RatingGroupByOutputType[P]>
+            : GetScalarType<T[P], RatingGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type RatingSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    journeyId?: boolean
+    authorId?: boolean
+    subjectId?: boolean
+    stars?: boolean
+    comment?: boolean
+    createdAt?: boolean
+    journey?: boolean | JourneyDefaultArgs<ExtArgs>
+    author?: boolean | UserDefaultArgs<ExtArgs>
+    subject?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["rating"]>
+
+  export type RatingSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    journeyId?: boolean
+    authorId?: boolean
+    subjectId?: boolean
+    stars?: boolean
+    comment?: boolean
+    createdAt?: boolean
+    journey?: boolean | JourneyDefaultArgs<ExtArgs>
+    author?: boolean | UserDefaultArgs<ExtArgs>
+    subject?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["rating"]>
+
+  export type RatingSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    journeyId?: boolean
+    authorId?: boolean
+    subjectId?: boolean
+    stars?: boolean
+    comment?: boolean
+    createdAt?: boolean
+    journey?: boolean | JourneyDefaultArgs<ExtArgs>
+    author?: boolean | UserDefaultArgs<ExtArgs>
+    subject?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["rating"]>
+
+  export type RatingSelectScalar = {
+    id?: boolean
+    journeyId?: boolean
+    authorId?: boolean
+    subjectId?: boolean
+    stars?: boolean
+    comment?: boolean
+    createdAt?: boolean
+  }
+
+  export type RatingOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "journeyId" | "authorId" | "subjectId" | "stars" | "comment" | "createdAt", ExtArgs["result"]["rating"]>
+  export type RatingInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    journey?: boolean | JourneyDefaultArgs<ExtArgs>
+    author?: boolean | UserDefaultArgs<ExtArgs>
+    subject?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type RatingIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    journey?: boolean | JourneyDefaultArgs<ExtArgs>
+    author?: boolean | UserDefaultArgs<ExtArgs>
+    subject?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type RatingIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    journey?: boolean | JourneyDefaultArgs<ExtArgs>
+    author?: boolean | UserDefaultArgs<ExtArgs>
+    subject?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $RatingPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Rating"
+    objects: {
+      journey: Prisma.$JourneyPayload<ExtArgs>
+      author: Prisma.$UserPayload<ExtArgs>
+      subject: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      journeyId: string
+      authorId: string
+      subjectId: string
+      stars: number
+      comment: string | null
+      createdAt: Date
+    }, ExtArgs["result"]["rating"]>
+    composites: {}
+  }
+
+  type RatingGetPayload<S extends boolean | null | undefined | RatingDefaultArgs> = $Result.GetResult<Prisma.$RatingPayload, S>
+
+  type RatingCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<RatingFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: RatingCountAggregateInputType | true
+    }
+
+  export interface RatingDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Rating'], meta: { name: 'Rating' } }
+    /**
+     * Find zero or one Rating that matches the filter.
+     * @param {RatingFindUniqueArgs} args - Arguments to find a Rating
+     * @example
+     * // Get one Rating
+     * const rating = await prisma.rating.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends RatingFindUniqueArgs>(args: SelectSubset<T, RatingFindUniqueArgs<ExtArgs>>): Prisma__RatingClient<$Result.GetResult<Prisma.$RatingPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Rating that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {RatingFindUniqueOrThrowArgs} args - Arguments to find a Rating
+     * @example
+     * // Get one Rating
+     * const rating = await prisma.rating.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends RatingFindUniqueOrThrowArgs>(args: SelectSubset<T, RatingFindUniqueOrThrowArgs<ExtArgs>>): Prisma__RatingClient<$Result.GetResult<Prisma.$RatingPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Rating that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RatingFindFirstArgs} args - Arguments to find a Rating
+     * @example
+     * // Get one Rating
+     * const rating = await prisma.rating.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends RatingFindFirstArgs>(args?: SelectSubset<T, RatingFindFirstArgs<ExtArgs>>): Prisma__RatingClient<$Result.GetResult<Prisma.$RatingPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Rating that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RatingFindFirstOrThrowArgs} args - Arguments to find a Rating
+     * @example
+     * // Get one Rating
+     * const rating = await prisma.rating.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends RatingFindFirstOrThrowArgs>(args?: SelectSubset<T, RatingFindFirstOrThrowArgs<ExtArgs>>): Prisma__RatingClient<$Result.GetResult<Prisma.$RatingPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Ratings that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RatingFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Ratings
+     * const ratings = await prisma.rating.findMany()
+     * 
+     * // Get first 10 Ratings
+     * const ratings = await prisma.rating.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const ratingWithIdOnly = await prisma.rating.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends RatingFindManyArgs>(args?: SelectSubset<T, RatingFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RatingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Rating.
+     * @param {RatingCreateArgs} args - Arguments to create a Rating.
+     * @example
+     * // Create one Rating
+     * const Rating = await prisma.rating.create({
+     *   data: {
+     *     // ... data to create a Rating
+     *   }
+     * })
+     * 
+     */
+    create<T extends RatingCreateArgs>(args: SelectSubset<T, RatingCreateArgs<ExtArgs>>): Prisma__RatingClient<$Result.GetResult<Prisma.$RatingPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Ratings.
+     * @param {RatingCreateManyArgs} args - Arguments to create many Ratings.
+     * @example
+     * // Create many Ratings
+     * const rating = await prisma.rating.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends RatingCreateManyArgs>(args?: SelectSubset<T, RatingCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Ratings and returns the data saved in the database.
+     * @param {RatingCreateManyAndReturnArgs} args - Arguments to create many Ratings.
+     * @example
+     * // Create many Ratings
+     * const rating = await prisma.rating.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Ratings and only return the `id`
+     * const ratingWithIdOnly = await prisma.rating.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends RatingCreateManyAndReturnArgs>(args?: SelectSubset<T, RatingCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RatingPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Rating.
+     * @param {RatingDeleteArgs} args - Arguments to delete one Rating.
+     * @example
+     * // Delete one Rating
+     * const Rating = await prisma.rating.delete({
+     *   where: {
+     *     // ... filter to delete one Rating
+     *   }
+     * })
+     * 
+     */
+    delete<T extends RatingDeleteArgs>(args: SelectSubset<T, RatingDeleteArgs<ExtArgs>>): Prisma__RatingClient<$Result.GetResult<Prisma.$RatingPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Rating.
+     * @param {RatingUpdateArgs} args - Arguments to update one Rating.
+     * @example
+     * // Update one Rating
+     * const rating = await prisma.rating.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends RatingUpdateArgs>(args: SelectSubset<T, RatingUpdateArgs<ExtArgs>>): Prisma__RatingClient<$Result.GetResult<Prisma.$RatingPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Ratings.
+     * @param {RatingDeleteManyArgs} args - Arguments to filter Ratings to delete.
+     * @example
+     * // Delete a few Ratings
+     * const { count } = await prisma.rating.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends RatingDeleteManyArgs>(args?: SelectSubset<T, RatingDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Ratings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RatingUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Ratings
+     * const rating = await prisma.rating.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends RatingUpdateManyArgs>(args: SelectSubset<T, RatingUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Ratings and returns the data updated in the database.
+     * @param {RatingUpdateManyAndReturnArgs} args - Arguments to update many Ratings.
+     * @example
+     * // Update many Ratings
+     * const rating = await prisma.rating.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Ratings and only return the `id`
+     * const ratingWithIdOnly = await prisma.rating.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends RatingUpdateManyAndReturnArgs>(args: SelectSubset<T, RatingUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RatingPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Rating.
+     * @param {RatingUpsertArgs} args - Arguments to update or create a Rating.
+     * @example
+     * // Update or create a Rating
+     * const rating = await prisma.rating.upsert({
+     *   create: {
+     *     // ... data to create a Rating
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Rating we want to update
+     *   }
+     * })
+     */
+    upsert<T extends RatingUpsertArgs>(args: SelectSubset<T, RatingUpsertArgs<ExtArgs>>): Prisma__RatingClient<$Result.GetResult<Prisma.$RatingPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Ratings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RatingCountArgs} args - Arguments to filter Ratings to count.
+     * @example
+     * // Count the number of Ratings
+     * const count = await prisma.rating.count({
+     *   where: {
+     *     // ... the filter for the Ratings we want to count
+     *   }
+     * })
+    **/
+    count<T extends RatingCountArgs>(
+      args?: Subset<T, RatingCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], RatingCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Rating.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RatingAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends RatingAggregateArgs>(args: Subset<T, RatingAggregateArgs>): Prisma.PrismaPromise<GetRatingAggregateType<T>>
+
+    /**
+     * Group by Rating.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RatingGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends RatingGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: RatingGroupByArgs['orderBy'] }
+        : { orderBy?: RatingGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, RatingGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetRatingGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Rating model
+   */
+  readonly fields: RatingFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Rating.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__RatingClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    journey<T extends JourneyDefaultArgs<ExtArgs> = {}>(args?: Subset<T, JourneyDefaultArgs<ExtArgs>>): Prisma__JourneyClient<$Result.GetResult<Prisma.$JourneyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    author<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    subject<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Rating model
+   */
+  interface RatingFieldRefs {
+    readonly id: FieldRef<"Rating", 'String'>
+    readonly journeyId: FieldRef<"Rating", 'String'>
+    readonly authorId: FieldRef<"Rating", 'String'>
+    readonly subjectId: FieldRef<"Rating", 'String'>
+    readonly stars: FieldRef<"Rating", 'Int'>
+    readonly comment: FieldRef<"Rating", 'String'>
+    readonly createdAt: FieldRef<"Rating", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Rating findUnique
+   */
+  export type RatingFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Rating
+     */
+    select?: RatingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Rating
+     */
+    omit?: RatingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RatingInclude<ExtArgs> | null
+    /**
+     * Filter, which Rating to fetch.
+     */
+    where: RatingWhereUniqueInput
+  }
+
+  /**
+   * Rating findUniqueOrThrow
+   */
+  export type RatingFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Rating
+     */
+    select?: RatingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Rating
+     */
+    omit?: RatingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RatingInclude<ExtArgs> | null
+    /**
+     * Filter, which Rating to fetch.
+     */
+    where: RatingWhereUniqueInput
+  }
+
+  /**
+   * Rating findFirst
+   */
+  export type RatingFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Rating
+     */
+    select?: RatingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Rating
+     */
+    omit?: RatingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RatingInclude<ExtArgs> | null
+    /**
+     * Filter, which Rating to fetch.
+     */
+    where?: RatingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Ratings to fetch.
+     */
+    orderBy?: RatingOrderByWithRelationInput | RatingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Ratings.
+     */
+    cursor?: RatingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Ratings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Ratings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Ratings.
+     */
+    distinct?: RatingScalarFieldEnum | RatingScalarFieldEnum[]
+  }
+
+  /**
+   * Rating findFirstOrThrow
+   */
+  export type RatingFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Rating
+     */
+    select?: RatingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Rating
+     */
+    omit?: RatingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RatingInclude<ExtArgs> | null
+    /**
+     * Filter, which Rating to fetch.
+     */
+    where?: RatingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Ratings to fetch.
+     */
+    orderBy?: RatingOrderByWithRelationInput | RatingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Ratings.
+     */
+    cursor?: RatingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Ratings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Ratings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Ratings.
+     */
+    distinct?: RatingScalarFieldEnum | RatingScalarFieldEnum[]
+  }
+
+  /**
+   * Rating findMany
+   */
+  export type RatingFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Rating
+     */
+    select?: RatingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Rating
+     */
+    omit?: RatingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RatingInclude<ExtArgs> | null
+    /**
+     * Filter, which Ratings to fetch.
+     */
+    where?: RatingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Ratings to fetch.
+     */
+    orderBy?: RatingOrderByWithRelationInput | RatingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Ratings.
+     */
+    cursor?: RatingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Ratings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Ratings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Ratings.
+     */
+    distinct?: RatingScalarFieldEnum | RatingScalarFieldEnum[]
+  }
+
+  /**
+   * Rating create
+   */
+  export type RatingCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Rating
+     */
+    select?: RatingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Rating
+     */
+    omit?: RatingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RatingInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Rating.
+     */
+    data: XOR<RatingCreateInput, RatingUncheckedCreateInput>
+  }
+
+  /**
+   * Rating createMany
+   */
+  export type RatingCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Ratings.
+     */
+    data: RatingCreateManyInput | RatingCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Rating createManyAndReturn
+   */
+  export type RatingCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Rating
+     */
+    select?: RatingSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Rating
+     */
+    omit?: RatingOmit<ExtArgs> | null
+    /**
+     * The data used to create many Ratings.
+     */
+    data: RatingCreateManyInput | RatingCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RatingIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Rating update
+   */
+  export type RatingUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Rating
+     */
+    select?: RatingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Rating
+     */
+    omit?: RatingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RatingInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Rating.
+     */
+    data: XOR<RatingUpdateInput, RatingUncheckedUpdateInput>
+    /**
+     * Choose, which Rating to update.
+     */
+    where: RatingWhereUniqueInput
+  }
+
+  /**
+   * Rating updateMany
+   */
+  export type RatingUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Ratings.
+     */
+    data: XOR<RatingUpdateManyMutationInput, RatingUncheckedUpdateManyInput>
+    /**
+     * Filter which Ratings to update
+     */
+    where?: RatingWhereInput
+    /**
+     * Limit how many Ratings to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Rating updateManyAndReturn
+   */
+  export type RatingUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Rating
+     */
+    select?: RatingSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Rating
+     */
+    omit?: RatingOmit<ExtArgs> | null
+    /**
+     * The data used to update Ratings.
+     */
+    data: XOR<RatingUpdateManyMutationInput, RatingUncheckedUpdateManyInput>
+    /**
+     * Filter which Ratings to update
+     */
+    where?: RatingWhereInput
+    /**
+     * Limit how many Ratings to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RatingIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Rating upsert
+   */
+  export type RatingUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Rating
+     */
+    select?: RatingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Rating
+     */
+    omit?: RatingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RatingInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Rating to update in case it exists.
+     */
+    where: RatingWhereUniqueInput
+    /**
+     * In case the Rating found by the `where` argument doesn't exist, create a new Rating with this data.
+     */
+    create: XOR<RatingCreateInput, RatingUncheckedCreateInput>
+    /**
+     * In case the Rating was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<RatingUpdateInput, RatingUncheckedUpdateInput>
+  }
+
+  /**
+   * Rating delete
+   */
+  export type RatingDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Rating
+     */
+    select?: RatingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Rating
+     */
+    omit?: RatingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RatingInclude<ExtArgs> | null
+    /**
+     * Filter which Rating to delete.
+     */
+    where: RatingWhereUniqueInput
+  }
+
+  /**
+   * Rating deleteMany
+   */
+  export type RatingDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Ratings to delete
+     */
+    where?: RatingWhereInput
+    /**
+     * Limit how many Ratings to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Rating without action
+   */
+  export type RatingDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Rating
+     */
+    select?: RatingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Rating
+     */
+    omit?: RatingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RatingInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Report
+   */
+
+  export type AggregateReport = {
+    _count: ReportCountAggregateOutputType | null
+    _min: ReportMinAggregateOutputType | null
+    _max: ReportMaxAggregateOutputType | null
+  }
+
+  export type ReportMinAggregateOutputType = {
+    id: string | null
+    journeyId: string | null
+    authorId: string | null
+    subjectId: string | null
+    reason: string | null
+    status: $Enums.ReportStatus | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ReportMaxAggregateOutputType = {
+    id: string | null
+    journeyId: string | null
+    authorId: string | null
+    subjectId: string | null
+    reason: string | null
+    status: $Enums.ReportStatus | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ReportCountAggregateOutputType = {
+    id: number
+    journeyId: number
+    authorId: number
+    subjectId: number
+    reason: number
+    status: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type ReportMinAggregateInputType = {
+    id?: true
+    journeyId?: true
+    authorId?: true
+    subjectId?: true
+    reason?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ReportMaxAggregateInputType = {
+    id?: true
+    journeyId?: true
+    authorId?: true
+    subjectId?: true
+    reason?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ReportCountAggregateInputType = {
+    id?: true
+    journeyId?: true
+    authorId?: true
+    subjectId?: true
+    reason?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type ReportAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Report to aggregate.
+     */
+    where?: ReportWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Reports to fetch.
+     */
+    orderBy?: ReportOrderByWithRelationInput | ReportOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ReportWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Reports from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Reports.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Reports
+    **/
+    _count?: true | ReportCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ReportMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ReportMaxAggregateInputType
+  }
+
+  export type GetReportAggregateType<T extends ReportAggregateArgs> = {
+        [P in keyof T & keyof AggregateReport]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateReport[P]>
+      : GetScalarType<T[P], AggregateReport[P]>
+  }
+
+
+
+
+  export type ReportGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ReportWhereInput
+    orderBy?: ReportOrderByWithAggregationInput | ReportOrderByWithAggregationInput[]
+    by: ReportScalarFieldEnum[] | ReportScalarFieldEnum
+    having?: ReportScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ReportCountAggregateInputType | true
+    _min?: ReportMinAggregateInputType
+    _max?: ReportMaxAggregateInputType
+  }
+
+  export type ReportGroupByOutputType = {
+    id: string
+    journeyId: string | null
+    authorId: string
+    subjectId: string
+    reason: string
+    status: $Enums.ReportStatus
+    createdAt: Date
+    updatedAt: Date
+    _count: ReportCountAggregateOutputType | null
+    _min: ReportMinAggregateOutputType | null
+    _max: ReportMaxAggregateOutputType | null
+  }
+
+  type GetReportGroupByPayload<T extends ReportGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ReportGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ReportGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ReportGroupByOutputType[P]>
+            : GetScalarType<T[P], ReportGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ReportSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    journeyId?: boolean
+    authorId?: boolean
+    subjectId?: boolean
+    reason?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    journey?: boolean | Report$journeyArgs<ExtArgs>
+    author?: boolean | UserDefaultArgs<ExtArgs>
+    subject?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["report"]>
+
+  export type ReportSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    journeyId?: boolean
+    authorId?: boolean
+    subjectId?: boolean
+    reason?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    journey?: boolean | Report$journeyArgs<ExtArgs>
+    author?: boolean | UserDefaultArgs<ExtArgs>
+    subject?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["report"]>
+
+  export type ReportSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    journeyId?: boolean
+    authorId?: boolean
+    subjectId?: boolean
+    reason?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    journey?: boolean | Report$journeyArgs<ExtArgs>
+    author?: boolean | UserDefaultArgs<ExtArgs>
+    subject?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["report"]>
+
+  export type ReportSelectScalar = {
+    id?: boolean
+    journeyId?: boolean
+    authorId?: boolean
+    subjectId?: boolean
+    reason?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type ReportOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "journeyId" | "authorId" | "subjectId" | "reason" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["report"]>
+  export type ReportInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    journey?: boolean | Report$journeyArgs<ExtArgs>
+    author?: boolean | UserDefaultArgs<ExtArgs>
+    subject?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type ReportIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    journey?: boolean | Report$journeyArgs<ExtArgs>
+    author?: boolean | UserDefaultArgs<ExtArgs>
+    subject?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type ReportIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    journey?: boolean | Report$journeyArgs<ExtArgs>
+    author?: boolean | UserDefaultArgs<ExtArgs>
+    subject?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $ReportPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Report"
+    objects: {
+      journey: Prisma.$JourneyPayload<ExtArgs> | null
+      author: Prisma.$UserPayload<ExtArgs>
+      subject: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      journeyId: string | null
+      authorId: string
+      subjectId: string
+      reason: string
+      status: $Enums.ReportStatus
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["report"]>
+    composites: {}
+  }
+
+  type ReportGetPayload<S extends boolean | null | undefined | ReportDefaultArgs> = $Result.GetResult<Prisma.$ReportPayload, S>
+
+  type ReportCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ReportFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ReportCountAggregateInputType | true
+    }
+
+  export interface ReportDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Report'], meta: { name: 'Report' } }
+    /**
+     * Find zero or one Report that matches the filter.
+     * @param {ReportFindUniqueArgs} args - Arguments to find a Report
+     * @example
+     * // Get one Report
+     * const report = await prisma.report.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ReportFindUniqueArgs>(args: SelectSubset<T, ReportFindUniqueArgs<ExtArgs>>): Prisma__ReportClient<$Result.GetResult<Prisma.$ReportPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Report that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ReportFindUniqueOrThrowArgs} args - Arguments to find a Report
+     * @example
+     * // Get one Report
+     * const report = await prisma.report.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ReportFindUniqueOrThrowArgs>(args: SelectSubset<T, ReportFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ReportClient<$Result.GetResult<Prisma.$ReportPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Report that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ReportFindFirstArgs} args - Arguments to find a Report
+     * @example
+     * // Get one Report
+     * const report = await prisma.report.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ReportFindFirstArgs>(args?: SelectSubset<T, ReportFindFirstArgs<ExtArgs>>): Prisma__ReportClient<$Result.GetResult<Prisma.$ReportPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Report that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ReportFindFirstOrThrowArgs} args - Arguments to find a Report
+     * @example
+     * // Get one Report
+     * const report = await prisma.report.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ReportFindFirstOrThrowArgs>(args?: SelectSubset<T, ReportFindFirstOrThrowArgs<ExtArgs>>): Prisma__ReportClient<$Result.GetResult<Prisma.$ReportPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Reports that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ReportFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Reports
+     * const reports = await prisma.report.findMany()
+     * 
+     * // Get first 10 Reports
+     * const reports = await prisma.report.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const reportWithIdOnly = await prisma.report.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ReportFindManyArgs>(args?: SelectSubset<T, ReportFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReportPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Report.
+     * @param {ReportCreateArgs} args - Arguments to create a Report.
+     * @example
+     * // Create one Report
+     * const Report = await prisma.report.create({
+     *   data: {
+     *     // ... data to create a Report
+     *   }
+     * })
+     * 
+     */
+    create<T extends ReportCreateArgs>(args: SelectSubset<T, ReportCreateArgs<ExtArgs>>): Prisma__ReportClient<$Result.GetResult<Prisma.$ReportPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Reports.
+     * @param {ReportCreateManyArgs} args - Arguments to create many Reports.
+     * @example
+     * // Create many Reports
+     * const report = await prisma.report.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ReportCreateManyArgs>(args?: SelectSubset<T, ReportCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Reports and returns the data saved in the database.
+     * @param {ReportCreateManyAndReturnArgs} args - Arguments to create many Reports.
+     * @example
+     * // Create many Reports
+     * const report = await prisma.report.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Reports and only return the `id`
+     * const reportWithIdOnly = await prisma.report.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ReportCreateManyAndReturnArgs>(args?: SelectSubset<T, ReportCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReportPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Report.
+     * @param {ReportDeleteArgs} args - Arguments to delete one Report.
+     * @example
+     * // Delete one Report
+     * const Report = await prisma.report.delete({
+     *   where: {
+     *     // ... filter to delete one Report
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ReportDeleteArgs>(args: SelectSubset<T, ReportDeleteArgs<ExtArgs>>): Prisma__ReportClient<$Result.GetResult<Prisma.$ReportPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Report.
+     * @param {ReportUpdateArgs} args - Arguments to update one Report.
+     * @example
+     * // Update one Report
+     * const report = await prisma.report.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ReportUpdateArgs>(args: SelectSubset<T, ReportUpdateArgs<ExtArgs>>): Prisma__ReportClient<$Result.GetResult<Prisma.$ReportPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Reports.
+     * @param {ReportDeleteManyArgs} args - Arguments to filter Reports to delete.
+     * @example
+     * // Delete a few Reports
+     * const { count } = await prisma.report.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ReportDeleteManyArgs>(args?: SelectSubset<T, ReportDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Reports.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ReportUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Reports
+     * const report = await prisma.report.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ReportUpdateManyArgs>(args: SelectSubset<T, ReportUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Reports and returns the data updated in the database.
+     * @param {ReportUpdateManyAndReturnArgs} args - Arguments to update many Reports.
+     * @example
+     * // Update many Reports
+     * const report = await prisma.report.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Reports and only return the `id`
+     * const reportWithIdOnly = await prisma.report.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ReportUpdateManyAndReturnArgs>(args: SelectSubset<T, ReportUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReportPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Report.
+     * @param {ReportUpsertArgs} args - Arguments to update or create a Report.
+     * @example
+     * // Update or create a Report
+     * const report = await prisma.report.upsert({
+     *   create: {
+     *     // ... data to create a Report
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Report we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ReportUpsertArgs>(args: SelectSubset<T, ReportUpsertArgs<ExtArgs>>): Prisma__ReportClient<$Result.GetResult<Prisma.$ReportPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Reports.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ReportCountArgs} args - Arguments to filter Reports to count.
+     * @example
+     * // Count the number of Reports
+     * const count = await prisma.report.count({
+     *   where: {
+     *     // ... the filter for the Reports we want to count
+     *   }
+     * })
+    **/
+    count<T extends ReportCountArgs>(
+      args?: Subset<T, ReportCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ReportCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Report.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ReportAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ReportAggregateArgs>(args: Subset<T, ReportAggregateArgs>): Prisma.PrismaPromise<GetReportAggregateType<T>>
+
+    /**
+     * Group by Report.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ReportGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ReportGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ReportGroupByArgs['orderBy'] }
+        : { orderBy?: ReportGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ReportGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetReportGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Report model
+   */
+  readonly fields: ReportFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Report.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ReportClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    journey<T extends Report$journeyArgs<ExtArgs> = {}>(args?: Subset<T, Report$journeyArgs<ExtArgs>>): Prisma__JourneyClient<$Result.GetResult<Prisma.$JourneyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    author<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    subject<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Report model
+   */
+  interface ReportFieldRefs {
+    readonly id: FieldRef<"Report", 'String'>
+    readonly journeyId: FieldRef<"Report", 'String'>
+    readonly authorId: FieldRef<"Report", 'String'>
+    readonly subjectId: FieldRef<"Report", 'String'>
+    readonly reason: FieldRef<"Report", 'String'>
+    readonly status: FieldRef<"Report", 'ReportStatus'>
+    readonly createdAt: FieldRef<"Report", 'DateTime'>
+    readonly updatedAt: FieldRef<"Report", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Report findUnique
+   */
+  export type ReportFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Report
+     */
+    select?: ReportSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Report
+     */
+    omit?: ReportOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReportInclude<ExtArgs> | null
+    /**
+     * Filter, which Report to fetch.
+     */
+    where: ReportWhereUniqueInput
+  }
+
+  /**
+   * Report findUniqueOrThrow
+   */
+  export type ReportFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Report
+     */
+    select?: ReportSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Report
+     */
+    omit?: ReportOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReportInclude<ExtArgs> | null
+    /**
+     * Filter, which Report to fetch.
+     */
+    where: ReportWhereUniqueInput
+  }
+
+  /**
+   * Report findFirst
+   */
+  export type ReportFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Report
+     */
+    select?: ReportSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Report
+     */
+    omit?: ReportOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReportInclude<ExtArgs> | null
+    /**
+     * Filter, which Report to fetch.
+     */
+    where?: ReportWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Reports to fetch.
+     */
+    orderBy?: ReportOrderByWithRelationInput | ReportOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Reports.
+     */
+    cursor?: ReportWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Reports from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Reports.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Reports.
+     */
+    distinct?: ReportScalarFieldEnum | ReportScalarFieldEnum[]
+  }
+
+  /**
+   * Report findFirstOrThrow
+   */
+  export type ReportFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Report
+     */
+    select?: ReportSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Report
+     */
+    omit?: ReportOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReportInclude<ExtArgs> | null
+    /**
+     * Filter, which Report to fetch.
+     */
+    where?: ReportWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Reports to fetch.
+     */
+    orderBy?: ReportOrderByWithRelationInput | ReportOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Reports.
+     */
+    cursor?: ReportWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Reports from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Reports.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Reports.
+     */
+    distinct?: ReportScalarFieldEnum | ReportScalarFieldEnum[]
+  }
+
+  /**
+   * Report findMany
+   */
+  export type ReportFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Report
+     */
+    select?: ReportSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Report
+     */
+    omit?: ReportOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReportInclude<ExtArgs> | null
+    /**
+     * Filter, which Reports to fetch.
+     */
+    where?: ReportWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Reports to fetch.
+     */
+    orderBy?: ReportOrderByWithRelationInput | ReportOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Reports.
+     */
+    cursor?: ReportWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Reports from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Reports.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Reports.
+     */
+    distinct?: ReportScalarFieldEnum | ReportScalarFieldEnum[]
+  }
+
+  /**
+   * Report create
+   */
+  export type ReportCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Report
+     */
+    select?: ReportSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Report
+     */
+    omit?: ReportOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReportInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Report.
+     */
+    data: XOR<ReportCreateInput, ReportUncheckedCreateInput>
+  }
+
+  /**
+   * Report createMany
+   */
+  export type ReportCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Reports.
+     */
+    data: ReportCreateManyInput | ReportCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Report createManyAndReturn
+   */
+  export type ReportCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Report
+     */
+    select?: ReportSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Report
+     */
+    omit?: ReportOmit<ExtArgs> | null
+    /**
+     * The data used to create many Reports.
+     */
+    data: ReportCreateManyInput | ReportCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReportIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Report update
+   */
+  export type ReportUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Report
+     */
+    select?: ReportSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Report
+     */
+    omit?: ReportOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReportInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Report.
+     */
+    data: XOR<ReportUpdateInput, ReportUncheckedUpdateInput>
+    /**
+     * Choose, which Report to update.
+     */
+    where: ReportWhereUniqueInput
+  }
+
+  /**
+   * Report updateMany
+   */
+  export type ReportUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Reports.
+     */
+    data: XOR<ReportUpdateManyMutationInput, ReportUncheckedUpdateManyInput>
+    /**
+     * Filter which Reports to update
+     */
+    where?: ReportWhereInput
+    /**
+     * Limit how many Reports to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Report updateManyAndReturn
+   */
+  export type ReportUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Report
+     */
+    select?: ReportSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Report
+     */
+    omit?: ReportOmit<ExtArgs> | null
+    /**
+     * The data used to update Reports.
+     */
+    data: XOR<ReportUpdateManyMutationInput, ReportUncheckedUpdateManyInput>
+    /**
+     * Filter which Reports to update
+     */
+    where?: ReportWhereInput
+    /**
+     * Limit how many Reports to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReportIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Report upsert
+   */
+  export type ReportUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Report
+     */
+    select?: ReportSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Report
+     */
+    omit?: ReportOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReportInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Report to update in case it exists.
+     */
+    where: ReportWhereUniqueInput
+    /**
+     * In case the Report found by the `where` argument doesn't exist, create a new Report with this data.
+     */
+    create: XOR<ReportCreateInput, ReportUncheckedCreateInput>
+    /**
+     * In case the Report was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ReportUpdateInput, ReportUncheckedUpdateInput>
+  }
+
+  /**
+   * Report delete
+   */
+  export type ReportDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Report
+     */
+    select?: ReportSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Report
+     */
+    omit?: ReportOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReportInclude<ExtArgs> | null
+    /**
+     * Filter which Report to delete.
+     */
+    where: ReportWhereUniqueInput
+  }
+
+  /**
+   * Report deleteMany
+   */
+  export type ReportDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Reports to delete
+     */
+    where?: ReportWhereInput
+    /**
+     * Limit how many Reports to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Report.journey
+   */
+  export type Report$journeyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Journey
+     */
+    select?: JourneySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Journey
+     */
+    omit?: JourneyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: JourneyInclude<ExtArgs> | null
+    where?: JourneyWhereInput
+  }
+
+  /**
+   * Report without action
+   */
+  export type ReportDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Report
+     */
+    select?: ReportSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Report
+     */
+    omit?: ReportOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReportInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model TravelDocument
+   */
+
+  export type AggregateTravelDocument = {
+    _count: TravelDocumentCountAggregateOutputType | null
+    _min: TravelDocumentMinAggregateOutputType | null
+    _max: TravelDocumentMaxAggregateOutputType | null
+  }
+
+  export type TravelDocumentMinAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    originalName: string | null
+    mimeType: string | null
+    ocrStatus: $Enums.TravelDocumentStatus | null
+    rawText: string | null
+    source: string | null
+    destination: string | null
+    departureAt: Date | null
+    transportMode: $Enums.TransportMode | null
+    errorMessage: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type TravelDocumentMaxAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    originalName: string | null
+    mimeType: string | null
+    ocrStatus: $Enums.TravelDocumentStatus | null
+    rawText: string | null
+    source: string | null
+    destination: string | null
+    departureAt: Date | null
+    transportMode: $Enums.TransportMode | null
+    errorMessage: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type TravelDocumentCountAggregateOutputType = {
+    id: number
+    userId: number
+    originalName: number
+    mimeType: number
+    ocrStatus: number
+    rawText: number
+    source: number
+    destination: number
+    departureAt: number
+    transportMode: number
+    errorMessage: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type TravelDocumentMinAggregateInputType = {
+    id?: true
+    userId?: true
+    originalName?: true
+    mimeType?: true
+    ocrStatus?: true
+    rawText?: true
+    source?: true
+    destination?: true
+    departureAt?: true
+    transportMode?: true
+    errorMessage?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type TravelDocumentMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    originalName?: true
+    mimeType?: true
+    ocrStatus?: true
+    rawText?: true
+    source?: true
+    destination?: true
+    departureAt?: true
+    transportMode?: true
+    errorMessage?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type TravelDocumentCountAggregateInputType = {
+    id?: true
+    userId?: true
+    originalName?: true
+    mimeType?: true
+    ocrStatus?: true
+    rawText?: true
+    source?: true
+    destination?: true
+    departureAt?: true
+    transportMode?: true
+    errorMessage?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type TravelDocumentAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TravelDocument to aggregate.
+     */
+    where?: TravelDocumentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TravelDocuments to fetch.
+     */
+    orderBy?: TravelDocumentOrderByWithRelationInput | TravelDocumentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TravelDocumentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TravelDocuments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TravelDocuments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned TravelDocuments
+    **/
+    _count?: true | TravelDocumentCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TravelDocumentMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TravelDocumentMaxAggregateInputType
+  }
+
+  export type GetTravelDocumentAggregateType<T extends TravelDocumentAggregateArgs> = {
+        [P in keyof T & keyof AggregateTravelDocument]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTravelDocument[P]>
+      : GetScalarType<T[P], AggregateTravelDocument[P]>
+  }
+
+
+
+
+  export type TravelDocumentGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TravelDocumentWhereInput
+    orderBy?: TravelDocumentOrderByWithAggregationInput | TravelDocumentOrderByWithAggregationInput[]
+    by: TravelDocumentScalarFieldEnum[] | TravelDocumentScalarFieldEnum
+    having?: TravelDocumentScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TravelDocumentCountAggregateInputType | true
+    _min?: TravelDocumentMinAggregateInputType
+    _max?: TravelDocumentMaxAggregateInputType
+  }
+
+  export type TravelDocumentGroupByOutputType = {
+    id: string
+    userId: string
+    originalName: string
+    mimeType: string
+    ocrStatus: $Enums.TravelDocumentStatus
+    rawText: string | null
+    source: string | null
+    destination: string | null
+    departureAt: Date | null
+    transportMode: $Enums.TransportMode | null
+    errorMessage: string | null
+    createdAt: Date
+    updatedAt: Date
+    _count: TravelDocumentCountAggregateOutputType | null
+    _min: TravelDocumentMinAggregateOutputType | null
+    _max: TravelDocumentMaxAggregateOutputType | null
+  }
+
+  type GetTravelDocumentGroupByPayload<T extends TravelDocumentGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TravelDocumentGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TravelDocumentGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TravelDocumentGroupByOutputType[P]>
+            : GetScalarType<T[P], TravelDocumentGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TravelDocumentSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    originalName?: boolean
+    mimeType?: boolean
+    ocrStatus?: boolean
+    rawText?: boolean
+    source?: boolean
+    destination?: boolean
+    departureAt?: boolean
+    transportMode?: boolean
+    errorMessage?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["travelDocument"]>
+
+  export type TravelDocumentSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    originalName?: boolean
+    mimeType?: boolean
+    ocrStatus?: boolean
+    rawText?: boolean
+    source?: boolean
+    destination?: boolean
+    departureAt?: boolean
+    transportMode?: boolean
+    errorMessage?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["travelDocument"]>
+
+  export type TravelDocumentSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    originalName?: boolean
+    mimeType?: boolean
+    ocrStatus?: boolean
+    rawText?: boolean
+    source?: boolean
+    destination?: boolean
+    departureAt?: boolean
+    transportMode?: boolean
+    errorMessage?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["travelDocument"]>
+
+  export type TravelDocumentSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    originalName?: boolean
+    mimeType?: boolean
+    ocrStatus?: boolean
+    rawText?: boolean
+    source?: boolean
+    destination?: boolean
+    departureAt?: boolean
+    transportMode?: boolean
+    errorMessage?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type TravelDocumentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "originalName" | "mimeType" | "ocrStatus" | "rawText" | "source" | "destination" | "departureAt" | "transportMode" | "errorMessage" | "createdAt" | "updatedAt", ExtArgs["result"]["travelDocument"]>
+  export type TravelDocumentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type TravelDocumentIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type TravelDocumentIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $TravelDocumentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "TravelDocument"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userId: string
+      originalName: string
+      mimeType: string
+      ocrStatus: $Enums.TravelDocumentStatus
+      rawText: string | null
+      source: string | null
+      destination: string | null
+      departureAt: Date | null
+      transportMode: $Enums.TransportMode | null
+      errorMessage: string | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["travelDocument"]>
+    composites: {}
+  }
+
+  type TravelDocumentGetPayload<S extends boolean | null | undefined | TravelDocumentDefaultArgs> = $Result.GetResult<Prisma.$TravelDocumentPayload, S>
+
+  type TravelDocumentCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TravelDocumentFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TravelDocumentCountAggregateInputType | true
+    }
+
+  export interface TravelDocumentDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TravelDocument'], meta: { name: 'TravelDocument' } }
+    /**
+     * Find zero or one TravelDocument that matches the filter.
+     * @param {TravelDocumentFindUniqueArgs} args - Arguments to find a TravelDocument
+     * @example
+     * // Get one TravelDocument
+     * const travelDocument = await prisma.travelDocument.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TravelDocumentFindUniqueArgs>(args: SelectSubset<T, TravelDocumentFindUniqueArgs<ExtArgs>>): Prisma__TravelDocumentClient<$Result.GetResult<Prisma.$TravelDocumentPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one TravelDocument that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {TravelDocumentFindUniqueOrThrowArgs} args - Arguments to find a TravelDocument
+     * @example
+     * // Get one TravelDocument
+     * const travelDocument = await prisma.travelDocument.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TravelDocumentFindUniqueOrThrowArgs>(args: SelectSubset<T, TravelDocumentFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TravelDocumentClient<$Result.GetResult<Prisma.$TravelDocumentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TravelDocument that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TravelDocumentFindFirstArgs} args - Arguments to find a TravelDocument
+     * @example
+     * // Get one TravelDocument
+     * const travelDocument = await prisma.travelDocument.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TravelDocumentFindFirstArgs>(args?: SelectSubset<T, TravelDocumentFindFirstArgs<ExtArgs>>): Prisma__TravelDocumentClient<$Result.GetResult<Prisma.$TravelDocumentPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TravelDocument that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TravelDocumentFindFirstOrThrowArgs} args - Arguments to find a TravelDocument
+     * @example
+     * // Get one TravelDocument
+     * const travelDocument = await prisma.travelDocument.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TravelDocumentFindFirstOrThrowArgs>(args?: SelectSubset<T, TravelDocumentFindFirstOrThrowArgs<ExtArgs>>): Prisma__TravelDocumentClient<$Result.GetResult<Prisma.$TravelDocumentPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more TravelDocuments that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TravelDocumentFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all TravelDocuments
+     * const travelDocuments = await prisma.travelDocument.findMany()
+     * 
+     * // Get first 10 TravelDocuments
+     * const travelDocuments = await prisma.travelDocument.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const travelDocumentWithIdOnly = await prisma.travelDocument.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TravelDocumentFindManyArgs>(args?: SelectSubset<T, TravelDocumentFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TravelDocumentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a TravelDocument.
+     * @param {TravelDocumentCreateArgs} args - Arguments to create a TravelDocument.
+     * @example
+     * // Create one TravelDocument
+     * const TravelDocument = await prisma.travelDocument.create({
+     *   data: {
+     *     // ... data to create a TravelDocument
+     *   }
+     * })
+     * 
+     */
+    create<T extends TravelDocumentCreateArgs>(args: SelectSubset<T, TravelDocumentCreateArgs<ExtArgs>>): Prisma__TravelDocumentClient<$Result.GetResult<Prisma.$TravelDocumentPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many TravelDocuments.
+     * @param {TravelDocumentCreateManyArgs} args - Arguments to create many TravelDocuments.
+     * @example
+     * // Create many TravelDocuments
+     * const travelDocument = await prisma.travelDocument.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TravelDocumentCreateManyArgs>(args?: SelectSubset<T, TravelDocumentCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many TravelDocuments and returns the data saved in the database.
+     * @param {TravelDocumentCreateManyAndReturnArgs} args - Arguments to create many TravelDocuments.
+     * @example
+     * // Create many TravelDocuments
+     * const travelDocument = await prisma.travelDocument.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many TravelDocuments and only return the `id`
+     * const travelDocumentWithIdOnly = await prisma.travelDocument.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends TravelDocumentCreateManyAndReturnArgs>(args?: SelectSubset<T, TravelDocumentCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TravelDocumentPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a TravelDocument.
+     * @param {TravelDocumentDeleteArgs} args - Arguments to delete one TravelDocument.
+     * @example
+     * // Delete one TravelDocument
+     * const TravelDocument = await prisma.travelDocument.delete({
+     *   where: {
+     *     // ... filter to delete one TravelDocument
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TravelDocumentDeleteArgs>(args: SelectSubset<T, TravelDocumentDeleteArgs<ExtArgs>>): Prisma__TravelDocumentClient<$Result.GetResult<Prisma.$TravelDocumentPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one TravelDocument.
+     * @param {TravelDocumentUpdateArgs} args - Arguments to update one TravelDocument.
+     * @example
+     * // Update one TravelDocument
+     * const travelDocument = await prisma.travelDocument.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TravelDocumentUpdateArgs>(args: SelectSubset<T, TravelDocumentUpdateArgs<ExtArgs>>): Prisma__TravelDocumentClient<$Result.GetResult<Prisma.$TravelDocumentPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more TravelDocuments.
+     * @param {TravelDocumentDeleteManyArgs} args - Arguments to filter TravelDocuments to delete.
+     * @example
+     * // Delete a few TravelDocuments
+     * const { count } = await prisma.travelDocument.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TravelDocumentDeleteManyArgs>(args?: SelectSubset<T, TravelDocumentDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TravelDocuments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TravelDocumentUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many TravelDocuments
+     * const travelDocument = await prisma.travelDocument.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TravelDocumentUpdateManyArgs>(args: SelectSubset<T, TravelDocumentUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TravelDocuments and returns the data updated in the database.
+     * @param {TravelDocumentUpdateManyAndReturnArgs} args - Arguments to update many TravelDocuments.
+     * @example
+     * // Update many TravelDocuments
+     * const travelDocument = await prisma.travelDocument.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more TravelDocuments and only return the `id`
+     * const travelDocumentWithIdOnly = await prisma.travelDocument.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends TravelDocumentUpdateManyAndReturnArgs>(args: SelectSubset<T, TravelDocumentUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TravelDocumentPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one TravelDocument.
+     * @param {TravelDocumentUpsertArgs} args - Arguments to update or create a TravelDocument.
+     * @example
+     * // Update or create a TravelDocument
+     * const travelDocument = await prisma.travelDocument.upsert({
+     *   create: {
+     *     // ... data to create a TravelDocument
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the TravelDocument we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TravelDocumentUpsertArgs>(args: SelectSubset<T, TravelDocumentUpsertArgs<ExtArgs>>): Prisma__TravelDocumentClient<$Result.GetResult<Prisma.$TravelDocumentPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of TravelDocuments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TravelDocumentCountArgs} args - Arguments to filter TravelDocuments to count.
+     * @example
+     * // Count the number of TravelDocuments
+     * const count = await prisma.travelDocument.count({
+     *   where: {
+     *     // ... the filter for the TravelDocuments we want to count
+     *   }
+     * })
+    **/
+    count<T extends TravelDocumentCountArgs>(
+      args?: Subset<T, TravelDocumentCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TravelDocumentCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a TravelDocument.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TravelDocumentAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TravelDocumentAggregateArgs>(args: Subset<T, TravelDocumentAggregateArgs>): Prisma.PrismaPromise<GetTravelDocumentAggregateType<T>>
+
+    /**
+     * Group by TravelDocument.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TravelDocumentGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TravelDocumentGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TravelDocumentGroupByArgs['orderBy'] }
+        : { orderBy?: TravelDocumentGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TravelDocumentGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTravelDocumentGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the TravelDocument model
+   */
+  readonly fields: TravelDocumentFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for TravelDocument.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TravelDocumentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the TravelDocument model
+   */
+  interface TravelDocumentFieldRefs {
+    readonly id: FieldRef<"TravelDocument", 'String'>
+    readonly userId: FieldRef<"TravelDocument", 'String'>
+    readonly originalName: FieldRef<"TravelDocument", 'String'>
+    readonly mimeType: FieldRef<"TravelDocument", 'String'>
+    readonly ocrStatus: FieldRef<"TravelDocument", 'TravelDocumentStatus'>
+    readonly rawText: FieldRef<"TravelDocument", 'String'>
+    readonly source: FieldRef<"TravelDocument", 'String'>
+    readonly destination: FieldRef<"TravelDocument", 'String'>
+    readonly departureAt: FieldRef<"TravelDocument", 'DateTime'>
+    readonly transportMode: FieldRef<"TravelDocument", 'TransportMode'>
+    readonly errorMessage: FieldRef<"TravelDocument", 'String'>
+    readonly createdAt: FieldRef<"TravelDocument", 'DateTime'>
+    readonly updatedAt: FieldRef<"TravelDocument", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * TravelDocument findUnique
+   */
+  export type TravelDocumentFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TravelDocument
+     */
+    select?: TravelDocumentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TravelDocument
+     */
+    omit?: TravelDocumentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TravelDocumentInclude<ExtArgs> | null
+    /**
+     * Filter, which TravelDocument to fetch.
+     */
+    where: TravelDocumentWhereUniqueInput
+  }
+
+  /**
+   * TravelDocument findUniqueOrThrow
+   */
+  export type TravelDocumentFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TravelDocument
+     */
+    select?: TravelDocumentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TravelDocument
+     */
+    omit?: TravelDocumentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TravelDocumentInclude<ExtArgs> | null
+    /**
+     * Filter, which TravelDocument to fetch.
+     */
+    where: TravelDocumentWhereUniqueInput
+  }
+
+  /**
+   * TravelDocument findFirst
+   */
+  export type TravelDocumentFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TravelDocument
+     */
+    select?: TravelDocumentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TravelDocument
+     */
+    omit?: TravelDocumentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TravelDocumentInclude<ExtArgs> | null
+    /**
+     * Filter, which TravelDocument to fetch.
+     */
+    where?: TravelDocumentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TravelDocuments to fetch.
+     */
+    orderBy?: TravelDocumentOrderByWithRelationInput | TravelDocumentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TravelDocuments.
+     */
+    cursor?: TravelDocumentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TravelDocuments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TravelDocuments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TravelDocuments.
+     */
+    distinct?: TravelDocumentScalarFieldEnum | TravelDocumentScalarFieldEnum[]
+  }
+
+  /**
+   * TravelDocument findFirstOrThrow
+   */
+  export type TravelDocumentFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TravelDocument
+     */
+    select?: TravelDocumentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TravelDocument
+     */
+    omit?: TravelDocumentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TravelDocumentInclude<ExtArgs> | null
+    /**
+     * Filter, which TravelDocument to fetch.
+     */
+    where?: TravelDocumentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TravelDocuments to fetch.
+     */
+    orderBy?: TravelDocumentOrderByWithRelationInput | TravelDocumentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TravelDocuments.
+     */
+    cursor?: TravelDocumentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TravelDocuments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TravelDocuments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TravelDocuments.
+     */
+    distinct?: TravelDocumentScalarFieldEnum | TravelDocumentScalarFieldEnum[]
+  }
+
+  /**
+   * TravelDocument findMany
+   */
+  export type TravelDocumentFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TravelDocument
+     */
+    select?: TravelDocumentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TravelDocument
+     */
+    omit?: TravelDocumentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TravelDocumentInclude<ExtArgs> | null
+    /**
+     * Filter, which TravelDocuments to fetch.
+     */
+    where?: TravelDocumentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TravelDocuments to fetch.
+     */
+    orderBy?: TravelDocumentOrderByWithRelationInput | TravelDocumentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing TravelDocuments.
+     */
+    cursor?: TravelDocumentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TravelDocuments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TravelDocuments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TravelDocuments.
+     */
+    distinct?: TravelDocumentScalarFieldEnum | TravelDocumentScalarFieldEnum[]
+  }
+
+  /**
+   * TravelDocument create
+   */
+  export type TravelDocumentCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TravelDocument
+     */
+    select?: TravelDocumentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TravelDocument
+     */
+    omit?: TravelDocumentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TravelDocumentInclude<ExtArgs> | null
+    /**
+     * The data needed to create a TravelDocument.
+     */
+    data: XOR<TravelDocumentCreateInput, TravelDocumentUncheckedCreateInput>
+  }
+
+  /**
+   * TravelDocument createMany
+   */
+  export type TravelDocumentCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many TravelDocuments.
+     */
+    data: TravelDocumentCreateManyInput | TravelDocumentCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * TravelDocument createManyAndReturn
+   */
+  export type TravelDocumentCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TravelDocument
+     */
+    select?: TravelDocumentSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TravelDocument
+     */
+    omit?: TravelDocumentOmit<ExtArgs> | null
+    /**
+     * The data used to create many TravelDocuments.
+     */
+    data: TravelDocumentCreateManyInput | TravelDocumentCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TravelDocumentIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * TravelDocument update
+   */
+  export type TravelDocumentUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TravelDocument
+     */
+    select?: TravelDocumentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TravelDocument
+     */
+    omit?: TravelDocumentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TravelDocumentInclude<ExtArgs> | null
+    /**
+     * The data needed to update a TravelDocument.
+     */
+    data: XOR<TravelDocumentUpdateInput, TravelDocumentUncheckedUpdateInput>
+    /**
+     * Choose, which TravelDocument to update.
+     */
+    where: TravelDocumentWhereUniqueInput
+  }
+
+  /**
+   * TravelDocument updateMany
+   */
+  export type TravelDocumentUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update TravelDocuments.
+     */
+    data: XOR<TravelDocumentUpdateManyMutationInput, TravelDocumentUncheckedUpdateManyInput>
+    /**
+     * Filter which TravelDocuments to update
+     */
+    where?: TravelDocumentWhereInput
+    /**
+     * Limit how many TravelDocuments to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TravelDocument updateManyAndReturn
+   */
+  export type TravelDocumentUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TravelDocument
+     */
+    select?: TravelDocumentSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TravelDocument
+     */
+    omit?: TravelDocumentOmit<ExtArgs> | null
+    /**
+     * The data used to update TravelDocuments.
+     */
+    data: XOR<TravelDocumentUpdateManyMutationInput, TravelDocumentUncheckedUpdateManyInput>
+    /**
+     * Filter which TravelDocuments to update
+     */
+    where?: TravelDocumentWhereInput
+    /**
+     * Limit how many TravelDocuments to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TravelDocumentIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * TravelDocument upsert
+   */
+  export type TravelDocumentUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TravelDocument
+     */
+    select?: TravelDocumentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TravelDocument
+     */
+    omit?: TravelDocumentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TravelDocumentInclude<ExtArgs> | null
+    /**
+     * The filter to search for the TravelDocument to update in case it exists.
+     */
+    where: TravelDocumentWhereUniqueInput
+    /**
+     * In case the TravelDocument found by the `where` argument doesn't exist, create a new TravelDocument with this data.
+     */
+    create: XOR<TravelDocumentCreateInput, TravelDocumentUncheckedCreateInput>
+    /**
+     * In case the TravelDocument was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TravelDocumentUpdateInput, TravelDocumentUncheckedUpdateInput>
+  }
+
+  /**
+   * TravelDocument delete
+   */
+  export type TravelDocumentDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TravelDocument
+     */
+    select?: TravelDocumentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TravelDocument
+     */
+    omit?: TravelDocumentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TravelDocumentInclude<ExtArgs> | null
+    /**
+     * Filter which TravelDocument to delete.
+     */
+    where: TravelDocumentWhereUniqueInput
+  }
+
+  /**
+   * TravelDocument deleteMany
+   */
+  export type TravelDocumentDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TravelDocuments to delete
+     */
+    where?: TravelDocumentWhereInput
+    /**
+     * Limit how many TravelDocuments to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * TravelDocument without action
+   */
+  export type TravelDocumentDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TravelDocument
+     */
+    select?: TravelDocumentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TravelDocument
+     */
+    omit?: TravelDocumentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TravelDocumentInclude<ExtArgs> | null
   }
 
 
@@ -7509,6 +14071,77 @@ export namespace Prisma {
   };
 
   export type CompanionRequestScalarFieldEnum = (typeof CompanionRequestScalarFieldEnum)[keyof typeof CompanionRequestScalarFieldEnum]
+
+
+  export const JourneyScalarFieldEnum: {
+    id: 'id',
+    companionRequestId: 'companionRequestId',
+    status: 'status',
+    startedAt: 'startedAt',
+    completedAt: 'completedAt',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type JourneyScalarFieldEnum = (typeof JourneyScalarFieldEnum)[keyof typeof JourneyScalarFieldEnum]
+
+
+  export const MessageScalarFieldEnum: {
+    id: 'id',
+    journeyId: 'journeyId',
+    requestId: 'requestId',
+    senderId: 'senderId',
+    body: 'body',
+    createdAt: 'createdAt'
+  };
+
+  export type MessageScalarFieldEnum = (typeof MessageScalarFieldEnum)[keyof typeof MessageScalarFieldEnum]
+
+
+  export const RatingScalarFieldEnum: {
+    id: 'id',
+    journeyId: 'journeyId',
+    authorId: 'authorId',
+    subjectId: 'subjectId',
+    stars: 'stars',
+    comment: 'comment',
+    createdAt: 'createdAt'
+  };
+
+  export type RatingScalarFieldEnum = (typeof RatingScalarFieldEnum)[keyof typeof RatingScalarFieldEnum]
+
+
+  export const ReportScalarFieldEnum: {
+    id: 'id',
+    journeyId: 'journeyId',
+    authorId: 'authorId',
+    subjectId: 'subjectId',
+    reason: 'reason',
+    status: 'status',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type ReportScalarFieldEnum = (typeof ReportScalarFieldEnum)[keyof typeof ReportScalarFieldEnum]
+
+
+  export const TravelDocumentScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    originalName: 'originalName',
+    mimeType: 'mimeType',
+    ocrStatus: 'ocrStatus',
+    rawText: 'rawText',
+    source: 'source',
+    destination: 'destination',
+    departureAt: 'departureAt',
+    transportMode: 'transportMode',
+    errorMessage: 'errorMessage',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type TravelDocumentScalarFieldEnum = (typeof TravelDocumentScalarFieldEnum)[keyof typeof TravelDocumentScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -7674,6 +14307,48 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'JourneyStatus'
+   */
+  export type EnumJourneyStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'JourneyStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'JourneyStatus[]'
+   */
+  export type ListEnumJourneyStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'JourneyStatus[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'ReportStatus'
+   */
+  export type EnumReportStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ReportStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'ReportStatus[]'
+   */
+  export type ListEnumReportStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ReportStatus[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'TravelDocumentStatus'
+   */
+  export type EnumTravelDocumentStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TravelDocumentStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'TravelDocumentStatus[]'
+   */
+  export type ListEnumTravelDocumentStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TravelDocumentStatus[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -7713,6 +14388,12 @@ export namespace Prisma {
     travelRequests?: TravelRequestListRelationFilter
     companionRequestsSent?: CompanionRequestListRelationFilter
     companionRequestsReceived?: CompanionRequestListRelationFilter
+    messagesSent?: MessageListRelationFilter
+    ratingsGiven?: RatingListRelationFilter
+    ratingsReceived?: RatingListRelationFilter
+    reportsFiled?: ReportListRelationFilter
+    reportsReceived?: ReportListRelationFilter
+    travelDocuments?: TravelDocumentListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -7735,6 +14416,12 @@ export namespace Prisma {
     travelRequests?: TravelRequestOrderByRelationAggregateInput
     companionRequestsSent?: CompanionRequestOrderByRelationAggregateInput
     companionRequestsReceived?: CompanionRequestOrderByRelationAggregateInput
+    messagesSent?: MessageOrderByRelationAggregateInput
+    ratingsGiven?: RatingOrderByRelationAggregateInput
+    ratingsReceived?: RatingOrderByRelationAggregateInput
+    reportsFiled?: ReportOrderByRelationAggregateInput
+    reportsReceived?: ReportOrderByRelationAggregateInput
+    travelDocuments?: TravelDocumentOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -7760,6 +14447,12 @@ export namespace Prisma {
     travelRequests?: TravelRequestListRelationFilter
     companionRequestsSent?: CompanionRequestListRelationFilter
     companionRequestsReceived?: CompanionRequestListRelationFilter
+    messagesSent?: MessageListRelationFilter
+    ratingsGiven?: RatingListRelationFilter
+    ratingsReceived?: RatingListRelationFilter
+    reportsFiled?: ReportListRelationFilter
+    reportsReceived?: ReportListRelationFilter
+    travelDocuments?: TravelDocumentListRelationFilter
   }, "id" | "email" | "googleId">
 
   export type UserOrderByWithAggregationInput = {
@@ -8060,6 +14753,8 @@ export namespace Prisma {
     recipient?: XOR<UserScalarRelationFilter, UserWhereInput>
     travelRequest?: XOR<TravelRequestScalarRelationFilter, TravelRequestWhereInput>
     offer?: XOR<TravelOfferScalarRelationFilter, TravelOfferWhereInput>
+    journey?: XOR<JourneyNullableScalarRelationFilter, JourneyWhereInput> | null
+    messages?: MessageListRelationFilter
   }
 
   export type CompanionRequestOrderByWithRelationInput = {
@@ -8077,6 +14772,8 @@ export namespace Prisma {
     recipient?: UserOrderByWithRelationInput
     travelRequest?: TravelRequestOrderByWithRelationInput
     offer?: TravelOfferOrderByWithRelationInput
+    journey?: JourneyOrderByWithRelationInput
+    messages?: MessageOrderByRelationAggregateInput
   }
 
   export type CompanionRequestWhereUniqueInput = Prisma.AtLeast<{
@@ -8097,6 +14794,8 @@ export namespace Prisma {
     recipient?: XOR<UserScalarRelationFilter, UserWhereInput>
     travelRequest?: XOR<TravelRequestScalarRelationFilter, TravelRequestWhereInput>
     offer?: XOR<TravelOfferScalarRelationFilter, TravelOfferWhereInput>
+    journey?: XOR<JourneyNullableScalarRelationFilter, JourneyWhereInput> | null
+    messages?: MessageListRelationFilter
   }, "id">
 
   export type CompanionRequestOrderByWithAggregationInput = {
@@ -8131,6 +14830,391 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"CompanionRequest"> | Date | string
   }
 
+  export type JourneyWhereInput = {
+    AND?: JourneyWhereInput | JourneyWhereInput[]
+    OR?: JourneyWhereInput[]
+    NOT?: JourneyWhereInput | JourneyWhereInput[]
+    id?: StringFilter<"Journey"> | string
+    companionRequestId?: StringFilter<"Journey"> | string
+    status?: EnumJourneyStatusFilter<"Journey"> | $Enums.JourneyStatus
+    startedAt?: DateTimeNullableFilter<"Journey"> | Date | string | null
+    completedAt?: DateTimeNullableFilter<"Journey"> | Date | string | null
+    createdAt?: DateTimeFilter<"Journey"> | Date | string
+    updatedAt?: DateTimeFilter<"Journey"> | Date | string
+    companionRequest?: XOR<CompanionRequestScalarRelationFilter, CompanionRequestWhereInput>
+    messages?: MessageListRelationFilter
+    ratings?: RatingListRelationFilter
+    reports?: ReportListRelationFilter
+  }
+
+  export type JourneyOrderByWithRelationInput = {
+    id?: SortOrder
+    companionRequestId?: SortOrder
+    status?: SortOrder
+    startedAt?: SortOrderInput | SortOrder
+    completedAt?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    companionRequest?: CompanionRequestOrderByWithRelationInput
+    messages?: MessageOrderByRelationAggregateInput
+    ratings?: RatingOrderByRelationAggregateInput
+    reports?: ReportOrderByRelationAggregateInput
+  }
+
+  export type JourneyWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    companionRequestId?: string
+    AND?: JourneyWhereInput | JourneyWhereInput[]
+    OR?: JourneyWhereInput[]
+    NOT?: JourneyWhereInput | JourneyWhereInput[]
+    status?: EnumJourneyStatusFilter<"Journey"> | $Enums.JourneyStatus
+    startedAt?: DateTimeNullableFilter<"Journey"> | Date | string | null
+    completedAt?: DateTimeNullableFilter<"Journey"> | Date | string | null
+    createdAt?: DateTimeFilter<"Journey"> | Date | string
+    updatedAt?: DateTimeFilter<"Journey"> | Date | string
+    companionRequest?: XOR<CompanionRequestScalarRelationFilter, CompanionRequestWhereInput>
+    messages?: MessageListRelationFilter
+    ratings?: RatingListRelationFilter
+    reports?: ReportListRelationFilter
+  }, "id" | "companionRequestId">
+
+  export type JourneyOrderByWithAggregationInput = {
+    id?: SortOrder
+    companionRequestId?: SortOrder
+    status?: SortOrder
+    startedAt?: SortOrderInput | SortOrder
+    completedAt?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: JourneyCountOrderByAggregateInput
+    _max?: JourneyMaxOrderByAggregateInput
+    _min?: JourneyMinOrderByAggregateInput
+  }
+
+  export type JourneyScalarWhereWithAggregatesInput = {
+    AND?: JourneyScalarWhereWithAggregatesInput | JourneyScalarWhereWithAggregatesInput[]
+    OR?: JourneyScalarWhereWithAggregatesInput[]
+    NOT?: JourneyScalarWhereWithAggregatesInput | JourneyScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Journey"> | string
+    companionRequestId?: StringWithAggregatesFilter<"Journey"> | string
+    status?: EnumJourneyStatusWithAggregatesFilter<"Journey"> | $Enums.JourneyStatus
+    startedAt?: DateTimeNullableWithAggregatesFilter<"Journey"> | Date | string | null
+    completedAt?: DateTimeNullableWithAggregatesFilter<"Journey"> | Date | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"Journey"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Journey"> | Date | string
+  }
+
+  export type MessageWhereInput = {
+    AND?: MessageWhereInput | MessageWhereInput[]
+    OR?: MessageWhereInput[]
+    NOT?: MessageWhereInput | MessageWhereInput[]
+    id?: StringFilter<"Message"> | string
+    journeyId?: StringFilter<"Message"> | string
+    requestId?: StringFilter<"Message"> | string
+    senderId?: StringFilter<"Message"> | string
+    body?: StringFilter<"Message"> | string
+    createdAt?: DateTimeFilter<"Message"> | Date | string
+    journey?: XOR<JourneyScalarRelationFilter, JourneyWhereInput>
+    request?: XOR<CompanionRequestScalarRelationFilter, CompanionRequestWhereInput>
+    sender?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type MessageOrderByWithRelationInput = {
+    id?: SortOrder
+    journeyId?: SortOrder
+    requestId?: SortOrder
+    senderId?: SortOrder
+    body?: SortOrder
+    createdAt?: SortOrder
+    journey?: JourneyOrderByWithRelationInput
+    request?: CompanionRequestOrderByWithRelationInput
+    sender?: UserOrderByWithRelationInput
+  }
+
+  export type MessageWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: MessageWhereInput | MessageWhereInput[]
+    OR?: MessageWhereInput[]
+    NOT?: MessageWhereInput | MessageWhereInput[]
+    journeyId?: StringFilter<"Message"> | string
+    requestId?: StringFilter<"Message"> | string
+    senderId?: StringFilter<"Message"> | string
+    body?: StringFilter<"Message"> | string
+    createdAt?: DateTimeFilter<"Message"> | Date | string
+    journey?: XOR<JourneyScalarRelationFilter, JourneyWhereInput>
+    request?: XOR<CompanionRequestScalarRelationFilter, CompanionRequestWhereInput>
+    sender?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id">
+
+  export type MessageOrderByWithAggregationInput = {
+    id?: SortOrder
+    journeyId?: SortOrder
+    requestId?: SortOrder
+    senderId?: SortOrder
+    body?: SortOrder
+    createdAt?: SortOrder
+    _count?: MessageCountOrderByAggregateInput
+    _max?: MessageMaxOrderByAggregateInput
+    _min?: MessageMinOrderByAggregateInput
+  }
+
+  export type MessageScalarWhereWithAggregatesInput = {
+    AND?: MessageScalarWhereWithAggregatesInput | MessageScalarWhereWithAggregatesInput[]
+    OR?: MessageScalarWhereWithAggregatesInput[]
+    NOT?: MessageScalarWhereWithAggregatesInput | MessageScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Message"> | string
+    journeyId?: StringWithAggregatesFilter<"Message"> | string
+    requestId?: StringWithAggregatesFilter<"Message"> | string
+    senderId?: StringWithAggregatesFilter<"Message"> | string
+    body?: StringWithAggregatesFilter<"Message"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Message"> | Date | string
+  }
+
+  export type RatingWhereInput = {
+    AND?: RatingWhereInput | RatingWhereInput[]
+    OR?: RatingWhereInput[]
+    NOT?: RatingWhereInput | RatingWhereInput[]
+    id?: StringFilter<"Rating"> | string
+    journeyId?: StringFilter<"Rating"> | string
+    authorId?: StringFilter<"Rating"> | string
+    subjectId?: StringFilter<"Rating"> | string
+    stars?: IntFilter<"Rating"> | number
+    comment?: StringNullableFilter<"Rating"> | string | null
+    createdAt?: DateTimeFilter<"Rating"> | Date | string
+    journey?: XOR<JourneyScalarRelationFilter, JourneyWhereInput>
+    author?: XOR<UserScalarRelationFilter, UserWhereInput>
+    subject?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type RatingOrderByWithRelationInput = {
+    id?: SortOrder
+    journeyId?: SortOrder
+    authorId?: SortOrder
+    subjectId?: SortOrder
+    stars?: SortOrder
+    comment?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    journey?: JourneyOrderByWithRelationInput
+    author?: UserOrderByWithRelationInput
+    subject?: UserOrderByWithRelationInput
+  }
+
+  export type RatingWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    journeyId_authorId?: RatingJourneyIdAuthorIdCompoundUniqueInput
+    AND?: RatingWhereInput | RatingWhereInput[]
+    OR?: RatingWhereInput[]
+    NOT?: RatingWhereInput | RatingWhereInput[]
+    journeyId?: StringFilter<"Rating"> | string
+    authorId?: StringFilter<"Rating"> | string
+    subjectId?: StringFilter<"Rating"> | string
+    stars?: IntFilter<"Rating"> | number
+    comment?: StringNullableFilter<"Rating"> | string | null
+    createdAt?: DateTimeFilter<"Rating"> | Date | string
+    journey?: XOR<JourneyScalarRelationFilter, JourneyWhereInput>
+    author?: XOR<UserScalarRelationFilter, UserWhereInput>
+    subject?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id" | "journeyId_authorId">
+
+  export type RatingOrderByWithAggregationInput = {
+    id?: SortOrder
+    journeyId?: SortOrder
+    authorId?: SortOrder
+    subjectId?: SortOrder
+    stars?: SortOrder
+    comment?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    _count?: RatingCountOrderByAggregateInput
+    _avg?: RatingAvgOrderByAggregateInput
+    _max?: RatingMaxOrderByAggregateInput
+    _min?: RatingMinOrderByAggregateInput
+    _sum?: RatingSumOrderByAggregateInput
+  }
+
+  export type RatingScalarWhereWithAggregatesInput = {
+    AND?: RatingScalarWhereWithAggregatesInput | RatingScalarWhereWithAggregatesInput[]
+    OR?: RatingScalarWhereWithAggregatesInput[]
+    NOT?: RatingScalarWhereWithAggregatesInput | RatingScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Rating"> | string
+    journeyId?: StringWithAggregatesFilter<"Rating"> | string
+    authorId?: StringWithAggregatesFilter<"Rating"> | string
+    subjectId?: StringWithAggregatesFilter<"Rating"> | string
+    stars?: IntWithAggregatesFilter<"Rating"> | number
+    comment?: StringNullableWithAggregatesFilter<"Rating"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"Rating"> | Date | string
+  }
+
+  export type ReportWhereInput = {
+    AND?: ReportWhereInput | ReportWhereInput[]
+    OR?: ReportWhereInput[]
+    NOT?: ReportWhereInput | ReportWhereInput[]
+    id?: StringFilter<"Report"> | string
+    journeyId?: StringNullableFilter<"Report"> | string | null
+    authorId?: StringFilter<"Report"> | string
+    subjectId?: StringFilter<"Report"> | string
+    reason?: StringFilter<"Report"> | string
+    status?: EnumReportStatusFilter<"Report"> | $Enums.ReportStatus
+    createdAt?: DateTimeFilter<"Report"> | Date | string
+    updatedAt?: DateTimeFilter<"Report"> | Date | string
+    journey?: XOR<JourneyNullableScalarRelationFilter, JourneyWhereInput> | null
+    author?: XOR<UserScalarRelationFilter, UserWhereInput>
+    subject?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type ReportOrderByWithRelationInput = {
+    id?: SortOrder
+    journeyId?: SortOrderInput | SortOrder
+    authorId?: SortOrder
+    subjectId?: SortOrder
+    reason?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    journey?: JourneyOrderByWithRelationInput
+    author?: UserOrderByWithRelationInput
+    subject?: UserOrderByWithRelationInput
+  }
+
+  export type ReportWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: ReportWhereInput | ReportWhereInput[]
+    OR?: ReportWhereInput[]
+    NOT?: ReportWhereInput | ReportWhereInput[]
+    journeyId?: StringNullableFilter<"Report"> | string | null
+    authorId?: StringFilter<"Report"> | string
+    subjectId?: StringFilter<"Report"> | string
+    reason?: StringFilter<"Report"> | string
+    status?: EnumReportStatusFilter<"Report"> | $Enums.ReportStatus
+    createdAt?: DateTimeFilter<"Report"> | Date | string
+    updatedAt?: DateTimeFilter<"Report"> | Date | string
+    journey?: XOR<JourneyNullableScalarRelationFilter, JourneyWhereInput> | null
+    author?: XOR<UserScalarRelationFilter, UserWhereInput>
+    subject?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id">
+
+  export type ReportOrderByWithAggregationInput = {
+    id?: SortOrder
+    journeyId?: SortOrderInput | SortOrder
+    authorId?: SortOrder
+    subjectId?: SortOrder
+    reason?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: ReportCountOrderByAggregateInput
+    _max?: ReportMaxOrderByAggregateInput
+    _min?: ReportMinOrderByAggregateInput
+  }
+
+  export type ReportScalarWhereWithAggregatesInput = {
+    AND?: ReportScalarWhereWithAggregatesInput | ReportScalarWhereWithAggregatesInput[]
+    OR?: ReportScalarWhereWithAggregatesInput[]
+    NOT?: ReportScalarWhereWithAggregatesInput | ReportScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Report"> | string
+    journeyId?: StringNullableWithAggregatesFilter<"Report"> | string | null
+    authorId?: StringWithAggregatesFilter<"Report"> | string
+    subjectId?: StringWithAggregatesFilter<"Report"> | string
+    reason?: StringWithAggregatesFilter<"Report"> | string
+    status?: EnumReportStatusWithAggregatesFilter<"Report"> | $Enums.ReportStatus
+    createdAt?: DateTimeWithAggregatesFilter<"Report"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Report"> | Date | string
+  }
+
+  export type TravelDocumentWhereInput = {
+    AND?: TravelDocumentWhereInput | TravelDocumentWhereInput[]
+    OR?: TravelDocumentWhereInput[]
+    NOT?: TravelDocumentWhereInput | TravelDocumentWhereInput[]
+    id?: StringFilter<"TravelDocument"> | string
+    userId?: StringFilter<"TravelDocument"> | string
+    originalName?: StringFilter<"TravelDocument"> | string
+    mimeType?: StringFilter<"TravelDocument"> | string
+    ocrStatus?: EnumTravelDocumentStatusFilter<"TravelDocument"> | $Enums.TravelDocumentStatus
+    rawText?: StringNullableFilter<"TravelDocument"> | string | null
+    source?: StringNullableFilter<"TravelDocument"> | string | null
+    destination?: StringNullableFilter<"TravelDocument"> | string | null
+    departureAt?: DateTimeNullableFilter<"TravelDocument"> | Date | string | null
+    transportMode?: EnumTransportModeNullableFilter<"TravelDocument"> | $Enums.TransportMode | null
+    errorMessage?: StringNullableFilter<"TravelDocument"> | string | null
+    createdAt?: DateTimeFilter<"TravelDocument"> | Date | string
+    updatedAt?: DateTimeFilter<"TravelDocument"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type TravelDocumentOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    originalName?: SortOrder
+    mimeType?: SortOrder
+    ocrStatus?: SortOrder
+    rawText?: SortOrderInput | SortOrder
+    source?: SortOrderInput | SortOrder
+    destination?: SortOrderInput | SortOrder
+    departureAt?: SortOrderInput | SortOrder
+    transportMode?: SortOrderInput | SortOrder
+    errorMessage?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type TravelDocumentWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: TravelDocumentWhereInput | TravelDocumentWhereInput[]
+    OR?: TravelDocumentWhereInput[]
+    NOT?: TravelDocumentWhereInput | TravelDocumentWhereInput[]
+    userId?: StringFilter<"TravelDocument"> | string
+    originalName?: StringFilter<"TravelDocument"> | string
+    mimeType?: StringFilter<"TravelDocument"> | string
+    ocrStatus?: EnumTravelDocumentStatusFilter<"TravelDocument"> | $Enums.TravelDocumentStatus
+    rawText?: StringNullableFilter<"TravelDocument"> | string | null
+    source?: StringNullableFilter<"TravelDocument"> | string | null
+    destination?: StringNullableFilter<"TravelDocument"> | string | null
+    departureAt?: DateTimeNullableFilter<"TravelDocument"> | Date | string | null
+    transportMode?: EnumTransportModeNullableFilter<"TravelDocument"> | $Enums.TransportMode | null
+    errorMessage?: StringNullableFilter<"TravelDocument"> | string | null
+    createdAt?: DateTimeFilter<"TravelDocument"> | Date | string
+    updatedAt?: DateTimeFilter<"TravelDocument"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id">
+
+  export type TravelDocumentOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    originalName?: SortOrder
+    mimeType?: SortOrder
+    ocrStatus?: SortOrder
+    rawText?: SortOrderInput | SortOrder
+    source?: SortOrderInput | SortOrder
+    destination?: SortOrderInput | SortOrder
+    departureAt?: SortOrderInput | SortOrder
+    transportMode?: SortOrderInput | SortOrder
+    errorMessage?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: TravelDocumentCountOrderByAggregateInput
+    _max?: TravelDocumentMaxOrderByAggregateInput
+    _min?: TravelDocumentMinOrderByAggregateInput
+  }
+
+  export type TravelDocumentScalarWhereWithAggregatesInput = {
+    AND?: TravelDocumentScalarWhereWithAggregatesInput | TravelDocumentScalarWhereWithAggregatesInput[]
+    OR?: TravelDocumentScalarWhereWithAggregatesInput[]
+    NOT?: TravelDocumentScalarWhereWithAggregatesInput | TravelDocumentScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"TravelDocument"> | string
+    userId?: StringWithAggregatesFilter<"TravelDocument"> | string
+    originalName?: StringWithAggregatesFilter<"TravelDocument"> | string
+    mimeType?: StringWithAggregatesFilter<"TravelDocument"> | string
+    ocrStatus?: EnumTravelDocumentStatusWithAggregatesFilter<"TravelDocument"> | $Enums.TravelDocumentStatus
+    rawText?: StringNullableWithAggregatesFilter<"TravelDocument"> | string | null
+    source?: StringNullableWithAggregatesFilter<"TravelDocument"> | string | null
+    destination?: StringNullableWithAggregatesFilter<"TravelDocument"> | string | null
+    departureAt?: DateTimeNullableWithAggregatesFilter<"TravelDocument"> | Date | string | null
+    transportMode?: EnumTransportModeNullableWithAggregatesFilter<"TravelDocument"> | $Enums.TransportMode | null
+    errorMessage?: StringNullableWithAggregatesFilter<"TravelDocument"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"TravelDocument"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"TravelDocument"> | Date | string
+  }
+
   export type UserCreateInput = {
     id?: string
     name: string
@@ -8151,6 +15235,12 @@ export namespace Prisma {
     travelRequests?: TravelRequestCreateNestedManyWithoutUserInput
     companionRequestsSent?: CompanionRequestCreateNestedManyWithoutSenderInput
     companionRequestsReceived?: CompanionRequestCreateNestedManyWithoutRecipientInput
+    messagesSent?: MessageCreateNestedManyWithoutSenderInput
+    ratingsGiven?: RatingCreateNestedManyWithoutAuthorInput
+    ratingsReceived?: RatingCreateNestedManyWithoutSubjectInput
+    reportsFiled?: ReportCreateNestedManyWithoutAuthorInput
+    reportsReceived?: ReportCreateNestedManyWithoutSubjectInput
+    travelDocuments?: TravelDocumentCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -8173,6 +15263,12 @@ export namespace Prisma {
     travelRequests?: TravelRequestUncheckedCreateNestedManyWithoutUserInput
     companionRequestsSent?: CompanionRequestUncheckedCreateNestedManyWithoutSenderInput
     companionRequestsReceived?: CompanionRequestUncheckedCreateNestedManyWithoutRecipientInput
+    messagesSent?: MessageUncheckedCreateNestedManyWithoutSenderInput
+    ratingsGiven?: RatingUncheckedCreateNestedManyWithoutAuthorInput
+    ratingsReceived?: RatingUncheckedCreateNestedManyWithoutSubjectInput
+    reportsFiled?: ReportUncheckedCreateNestedManyWithoutAuthorInput
+    reportsReceived?: ReportUncheckedCreateNestedManyWithoutSubjectInput
+    travelDocuments?: TravelDocumentUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -8195,6 +15291,12 @@ export namespace Prisma {
     travelRequests?: TravelRequestUpdateManyWithoutUserNestedInput
     companionRequestsSent?: CompanionRequestUpdateManyWithoutSenderNestedInput
     companionRequestsReceived?: CompanionRequestUpdateManyWithoutRecipientNestedInput
+    messagesSent?: MessageUpdateManyWithoutSenderNestedInput
+    ratingsGiven?: RatingUpdateManyWithoutAuthorNestedInput
+    ratingsReceived?: RatingUpdateManyWithoutSubjectNestedInput
+    reportsFiled?: ReportUpdateManyWithoutAuthorNestedInput
+    reportsReceived?: ReportUpdateManyWithoutSubjectNestedInput
+    travelDocuments?: TravelDocumentUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -8217,6 +15319,12 @@ export namespace Prisma {
     travelRequests?: TravelRequestUncheckedUpdateManyWithoutUserNestedInput
     companionRequestsSent?: CompanionRequestUncheckedUpdateManyWithoutSenderNestedInput
     companionRequestsReceived?: CompanionRequestUncheckedUpdateManyWithoutRecipientNestedInput
+    messagesSent?: MessageUncheckedUpdateManyWithoutSenderNestedInput
+    ratingsGiven?: RatingUncheckedUpdateManyWithoutAuthorNestedInput
+    ratingsReceived?: RatingUncheckedUpdateManyWithoutSubjectNestedInput
+    reportsFiled?: ReportUncheckedUpdateManyWithoutAuthorNestedInput
+    reportsReceived?: ReportUncheckedUpdateManyWithoutSubjectNestedInput
+    travelDocuments?: TravelDocumentUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -8545,6 +15653,8 @@ export namespace Prisma {
     recipient: UserCreateNestedOneWithoutCompanionRequestsReceivedInput
     travelRequest: TravelRequestCreateNestedOneWithoutCompanionRequestsInput
     offer: TravelOfferCreateNestedOneWithoutCompanionRequestsInput
+    journey?: JourneyCreateNestedOneWithoutCompanionRequestInput
+    messages?: MessageCreateNestedManyWithoutRequestInput
   }
 
   export type CompanionRequestUncheckedCreateInput = {
@@ -8558,6 +15668,8 @@ export namespace Prisma {
     respondedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    journey?: JourneyUncheckedCreateNestedOneWithoutCompanionRequestInput
+    messages?: MessageUncheckedCreateNestedManyWithoutRequestInput
   }
 
   export type CompanionRequestUpdateInput = {
@@ -8571,6 +15683,8 @@ export namespace Prisma {
     recipient?: UserUpdateOneRequiredWithoutCompanionRequestsReceivedNestedInput
     travelRequest?: TravelRequestUpdateOneRequiredWithoutCompanionRequestsNestedInput
     offer?: TravelOfferUpdateOneRequiredWithoutCompanionRequestsNestedInput
+    journey?: JourneyUpdateOneWithoutCompanionRequestNestedInput
+    messages?: MessageUpdateManyWithoutRequestNestedInput
   }
 
   export type CompanionRequestUncheckedUpdateInput = {
@@ -8584,6 +15698,8 @@ export namespace Prisma {
     respondedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    journey?: JourneyUncheckedUpdateOneWithoutCompanionRequestNestedInput
+    messages?: MessageUncheckedUpdateManyWithoutRequestNestedInput
   }
 
   export type CompanionRequestCreateManyInput = {
@@ -8617,6 +15733,399 @@ export namespace Prisma {
     status?: EnumCompanionRequestStatusFieldUpdateOperationsInput | $Enums.CompanionRequestStatus
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
     respondedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type JourneyCreateInput = {
+    id?: string
+    status?: $Enums.JourneyStatus
+    startedAt?: Date | string | null
+    completedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    companionRequest: CompanionRequestCreateNestedOneWithoutJourneyInput
+    messages?: MessageCreateNestedManyWithoutJourneyInput
+    ratings?: RatingCreateNestedManyWithoutJourneyInput
+    reports?: ReportCreateNestedManyWithoutJourneyInput
+  }
+
+  export type JourneyUncheckedCreateInput = {
+    id?: string
+    companionRequestId: string
+    status?: $Enums.JourneyStatus
+    startedAt?: Date | string | null
+    completedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    messages?: MessageUncheckedCreateNestedManyWithoutJourneyInput
+    ratings?: RatingUncheckedCreateNestedManyWithoutJourneyInput
+    reports?: ReportUncheckedCreateNestedManyWithoutJourneyInput
+  }
+
+  export type JourneyUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: EnumJourneyStatusFieldUpdateOperationsInput | $Enums.JourneyStatus
+    startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    companionRequest?: CompanionRequestUpdateOneRequiredWithoutJourneyNestedInput
+    messages?: MessageUpdateManyWithoutJourneyNestedInput
+    ratings?: RatingUpdateManyWithoutJourneyNestedInput
+    reports?: ReportUpdateManyWithoutJourneyNestedInput
+  }
+
+  export type JourneyUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    companionRequestId?: StringFieldUpdateOperationsInput | string
+    status?: EnumJourneyStatusFieldUpdateOperationsInput | $Enums.JourneyStatus
+    startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    messages?: MessageUncheckedUpdateManyWithoutJourneyNestedInput
+    ratings?: RatingUncheckedUpdateManyWithoutJourneyNestedInput
+    reports?: ReportUncheckedUpdateManyWithoutJourneyNestedInput
+  }
+
+  export type JourneyCreateManyInput = {
+    id?: string
+    companionRequestId: string
+    status?: $Enums.JourneyStatus
+    startedAt?: Date | string | null
+    completedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type JourneyUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: EnumJourneyStatusFieldUpdateOperationsInput | $Enums.JourneyStatus
+    startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type JourneyUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    companionRequestId?: StringFieldUpdateOperationsInput | string
+    status?: EnumJourneyStatusFieldUpdateOperationsInput | $Enums.JourneyStatus
+    startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MessageCreateInput = {
+    id?: string
+    body: string
+    createdAt?: Date | string
+    journey: JourneyCreateNestedOneWithoutMessagesInput
+    request: CompanionRequestCreateNestedOneWithoutMessagesInput
+    sender: UserCreateNestedOneWithoutMessagesSentInput
+  }
+
+  export type MessageUncheckedCreateInput = {
+    id?: string
+    journeyId: string
+    requestId: string
+    senderId: string
+    body: string
+    createdAt?: Date | string
+  }
+
+  export type MessageUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    journey?: JourneyUpdateOneRequiredWithoutMessagesNestedInput
+    request?: CompanionRequestUpdateOneRequiredWithoutMessagesNestedInput
+    sender?: UserUpdateOneRequiredWithoutMessagesSentNestedInput
+  }
+
+  export type MessageUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    journeyId?: StringFieldUpdateOperationsInput | string
+    requestId?: StringFieldUpdateOperationsInput | string
+    senderId?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MessageCreateManyInput = {
+    id?: string
+    journeyId: string
+    requestId: string
+    senderId: string
+    body: string
+    createdAt?: Date | string
+  }
+
+  export type MessageUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MessageUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    journeyId?: StringFieldUpdateOperationsInput | string
+    requestId?: StringFieldUpdateOperationsInput | string
+    senderId?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RatingCreateInput = {
+    id?: string
+    stars: number
+    comment?: string | null
+    createdAt?: Date | string
+    journey: JourneyCreateNestedOneWithoutRatingsInput
+    author: UserCreateNestedOneWithoutRatingsGivenInput
+    subject: UserCreateNestedOneWithoutRatingsReceivedInput
+  }
+
+  export type RatingUncheckedCreateInput = {
+    id?: string
+    journeyId: string
+    authorId: string
+    subjectId: string
+    stars: number
+    comment?: string | null
+    createdAt?: Date | string
+  }
+
+  export type RatingUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    stars?: IntFieldUpdateOperationsInput | number
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    journey?: JourneyUpdateOneRequiredWithoutRatingsNestedInput
+    author?: UserUpdateOneRequiredWithoutRatingsGivenNestedInput
+    subject?: UserUpdateOneRequiredWithoutRatingsReceivedNestedInput
+  }
+
+  export type RatingUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    journeyId?: StringFieldUpdateOperationsInput | string
+    authorId?: StringFieldUpdateOperationsInput | string
+    subjectId?: StringFieldUpdateOperationsInput | string
+    stars?: IntFieldUpdateOperationsInput | number
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RatingCreateManyInput = {
+    id?: string
+    journeyId: string
+    authorId: string
+    subjectId: string
+    stars: number
+    comment?: string | null
+    createdAt?: Date | string
+  }
+
+  export type RatingUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    stars?: IntFieldUpdateOperationsInput | number
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RatingUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    journeyId?: StringFieldUpdateOperationsInput | string
+    authorId?: StringFieldUpdateOperationsInput | string
+    subjectId?: StringFieldUpdateOperationsInput | string
+    stars?: IntFieldUpdateOperationsInput | number
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ReportCreateInput = {
+    id?: string
+    reason: string
+    status?: $Enums.ReportStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    journey?: JourneyCreateNestedOneWithoutReportsInput
+    author: UserCreateNestedOneWithoutReportsFiledInput
+    subject: UserCreateNestedOneWithoutReportsReceivedInput
+  }
+
+  export type ReportUncheckedCreateInput = {
+    id?: string
+    journeyId?: string | null
+    authorId: string
+    subjectId: string
+    reason: string
+    status?: $Enums.ReportStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ReportUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    reason?: StringFieldUpdateOperationsInput | string
+    status?: EnumReportStatusFieldUpdateOperationsInput | $Enums.ReportStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    journey?: JourneyUpdateOneWithoutReportsNestedInput
+    author?: UserUpdateOneRequiredWithoutReportsFiledNestedInput
+    subject?: UserUpdateOneRequiredWithoutReportsReceivedNestedInput
+  }
+
+  export type ReportUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    journeyId?: NullableStringFieldUpdateOperationsInput | string | null
+    authorId?: StringFieldUpdateOperationsInput | string
+    subjectId?: StringFieldUpdateOperationsInput | string
+    reason?: StringFieldUpdateOperationsInput | string
+    status?: EnumReportStatusFieldUpdateOperationsInput | $Enums.ReportStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ReportCreateManyInput = {
+    id?: string
+    journeyId?: string | null
+    authorId: string
+    subjectId: string
+    reason: string
+    status?: $Enums.ReportStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ReportUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    reason?: StringFieldUpdateOperationsInput | string
+    status?: EnumReportStatusFieldUpdateOperationsInput | $Enums.ReportStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ReportUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    journeyId?: NullableStringFieldUpdateOperationsInput | string | null
+    authorId?: StringFieldUpdateOperationsInput | string
+    subjectId?: StringFieldUpdateOperationsInput | string
+    reason?: StringFieldUpdateOperationsInput | string
+    status?: EnumReportStatusFieldUpdateOperationsInput | $Enums.ReportStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TravelDocumentCreateInput = {
+    id?: string
+    originalName: string
+    mimeType: string
+    ocrStatus?: $Enums.TravelDocumentStatus
+    rawText?: string | null
+    source?: string | null
+    destination?: string | null
+    departureAt?: Date | string | null
+    transportMode?: $Enums.TransportMode | null
+    errorMessage?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutTravelDocumentsInput
+  }
+
+  export type TravelDocumentUncheckedCreateInput = {
+    id?: string
+    userId: string
+    originalName: string
+    mimeType: string
+    ocrStatus?: $Enums.TravelDocumentStatus
+    rawText?: string | null
+    source?: string | null
+    destination?: string | null
+    departureAt?: Date | string | null
+    transportMode?: $Enums.TransportMode | null
+    errorMessage?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type TravelDocumentUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    originalName?: StringFieldUpdateOperationsInput | string
+    mimeType?: StringFieldUpdateOperationsInput | string
+    ocrStatus?: EnumTravelDocumentStatusFieldUpdateOperationsInput | $Enums.TravelDocumentStatus
+    rawText?: NullableStringFieldUpdateOperationsInput | string | null
+    source?: NullableStringFieldUpdateOperationsInput | string | null
+    destination?: NullableStringFieldUpdateOperationsInput | string | null
+    departureAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    transportMode?: NullableEnumTransportModeFieldUpdateOperationsInput | $Enums.TransportMode | null
+    errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutTravelDocumentsNestedInput
+  }
+
+  export type TravelDocumentUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    originalName?: StringFieldUpdateOperationsInput | string
+    mimeType?: StringFieldUpdateOperationsInput | string
+    ocrStatus?: EnumTravelDocumentStatusFieldUpdateOperationsInput | $Enums.TravelDocumentStatus
+    rawText?: NullableStringFieldUpdateOperationsInput | string | null
+    source?: NullableStringFieldUpdateOperationsInput | string | null
+    destination?: NullableStringFieldUpdateOperationsInput | string | null
+    departureAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    transportMode?: NullableEnumTransportModeFieldUpdateOperationsInput | $Enums.TransportMode | null
+    errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TravelDocumentCreateManyInput = {
+    id?: string
+    userId: string
+    originalName: string
+    mimeType: string
+    ocrStatus?: $Enums.TravelDocumentStatus
+    rawText?: string | null
+    source?: string | null
+    destination?: string | null
+    departureAt?: Date | string | null
+    transportMode?: $Enums.TransportMode | null
+    errorMessage?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type TravelDocumentUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    originalName?: StringFieldUpdateOperationsInput | string
+    mimeType?: StringFieldUpdateOperationsInput | string
+    ocrStatus?: EnumTravelDocumentStatusFieldUpdateOperationsInput | $Enums.TravelDocumentStatus
+    rawText?: NullableStringFieldUpdateOperationsInput | string | null
+    source?: NullableStringFieldUpdateOperationsInput | string | null
+    destination?: NullableStringFieldUpdateOperationsInput | string | null
+    departureAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    transportMode?: NullableEnumTransportModeFieldUpdateOperationsInput | $Enums.TransportMode | null
+    errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TravelDocumentUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    originalName?: StringFieldUpdateOperationsInput | string
+    mimeType?: StringFieldUpdateOperationsInput | string
+    ocrStatus?: EnumTravelDocumentStatusFieldUpdateOperationsInput | $Enums.TravelDocumentStatus
+    rawText?: NullableStringFieldUpdateOperationsInput | string | null
+    source?: NullableStringFieldUpdateOperationsInput | string | null
+    destination?: NullableStringFieldUpdateOperationsInput | string | null
+    departureAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    transportMode?: NullableEnumTransportModeFieldUpdateOperationsInput | $Enums.TransportMode | null
+    errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -8719,6 +16228,30 @@ export namespace Prisma {
     none?: CompanionRequestWhereInput
   }
 
+  export type MessageListRelationFilter = {
+    every?: MessageWhereInput
+    some?: MessageWhereInput
+    none?: MessageWhereInput
+  }
+
+  export type RatingListRelationFilter = {
+    every?: RatingWhereInput
+    some?: RatingWhereInput
+    none?: RatingWhereInput
+  }
+
+  export type ReportListRelationFilter = {
+    every?: ReportWhereInput
+    some?: ReportWhereInput
+    none?: ReportWhereInput
+  }
+
+  export type TravelDocumentListRelationFilter = {
+    every?: TravelDocumentWhereInput
+    some?: TravelDocumentWhereInput
+    none?: TravelDocumentWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -8737,6 +16270,22 @@ export namespace Prisma {
   }
 
   export type CompanionRequestOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type MessageOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type RatingOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ReportOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type TravelDocumentOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -9124,6 +16673,11 @@ export namespace Prisma {
     isNot?: TravelOfferWhereInput
   }
 
+  export type JourneyNullableScalarRelationFilter = {
+    is?: JourneyWhereInput | null
+    isNot?: JourneyWhereInput | null
+  }
+
   export type CompanionRequestCountOrderByAggregateInput = {
     id?: SortOrder
     senderId?: SortOrder
@@ -9173,6 +16727,248 @@ export namespace Prisma {
     _max?: NestedEnumCompanionRequestStatusFilter<$PrismaModel>
   }
 
+  export type EnumJourneyStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.JourneyStatus | EnumJourneyStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.JourneyStatus[] | ListEnumJourneyStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.JourneyStatus[] | ListEnumJourneyStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumJourneyStatusFilter<$PrismaModel> | $Enums.JourneyStatus
+  }
+
+  export type CompanionRequestScalarRelationFilter = {
+    is?: CompanionRequestWhereInput
+    isNot?: CompanionRequestWhereInput
+  }
+
+  export type JourneyCountOrderByAggregateInput = {
+    id?: SortOrder
+    companionRequestId?: SortOrder
+    status?: SortOrder
+    startedAt?: SortOrder
+    completedAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type JourneyMaxOrderByAggregateInput = {
+    id?: SortOrder
+    companionRequestId?: SortOrder
+    status?: SortOrder
+    startedAt?: SortOrder
+    completedAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type JourneyMinOrderByAggregateInput = {
+    id?: SortOrder
+    companionRequestId?: SortOrder
+    status?: SortOrder
+    startedAt?: SortOrder
+    completedAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type EnumJourneyStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.JourneyStatus | EnumJourneyStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.JourneyStatus[] | ListEnumJourneyStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.JourneyStatus[] | ListEnumJourneyStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumJourneyStatusWithAggregatesFilter<$PrismaModel> | $Enums.JourneyStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumJourneyStatusFilter<$PrismaModel>
+    _max?: NestedEnumJourneyStatusFilter<$PrismaModel>
+  }
+
+  export type JourneyScalarRelationFilter = {
+    is?: JourneyWhereInput
+    isNot?: JourneyWhereInput
+  }
+
+  export type MessageCountOrderByAggregateInput = {
+    id?: SortOrder
+    journeyId?: SortOrder
+    requestId?: SortOrder
+    senderId?: SortOrder
+    body?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type MessageMaxOrderByAggregateInput = {
+    id?: SortOrder
+    journeyId?: SortOrder
+    requestId?: SortOrder
+    senderId?: SortOrder
+    body?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type MessageMinOrderByAggregateInput = {
+    id?: SortOrder
+    journeyId?: SortOrder
+    requestId?: SortOrder
+    senderId?: SortOrder
+    body?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type RatingJourneyIdAuthorIdCompoundUniqueInput = {
+    journeyId: string
+    authorId: string
+  }
+
+  export type RatingCountOrderByAggregateInput = {
+    id?: SortOrder
+    journeyId?: SortOrder
+    authorId?: SortOrder
+    subjectId?: SortOrder
+    stars?: SortOrder
+    comment?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type RatingAvgOrderByAggregateInput = {
+    stars?: SortOrder
+  }
+
+  export type RatingMaxOrderByAggregateInput = {
+    id?: SortOrder
+    journeyId?: SortOrder
+    authorId?: SortOrder
+    subjectId?: SortOrder
+    stars?: SortOrder
+    comment?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type RatingMinOrderByAggregateInput = {
+    id?: SortOrder
+    journeyId?: SortOrder
+    authorId?: SortOrder
+    subjectId?: SortOrder
+    stars?: SortOrder
+    comment?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type RatingSumOrderByAggregateInput = {
+    stars?: SortOrder
+  }
+
+  export type EnumReportStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.ReportStatus | EnumReportStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.ReportStatus[] | ListEnumReportStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ReportStatus[] | ListEnumReportStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumReportStatusFilter<$PrismaModel> | $Enums.ReportStatus
+  }
+
+  export type ReportCountOrderByAggregateInput = {
+    id?: SortOrder
+    journeyId?: SortOrder
+    authorId?: SortOrder
+    subjectId?: SortOrder
+    reason?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ReportMaxOrderByAggregateInput = {
+    id?: SortOrder
+    journeyId?: SortOrder
+    authorId?: SortOrder
+    subjectId?: SortOrder
+    reason?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ReportMinOrderByAggregateInput = {
+    id?: SortOrder
+    journeyId?: SortOrder
+    authorId?: SortOrder
+    subjectId?: SortOrder
+    reason?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type EnumReportStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.ReportStatus | EnumReportStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.ReportStatus[] | ListEnumReportStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ReportStatus[] | ListEnumReportStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumReportStatusWithAggregatesFilter<$PrismaModel> | $Enums.ReportStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumReportStatusFilter<$PrismaModel>
+    _max?: NestedEnumReportStatusFilter<$PrismaModel>
+  }
+
+  export type EnumTravelDocumentStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.TravelDocumentStatus | EnumTravelDocumentStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.TravelDocumentStatus[] | ListEnumTravelDocumentStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.TravelDocumentStatus[] | ListEnumTravelDocumentStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumTravelDocumentStatusFilter<$PrismaModel> | $Enums.TravelDocumentStatus
+  }
+
+  export type TravelDocumentCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    originalName?: SortOrder
+    mimeType?: SortOrder
+    ocrStatus?: SortOrder
+    rawText?: SortOrder
+    source?: SortOrder
+    destination?: SortOrder
+    departureAt?: SortOrder
+    transportMode?: SortOrder
+    errorMessage?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type TravelDocumentMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    originalName?: SortOrder
+    mimeType?: SortOrder
+    ocrStatus?: SortOrder
+    rawText?: SortOrder
+    source?: SortOrder
+    destination?: SortOrder
+    departureAt?: SortOrder
+    transportMode?: SortOrder
+    errorMessage?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type TravelDocumentMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    originalName?: SortOrder
+    mimeType?: SortOrder
+    ocrStatus?: SortOrder
+    rawText?: SortOrder
+    source?: SortOrder
+    destination?: SortOrder
+    departureAt?: SortOrder
+    transportMode?: SortOrder
+    errorMessage?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type EnumTravelDocumentStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TravelDocumentStatus | EnumTravelDocumentStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.TravelDocumentStatus[] | ListEnumTravelDocumentStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.TravelDocumentStatus[] | ListEnumTravelDocumentStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumTravelDocumentStatusWithAggregatesFilter<$PrismaModel> | $Enums.TravelDocumentStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumTravelDocumentStatusFilter<$PrismaModel>
+    _max?: NestedEnumTravelDocumentStatusFilter<$PrismaModel>
+  }
+
   export type RefreshSessionCreateNestedManyWithoutUserInput = {
     create?: XOR<RefreshSessionCreateWithoutUserInput, RefreshSessionUncheckedCreateWithoutUserInput> | RefreshSessionCreateWithoutUserInput[] | RefreshSessionUncheckedCreateWithoutUserInput[]
     connectOrCreate?: RefreshSessionCreateOrConnectWithoutUserInput | RefreshSessionCreateOrConnectWithoutUserInput[]
@@ -9208,6 +17004,48 @@ export namespace Prisma {
     connect?: CompanionRequestWhereUniqueInput | CompanionRequestWhereUniqueInput[]
   }
 
+  export type MessageCreateNestedManyWithoutSenderInput = {
+    create?: XOR<MessageCreateWithoutSenderInput, MessageUncheckedCreateWithoutSenderInput> | MessageCreateWithoutSenderInput[] | MessageUncheckedCreateWithoutSenderInput[]
+    connectOrCreate?: MessageCreateOrConnectWithoutSenderInput | MessageCreateOrConnectWithoutSenderInput[]
+    createMany?: MessageCreateManySenderInputEnvelope
+    connect?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+  }
+
+  export type RatingCreateNestedManyWithoutAuthorInput = {
+    create?: XOR<RatingCreateWithoutAuthorInput, RatingUncheckedCreateWithoutAuthorInput> | RatingCreateWithoutAuthorInput[] | RatingUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: RatingCreateOrConnectWithoutAuthorInput | RatingCreateOrConnectWithoutAuthorInput[]
+    createMany?: RatingCreateManyAuthorInputEnvelope
+    connect?: RatingWhereUniqueInput | RatingWhereUniqueInput[]
+  }
+
+  export type RatingCreateNestedManyWithoutSubjectInput = {
+    create?: XOR<RatingCreateWithoutSubjectInput, RatingUncheckedCreateWithoutSubjectInput> | RatingCreateWithoutSubjectInput[] | RatingUncheckedCreateWithoutSubjectInput[]
+    connectOrCreate?: RatingCreateOrConnectWithoutSubjectInput | RatingCreateOrConnectWithoutSubjectInput[]
+    createMany?: RatingCreateManySubjectInputEnvelope
+    connect?: RatingWhereUniqueInput | RatingWhereUniqueInput[]
+  }
+
+  export type ReportCreateNestedManyWithoutAuthorInput = {
+    create?: XOR<ReportCreateWithoutAuthorInput, ReportUncheckedCreateWithoutAuthorInput> | ReportCreateWithoutAuthorInput[] | ReportUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: ReportCreateOrConnectWithoutAuthorInput | ReportCreateOrConnectWithoutAuthorInput[]
+    createMany?: ReportCreateManyAuthorInputEnvelope
+    connect?: ReportWhereUniqueInput | ReportWhereUniqueInput[]
+  }
+
+  export type ReportCreateNestedManyWithoutSubjectInput = {
+    create?: XOR<ReportCreateWithoutSubjectInput, ReportUncheckedCreateWithoutSubjectInput> | ReportCreateWithoutSubjectInput[] | ReportUncheckedCreateWithoutSubjectInput[]
+    connectOrCreate?: ReportCreateOrConnectWithoutSubjectInput | ReportCreateOrConnectWithoutSubjectInput[]
+    createMany?: ReportCreateManySubjectInputEnvelope
+    connect?: ReportWhereUniqueInput | ReportWhereUniqueInput[]
+  }
+
+  export type TravelDocumentCreateNestedManyWithoutUserInput = {
+    create?: XOR<TravelDocumentCreateWithoutUserInput, TravelDocumentUncheckedCreateWithoutUserInput> | TravelDocumentCreateWithoutUserInput[] | TravelDocumentUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: TravelDocumentCreateOrConnectWithoutUserInput | TravelDocumentCreateOrConnectWithoutUserInput[]
+    createMany?: TravelDocumentCreateManyUserInputEnvelope
+    connect?: TravelDocumentWhereUniqueInput | TravelDocumentWhereUniqueInput[]
+  }
+
   export type RefreshSessionUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<RefreshSessionCreateWithoutUserInput, RefreshSessionUncheckedCreateWithoutUserInput> | RefreshSessionCreateWithoutUserInput[] | RefreshSessionUncheckedCreateWithoutUserInput[]
     connectOrCreate?: RefreshSessionCreateOrConnectWithoutUserInput | RefreshSessionCreateOrConnectWithoutUserInput[]
@@ -9241,6 +17079,48 @@ export namespace Prisma {
     connectOrCreate?: CompanionRequestCreateOrConnectWithoutRecipientInput | CompanionRequestCreateOrConnectWithoutRecipientInput[]
     createMany?: CompanionRequestCreateManyRecipientInputEnvelope
     connect?: CompanionRequestWhereUniqueInput | CompanionRequestWhereUniqueInput[]
+  }
+
+  export type MessageUncheckedCreateNestedManyWithoutSenderInput = {
+    create?: XOR<MessageCreateWithoutSenderInput, MessageUncheckedCreateWithoutSenderInput> | MessageCreateWithoutSenderInput[] | MessageUncheckedCreateWithoutSenderInput[]
+    connectOrCreate?: MessageCreateOrConnectWithoutSenderInput | MessageCreateOrConnectWithoutSenderInput[]
+    createMany?: MessageCreateManySenderInputEnvelope
+    connect?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+  }
+
+  export type RatingUncheckedCreateNestedManyWithoutAuthorInput = {
+    create?: XOR<RatingCreateWithoutAuthorInput, RatingUncheckedCreateWithoutAuthorInput> | RatingCreateWithoutAuthorInput[] | RatingUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: RatingCreateOrConnectWithoutAuthorInput | RatingCreateOrConnectWithoutAuthorInput[]
+    createMany?: RatingCreateManyAuthorInputEnvelope
+    connect?: RatingWhereUniqueInput | RatingWhereUniqueInput[]
+  }
+
+  export type RatingUncheckedCreateNestedManyWithoutSubjectInput = {
+    create?: XOR<RatingCreateWithoutSubjectInput, RatingUncheckedCreateWithoutSubjectInput> | RatingCreateWithoutSubjectInput[] | RatingUncheckedCreateWithoutSubjectInput[]
+    connectOrCreate?: RatingCreateOrConnectWithoutSubjectInput | RatingCreateOrConnectWithoutSubjectInput[]
+    createMany?: RatingCreateManySubjectInputEnvelope
+    connect?: RatingWhereUniqueInput | RatingWhereUniqueInput[]
+  }
+
+  export type ReportUncheckedCreateNestedManyWithoutAuthorInput = {
+    create?: XOR<ReportCreateWithoutAuthorInput, ReportUncheckedCreateWithoutAuthorInput> | ReportCreateWithoutAuthorInput[] | ReportUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: ReportCreateOrConnectWithoutAuthorInput | ReportCreateOrConnectWithoutAuthorInput[]
+    createMany?: ReportCreateManyAuthorInputEnvelope
+    connect?: ReportWhereUniqueInput | ReportWhereUniqueInput[]
+  }
+
+  export type ReportUncheckedCreateNestedManyWithoutSubjectInput = {
+    create?: XOR<ReportCreateWithoutSubjectInput, ReportUncheckedCreateWithoutSubjectInput> | ReportCreateWithoutSubjectInput[] | ReportUncheckedCreateWithoutSubjectInput[]
+    connectOrCreate?: ReportCreateOrConnectWithoutSubjectInput | ReportCreateOrConnectWithoutSubjectInput[]
+    createMany?: ReportCreateManySubjectInputEnvelope
+    connect?: ReportWhereUniqueInput | ReportWhereUniqueInput[]
+  }
+
+  export type TravelDocumentUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<TravelDocumentCreateWithoutUserInput, TravelDocumentUncheckedCreateWithoutUserInput> | TravelDocumentCreateWithoutUserInput[] | TravelDocumentUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: TravelDocumentCreateOrConnectWithoutUserInput | TravelDocumentCreateOrConnectWithoutUserInput[]
+    createMany?: TravelDocumentCreateManyUserInputEnvelope
+    connect?: TravelDocumentWhereUniqueInput | TravelDocumentWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -9345,6 +17225,90 @@ export namespace Prisma {
     deleteMany?: CompanionRequestScalarWhereInput | CompanionRequestScalarWhereInput[]
   }
 
+  export type MessageUpdateManyWithoutSenderNestedInput = {
+    create?: XOR<MessageCreateWithoutSenderInput, MessageUncheckedCreateWithoutSenderInput> | MessageCreateWithoutSenderInput[] | MessageUncheckedCreateWithoutSenderInput[]
+    connectOrCreate?: MessageCreateOrConnectWithoutSenderInput | MessageCreateOrConnectWithoutSenderInput[]
+    upsert?: MessageUpsertWithWhereUniqueWithoutSenderInput | MessageUpsertWithWhereUniqueWithoutSenderInput[]
+    createMany?: MessageCreateManySenderInputEnvelope
+    set?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    disconnect?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    delete?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    connect?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    update?: MessageUpdateWithWhereUniqueWithoutSenderInput | MessageUpdateWithWhereUniqueWithoutSenderInput[]
+    updateMany?: MessageUpdateManyWithWhereWithoutSenderInput | MessageUpdateManyWithWhereWithoutSenderInput[]
+    deleteMany?: MessageScalarWhereInput | MessageScalarWhereInput[]
+  }
+
+  export type RatingUpdateManyWithoutAuthorNestedInput = {
+    create?: XOR<RatingCreateWithoutAuthorInput, RatingUncheckedCreateWithoutAuthorInput> | RatingCreateWithoutAuthorInput[] | RatingUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: RatingCreateOrConnectWithoutAuthorInput | RatingCreateOrConnectWithoutAuthorInput[]
+    upsert?: RatingUpsertWithWhereUniqueWithoutAuthorInput | RatingUpsertWithWhereUniqueWithoutAuthorInput[]
+    createMany?: RatingCreateManyAuthorInputEnvelope
+    set?: RatingWhereUniqueInput | RatingWhereUniqueInput[]
+    disconnect?: RatingWhereUniqueInput | RatingWhereUniqueInput[]
+    delete?: RatingWhereUniqueInput | RatingWhereUniqueInput[]
+    connect?: RatingWhereUniqueInput | RatingWhereUniqueInput[]
+    update?: RatingUpdateWithWhereUniqueWithoutAuthorInput | RatingUpdateWithWhereUniqueWithoutAuthorInput[]
+    updateMany?: RatingUpdateManyWithWhereWithoutAuthorInput | RatingUpdateManyWithWhereWithoutAuthorInput[]
+    deleteMany?: RatingScalarWhereInput | RatingScalarWhereInput[]
+  }
+
+  export type RatingUpdateManyWithoutSubjectNestedInput = {
+    create?: XOR<RatingCreateWithoutSubjectInput, RatingUncheckedCreateWithoutSubjectInput> | RatingCreateWithoutSubjectInput[] | RatingUncheckedCreateWithoutSubjectInput[]
+    connectOrCreate?: RatingCreateOrConnectWithoutSubjectInput | RatingCreateOrConnectWithoutSubjectInput[]
+    upsert?: RatingUpsertWithWhereUniqueWithoutSubjectInput | RatingUpsertWithWhereUniqueWithoutSubjectInput[]
+    createMany?: RatingCreateManySubjectInputEnvelope
+    set?: RatingWhereUniqueInput | RatingWhereUniqueInput[]
+    disconnect?: RatingWhereUniqueInput | RatingWhereUniqueInput[]
+    delete?: RatingWhereUniqueInput | RatingWhereUniqueInput[]
+    connect?: RatingWhereUniqueInput | RatingWhereUniqueInput[]
+    update?: RatingUpdateWithWhereUniqueWithoutSubjectInput | RatingUpdateWithWhereUniqueWithoutSubjectInput[]
+    updateMany?: RatingUpdateManyWithWhereWithoutSubjectInput | RatingUpdateManyWithWhereWithoutSubjectInput[]
+    deleteMany?: RatingScalarWhereInput | RatingScalarWhereInput[]
+  }
+
+  export type ReportUpdateManyWithoutAuthorNestedInput = {
+    create?: XOR<ReportCreateWithoutAuthorInput, ReportUncheckedCreateWithoutAuthorInput> | ReportCreateWithoutAuthorInput[] | ReportUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: ReportCreateOrConnectWithoutAuthorInput | ReportCreateOrConnectWithoutAuthorInput[]
+    upsert?: ReportUpsertWithWhereUniqueWithoutAuthorInput | ReportUpsertWithWhereUniqueWithoutAuthorInput[]
+    createMany?: ReportCreateManyAuthorInputEnvelope
+    set?: ReportWhereUniqueInput | ReportWhereUniqueInput[]
+    disconnect?: ReportWhereUniqueInput | ReportWhereUniqueInput[]
+    delete?: ReportWhereUniqueInput | ReportWhereUniqueInput[]
+    connect?: ReportWhereUniqueInput | ReportWhereUniqueInput[]
+    update?: ReportUpdateWithWhereUniqueWithoutAuthorInput | ReportUpdateWithWhereUniqueWithoutAuthorInput[]
+    updateMany?: ReportUpdateManyWithWhereWithoutAuthorInput | ReportUpdateManyWithWhereWithoutAuthorInput[]
+    deleteMany?: ReportScalarWhereInput | ReportScalarWhereInput[]
+  }
+
+  export type ReportUpdateManyWithoutSubjectNestedInput = {
+    create?: XOR<ReportCreateWithoutSubjectInput, ReportUncheckedCreateWithoutSubjectInput> | ReportCreateWithoutSubjectInput[] | ReportUncheckedCreateWithoutSubjectInput[]
+    connectOrCreate?: ReportCreateOrConnectWithoutSubjectInput | ReportCreateOrConnectWithoutSubjectInput[]
+    upsert?: ReportUpsertWithWhereUniqueWithoutSubjectInput | ReportUpsertWithWhereUniqueWithoutSubjectInput[]
+    createMany?: ReportCreateManySubjectInputEnvelope
+    set?: ReportWhereUniqueInput | ReportWhereUniqueInput[]
+    disconnect?: ReportWhereUniqueInput | ReportWhereUniqueInput[]
+    delete?: ReportWhereUniqueInput | ReportWhereUniqueInput[]
+    connect?: ReportWhereUniqueInput | ReportWhereUniqueInput[]
+    update?: ReportUpdateWithWhereUniqueWithoutSubjectInput | ReportUpdateWithWhereUniqueWithoutSubjectInput[]
+    updateMany?: ReportUpdateManyWithWhereWithoutSubjectInput | ReportUpdateManyWithWhereWithoutSubjectInput[]
+    deleteMany?: ReportScalarWhereInput | ReportScalarWhereInput[]
+  }
+
+  export type TravelDocumentUpdateManyWithoutUserNestedInput = {
+    create?: XOR<TravelDocumentCreateWithoutUserInput, TravelDocumentUncheckedCreateWithoutUserInput> | TravelDocumentCreateWithoutUserInput[] | TravelDocumentUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: TravelDocumentCreateOrConnectWithoutUserInput | TravelDocumentCreateOrConnectWithoutUserInput[]
+    upsert?: TravelDocumentUpsertWithWhereUniqueWithoutUserInput | TravelDocumentUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: TravelDocumentCreateManyUserInputEnvelope
+    set?: TravelDocumentWhereUniqueInput | TravelDocumentWhereUniqueInput[]
+    disconnect?: TravelDocumentWhereUniqueInput | TravelDocumentWhereUniqueInput[]
+    delete?: TravelDocumentWhereUniqueInput | TravelDocumentWhereUniqueInput[]
+    connect?: TravelDocumentWhereUniqueInput | TravelDocumentWhereUniqueInput[]
+    update?: TravelDocumentUpdateWithWhereUniqueWithoutUserInput | TravelDocumentUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: TravelDocumentUpdateManyWithWhereWithoutUserInput | TravelDocumentUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: TravelDocumentScalarWhereInput | TravelDocumentScalarWhereInput[]
+  }
+
   export type RefreshSessionUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<RefreshSessionCreateWithoutUserInput, RefreshSessionUncheckedCreateWithoutUserInput> | RefreshSessionCreateWithoutUserInput[] | RefreshSessionUncheckedCreateWithoutUserInput[]
     connectOrCreate?: RefreshSessionCreateOrConnectWithoutUserInput | RefreshSessionCreateOrConnectWithoutUserInput[]
@@ -9413,6 +17377,90 @@ export namespace Prisma {
     update?: CompanionRequestUpdateWithWhereUniqueWithoutRecipientInput | CompanionRequestUpdateWithWhereUniqueWithoutRecipientInput[]
     updateMany?: CompanionRequestUpdateManyWithWhereWithoutRecipientInput | CompanionRequestUpdateManyWithWhereWithoutRecipientInput[]
     deleteMany?: CompanionRequestScalarWhereInput | CompanionRequestScalarWhereInput[]
+  }
+
+  export type MessageUncheckedUpdateManyWithoutSenderNestedInput = {
+    create?: XOR<MessageCreateWithoutSenderInput, MessageUncheckedCreateWithoutSenderInput> | MessageCreateWithoutSenderInput[] | MessageUncheckedCreateWithoutSenderInput[]
+    connectOrCreate?: MessageCreateOrConnectWithoutSenderInput | MessageCreateOrConnectWithoutSenderInput[]
+    upsert?: MessageUpsertWithWhereUniqueWithoutSenderInput | MessageUpsertWithWhereUniqueWithoutSenderInput[]
+    createMany?: MessageCreateManySenderInputEnvelope
+    set?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    disconnect?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    delete?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    connect?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    update?: MessageUpdateWithWhereUniqueWithoutSenderInput | MessageUpdateWithWhereUniqueWithoutSenderInput[]
+    updateMany?: MessageUpdateManyWithWhereWithoutSenderInput | MessageUpdateManyWithWhereWithoutSenderInput[]
+    deleteMany?: MessageScalarWhereInput | MessageScalarWhereInput[]
+  }
+
+  export type RatingUncheckedUpdateManyWithoutAuthorNestedInput = {
+    create?: XOR<RatingCreateWithoutAuthorInput, RatingUncheckedCreateWithoutAuthorInput> | RatingCreateWithoutAuthorInput[] | RatingUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: RatingCreateOrConnectWithoutAuthorInput | RatingCreateOrConnectWithoutAuthorInput[]
+    upsert?: RatingUpsertWithWhereUniqueWithoutAuthorInput | RatingUpsertWithWhereUniqueWithoutAuthorInput[]
+    createMany?: RatingCreateManyAuthorInputEnvelope
+    set?: RatingWhereUniqueInput | RatingWhereUniqueInput[]
+    disconnect?: RatingWhereUniqueInput | RatingWhereUniqueInput[]
+    delete?: RatingWhereUniqueInput | RatingWhereUniqueInput[]
+    connect?: RatingWhereUniqueInput | RatingWhereUniqueInput[]
+    update?: RatingUpdateWithWhereUniqueWithoutAuthorInput | RatingUpdateWithWhereUniqueWithoutAuthorInput[]
+    updateMany?: RatingUpdateManyWithWhereWithoutAuthorInput | RatingUpdateManyWithWhereWithoutAuthorInput[]
+    deleteMany?: RatingScalarWhereInput | RatingScalarWhereInput[]
+  }
+
+  export type RatingUncheckedUpdateManyWithoutSubjectNestedInput = {
+    create?: XOR<RatingCreateWithoutSubjectInput, RatingUncheckedCreateWithoutSubjectInput> | RatingCreateWithoutSubjectInput[] | RatingUncheckedCreateWithoutSubjectInput[]
+    connectOrCreate?: RatingCreateOrConnectWithoutSubjectInput | RatingCreateOrConnectWithoutSubjectInput[]
+    upsert?: RatingUpsertWithWhereUniqueWithoutSubjectInput | RatingUpsertWithWhereUniqueWithoutSubjectInput[]
+    createMany?: RatingCreateManySubjectInputEnvelope
+    set?: RatingWhereUniqueInput | RatingWhereUniqueInput[]
+    disconnect?: RatingWhereUniqueInput | RatingWhereUniqueInput[]
+    delete?: RatingWhereUniqueInput | RatingWhereUniqueInput[]
+    connect?: RatingWhereUniqueInput | RatingWhereUniqueInput[]
+    update?: RatingUpdateWithWhereUniqueWithoutSubjectInput | RatingUpdateWithWhereUniqueWithoutSubjectInput[]
+    updateMany?: RatingUpdateManyWithWhereWithoutSubjectInput | RatingUpdateManyWithWhereWithoutSubjectInput[]
+    deleteMany?: RatingScalarWhereInput | RatingScalarWhereInput[]
+  }
+
+  export type ReportUncheckedUpdateManyWithoutAuthorNestedInput = {
+    create?: XOR<ReportCreateWithoutAuthorInput, ReportUncheckedCreateWithoutAuthorInput> | ReportCreateWithoutAuthorInput[] | ReportUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: ReportCreateOrConnectWithoutAuthorInput | ReportCreateOrConnectWithoutAuthorInput[]
+    upsert?: ReportUpsertWithWhereUniqueWithoutAuthorInput | ReportUpsertWithWhereUniqueWithoutAuthorInput[]
+    createMany?: ReportCreateManyAuthorInputEnvelope
+    set?: ReportWhereUniqueInput | ReportWhereUniqueInput[]
+    disconnect?: ReportWhereUniqueInput | ReportWhereUniqueInput[]
+    delete?: ReportWhereUniqueInput | ReportWhereUniqueInput[]
+    connect?: ReportWhereUniqueInput | ReportWhereUniqueInput[]
+    update?: ReportUpdateWithWhereUniqueWithoutAuthorInput | ReportUpdateWithWhereUniqueWithoutAuthorInput[]
+    updateMany?: ReportUpdateManyWithWhereWithoutAuthorInput | ReportUpdateManyWithWhereWithoutAuthorInput[]
+    deleteMany?: ReportScalarWhereInput | ReportScalarWhereInput[]
+  }
+
+  export type ReportUncheckedUpdateManyWithoutSubjectNestedInput = {
+    create?: XOR<ReportCreateWithoutSubjectInput, ReportUncheckedCreateWithoutSubjectInput> | ReportCreateWithoutSubjectInput[] | ReportUncheckedCreateWithoutSubjectInput[]
+    connectOrCreate?: ReportCreateOrConnectWithoutSubjectInput | ReportCreateOrConnectWithoutSubjectInput[]
+    upsert?: ReportUpsertWithWhereUniqueWithoutSubjectInput | ReportUpsertWithWhereUniqueWithoutSubjectInput[]
+    createMany?: ReportCreateManySubjectInputEnvelope
+    set?: ReportWhereUniqueInput | ReportWhereUniqueInput[]
+    disconnect?: ReportWhereUniqueInput | ReportWhereUniqueInput[]
+    delete?: ReportWhereUniqueInput | ReportWhereUniqueInput[]
+    connect?: ReportWhereUniqueInput | ReportWhereUniqueInput[]
+    update?: ReportUpdateWithWhereUniqueWithoutSubjectInput | ReportUpdateWithWhereUniqueWithoutSubjectInput[]
+    updateMany?: ReportUpdateManyWithWhereWithoutSubjectInput | ReportUpdateManyWithWhereWithoutSubjectInput[]
+    deleteMany?: ReportScalarWhereInput | ReportScalarWhereInput[]
+  }
+
+  export type TravelDocumentUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<TravelDocumentCreateWithoutUserInput, TravelDocumentUncheckedCreateWithoutUserInput> | TravelDocumentCreateWithoutUserInput[] | TravelDocumentUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: TravelDocumentCreateOrConnectWithoutUserInput | TravelDocumentCreateOrConnectWithoutUserInput[]
+    upsert?: TravelDocumentUpsertWithWhereUniqueWithoutUserInput | TravelDocumentUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: TravelDocumentCreateManyUserInputEnvelope
+    set?: TravelDocumentWhereUniqueInput | TravelDocumentWhereUniqueInput[]
+    disconnect?: TravelDocumentWhereUniqueInput | TravelDocumentWhereUniqueInput[]
+    delete?: TravelDocumentWhereUniqueInput | TravelDocumentWhereUniqueInput[]
+    connect?: TravelDocumentWhereUniqueInput | TravelDocumentWhereUniqueInput[]
+    update?: TravelDocumentUpdateWithWhereUniqueWithoutUserInput | TravelDocumentUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: TravelDocumentUpdateManyWithWhereWithoutUserInput | TravelDocumentUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: TravelDocumentScalarWhereInput | TravelDocumentScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutRefreshSessionsInput = {
@@ -9585,6 +17633,32 @@ export namespace Prisma {
     connect?: TravelOfferWhereUniqueInput
   }
 
+  export type JourneyCreateNestedOneWithoutCompanionRequestInput = {
+    create?: XOR<JourneyCreateWithoutCompanionRequestInput, JourneyUncheckedCreateWithoutCompanionRequestInput>
+    connectOrCreate?: JourneyCreateOrConnectWithoutCompanionRequestInput
+    connect?: JourneyWhereUniqueInput
+  }
+
+  export type MessageCreateNestedManyWithoutRequestInput = {
+    create?: XOR<MessageCreateWithoutRequestInput, MessageUncheckedCreateWithoutRequestInput> | MessageCreateWithoutRequestInput[] | MessageUncheckedCreateWithoutRequestInput[]
+    connectOrCreate?: MessageCreateOrConnectWithoutRequestInput | MessageCreateOrConnectWithoutRequestInput[]
+    createMany?: MessageCreateManyRequestInputEnvelope
+    connect?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+  }
+
+  export type JourneyUncheckedCreateNestedOneWithoutCompanionRequestInput = {
+    create?: XOR<JourneyCreateWithoutCompanionRequestInput, JourneyUncheckedCreateWithoutCompanionRequestInput>
+    connectOrCreate?: JourneyCreateOrConnectWithoutCompanionRequestInput
+    connect?: JourneyWhereUniqueInput
+  }
+
+  export type MessageUncheckedCreateNestedManyWithoutRequestInput = {
+    create?: XOR<MessageCreateWithoutRequestInput, MessageUncheckedCreateWithoutRequestInput> | MessageCreateWithoutRequestInput[] | MessageUncheckedCreateWithoutRequestInput[]
+    connectOrCreate?: MessageCreateOrConnectWithoutRequestInput | MessageCreateOrConnectWithoutRequestInput[]
+    createMany?: MessageCreateManyRequestInputEnvelope
+    connect?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+  }
+
   export type EnumCompanionRequestStatusFieldUpdateOperationsInput = {
     set?: $Enums.CompanionRequestStatus
   }
@@ -9619,6 +17693,348 @@ export namespace Prisma {
     upsert?: TravelOfferUpsertWithoutCompanionRequestsInput
     connect?: TravelOfferWhereUniqueInput
     update?: XOR<XOR<TravelOfferUpdateToOneWithWhereWithoutCompanionRequestsInput, TravelOfferUpdateWithoutCompanionRequestsInput>, TravelOfferUncheckedUpdateWithoutCompanionRequestsInput>
+  }
+
+  export type JourneyUpdateOneWithoutCompanionRequestNestedInput = {
+    create?: XOR<JourneyCreateWithoutCompanionRequestInput, JourneyUncheckedCreateWithoutCompanionRequestInput>
+    connectOrCreate?: JourneyCreateOrConnectWithoutCompanionRequestInput
+    upsert?: JourneyUpsertWithoutCompanionRequestInput
+    disconnect?: JourneyWhereInput | boolean
+    delete?: JourneyWhereInput | boolean
+    connect?: JourneyWhereUniqueInput
+    update?: XOR<XOR<JourneyUpdateToOneWithWhereWithoutCompanionRequestInput, JourneyUpdateWithoutCompanionRequestInput>, JourneyUncheckedUpdateWithoutCompanionRequestInput>
+  }
+
+  export type MessageUpdateManyWithoutRequestNestedInput = {
+    create?: XOR<MessageCreateWithoutRequestInput, MessageUncheckedCreateWithoutRequestInput> | MessageCreateWithoutRequestInput[] | MessageUncheckedCreateWithoutRequestInput[]
+    connectOrCreate?: MessageCreateOrConnectWithoutRequestInput | MessageCreateOrConnectWithoutRequestInput[]
+    upsert?: MessageUpsertWithWhereUniqueWithoutRequestInput | MessageUpsertWithWhereUniqueWithoutRequestInput[]
+    createMany?: MessageCreateManyRequestInputEnvelope
+    set?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    disconnect?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    delete?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    connect?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    update?: MessageUpdateWithWhereUniqueWithoutRequestInput | MessageUpdateWithWhereUniqueWithoutRequestInput[]
+    updateMany?: MessageUpdateManyWithWhereWithoutRequestInput | MessageUpdateManyWithWhereWithoutRequestInput[]
+    deleteMany?: MessageScalarWhereInput | MessageScalarWhereInput[]
+  }
+
+  export type JourneyUncheckedUpdateOneWithoutCompanionRequestNestedInput = {
+    create?: XOR<JourneyCreateWithoutCompanionRequestInput, JourneyUncheckedCreateWithoutCompanionRequestInput>
+    connectOrCreate?: JourneyCreateOrConnectWithoutCompanionRequestInput
+    upsert?: JourneyUpsertWithoutCompanionRequestInput
+    disconnect?: JourneyWhereInput | boolean
+    delete?: JourneyWhereInput | boolean
+    connect?: JourneyWhereUniqueInput
+    update?: XOR<XOR<JourneyUpdateToOneWithWhereWithoutCompanionRequestInput, JourneyUpdateWithoutCompanionRequestInput>, JourneyUncheckedUpdateWithoutCompanionRequestInput>
+  }
+
+  export type MessageUncheckedUpdateManyWithoutRequestNestedInput = {
+    create?: XOR<MessageCreateWithoutRequestInput, MessageUncheckedCreateWithoutRequestInput> | MessageCreateWithoutRequestInput[] | MessageUncheckedCreateWithoutRequestInput[]
+    connectOrCreate?: MessageCreateOrConnectWithoutRequestInput | MessageCreateOrConnectWithoutRequestInput[]
+    upsert?: MessageUpsertWithWhereUniqueWithoutRequestInput | MessageUpsertWithWhereUniqueWithoutRequestInput[]
+    createMany?: MessageCreateManyRequestInputEnvelope
+    set?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    disconnect?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    delete?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    connect?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    update?: MessageUpdateWithWhereUniqueWithoutRequestInput | MessageUpdateWithWhereUniqueWithoutRequestInput[]
+    updateMany?: MessageUpdateManyWithWhereWithoutRequestInput | MessageUpdateManyWithWhereWithoutRequestInput[]
+    deleteMany?: MessageScalarWhereInput | MessageScalarWhereInput[]
+  }
+
+  export type CompanionRequestCreateNestedOneWithoutJourneyInput = {
+    create?: XOR<CompanionRequestCreateWithoutJourneyInput, CompanionRequestUncheckedCreateWithoutJourneyInput>
+    connectOrCreate?: CompanionRequestCreateOrConnectWithoutJourneyInput
+    connect?: CompanionRequestWhereUniqueInput
+  }
+
+  export type MessageCreateNestedManyWithoutJourneyInput = {
+    create?: XOR<MessageCreateWithoutJourneyInput, MessageUncheckedCreateWithoutJourneyInput> | MessageCreateWithoutJourneyInput[] | MessageUncheckedCreateWithoutJourneyInput[]
+    connectOrCreate?: MessageCreateOrConnectWithoutJourneyInput | MessageCreateOrConnectWithoutJourneyInput[]
+    createMany?: MessageCreateManyJourneyInputEnvelope
+    connect?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+  }
+
+  export type RatingCreateNestedManyWithoutJourneyInput = {
+    create?: XOR<RatingCreateWithoutJourneyInput, RatingUncheckedCreateWithoutJourneyInput> | RatingCreateWithoutJourneyInput[] | RatingUncheckedCreateWithoutJourneyInput[]
+    connectOrCreate?: RatingCreateOrConnectWithoutJourneyInput | RatingCreateOrConnectWithoutJourneyInput[]
+    createMany?: RatingCreateManyJourneyInputEnvelope
+    connect?: RatingWhereUniqueInput | RatingWhereUniqueInput[]
+  }
+
+  export type ReportCreateNestedManyWithoutJourneyInput = {
+    create?: XOR<ReportCreateWithoutJourneyInput, ReportUncheckedCreateWithoutJourneyInput> | ReportCreateWithoutJourneyInput[] | ReportUncheckedCreateWithoutJourneyInput[]
+    connectOrCreate?: ReportCreateOrConnectWithoutJourneyInput | ReportCreateOrConnectWithoutJourneyInput[]
+    createMany?: ReportCreateManyJourneyInputEnvelope
+    connect?: ReportWhereUniqueInput | ReportWhereUniqueInput[]
+  }
+
+  export type MessageUncheckedCreateNestedManyWithoutJourneyInput = {
+    create?: XOR<MessageCreateWithoutJourneyInput, MessageUncheckedCreateWithoutJourneyInput> | MessageCreateWithoutJourneyInput[] | MessageUncheckedCreateWithoutJourneyInput[]
+    connectOrCreate?: MessageCreateOrConnectWithoutJourneyInput | MessageCreateOrConnectWithoutJourneyInput[]
+    createMany?: MessageCreateManyJourneyInputEnvelope
+    connect?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+  }
+
+  export type RatingUncheckedCreateNestedManyWithoutJourneyInput = {
+    create?: XOR<RatingCreateWithoutJourneyInput, RatingUncheckedCreateWithoutJourneyInput> | RatingCreateWithoutJourneyInput[] | RatingUncheckedCreateWithoutJourneyInput[]
+    connectOrCreate?: RatingCreateOrConnectWithoutJourneyInput | RatingCreateOrConnectWithoutJourneyInput[]
+    createMany?: RatingCreateManyJourneyInputEnvelope
+    connect?: RatingWhereUniqueInput | RatingWhereUniqueInput[]
+  }
+
+  export type ReportUncheckedCreateNestedManyWithoutJourneyInput = {
+    create?: XOR<ReportCreateWithoutJourneyInput, ReportUncheckedCreateWithoutJourneyInput> | ReportCreateWithoutJourneyInput[] | ReportUncheckedCreateWithoutJourneyInput[]
+    connectOrCreate?: ReportCreateOrConnectWithoutJourneyInput | ReportCreateOrConnectWithoutJourneyInput[]
+    createMany?: ReportCreateManyJourneyInputEnvelope
+    connect?: ReportWhereUniqueInput | ReportWhereUniqueInput[]
+  }
+
+  export type EnumJourneyStatusFieldUpdateOperationsInput = {
+    set?: $Enums.JourneyStatus
+  }
+
+  export type CompanionRequestUpdateOneRequiredWithoutJourneyNestedInput = {
+    create?: XOR<CompanionRequestCreateWithoutJourneyInput, CompanionRequestUncheckedCreateWithoutJourneyInput>
+    connectOrCreate?: CompanionRequestCreateOrConnectWithoutJourneyInput
+    upsert?: CompanionRequestUpsertWithoutJourneyInput
+    connect?: CompanionRequestWhereUniqueInput
+    update?: XOR<XOR<CompanionRequestUpdateToOneWithWhereWithoutJourneyInput, CompanionRequestUpdateWithoutJourneyInput>, CompanionRequestUncheckedUpdateWithoutJourneyInput>
+  }
+
+  export type MessageUpdateManyWithoutJourneyNestedInput = {
+    create?: XOR<MessageCreateWithoutJourneyInput, MessageUncheckedCreateWithoutJourneyInput> | MessageCreateWithoutJourneyInput[] | MessageUncheckedCreateWithoutJourneyInput[]
+    connectOrCreate?: MessageCreateOrConnectWithoutJourneyInput | MessageCreateOrConnectWithoutJourneyInput[]
+    upsert?: MessageUpsertWithWhereUniqueWithoutJourneyInput | MessageUpsertWithWhereUniqueWithoutJourneyInput[]
+    createMany?: MessageCreateManyJourneyInputEnvelope
+    set?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    disconnect?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    delete?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    connect?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    update?: MessageUpdateWithWhereUniqueWithoutJourneyInput | MessageUpdateWithWhereUniqueWithoutJourneyInput[]
+    updateMany?: MessageUpdateManyWithWhereWithoutJourneyInput | MessageUpdateManyWithWhereWithoutJourneyInput[]
+    deleteMany?: MessageScalarWhereInput | MessageScalarWhereInput[]
+  }
+
+  export type RatingUpdateManyWithoutJourneyNestedInput = {
+    create?: XOR<RatingCreateWithoutJourneyInput, RatingUncheckedCreateWithoutJourneyInput> | RatingCreateWithoutJourneyInput[] | RatingUncheckedCreateWithoutJourneyInput[]
+    connectOrCreate?: RatingCreateOrConnectWithoutJourneyInput | RatingCreateOrConnectWithoutJourneyInput[]
+    upsert?: RatingUpsertWithWhereUniqueWithoutJourneyInput | RatingUpsertWithWhereUniqueWithoutJourneyInput[]
+    createMany?: RatingCreateManyJourneyInputEnvelope
+    set?: RatingWhereUniqueInput | RatingWhereUniqueInput[]
+    disconnect?: RatingWhereUniqueInput | RatingWhereUniqueInput[]
+    delete?: RatingWhereUniqueInput | RatingWhereUniqueInput[]
+    connect?: RatingWhereUniqueInput | RatingWhereUniqueInput[]
+    update?: RatingUpdateWithWhereUniqueWithoutJourneyInput | RatingUpdateWithWhereUniqueWithoutJourneyInput[]
+    updateMany?: RatingUpdateManyWithWhereWithoutJourneyInput | RatingUpdateManyWithWhereWithoutJourneyInput[]
+    deleteMany?: RatingScalarWhereInput | RatingScalarWhereInput[]
+  }
+
+  export type ReportUpdateManyWithoutJourneyNestedInput = {
+    create?: XOR<ReportCreateWithoutJourneyInput, ReportUncheckedCreateWithoutJourneyInput> | ReportCreateWithoutJourneyInput[] | ReportUncheckedCreateWithoutJourneyInput[]
+    connectOrCreate?: ReportCreateOrConnectWithoutJourneyInput | ReportCreateOrConnectWithoutJourneyInput[]
+    upsert?: ReportUpsertWithWhereUniqueWithoutJourneyInput | ReportUpsertWithWhereUniqueWithoutJourneyInput[]
+    createMany?: ReportCreateManyJourneyInputEnvelope
+    set?: ReportWhereUniqueInput | ReportWhereUniqueInput[]
+    disconnect?: ReportWhereUniqueInput | ReportWhereUniqueInput[]
+    delete?: ReportWhereUniqueInput | ReportWhereUniqueInput[]
+    connect?: ReportWhereUniqueInput | ReportWhereUniqueInput[]
+    update?: ReportUpdateWithWhereUniqueWithoutJourneyInput | ReportUpdateWithWhereUniqueWithoutJourneyInput[]
+    updateMany?: ReportUpdateManyWithWhereWithoutJourneyInput | ReportUpdateManyWithWhereWithoutJourneyInput[]
+    deleteMany?: ReportScalarWhereInput | ReportScalarWhereInput[]
+  }
+
+  export type MessageUncheckedUpdateManyWithoutJourneyNestedInput = {
+    create?: XOR<MessageCreateWithoutJourneyInput, MessageUncheckedCreateWithoutJourneyInput> | MessageCreateWithoutJourneyInput[] | MessageUncheckedCreateWithoutJourneyInput[]
+    connectOrCreate?: MessageCreateOrConnectWithoutJourneyInput | MessageCreateOrConnectWithoutJourneyInput[]
+    upsert?: MessageUpsertWithWhereUniqueWithoutJourneyInput | MessageUpsertWithWhereUniqueWithoutJourneyInput[]
+    createMany?: MessageCreateManyJourneyInputEnvelope
+    set?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    disconnect?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    delete?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    connect?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    update?: MessageUpdateWithWhereUniqueWithoutJourneyInput | MessageUpdateWithWhereUniqueWithoutJourneyInput[]
+    updateMany?: MessageUpdateManyWithWhereWithoutJourneyInput | MessageUpdateManyWithWhereWithoutJourneyInput[]
+    deleteMany?: MessageScalarWhereInput | MessageScalarWhereInput[]
+  }
+
+  export type RatingUncheckedUpdateManyWithoutJourneyNestedInput = {
+    create?: XOR<RatingCreateWithoutJourneyInput, RatingUncheckedCreateWithoutJourneyInput> | RatingCreateWithoutJourneyInput[] | RatingUncheckedCreateWithoutJourneyInput[]
+    connectOrCreate?: RatingCreateOrConnectWithoutJourneyInput | RatingCreateOrConnectWithoutJourneyInput[]
+    upsert?: RatingUpsertWithWhereUniqueWithoutJourneyInput | RatingUpsertWithWhereUniqueWithoutJourneyInput[]
+    createMany?: RatingCreateManyJourneyInputEnvelope
+    set?: RatingWhereUniqueInput | RatingWhereUniqueInput[]
+    disconnect?: RatingWhereUniqueInput | RatingWhereUniqueInput[]
+    delete?: RatingWhereUniqueInput | RatingWhereUniqueInput[]
+    connect?: RatingWhereUniqueInput | RatingWhereUniqueInput[]
+    update?: RatingUpdateWithWhereUniqueWithoutJourneyInput | RatingUpdateWithWhereUniqueWithoutJourneyInput[]
+    updateMany?: RatingUpdateManyWithWhereWithoutJourneyInput | RatingUpdateManyWithWhereWithoutJourneyInput[]
+    deleteMany?: RatingScalarWhereInput | RatingScalarWhereInput[]
+  }
+
+  export type ReportUncheckedUpdateManyWithoutJourneyNestedInput = {
+    create?: XOR<ReportCreateWithoutJourneyInput, ReportUncheckedCreateWithoutJourneyInput> | ReportCreateWithoutJourneyInput[] | ReportUncheckedCreateWithoutJourneyInput[]
+    connectOrCreate?: ReportCreateOrConnectWithoutJourneyInput | ReportCreateOrConnectWithoutJourneyInput[]
+    upsert?: ReportUpsertWithWhereUniqueWithoutJourneyInput | ReportUpsertWithWhereUniqueWithoutJourneyInput[]
+    createMany?: ReportCreateManyJourneyInputEnvelope
+    set?: ReportWhereUniqueInput | ReportWhereUniqueInput[]
+    disconnect?: ReportWhereUniqueInput | ReportWhereUniqueInput[]
+    delete?: ReportWhereUniqueInput | ReportWhereUniqueInput[]
+    connect?: ReportWhereUniqueInput | ReportWhereUniqueInput[]
+    update?: ReportUpdateWithWhereUniqueWithoutJourneyInput | ReportUpdateWithWhereUniqueWithoutJourneyInput[]
+    updateMany?: ReportUpdateManyWithWhereWithoutJourneyInput | ReportUpdateManyWithWhereWithoutJourneyInput[]
+    deleteMany?: ReportScalarWhereInput | ReportScalarWhereInput[]
+  }
+
+  export type JourneyCreateNestedOneWithoutMessagesInput = {
+    create?: XOR<JourneyCreateWithoutMessagesInput, JourneyUncheckedCreateWithoutMessagesInput>
+    connectOrCreate?: JourneyCreateOrConnectWithoutMessagesInput
+    connect?: JourneyWhereUniqueInput
+  }
+
+  export type CompanionRequestCreateNestedOneWithoutMessagesInput = {
+    create?: XOR<CompanionRequestCreateWithoutMessagesInput, CompanionRequestUncheckedCreateWithoutMessagesInput>
+    connectOrCreate?: CompanionRequestCreateOrConnectWithoutMessagesInput
+    connect?: CompanionRequestWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutMessagesSentInput = {
+    create?: XOR<UserCreateWithoutMessagesSentInput, UserUncheckedCreateWithoutMessagesSentInput>
+    connectOrCreate?: UserCreateOrConnectWithoutMessagesSentInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type JourneyUpdateOneRequiredWithoutMessagesNestedInput = {
+    create?: XOR<JourneyCreateWithoutMessagesInput, JourneyUncheckedCreateWithoutMessagesInput>
+    connectOrCreate?: JourneyCreateOrConnectWithoutMessagesInput
+    upsert?: JourneyUpsertWithoutMessagesInput
+    connect?: JourneyWhereUniqueInput
+    update?: XOR<XOR<JourneyUpdateToOneWithWhereWithoutMessagesInput, JourneyUpdateWithoutMessagesInput>, JourneyUncheckedUpdateWithoutMessagesInput>
+  }
+
+  export type CompanionRequestUpdateOneRequiredWithoutMessagesNestedInput = {
+    create?: XOR<CompanionRequestCreateWithoutMessagesInput, CompanionRequestUncheckedCreateWithoutMessagesInput>
+    connectOrCreate?: CompanionRequestCreateOrConnectWithoutMessagesInput
+    upsert?: CompanionRequestUpsertWithoutMessagesInput
+    connect?: CompanionRequestWhereUniqueInput
+    update?: XOR<XOR<CompanionRequestUpdateToOneWithWhereWithoutMessagesInput, CompanionRequestUpdateWithoutMessagesInput>, CompanionRequestUncheckedUpdateWithoutMessagesInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutMessagesSentNestedInput = {
+    create?: XOR<UserCreateWithoutMessagesSentInput, UserUncheckedCreateWithoutMessagesSentInput>
+    connectOrCreate?: UserCreateOrConnectWithoutMessagesSentInput
+    upsert?: UserUpsertWithoutMessagesSentInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutMessagesSentInput, UserUpdateWithoutMessagesSentInput>, UserUncheckedUpdateWithoutMessagesSentInput>
+  }
+
+  export type JourneyCreateNestedOneWithoutRatingsInput = {
+    create?: XOR<JourneyCreateWithoutRatingsInput, JourneyUncheckedCreateWithoutRatingsInput>
+    connectOrCreate?: JourneyCreateOrConnectWithoutRatingsInput
+    connect?: JourneyWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutRatingsGivenInput = {
+    create?: XOR<UserCreateWithoutRatingsGivenInput, UserUncheckedCreateWithoutRatingsGivenInput>
+    connectOrCreate?: UserCreateOrConnectWithoutRatingsGivenInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutRatingsReceivedInput = {
+    create?: XOR<UserCreateWithoutRatingsReceivedInput, UserUncheckedCreateWithoutRatingsReceivedInput>
+    connectOrCreate?: UserCreateOrConnectWithoutRatingsReceivedInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type JourneyUpdateOneRequiredWithoutRatingsNestedInput = {
+    create?: XOR<JourneyCreateWithoutRatingsInput, JourneyUncheckedCreateWithoutRatingsInput>
+    connectOrCreate?: JourneyCreateOrConnectWithoutRatingsInput
+    upsert?: JourneyUpsertWithoutRatingsInput
+    connect?: JourneyWhereUniqueInput
+    update?: XOR<XOR<JourneyUpdateToOneWithWhereWithoutRatingsInput, JourneyUpdateWithoutRatingsInput>, JourneyUncheckedUpdateWithoutRatingsInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutRatingsGivenNestedInput = {
+    create?: XOR<UserCreateWithoutRatingsGivenInput, UserUncheckedCreateWithoutRatingsGivenInput>
+    connectOrCreate?: UserCreateOrConnectWithoutRatingsGivenInput
+    upsert?: UserUpsertWithoutRatingsGivenInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutRatingsGivenInput, UserUpdateWithoutRatingsGivenInput>, UserUncheckedUpdateWithoutRatingsGivenInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutRatingsReceivedNestedInput = {
+    create?: XOR<UserCreateWithoutRatingsReceivedInput, UserUncheckedCreateWithoutRatingsReceivedInput>
+    connectOrCreate?: UserCreateOrConnectWithoutRatingsReceivedInput
+    upsert?: UserUpsertWithoutRatingsReceivedInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutRatingsReceivedInput, UserUpdateWithoutRatingsReceivedInput>, UserUncheckedUpdateWithoutRatingsReceivedInput>
+  }
+
+  export type JourneyCreateNestedOneWithoutReportsInput = {
+    create?: XOR<JourneyCreateWithoutReportsInput, JourneyUncheckedCreateWithoutReportsInput>
+    connectOrCreate?: JourneyCreateOrConnectWithoutReportsInput
+    connect?: JourneyWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutReportsFiledInput = {
+    create?: XOR<UserCreateWithoutReportsFiledInput, UserUncheckedCreateWithoutReportsFiledInput>
+    connectOrCreate?: UserCreateOrConnectWithoutReportsFiledInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutReportsReceivedInput = {
+    create?: XOR<UserCreateWithoutReportsReceivedInput, UserUncheckedCreateWithoutReportsReceivedInput>
+    connectOrCreate?: UserCreateOrConnectWithoutReportsReceivedInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type EnumReportStatusFieldUpdateOperationsInput = {
+    set?: $Enums.ReportStatus
+  }
+
+  export type JourneyUpdateOneWithoutReportsNestedInput = {
+    create?: XOR<JourneyCreateWithoutReportsInput, JourneyUncheckedCreateWithoutReportsInput>
+    connectOrCreate?: JourneyCreateOrConnectWithoutReportsInput
+    upsert?: JourneyUpsertWithoutReportsInput
+    disconnect?: JourneyWhereInput | boolean
+    delete?: JourneyWhereInput | boolean
+    connect?: JourneyWhereUniqueInput
+    update?: XOR<XOR<JourneyUpdateToOneWithWhereWithoutReportsInput, JourneyUpdateWithoutReportsInput>, JourneyUncheckedUpdateWithoutReportsInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutReportsFiledNestedInput = {
+    create?: XOR<UserCreateWithoutReportsFiledInput, UserUncheckedCreateWithoutReportsFiledInput>
+    connectOrCreate?: UserCreateOrConnectWithoutReportsFiledInput
+    upsert?: UserUpsertWithoutReportsFiledInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutReportsFiledInput, UserUpdateWithoutReportsFiledInput>, UserUncheckedUpdateWithoutReportsFiledInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutReportsReceivedNestedInput = {
+    create?: XOR<UserCreateWithoutReportsReceivedInput, UserUncheckedCreateWithoutReportsReceivedInput>
+    connectOrCreate?: UserCreateOrConnectWithoutReportsReceivedInput
+    upsert?: UserUpsertWithoutReportsReceivedInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutReportsReceivedInput, UserUpdateWithoutReportsReceivedInput>, UserUncheckedUpdateWithoutReportsReceivedInput>
+  }
+
+  export type UserCreateNestedOneWithoutTravelDocumentsInput = {
+    create?: XOR<UserCreateWithoutTravelDocumentsInput, UserUncheckedCreateWithoutTravelDocumentsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutTravelDocumentsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type EnumTravelDocumentStatusFieldUpdateOperationsInput = {
+    set?: $Enums.TravelDocumentStatus
+  }
+
+  export type UserUpdateOneRequiredWithoutTravelDocumentsNestedInput = {
+    create?: XOR<UserCreateWithoutTravelDocumentsInput, UserUncheckedCreateWithoutTravelDocumentsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutTravelDocumentsInput
+    upsert?: UserUpsertWithoutTravelDocumentsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutTravelDocumentsInput, UserUpdateWithoutTravelDocumentsInput>, UserUncheckedUpdateWithoutTravelDocumentsInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -9914,6 +18330,57 @@ export namespace Prisma {
     _max?: NestedEnumCompanionRequestStatusFilter<$PrismaModel>
   }
 
+  export type NestedEnumJourneyStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.JourneyStatus | EnumJourneyStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.JourneyStatus[] | ListEnumJourneyStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.JourneyStatus[] | ListEnumJourneyStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumJourneyStatusFilter<$PrismaModel> | $Enums.JourneyStatus
+  }
+
+  export type NestedEnumJourneyStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.JourneyStatus | EnumJourneyStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.JourneyStatus[] | ListEnumJourneyStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.JourneyStatus[] | ListEnumJourneyStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumJourneyStatusWithAggregatesFilter<$PrismaModel> | $Enums.JourneyStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumJourneyStatusFilter<$PrismaModel>
+    _max?: NestedEnumJourneyStatusFilter<$PrismaModel>
+  }
+
+  export type NestedEnumReportStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.ReportStatus | EnumReportStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.ReportStatus[] | ListEnumReportStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ReportStatus[] | ListEnumReportStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumReportStatusFilter<$PrismaModel> | $Enums.ReportStatus
+  }
+
+  export type NestedEnumReportStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.ReportStatus | EnumReportStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.ReportStatus[] | ListEnumReportStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ReportStatus[] | ListEnumReportStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumReportStatusWithAggregatesFilter<$PrismaModel> | $Enums.ReportStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumReportStatusFilter<$PrismaModel>
+    _max?: NestedEnumReportStatusFilter<$PrismaModel>
+  }
+
+  export type NestedEnumTravelDocumentStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.TravelDocumentStatus | EnumTravelDocumentStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.TravelDocumentStatus[] | ListEnumTravelDocumentStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.TravelDocumentStatus[] | ListEnumTravelDocumentStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumTravelDocumentStatusFilter<$PrismaModel> | $Enums.TravelDocumentStatus
+  }
+
+  export type NestedEnumTravelDocumentStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TravelDocumentStatus | EnumTravelDocumentStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.TravelDocumentStatus[] | ListEnumTravelDocumentStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.TravelDocumentStatus[] | ListEnumTravelDocumentStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumTravelDocumentStatusWithAggregatesFilter<$PrismaModel> | $Enums.TravelDocumentStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumTravelDocumentStatusFilter<$PrismaModel>
+    _max?: NestedEnumTravelDocumentStatusFilter<$PrismaModel>
+  }
+
   export type RefreshSessionCreateWithoutUserInput = {
     id?: string
     tokenHash: string
@@ -10026,6 +18493,8 @@ export namespace Prisma {
     recipient: UserCreateNestedOneWithoutCompanionRequestsReceivedInput
     travelRequest: TravelRequestCreateNestedOneWithoutCompanionRequestsInput
     offer: TravelOfferCreateNestedOneWithoutCompanionRequestsInput
+    journey?: JourneyCreateNestedOneWithoutCompanionRequestInput
+    messages?: MessageCreateNestedManyWithoutRequestInput
   }
 
   export type CompanionRequestUncheckedCreateWithoutSenderInput = {
@@ -10038,6 +18507,8 @@ export namespace Prisma {
     respondedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    journey?: JourneyUncheckedCreateNestedOneWithoutCompanionRequestInput
+    messages?: MessageUncheckedCreateNestedManyWithoutRequestInput
   }
 
   export type CompanionRequestCreateOrConnectWithoutSenderInput = {
@@ -10060,6 +18531,8 @@ export namespace Prisma {
     sender: UserCreateNestedOneWithoutCompanionRequestsSentInput
     travelRequest: TravelRequestCreateNestedOneWithoutCompanionRequestsInput
     offer: TravelOfferCreateNestedOneWithoutCompanionRequestsInput
+    journey?: JourneyCreateNestedOneWithoutCompanionRequestInput
+    messages?: MessageCreateNestedManyWithoutRequestInput
   }
 
   export type CompanionRequestUncheckedCreateWithoutRecipientInput = {
@@ -10072,6 +18545,8 @@ export namespace Prisma {
     respondedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    journey?: JourneyUncheckedCreateNestedOneWithoutCompanionRequestInput
+    messages?: MessageUncheckedCreateNestedManyWithoutRequestInput
   }
 
   export type CompanionRequestCreateOrConnectWithoutRecipientInput = {
@@ -10081,6 +18556,188 @@ export namespace Prisma {
 
   export type CompanionRequestCreateManyRecipientInputEnvelope = {
     data: CompanionRequestCreateManyRecipientInput | CompanionRequestCreateManyRecipientInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type MessageCreateWithoutSenderInput = {
+    id?: string
+    body: string
+    createdAt?: Date | string
+    journey: JourneyCreateNestedOneWithoutMessagesInput
+    request: CompanionRequestCreateNestedOneWithoutMessagesInput
+  }
+
+  export type MessageUncheckedCreateWithoutSenderInput = {
+    id?: string
+    journeyId: string
+    requestId: string
+    body: string
+    createdAt?: Date | string
+  }
+
+  export type MessageCreateOrConnectWithoutSenderInput = {
+    where: MessageWhereUniqueInput
+    create: XOR<MessageCreateWithoutSenderInput, MessageUncheckedCreateWithoutSenderInput>
+  }
+
+  export type MessageCreateManySenderInputEnvelope = {
+    data: MessageCreateManySenderInput | MessageCreateManySenderInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type RatingCreateWithoutAuthorInput = {
+    id?: string
+    stars: number
+    comment?: string | null
+    createdAt?: Date | string
+    journey: JourneyCreateNestedOneWithoutRatingsInput
+    subject: UserCreateNestedOneWithoutRatingsReceivedInput
+  }
+
+  export type RatingUncheckedCreateWithoutAuthorInput = {
+    id?: string
+    journeyId: string
+    subjectId: string
+    stars: number
+    comment?: string | null
+    createdAt?: Date | string
+  }
+
+  export type RatingCreateOrConnectWithoutAuthorInput = {
+    where: RatingWhereUniqueInput
+    create: XOR<RatingCreateWithoutAuthorInput, RatingUncheckedCreateWithoutAuthorInput>
+  }
+
+  export type RatingCreateManyAuthorInputEnvelope = {
+    data: RatingCreateManyAuthorInput | RatingCreateManyAuthorInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type RatingCreateWithoutSubjectInput = {
+    id?: string
+    stars: number
+    comment?: string | null
+    createdAt?: Date | string
+    journey: JourneyCreateNestedOneWithoutRatingsInput
+    author: UserCreateNestedOneWithoutRatingsGivenInput
+  }
+
+  export type RatingUncheckedCreateWithoutSubjectInput = {
+    id?: string
+    journeyId: string
+    authorId: string
+    stars: number
+    comment?: string | null
+    createdAt?: Date | string
+  }
+
+  export type RatingCreateOrConnectWithoutSubjectInput = {
+    where: RatingWhereUniqueInput
+    create: XOR<RatingCreateWithoutSubjectInput, RatingUncheckedCreateWithoutSubjectInput>
+  }
+
+  export type RatingCreateManySubjectInputEnvelope = {
+    data: RatingCreateManySubjectInput | RatingCreateManySubjectInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ReportCreateWithoutAuthorInput = {
+    id?: string
+    reason: string
+    status?: $Enums.ReportStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    journey?: JourneyCreateNestedOneWithoutReportsInput
+    subject: UserCreateNestedOneWithoutReportsReceivedInput
+  }
+
+  export type ReportUncheckedCreateWithoutAuthorInput = {
+    id?: string
+    journeyId?: string | null
+    subjectId: string
+    reason: string
+    status?: $Enums.ReportStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ReportCreateOrConnectWithoutAuthorInput = {
+    where: ReportWhereUniqueInput
+    create: XOR<ReportCreateWithoutAuthorInput, ReportUncheckedCreateWithoutAuthorInput>
+  }
+
+  export type ReportCreateManyAuthorInputEnvelope = {
+    data: ReportCreateManyAuthorInput | ReportCreateManyAuthorInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ReportCreateWithoutSubjectInput = {
+    id?: string
+    reason: string
+    status?: $Enums.ReportStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    journey?: JourneyCreateNestedOneWithoutReportsInput
+    author: UserCreateNestedOneWithoutReportsFiledInput
+  }
+
+  export type ReportUncheckedCreateWithoutSubjectInput = {
+    id?: string
+    journeyId?: string | null
+    authorId: string
+    reason: string
+    status?: $Enums.ReportStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ReportCreateOrConnectWithoutSubjectInput = {
+    where: ReportWhereUniqueInput
+    create: XOR<ReportCreateWithoutSubjectInput, ReportUncheckedCreateWithoutSubjectInput>
+  }
+
+  export type ReportCreateManySubjectInputEnvelope = {
+    data: ReportCreateManySubjectInput | ReportCreateManySubjectInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type TravelDocumentCreateWithoutUserInput = {
+    id?: string
+    originalName: string
+    mimeType: string
+    ocrStatus?: $Enums.TravelDocumentStatus
+    rawText?: string | null
+    source?: string | null
+    destination?: string | null
+    departureAt?: Date | string | null
+    transportMode?: $Enums.TransportMode | null
+    errorMessage?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type TravelDocumentUncheckedCreateWithoutUserInput = {
+    id?: string
+    originalName: string
+    mimeType: string
+    ocrStatus?: $Enums.TravelDocumentStatus
+    rawText?: string | null
+    source?: string | null
+    destination?: string | null
+    departureAt?: Date | string | null
+    transportMode?: $Enums.TransportMode | null
+    errorMessage?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type TravelDocumentCreateOrConnectWithoutUserInput = {
+    where: TravelDocumentWhereUniqueInput
+    create: XOR<TravelDocumentCreateWithoutUserInput, TravelDocumentUncheckedCreateWithoutUserInput>
+  }
+
+  export type TravelDocumentCreateManyUserInputEnvelope = {
+    data: TravelDocumentCreateManyUserInput | TravelDocumentCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -10226,6 +18883,160 @@ export namespace Prisma {
     data: XOR<CompanionRequestUpdateManyMutationInput, CompanionRequestUncheckedUpdateManyWithoutRecipientInput>
   }
 
+  export type MessageUpsertWithWhereUniqueWithoutSenderInput = {
+    where: MessageWhereUniqueInput
+    update: XOR<MessageUpdateWithoutSenderInput, MessageUncheckedUpdateWithoutSenderInput>
+    create: XOR<MessageCreateWithoutSenderInput, MessageUncheckedCreateWithoutSenderInput>
+  }
+
+  export type MessageUpdateWithWhereUniqueWithoutSenderInput = {
+    where: MessageWhereUniqueInput
+    data: XOR<MessageUpdateWithoutSenderInput, MessageUncheckedUpdateWithoutSenderInput>
+  }
+
+  export type MessageUpdateManyWithWhereWithoutSenderInput = {
+    where: MessageScalarWhereInput
+    data: XOR<MessageUpdateManyMutationInput, MessageUncheckedUpdateManyWithoutSenderInput>
+  }
+
+  export type MessageScalarWhereInput = {
+    AND?: MessageScalarWhereInput | MessageScalarWhereInput[]
+    OR?: MessageScalarWhereInput[]
+    NOT?: MessageScalarWhereInput | MessageScalarWhereInput[]
+    id?: StringFilter<"Message"> | string
+    journeyId?: StringFilter<"Message"> | string
+    requestId?: StringFilter<"Message"> | string
+    senderId?: StringFilter<"Message"> | string
+    body?: StringFilter<"Message"> | string
+    createdAt?: DateTimeFilter<"Message"> | Date | string
+  }
+
+  export type RatingUpsertWithWhereUniqueWithoutAuthorInput = {
+    where: RatingWhereUniqueInput
+    update: XOR<RatingUpdateWithoutAuthorInput, RatingUncheckedUpdateWithoutAuthorInput>
+    create: XOR<RatingCreateWithoutAuthorInput, RatingUncheckedCreateWithoutAuthorInput>
+  }
+
+  export type RatingUpdateWithWhereUniqueWithoutAuthorInput = {
+    where: RatingWhereUniqueInput
+    data: XOR<RatingUpdateWithoutAuthorInput, RatingUncheckedUpdateWithoutAuthorInput>
+  }
+
+  export type RatingUpdateManyWithWhereWithoutAuthorInput = {
+    where: RatingScalarWhereInput
+    data: XOR<RatingUpdateManyMutationInput, RatingUncheckedUpdateManyWithoutAuthorInput>
+  }
+
+  export type RatingScalarWhereInput = {
+    AND?: RatingScalarWhereInput | RatingScalarWhereInput[]
+    OR?: RatingScalarWhereInput[]
+    NOT?: RatingScalarWhereInput | RatingScalarWhereInput[]
+    id?: StringFilter<"Rating"> | string
+    journeyId?: StringFilter<"Rating"> | string
+    authorId?: StringFilter<"Rating"> | string
+    subjectId?: StringFilter<"Rating"> | string
+    stars?: IntFilter<"Rating"> | number
+    comment?: StringNullableFilter<"Rating"> | string | null
+    createdAt?: DateTimeFilter<"Rating"> | Date | string
+  }
+
+  export type RatingUpsertWithWhereUniqueWithoutSubjectInput = {
+    where: RatingWhereUniqueInput
+    update: XOR<RatingUpdateWithoutSubjectInput, RatingUncheckedUpdateWithoutSubjectInput>
+    create: XOR<RatingCreateWithoutSubjectInput, RatingUncheckedCreateWithoutSubjectInput>
+  }
+
+  export type RatingUpdateWithWhereUniqueWithoutSubjectInput = {
+    where: RatingWhereUniqueInput
+    data: XOR<RatingUpdateWithoutSubjectInput, RatingUncheckedUpdateWithoutSubjectInput>
+  }
+
+  export type RatingUpdateManyWithWhereWithoutSubjectInput = {
+    where: RatingScalarWhereInput
+    data: XOR<RatingUpdateManyMutationInput, RatingUncheckedUpdateManyWithoutSubjectInput>
+  }
+
+  export type ReportUpsertWithWhereUniqueWithoutAuthorInput = {
+    where: ReportWhereUniqueInput
+    update: XOR<ReportUpdateWithoutAuthorInput, ReportUncheckedUpdateWithoutAuthorInput>
+    create: XOR<ReportCreateWithoutAuthorInput, ReportUncheckedCreateWithoutAuthorInput>
+  }
+
+  export type ReportUpdateWithWhereUniqueWithoutAuthorInput = {
+    where: ReportWhereUniqueInput
+    data: XOR<ReportUpdateWithoutAuthorInput, ReportUncheckedUpdateWithoutAuthorInput>
+  }
+
+  export type ReportUpdateManyWithWhereWithoutAuthorInput = {
+    where: ReportScalarWhereInput
+    data: XOR<ReportUpdateManyMutationInput, ReportUncheckedUpdateManyWithoutAuthorInput>
+  }
+
+  export type ReportScalarWhereInput = {
+    AND?: ReportScalarWhereInput | ReportScalarWhereInput[]
+    OR?: ReportScalarWhereInput[]
+    NOT?: ReportScalarWhereInput | ReportScalarWhereInput[]
+    id?: StringFilter<"Report"> | string
+    journeyId?: StringNullableFilter<"Report"> | string | null
+    authorId?: StringFilter<"Report"> | string
+    subjectId?: StringFilter<"Report"> | string
+    reason?: StringFilter<"Report"> | string
+    status?: EnumReportStatusFilter<"Report"> | $Enums.ReportStatus
+    createdAt?: DateTimeFilter<"Report"> | Date | string
+    updatedAt?: DateTimeFilter<"Report"> | Date | string
+  }
+
+  export type ReportUpsertWithWhereUniqueWithoutSubjectInput = {
+    where: ReportWhereUniqueInput
+    update: XOR<ReportUpdateWithoutSubjectInput, ReportUncheckedUpdateWithoutSubjectInput>
+    create: XOR<ReportCreateWithoutSubjectInput, ReportUncheckedCreateWithoutSubjectInput>
+  }
+
+  export type ReportUpdateWithWhereUniqueWithoutSubjectInput = {
+    where: ReportWhereUniqueInput
+    data: XOR<ReportUpdateWithoutSubjectInput, ReportUncheckedUpdateWithoutSubjectInput>
+  }
+
+  export type ReportUpdateManyWithWhereWithoutSubjectInput = {
+    where: ReportScalarWhereInput
+    data: XOR<ReportUpdateManyMutationInput, ReportUncheckedUpdateManyWithoutSubjectInput>
+  }
+
+  export type TravelDocumentUpsertWithWhereUniqueWithoutUserInput = {
+    where: TravelDocumentWhereUniqueInput
+    update: XOR<TravelDocumentUpdateWithoutUserInput, TravelDocumentUncheckedUpdateWithoutUserInput>
+    create: XOR<TravelDocumentCreateWithoutUserInput, TravelDocumentUncheckedCreateWithoutUserInput>
+  }
+
+  export type TravelDocumentUpdateWithWhereUniqueWithoutUserInput = {
+    where: TravelDocumentWhereUniqueInput
+    data: XOR<TravelDocumentUpdateWithoutUserInput, TravelDocumentUncheckedUpdateWithoutUserInput>
+  }
+
+  export type TravelDocumentUpdateManyWithWhereWithoutUserInput = {
+    where: TravelDocumentScalarWhereInput
+    data: XOR<TravelDocumentUpdateManyMutationInput, TravelDocumentUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type TravelDocumentScalarWhereInput = {
+    AND?: TravelDocumentScalarWhereInput | TravelDocumentScalarWhereInput[]
+    OR?: TravelDocumentScalarWhereInput[]
+    NOT?: TravelDocumentScalarWhereInput | TravelDocumentScalarWhereInput[]
+    id?: StringFilter<"TravelDocument"> | string
+    userId?: StringFilter<"TravelDocument"> | string
+    originalName?: StringFilter<"TravelDocument"> | string
+    mimeType?: StringFilter<"TravelDocument"> | string
+    ocrStatus?: EnumTravelDocumentStatusFilter<"TravelDocument"> | $Enums.TravelDocumentStatus
+    rawText?: StringNullableFilter<"TravelDocument"> | string | null
+    source?: StringNullableFilter<"TravelDocument"> | string | null
+    destination?: StringNullableFilter<"TravelDocument"> | string | null
+    departureAt?: DateTimeNullableFilter<"TravelDocument"> | Date | string | null
+    transportMode?: EnumTransportModeNullableFilter<"TravelDocument"> | $Enums.TransportMode | null
+    errorMessage?: StringNullableFilter<"TravelDocument"> | string | null
+    createdAt?: DateTimeFilter<"TravelDocument"> | Date | string
+    updatedAt?: DateTimeFilter<"TravelDocument"> | Date | string
+  }
+
   export type UserCreateWithoutRefreshSessionsInput = {
     id?: string
     name: string
@@ -10245,6 +19056,12 @@ export namespace Prisma {
     travelRequests?: TravelRequestCreateNestedManyWithoutUserInput
     companionRequestsSent?: CompanionRequestCreateNestedManyWithoutSenderInput
     companionRequestsReceived?: CompanionRequestCreateNestedManyWithoutRecipientInput
+    messagesSent?: MessageCreateNestedManyWithoutSenderInput
+    ratingsGiven?: RatingCreateNestedManyWithoutAuthorInput
+    ratingsReceived?: RatingCreateNestedManyWithoutSubjectInput
+    reportsFiled?: ReportCreateNestedManyWithoutAuthorInput
+    reportsReceived?: ReportCreateNestedManyWithoutSubjectInput
+    travelDocuments?: TravelDocumentCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutRefreshSessionsInput = {
@@ -10266,6 +19083,12 @@ export namespace Prisma {
     travelRequests?: TravelRequestUncheckedCreateNestedManyWithoutUserInput
     companionRequestsSent?: CompanionRequestUncheckedCreateNestedManyWithoutSenderInput
     companionRequestsReceived?: CompanionRequestUncheckedCreateNestedManyWithoutRecipientInput
+    messagesSent?: MessageUncheckedCreateNestedManyWithoutSenderInput
+    ratingsGiven?: RatingUncheckedCreateNestedManyWithoutAuthorInput
+    ratingsReceived?: RatingUncheckedCreateNestedManyWithoutSubjectInput
+    reportsFiled?: ReportUncheckedCreateNestedManyWithoutAuthorInput
+    reportsReceived?: ReportUncheckedCreateNestedManyWithoutSubjectInput
+    travelDocuments?: TravelDocumentUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutRefreshSessionsInput = {
@@ -10303,6 +19126,12 @@ export namespace Prisma {
     travelRequests?: TravelRequestUpdateManyWithoutUserNestedInput
     companionRequestsSent?: CompanionRequestUpdateManyWithoutSenderNestedInput
     companionRequestsReceived?: CompanionRequestUpdateManyWithoutRecipientNestedInput
+    messagesSent?: MessageUpdateManyWithoutSenderNestedInput
+    ratingsGiven?: RatingUpdateManyWithoutAuthorNestedInput
+    ratingsReceived?: RatingUpdateManyWithoutSubjectNestedInput
+    reportsFiled?: ReportUpdateManyWithoutAuthorNestedInput
+    reportsReceived?: ReportUpdateManyWithoutSubjectNestedInput
+    travelDocuments?: TravelDocumentUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutRefreshSessionsInput = {
@@ -10324,6 +19153,12 @@ export namespace Prisma {
     travelRequests?: TravelRequestUncheckedUpdateManyWithoutUserNestedInput
     companionRequestsSent?: CompanionRequestUncheckedUpdateManyWithoutSenderNestedInput
     companionRequestsReceived?: CompanionRequestUncheckedUpdateManyWithoutRecipientNestedInput
+    messagesSent?: MessageUncheckedUpdateManyWithoutSenderNestedInput
+    ratingsGiven?: RatingUncheckedUpdateManyWithoutAuthorNestedInput
+    ratingsReceived?: RatingUncheckedUpdateManyWithoutSubjectNestedInput
+    reportsFiled?: ReportUncheckedUpdateManyWithoutAuthorNestedInput
+    reportsReceived?: ReportUncheckedUpdateManyWithoutSubjectNestedInput
+    travelDocuments?: TravelDocumentUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutTravelOffersInput = {
@@ -10345,6 +19180,12 @@ export namespace Prisma {
     travelRequests?: TravelRequestCreateNestedManyWithoutUserInput
     companionRequestsSent?: CompanionRequestCreateNestedManyWithoutSenderInput
     companionRequestsReceived?: CompanionRequestCreateNestedManyWithoutRecipientInput
+    messagesSent?: MessageCreateNestedManyWithoutSenderInput
+    ratingsGiven?: RatingCreateNestedManyWithoutAuthorInput
+    ratingsReceived?: RatingCreateNestedManyWithoutSubjectInput
+    reportsFiled?: ReportCreateNestedManyWithoutAuthorInput
+    reportsReceived?: ReportCreateNestedManyWithoutSubjectInput
+    travelDocuments?: TravelDocumentCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutTravelOffersInput = {
@@ -10366,6 +19207,12 @@ export namespace Prisma {
     travelRequests?: TravelRequestUncheckedCreateNestedManyWithoutUserInput
     companionRequestsSent?: CompanionRequestUncheckedCreateNestedManyWithoutSenderInput
     companionRequestsReceived?: CompanionRequestUncheckedCreateNestedManyWithoutRecipientInput
+    messagesSent?: MessageUncheckedCreateNestedManyWithoutSenderInput
+    ratingsGiven?: RatingUncheckedCreateNestedManyWithoutAuthorInput
+    ratingsReceived?: RatingUncheckedCreateNestedManyWithoutSubjectInput
+    reportsFiled?: ReportUncheckedCreateNestedManyWithoutAuthorInput
+    reportsReceived?: ReportUncheckedCreateNestedManyWithoutSubjectInput
+    travelDocuments?: TravelDocumentUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutTravelOffersInput = {
@@ -10383,6 +19230,8 @@ export namespace Prisma {
     sender: UserCreateNestedOneWithoutCompanionRequestsSentInput
     recipient: UserCreateNestedOneWithoutCompanionRequestsReceivedInput
     travelRequest: TravelRequestCreateNestedOneWithoutCompanionRequestsInput
+    journey?: JourneyCreateNestedOneWithoutCompanionRequestInput
+    messages?: MessageCreateNestedManyWithoutRequestInput
   }
 
   export type CompanionRequestUncheckedCreateWithoutOfferInput = {
@@ -10395,6 +19244,8 @@ export namespace Prisma {
     respondedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    journey?: JourneyUncheckedCreateNestedOneWithoutCompanionRequestInput
+    messages?: MessageUncheckedCreateNestedManyWithoutRequestInput
   }
 
   export type CompanionRequestCreateOrConnectWithoutOfferInput = {
@@ -10437,6 +19288,12 @@ export namespace Prisma {
     travelRequests?: TravelRequestUpdateManyWithoutUserNestedInput
     companionRequestsSent?: CompanionRequestUpdateManyWithoutSenderNestedInput
     companionRequestsReceived?: CompanionRequestUpdateManyWithoutRecipientNestedInput
+    messagesSent?: MessageUpdateManyWithoutSenderNestedInput
+    ratingsGiven?: RatingUpdateManyWithoutAuthorNestedInput
+    ratingsReceived?: RatingUpdateManyWithoutSubjectNestedInput
+    reportsFiled?: ReportUpdateManyWithoutAuthorNestedInput
+    reportsReceived?: ReportUpdateManyWithoutSubjectNestedInput
+    travelDocuments?: TravelDocumentUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutTravelOffersInput = {
@@ -10458,6 +19315,12 @@ export namespace Prisma {
     travelRequests?: TravelRequestUncheckedUpdateManyWithoutUserNestedInput
     companionRequestsSent?: CompanionRequestUncheckedUpdateManyWithoutSenderNestedInput
     companionRequestsReceived?: CompanionRequestUncheckedUpdateManyWithoutRecipientNestedInput
+    messagesSent?: MessageUncheckedUpdateManyWithoutSenderNestedInput
+    ratingsGiven?: RatingUncheckedUpdateManyWithoutAuthorNestedInput
+    ratingsReceived?: RatingUncheckedUpdateManyWithoutSubjectNestedInput
+    reportsFiled?: ReportUncheckedUpdateManyWithoutAuthorNestedInput
+    reportsReceived?: ReportUncheckedUpdateManyWithoutSubjectNestedInput
+    travelDocuments?: TravelDocumentUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type CompanionRequestUpsertWithWhereUniqueWithoutOfferInput = {
@@ -10495,6 +19358,12 @@ export namespace Prisma {
     travelOffers?: TravelOfferCreateNestedManyWithoutOwnerInput
     companionRequestsSent?: CompanionRequestCreateNestedManyWithoutSenderInput
     companionRequestsReceived?: CompanionRequestCreateNestedManyWithoutRecipientInput
+    messagesSent?: MessageCreateNestedManyWithoutSenderInput
+    ratingsGiven?: RatingCreateNestedManyWithoutAuthorInput
+    ratingsReceived?: RatingCreateNestedManyWithoutSubjectInput
+    reportsFiled?: ReportCreateNestedManyWithoutAuthorInput
+    reportsReceived?: ReportCreateNestedManyWithoutSubjectInput
+    travelDocuments?: TravelDocumentCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutTravelRequestsInput = {
@@ -10516,6 +19385,12 @@ export namespace Prisma {
     travelOffers?: TravelOfferUncheckedCreateNestedManyWithoutOwnerInput
     companionRequestsSent?: CompanionRequestUncheckedCreateNestedManyWithoutSenderInput
     companionRequestsReceived?: CompanionRequestUncheckedCreateNestedManyWithoutRecipientInput
+    messagesSent?: MessageUncheckedCreateNestedManyWithoutSenderInput
+    ratingsGiven?: RatingUncheckedCreateNestedManyWithoutAuthorInput
+    ratingsReceived?: RatingUncheckedCreateNestedManyWithoutSubjectInput
+    reportsFiled?: ReportUncheckedCreateNestedManyWithoutAuthorInput
+    reportsReceived?: ReportUncheckedCreateNestedManyWithoutSubjectInput
+    travelDocuments?: TravelDocumentUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutTravelRequestsInput = {
@@ -10533,6 +19408,8 @@ export namespace Prisma {
     sender: UserCreateNestedOneWithoutCompanionRequestsSentInput
     recipient: UserCreateNestedOneWithoutCompanionRequestsReceivedInput
     offer: TravelOfferCreateNestedOneWithoutCompanionRequestsInput
+    journey?: JourneyCreateNestedOneWithoutCompanionRequestInput
+    messages?: MessageCreateNestedManyWithoutRequestInput
   }
 
   export type CompanionRequestUncheckedCreateWithoutTravelRequestInput = {
@@ -10545,6 +19422,8 @@ export namespace Prisma {
     respondedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    journey?: JourneyUncheckedCreateNestedOneWithoutCompanionRequestInput
+    messages?: MessageUncheckedCreateNestedManyWithoutRequestInput
   }
 
   export type CompanionRequestCreateOrConnectWithoutTravelRequestInput = {
@@ -10587,6 +19466,12 @@ export namespace Prisma {
     travelOffers?: TravelOfferUpdateManyWithoutOwnerNestedInput
     companionRequestsSent?: CompanionRequestUpdateManyWithoutSenderNestedInput
     companionRequestsReceived?: CompanionRequestUpdateManyWithoutRecipientNestedInput
+    messagesSent?: MessageUpdateManyWithoutSenderNestedInput
+    ratingsGiven?: RatingUpdateManyWithoutAuthorNestedInput
+    ratingsReceived?: RatingUpdateManyWithoutSubjectNestedInput
+    reportsFiled?: ReportUpdateManyWithoutAuthorNestedInput
+    reportsReceived?: ReportUpdateManyWithoutSubjectNestedInput
+    travelDocuments?: TravelDocumentUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutTravelRequestsInput = {
@@ -10608,6 +19493,12 @@ export namespace Prisma {
     travelOffers?: TravelOfferUncheckedUpdateManyWithoutOwnerNestedInput
     companionRequestsSent?: CompanionRequestUncheckedUpdateManyWithoutSenderNestedInput
     companionRequestsReceived?: CompanionRequestUncheckedUpdateManyWithoutRecipientNestedInput
+    messagesSent?: MessageUncheckedUpdateManyWithoutSenderNestedInput
+    ratingsGiven?: RatingUncheckedUpdateManyWithoutAuthorNestedInput
+    ratingsReceived?: RatingUncheckedUpdateManyWithoutSubjectNestedInput
+    reportsFiled?: ReportUncheckedUpdateManyWithoutAuthorNestedInput
+    reportsReceived?: ReportUncheckedUpdateManyWithoutSubjectNestedInput
+    travelDocuments?: TravelDocumentUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type CompanionRequestUpsertWithWhereUniqueWithoutTravelRequestInput = {
@@ -10645,6 +19536,12 @@ export namespace Prisma {
     travelOffers?: TravelOfferCreateNestedManyWithoutOwnerInput
     travelRequests?: TravelRequestCreateNestedManyWithoutUserInput
     companionRequestsReceived?: CompanionRequestCreateNestedManyWithoutRecipientInput
+    messagesSent?: MessageCreateNestedManyWithoutSenderInput
+    ratingsGiven?: RatingCreateNestedManyWithoutAuthorInput
+    ratingsReceived?: RatingCreateNestedManyWithoutSubjectInput
+    reportsFiled?: ReportCreateNestedManyWithoutAuthorInput
+    reportsReceived?: ReportCreateNestedManyWithoutSubjectInput
+    travelDocuments?: TravelDocumentCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutCompanionRequestsSentInput = {
@@ -10666,6 +19563,12 @@ export namespace Prisma {
     travelOffers?: TravelOfferUncheckedCreateNestedManyWithoutOwnerInput
     travelRequests?: TravelRequestUncheckedCreateNestedManyWithoutUserInput
     companionRequestsReceived?: CompanionRequestUncheckedCreateNestedManyWithoutRecipientInput
+    messagesSent?: MessageUncheckedCreateNestedManyWithoutSenderInput
+    ratingsGiven?: RatingUncheckedCreateNestedManyWithoutAuthorInput
+    ratingsReceived?: RatingUncheckedCreateNestedManyWithoutSubjectInput
+    reportsFiled?: ReportUncheckedCreateNestedManyWithoutAuthorInput
+    reportsReceived?: ReportUncheckedCreateNestedManyWithoutSubjectInput
+    travelDocuments?: TravelDocumentUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutCompanionRequestsSentInput = {
@@ -10692,6 +19595,12 @@ export namespace Prisma {
     travelOffers?: TravelOfferCreateNestedManyWithoutOwnerInput
     travelRequests?: TravelRequestCreateNestedManyWithoutUserInput
     companionRequestsSent?: CompanionRequestCreateNestedManyWithoutSenderInput
+    messagesSent?: MessageCreateNestedManyWithoutSenderInput
+    ratingsGiven?: RatingCreateNestedManyWithoutAuthorInput
+    ratingsReceived?: RatingCreateNestedManyWithoutSubjectInput
+    reportsFiled?: ReportCreateNestedManyWithoutAuthorInput
+    reportsReceived?: ReportCreateNestedManyWithoutSubjectInput
+    travelDocuments?: TravelDocumentCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutCompanionRequestsReceivedInput = {
@@ -10713,6 +19622,12 @@ export namespace Prisma {
     travelOffers?: TravelOfferUncheckedCreateNestedManyWithoutOwnerInput
     travelRequests?: TravelRequestUncheckedCreateNestedManyWithoutUserInput
     companionRequestsSent?: CompanionRequestUncheckedCreateNestedManyWithoutSenderInput
+    messagesSent?: MessageUncheckedCreateNestedManyWithoutSenderInput
+    ratingsGiven?: RatingUncheckedCreateNestedManyWithoutAuthorInput
+    ratingsReceived?: RatingUncheckedCreateNestedManyWithoutSubjectInput
+    reportsFiled?: ReportUncheckedCreateNestedManyWithoutAuthorInput
+    reportsReceived?: ReportUncheckedCreateNestedManyWithoutSubjectInput
+    travelDocuments?: TravelDocumentUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutCompanionRequestsReceivedInput = {
@@ -10786,6 +19701,61 @@ export namespace Prisma {
     create: XOR<TravelOfferCreateWithoutCompanionRequestsInput, TravelOfferUncheckedCreateWithoutCompanionRequestsInput>
   }
 
+  export type JourneyCreateWithoutCompanionRequestInput = {
+    id?: string
+    status?: $Enums.JourneyStatus
+    startedAt?: Date | string | null
+    completedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    messages?: MessageCreateNestedManyWithoutJourneyInput
+    ratings?: RatingCreateNestedManyWithoutJourneyInput
+    reports?: ReportCreateNestedManyWithoutJourneyInput
+  }
+
+  export type JourneyUncheckedCreateWithoutCompanionRequestInput = {
+    id?: string
+    status?: $Enums.JourneyStatus
+    startedAt?: Date | string | null
+    completedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    messages?: MessageUncheckedCreateNestedManyWithoutJourneyInput
+    ratings?: RatingUncheckedCreateNestedManyWithoutJourneyInput
+    reports?: ReportUncheckedCreateNestedManyWithoutJourneyInput
+  }
+
+  export type JourneyCreateOrConnectWithoutCompanionRequestInput = {
+    where: JourneyWhereUniqueInput
+    create: XOR<JourneyCreateWithoutCompanionRequestInput, JourneyUncheckedCreateWithoutCompanionRequestInput>
+  }
+
+  export type MessageCreateWithoutRequestInput = {
+    id?: string
+    body: string
+    createdAt?: Date | string
+    journey: JourneyCreateNestedOneWithoutMessagesInput
+    sender: UserCreateNestedOneWithoutMessagesSentInput
+  }
+
+  export type MessageUncheckedCreateWithoutRequestInput = {
+    id?: string
+    journeyId: string
+    senderId: string
+    body: string
+    createdAt?: Date | string
+  }
+
+  export type MessageCreateOrConnectWithoutRequestInput = {
+    where: MessageWhereUniqueInput
+    create: XOR<MessageCreateWithoutRequestInput, MessageUncheckedCreateWithoutRequestInput>
+  }
+
+  export type MessageCreateManyRequestInputEnvelope = {
+    data: MessageCreateManyRequestInput | MessageCreateManyRequestInput[]
+    skipDuplicates?: boolean
+  }
+
   export type UserUpsertWithoutCompanionRequestsSentInput = {
     update: XOR<UserUpdateWithoutCompanionRequestsSentInput, UserUncheckedUpdateWithoutCompanionRequestsSentInput>
     create: XOR<UserCreateWithoutCompanionRequestsSentInput, UserUncheckedCreateWithoutCompanionRequestsSentInput>
@@ -10816,6 +19786,12 @@ export namespace Prisma {
     travelOffers?: TravelOfferUpdateManyWithoutOwnerNestedInput
     travelRequests?: TravelRequestUpdateManyWithoutUserNestedInput
     companionRequestsReceived?: CompanionRequestUpdateManyWithoutRecipientNestedInput
+    messagesSent?: MessageUpdateManyWithoutSenderNestedInput
+    ratingsGiven?: RatingUpdateManyWithoutAuthorNestedInput
+    ratingsReceived?: RatingUpdateManyWithoutSubjectNestedInput
+    reportsFiled?: ReportUpdateManyWithoutAuthorNestedInput
+    reportsReceived?: ReportUpdateManyWithoutSubjectNestedInput
+    travelDocuments?: TravelDocumentUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCompanionRequestsSentInput = {
@@ -10837,6 +19813,12 @@ export namespace Prisma {
     travelOffers?: TravelOfferUncheckedUpdateManyWithoutOwnerNestedInput
     travelRequests?: TravelRequestUncheckedUpdateManyWithoutUserNestedInput
     companionRequestsReceived?: CompanionRequestUncheckedUpdateManyWithoutRecipientNestedInput
+    messagesSent?: MessageUncheckedUpdateManyWithoutSenderNestedInput
+    ratingsGiven?: RatingUncheckedUpdateManyWithoutAuthorNestedInput
+    ratingsReceived?: RatingUncheckedUpdateManyWithoutSubjectNestedInput
+    reportsFiled?: ReportUncheckedUpdateManyWithoutAuthorNestedInput
+    reportsReceived?: ReportUncheckedUpdateManyWithoutSubjectNestedInput
+    travelDocuments?: TravelDocumentUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserUpsertWithoutCompanionRequestsReceivedInput = {
@@ -10869,6 +19851,12 @@ export namespace Prisma {
     travelOffers?: TravelOfferUpdateManyWithoutOwnerNestedInput
     travelRequests?: TravelRequestUpdateManyWithoutUserNestedInput
     companionRequestsSent?: CompanionRequestUpdateManyWithoutSenderNestedInput
+    messagesSent?: MessageUpdateManyWithoutSenderNestedInput
+    ratingsGiven?: RatingUpdateManyWithoutAuthorNestedInput
+    ratingsReceived?: RatingUpdateManyWithoutSubjectNestedInput
+    reportsFiled?: ReportUpdateManyWithoutAuthorNestedInput
+    reportsReceived?: ReportUpdateManyWithoutSubjectNestedInput
+    travelDocuments?: TravelDocumentUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCompanionRequestsReceivedInput = {
@@ -10890,6 +19878,12 @@ export namespace Prisma {
     travelOffers?: TravelOfferUncheckedUpdateManyWithoutOwnerNestedInput
     travelRequests?: TravelRequestUncheckedUpdateManyWithoutUserNestedInput
     companionRequestsSent?: CompanionRequestUncheckedUpdateManyWithoutSenderNestedInput
+    messagesSent?: MessageUncheckedUpdateManyWithoutSenderNestedInput
+    ratingsGiven?: RatingUncheckedUpdateManyWithoutAuthorNestedInput
+    ratingsReceived?: RatingUncheckedUpdateManyWithoutSubjectNestedInput
+    reportsFiled?: ReportUncheckedUpdateManyWithoutAuthorNestedInput
+    reportsReceived?: ReportUncheckedUpdateManyWithoutSubjectNestedInput
+    travelDocuments?: TravelDocumentUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type TravelRequestUpsertWithoutCompanionRequestsInput = {
@@ -10970,6 +19964,1269 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type JourneyUpsertWithoutCompanionRequestInput = {
+    update: XOR<JourneyUpdateWithoutCompanionRequestInput, JourneyUncheckedUpdateWithoutCompanionRequestInput>
+    create: XOR<JourneyCreateWithoutCompanionRequestInput, JourneyUncheckedCreateWithoutCompanionRequestInput>
+    where?: JourneyWhereInput
+  }
+
+  export type JourneyUpdateToOneWithWhereWithoutCompanionRequestInput = {
+    where?: JourneyWhereInput
+    data: XOR<JourneyUpdateWithoutCompanionRequestInput, JourneyUncheckedUpdateWithoutCompanionRequestInput>
+  }
+
+  export type JourneyUpdateWithoutCompanionRequestInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: EnumJourneyStatusFieldUpdateOperationsInput | $Enums.JourneyStatus
+    startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    messages?: MessageUpdateManyWithoutJourneyNestedInput
+    ratings?: RatingUpdateManyWithoutJourneyNestedInput
+    reports?: ReportUpdateManyWithoutJourneyNestedInput
+  }
+
+  export type JourneyUncheckedUpdateWithoutCompanionRequestInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: EnumJourneyStatusFieldUpdateOperationsInput | $Enums.JourneyStatus
+    startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    messages?: MessageUncheckedUpdateManyWithoutJourneyNestedInput
+    ratings?: RatingUncheckedUpdateManyWithoutJourneyNestedInput
+    reports?: ReportUncheckedUpdateManyWithoutJourneyNestedInput
+  }
+
+  export type MessageUpsertWithWhereUniqueWithoutRequestInput = {
+    where: MessageWhereUniqueInput
+    update: XOR<MessageUpdateWithoutRequestInput, MessageUncheckedUpdateWithoutRequestInput>
+    create: XOR<MessageCreateWithoutRequestInput, MessageUncheckedCreateWithoutRequestInput>
+  }
+
+  export type MessageUpdateWithWhereUniqueWithoutRequestInput = {
+    where: MessageWhereUniqueInput
+    data: XOR<MessageUpdateWithoutRequestInput, MessageUncheckedUpdateWithoutRequestInput>
+  }
+
+  export type MessageUpdateManyWithWhereWithoutRequestInput = {
+    where: MessageScalarWhereInput
+    data: XOR<MessageUpdateManyMutationInput, MessageUncheckedUpdateManyWithoutRequestInput>
+  }
+
+  export type CompanionRequestCreateWithoutJourneyInput = {
+    id?: string
+    status?: $Enums.CompanionRequestStatus
+    expiresAt: Date | string
+    respondedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    sender: UserCreateNestedOneWithoutCompanionRequestsSentInput
+    recipient: UserCreateNestedOneWithoutCompanionRequestsReceivedInput
+    travelRequest: TravelRequestCreateNestedOneWithoutCompanionRequestsInput
+    offer: TravelOfferCreateNestedOneWithoutCompanionRequestsInput
+    messages?: MessageCreateNestedManyWithoutRequestInput
+  }
+
+  export type CompanionRequestUncheckedCreateWithoutJourneyInput = {
+    id?: string
+    senderId: string
+    recipientId: string
+    travelRequestId: string
+    offerId: string
+    status?: $Enums.CompanionRequestStatus
+    expiresAt: Date | string
+    respondedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    messages?: MessageUncheckedCreateNestedManyWithoutRequestInput
+  }
+
+  export type CompanionRequestCreateOrConnectWithoutJourneyInput = {
+    where: CompanionRequestWhereUniqueInput
+    create: XOR<CompanionRequestCreateWithoutJourneyInput, CompanionRequestUncheckedCreateWithoutJourneyInput>
+  }
+
+  export type MessageCreateWithoutJourneyInput = {
+    id?: string
+    body: string
+    createdAt?: Date | string
+    request: CompanionRequestCreateNestedOneWithoutMessagesInput
+    sender: UserCreateNestedOneWithoutMessagesSentInput
+  }
+
+  export type MessageUncheckedCreateWithoutJourneyInput = {
+    id?: string
+    requestId: string
+    senderId: string
+    body: string
+    createdAt?: Date | string
+  }
+
+  export type MessageCreateOrConnectWithoutJourneyInput = {
+    where: MessageWhereUniqueInput
+    create: XOR<MessageCreateWithoutJourneyInput, MessageUncheckedCreateWithoutJourneyInput>
+  }
+
+  export type MessageCreateManyJourneyInputEnvelope = {
+    data: MessageCreateManyJourneyInput | MessageCreateManyJourneyInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type RatingCreateWithoutJourneyInput = {
+    id?: string
+    stars: number
+    comment?: string | null
+    createdAt?: Date | string
+    author: UserCreateNestedOneWithoutRatingsGivenInput
+    subject: UserCreateNestedOneWithoutRatingsReceivedInput
+  }
+
+  export type RatingUncheckedCreateWithoutJourneyInput = {
+    id?: string
+    authorId: string
+    subjectId: string
+    stars: number
+    comment?: string | null
+    createdAt?: Date | string
+  }
+
+  export type RatingCreateOrConnectWithoutJourneyInput = {
+    where: RatingWhereUniqueInput
+    create: XOR<RatingCreateWithoutJourneyInput, RatingUncheckedCreateWithoutJourneyInput>
+  }
+
+  export type RatingCreateManyJourneyInputEnvelope = {
+    data: RatingCreateManyJourneyInput | RatingCreateManyJourneyInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ReportCreateWithoutJourneyInput = {
+    id?: string
+    reason: string
+    status?: $Enums.ReportStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    author: UserCreateNestedOneWithoutReportsFiledInput
+    subject: UserCreateNestedOneWithoutReportsReceivedInput
+  }
+
+  export type ReportUncheckedCreateWithoutJourneyInput = {
+    id?: string
+    authorId: string
+    subjectId: string
+    reason: string
+    status?: $Enums.ReportStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ReportCreateOrConnectWithoutJourneyInput = {
+    where: ReportWhereUniqueInput
+    create: XOR<ReportCreateWithoutJourneyInput, ReportUncheckedCreateWithoutJourneyInput>
+  }
+
+  export type ReportCreateManyJourneyInputEnvelope = {
+    data: ReportCreateManyJourneyInput | ReportCreateManyJourneyInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CompanionRequestUpsertWithoutJourneyInput = {
+    update: XOR<CompanionRequestUpdateWithoutJourneyInput, CompanionRequestUncheckedUpdateWithoutJourneyInput>
+    create: XOR<CompanionRequestCreateWithoutJourneyInput, CompanionRequestUncheckedCreateWithoutJourneyInput>
+    where?: CompanionRequestWhereInput
+  }
+
+  export type CompanionRequestUpdateToOneWithWhereWithoutJourneyInput = {
+    where?: CompanionRequestWhereInput
+    data: XOR<CompanionRequestUpdateWithoutJourneyInput, CompanionRequestUncheckedUpdateWithoutJourneyInput>
+  }
+
+  export type CompanionRequestUpdateWithoutJourneyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: EnumCompanionRequestStatusFieldUpdateOperationsInput | $Enums.CompanionRequestStatus
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    respondedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sender?: UserUpdateOneRequiredWithoutCompanionRequestsSentNestedInput
+    recipient?: UserUpdateOneRequiredWithoutCompanionRequestsReceivedNestedInput
+    travelRequest?: TravelRequestUpdateOneRequiredWithoutCompanionRequestsNestedInput
+    offer?: TravelOfferUpdateOneRequiredWithoutCompanionRequestsNestedInput
+    messages?: MessageUpdateManyWithoutRequestNestedInput
+  }
+
+  export type CompanionRequestUncheckedUpdateWithoutJourneyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    senderId?: StringFieldUpdateOperationsInput | string
+    recipientId?: StringFieldUpdateOperationsInput | string
+    travelRequestId?: StringFieldUpdateOperationsInput | string
+    offerId?: StringFieldUpdateOperationsInput | string
+    status?: EnumCompanionRequestStatusFieldUpdateOperationsInput | $Enums.CompanionRequestStatus
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    respondedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    messages?: MessageUncheckedUpdateManyWithoutRequestNestedInput
+  }
+
+  export type MessageUpsertWithWhereUniqueWithoutJourneyInput = {
+    where: MessageWhereUniqueInput
+    update: XOR<MessageUpdateWithoutJourneyInput, MessageUncheckedUpdateWithoutJourneyInput>
+    create: XOR<MessageCreateWithoutJourneyInput, MessageUncheckedCreateWithoutJourneyInput>
+  }
+
+  export type MessageUpdateWithWhereUniqueWithoutJourneyInput = {
+    where: MessageWhereUniqueInput
+    data: XOR<MessageUpdateWithoutJourneyInput, MessageUncheckedUpdateWithoutJourneyInput>
+  }
+
+  export type MessageUpdateManyWithWhereWithoutJourneyInput = {
+    where: MessageScalarWhereInput
+    data: XOR<MessageUpdateManyMutationInput, MessageUncheckedUpdateManyWithoutJourneyInput>
+  }
+
+  export type RatingUpsertWithWhereUniqueWithoutJourneyInput = {
+    where: RatingWhereUniqueInput
+    update: XOR<RatingUpdateWithoutJourneyInput, RatingUncheckedUpdateWithoutJourneyInput>
+    create: XOR<RatingCreateWithoutJourneyInput, RatingUncheckedCreateWithoutJourneyInput>
+  }
+
+  export type RatingUpdateWithWhereUniqueWithoutJourneyInput = {
+    where: RatingWhereUniqueInput
+    data: XOR<RatingUpdateWithoutJourneyInput, RatingUncheckedUpdateWithoutJourneyInput>
+  }
+
+  export type RatingUpdateManyWithWhereWithoutJourneyInput = {
+    where: RatingScalarWhereInput
+    data: XOR<RatingUpdateManyMutationInput, RatingUncheckedUpdateManyWithoutJourneyInput>
+  }
+
+  export type ReportUpsertWithWhereUniqueWithoutJourneyInput = {
+    where: ReportWhereUniqueInput
+    update: XOR<ReportUpdateWithoutJourneyInput, ReportUncheckedUpdateWithoutJourneyInput>
+    create: XOR<ReportCreateWithoutJourneyInput, ReportUncheckedCreateWithoutJourneyInput>
+  }
+
+  export type ReportUpdateWithWhereUniqueWithoutJourneyInput = {
+    where: ReportWhereUniqueInput
+    data: XOR<ReportUpdateWithoutJourneyInput, ReportUncheckedUpdateWithoutJourneyInput>
+  }
+
+  export type ReportUpdateManyWithWhereWithoutJourneyInput = {
+    where: ReportScalarWhereInput
+    data: XOR<ReportUpdateManyMutationInput, ReportUncheckedUpdateManyWithoutJourneyInput>
+  }
+
+  export type JourneyCreateWithoutMessagesInput = {
+    id?: string
+    status?: $Enums.JourneyStatus
+    startedAt?: Date | string | null
+    completedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    companionRequest: CompanionRequestCreateNestedOneWithoutJourneyInput
+    ratings?: RatingCreateNestedManyWithoutJourneyInput
+    reports?: ReportCreateNestedManyWithoutJourneyInput
+  }
+
+  export type JourneyUncheckedCreateWithoutMessagesInput = {
+    id?: string
+    companionRequestId: string
+    status?: $Enums.JourneyStatus
+    startedAt?: Date | string | null
+    completedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    ratings?: RatingUncheckedCreateNestedManyWithoutJourneyInput
+    reports?: ReportUncheckedCreateNestedManyWithoutJourneyInput
+  }
+
+  export type JourneyCreateOrConnectWithoutMessagesInput = {
+    where: JourneyWhereUniqueInput
+    create: XOR<JourneyCreateWithoutMessagesInput, JourneyUncheckedCreateWithoutMessagesInput>
+  }
+
+  export type CompanionRequestCreateWithoutMessagesInput = {
+    id?: string
+    status?: $Enums.CompanionRequestStatus
+    expiresAt: Date | string
+    respondedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    sender: UserCreateNestedOneWithoutCompanionRequestsSentInput
+    recipient: UserCreateNestedOneWithoutCompanionRequestsReceivedInput
+    travelRequest: TravelRequestCreateNestedOneWithoutCompanionRequestsInput
+    offer: TravelOfferCreateNestedOneWithoutCompanionRequestsInput
+    journey?: JourneyCreateNestedOneWithoutCompanionRequestInput
+  }
+
+  export type CompanionRequestUncheckedCreateWithoutMessagesInput = {
+    id?: string
+    senderId: string
+    recipientId: string
+    travelRequestId: string
+    offerId: string
+    status?: $Enums.CompanionRequestStatus
+    expiresAt: Date | string
+    respondedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    journey?: JourneyUncheckedCreateNestedOneWithoutCompanionRequestInput
+  }
+
+  export type CompanionRequestCreateOrConnectWithoutMessagesInput = {
+    where: CompanionRequestWhereUniqueInput
+    create: XOR<CompanionRequestCreateWithoutMessagesInput, CompanionRequestUncheckedCreateWithoutMessagesInput>
+  }
+
+  export type UserCreateWithoutMessagesSentInput = {
+    id?: string
+    name: string
+    email: string
+    passwordHash?: string | null
+    phoneNumber?: string | null
+    gender?: $Enums.Gender | null
+    role?: $Enums.UserRole
+    status?: $Enums.UserStatus
+    authProvider?: $Enums.AuthProvider
+    googleId?: string | null
+    emailVerified?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    profileCompleted?: boolean
+    refreshSessions?: RefreshSessionCreateNestedManyWithoutUserInput
+    travelOffers?: TravelOfferCreateNestedManyWithoutOwnerInput
+    travelRequests?: TravelRequestCreateNestedManyWithoutUserInput
+    companionRequestsSent?: CompanionRequestCreateNestedManyWithoutSenderInput
+    companionRequestsReceived?: CompanionRequestCreateNestedManyWithoutRecipientInput
+    ratingsGiven?: RatingCreateNestedManyWithoutAuthorInput
+    ratingsReceived?: RatingCreateNestedManyWithoutSubjectInput
+    reportsFiled?: ReportCreateNestedManyWithoutAuthorInput
+    reportsReceived?: ReportCreateNestedManyWithoutSubjectInput
+    travelDocuments?: TravelDocumentCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutMessagesSentInput = {
+    id?: string
+    name: string
+    email: string
+    passwordHash?: string | null
+    phoneNumber?: string | null
+    gender?: $Enums.Gender | null
+    role?: $Enums.UserRole
+    status?: $Enums.UserStatus
+    authProvider?: $Enums.AuthProvider
+    googleId?: string | null
+    emailVerified?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    profileCompleted?: boolean
+    refreshSessions?: RefreshSessionUncheckedCreateNestedManyWithoutUserInput
+    travelOffers?: TravelOfferUncheckedCreateNestedManyWithoutOwnerInput
+    travelRequests?: TravelRequestUncheckedCreateNestedManyWithoutUserInput
+    companionRequestsSent?: CompanionRequestUncheckedCreateNestedManyWithoutSenderInput
+    companionRequestsReceived?: CompanionRequestUncheckedCreateNestedManyWithoutRecipientInput
+    ratingsGiven?: RatingUncheckedCreateNestedManyWithoutAuthorInput
+    ratingsReceived?: RatingUncheckedCreateNestedManyWithoutSubjectInput
+    reportsFiled?: ReportUncheckedCreateNestedManyWithoutAuthorInput
+    reportsReceived?: ReportUncheckedCreateNestedManyWithoutSubjectInput
+    travelDocuments?: TravelDocumentUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutMessagesSentInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutMessagesSentInput, UserUncheckedCreateWithoutMessagesSentInput>
+  }
+
+  export type JourneyUpsertWithoutMessagesInput = {
+    update: XOR<JourneyUpdateWithoutMessagesInput, JourneyUncheckedUpdateWithoutMessagesInput>
+    create: XOR<JourneyCreateWithoutMessagesInput, JourneyUncheckedCreateWithoutMessagesInput>
+    where?: JourneyWhereInput
+  }
+
+  export type JourneyUpdateToOneWithWhereWithoutMessagesInput = {
+    where?: JourneyWhereInput
+    data: XOR<JourneyUpdateWithoutMessagesInput, JourneyUncheckedUpdateWithoutMessagesInput>
+  }
+
+  export type JourneyUpdateWithoutMessagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: EnumJourneyStatusFieldUpdateOperationsInput | $Enums.JourneyStatus
+    startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    companionRequest?: CompanionRequestUpdateOneRequiredWithoutJourneyNestedInput
+    ratings?: RatingUpdateManyWithoutJourneyNestedInput
+    reports?: ReportUpdateManyWithoutJourneyNestedInput
+  }
+
+  export type JourneyUncheckedUpdateWithoutMessagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    companionRequestId?: StringFieldUpdateOperationsInput | string
+    status?: EnumJourneyStatusFieldUpdateOperationsInput | $Enums.JourneyStatus
+    startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ratings?: RatingUncheckedUpdateManyWithoutJourneyNestedInput
+    reports?: ReportUncheckedUpdateManyWithoutJourneyNestedInput
+  }
+
+  export type CompanionRequestUpsertWithoutMessagesInput = {
+    update: XOR<CompanionRequestUpdateWithoutMessagesInput, CompanionRequestUncheckedUpdateWithoutMessagesInput>
+    create: XOR<CompanionRequestCreateWithoutMessagesInput, CompanionRequestUncheckedCreateWithoutMessagesInput>
+    where?: CompanionRequestWhereInput
+  }
+
+  export type CompanionRequestUpdateToOneWithWhereWithoutMessagesInput = {
+    where?: CompanionRequestWhereInput
+    data: XOR<CompanionRequestUpdateWithoutMessagesInput, CompanionRequestUncheckedUpdateWithoutMessagesInput>
+  }
+
+  export type CompanionRequestUpdateWithoutMessagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: EnumCompanionRequestStatusFieldUpdateOperationsInput | $Enums.CompanionRequestStatus
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    respondedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sender?: UserUpdateOneRequiredWithoutCompanionRequestsSentNestedInput
+    recipient?: UserUpdateOneRequiredWithoutCompanionRequestsReceivedNestedInput
+    travelRequest?: TravelRequestUpdateOneRequiredWithoutCompanionRequestsNestedInput
+    offer?: TravelOfferUpdateOneRequiredWithoutCompanionRequestsNestedInput
+    journey?: JourneyUpdateOneWithoutCompanionRequestNestedInput
+  }
+
+  export type CompanionRequestUncheckedUpdateWithoutMessagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    senderId?: StringFieldUpdateOperationsInput | string
+    recipientId?: StringFieldUpdateOperationsInput | string
+    travelRequestId?: StringFieldUpdateOperationsInput | string
+    offerId?: StringFieldUpdateOperationsInput | string
+    status?: EnumCompanionRequestStatusFieldUpdateOperationsInput | $Enums.CompanionRequestStatus
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    respondedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    journey?: JourneyUncheckedUpdateOneWithoutCompanionRequestNestedInput
+  }
+
+  export type UserUpsertWithoutMessagesSentInput = {
+    update: XOR<UserUpdateWithoutMessagesSentInput, UserUncheckedUpdateWithoutMessagesSentInput>
+    create: XOR<UserCreateWithoutMessagesSentInput, UserUncheckedCreateWithoutMessagesSentInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutMessagesSentInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutMessagesSentInput, UserUncheckedUpdateWithoutMessagesSentInput>
+  }
+
+  export type UserUpdateWithoutMessagesSentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    authProvider?: EnumAuthProviderFieldUpdateOperationsInput | $Enums.AuthProvider
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    profileCompleted?: BoolFieldUpdateOperationsInput | boolean
+    refreshSessions?: RefreshSessionUpdateManyWithoutUserNestedInput
+    travelOffers?: TravelOfferUpdateManyWithoutOwnerNestedInput
+    travelRequests?: TravelRequestUpdateManyWithoutUserNestedInput
+    companionRequestsSent?: CompanionRequestUpdateManyWithoutSenderNestedInput
+    companionRequestsReceived?: CompanionRequestUpdateManyWithoutRecipientNestedInput
+    ratingsGiven?: RatingUpdateManyWithoutAuthorNestedInput
+    ratingsReceived?: RatingUpdateManyWithoutSubjectNestedInput
+    reportsFiled?: ReportUpdateManyWithoutAuthorNestedInput
+    reportsReceived?: ReportUpdateManyWithoutSubjectNestedInput
+    travelDocuments?: TravelDocumentUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutMessagesSentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    authProvider?: EnumAuthProviderFieldUpdateOperationsInput | $Enums.AuthProvider
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    profileCompleted?: BoolFieldUpdateOperationsInput | boolean
+    refreshSessions?: RefreshSessionUncheckedUpdateManyWithoutUserNestedInput
+    travelOffers?: TravelOfferUncheckedUpdateManyWithoutOwnerNestedInput
+    travelRequests?: TravelRequestUncheckedUpdateManyWithoutUserNestedInput
+    companionRequestsSent?: CompanionRequestUncheckedUpdateManyWithoutSenderNestedInput
+    companionRequestsReceived?: CompanionRequestUncheckedUpdateManyWithoutRecipientNestedInput
+    ratingsGiven?: RatingUncheckedUpdateManyWithoutAuthorNestedInput
+    ratingsReceived?: RatingUncheckedUpdateManyWithoutSubjectNestedInput
+    reportsFiled?: ReportUncheckedUpdateManyWithoutAuthorNestedInput
+    reportsReceived?: ReportUncheckedUpdateManyWithoutSubjectNestedInput
+    travelDocuments?: TravelDocumentUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type JourneyCreateWithoutRatingsInput = {
+    id?: string
+    status?: $Enums.JourneyStatus
+    startedAt?: Date | string | null
+    completedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    companionRequest: CompanionRequestCreateNestedOneWithoutJourneyInput
+    messages?: MessageCreateNestedManyWithoutJourneyInput
+    reports?: ReportCreateNestedManyWithoutJourneyInput
+  }
+
+  export type JourneyUncheckedCreateWithoutRatingsInput = {
+    id?: string
+    companionRequestId: string
+    status?: $Enums.JourneyStatus
+    startedAt?: Date | string | null
+    completedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    messages?: MessageUncheckedCreateNestedManyWithoutJourneyInput
+    reports?: ReportUncheckedCreateNestedManyWithoutJourneyInput
+  }
+
+  export type JourneyCreateOrConnectWithoutRatingsInput = {
+    where: JourneyWhereUniqueInput
+    create: XOR<JourneyCreateWithoutRatingsInput, JourneyUncheckedCreateWithoutRatingsInput>
+  }
+
+  export type UserCreateWithoutRatingsGivenInput = {
+    id?: string
+    name: string
+    email: string
+    passwordHash?: string | null
+    phoneNumber?: string | null
+    gender?: $Enums.Gender | null
+    role?: $Enums.UserRole
+    status?: $Enums.UserStatus
+    authProvider?: $Enums.AuthProvider
+    googleId?: string | null
+    emailVerified?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    profileCompleted?: boolean
+    refreshSessions?: RefreshSessionCreateNestedManyWithoutUserInput
+    travelOffers?: TravelOfferCreateNestedManyWithoutOwnerInput
+    travelRequests?: TravelRequestCreateNestedManyWithoutUserInput
+    companionRequestsSent?: CompanionRequestCreateNestedManyWithoutSenderInput
+    companionRequestsReceived?: CompanionRequestCreateNestedManyWithoutRecipientInput
+    messagesSent?: MessageCreateNestedManyWithoutSenderInput
+    ratingsReceived?: RatingCreateNestedManyWithoutSubjectInput
+    reportsFiled?: ReportCreateNestedManyWithoutAuthorInput
+    reportsReceived?: ReportCreateNestedManyWithoutSubjectInput
+    travelDocuments?: TravelDocumentCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutRatingsGivenInput = {
+    id?: string
+    name: string
+    email: string
+    passwordHash?: string | null
+    phoneNumber?: string | null
+    gender?: $Enums.Gender | null
+    role?: $Enums.UserRole
+    status?: $Enums.UserStatus
+    authProvider?: $Enums.AuthProvider
+    googleId?: string | null
+    emailVerified?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    profileCompleted?: boolean
+    refreshSessions?: RefreshSessionUncheckedCreateNestedManyWithoutUserInput
+    travelOffers?: TravelOfferUncheckedCreateNestedManyWithoutOwnerInput
+    travelRequests?: TravelRequestUncheckedCreateNestedManyWithoutUserInput
+    companionRequestsSent?: CompanionRequestUncheckedCreateNestedManyWithoutSenderInput
+    companionRequestsReceived?: CompanionRequestUncheckedCreateNestedManyWithoutRecipientInput
+    messagesSent?: MessageUncheckedCreateNestedManyWithoutSenderInput
+    ratingsReceived?: RatingUncheckedCreateNestedManyWithoutSubjectInput
+    reportsFiled?: ReportUncheckedCreateNestedManyWithoutAuthorInput
+    reportsReceived?: ReportUncheckedCreateNestedManyWithoutSubjectInput
+    travelDocuments?: TravelDocumentUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutRatingsGivenInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutRatingsGivenInput, UserUncheckedCreateWithoutRatingsGivenInput>
+  }
+
+  export type UserCreateWithoutRatingsReceivedInput = {
+    id?: string
+    name: string
+    email: string
+    passwordHash?: string | null
+    phoneNumber?: string | null
+    gender?: $Enums.Gender | null
+    role?: $Enums.UserRole
+    status?: $Enums.UserStatus
+    authProvider?: $Enums.AuthProvider
+    googleId?: string | null
+    emailVerified?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    profileCompleted?: boolean
+    refreshSessions?: RefreshSessionCreateNestedManyWithoutUserInput
+    travelOffers?: TravelOfferCreateNestedManyWithoutOwnerInput
+    travelRequests?: TravelRequestCreateNestedManyWithoutUserInput
+    companionRequestsSent?: CompanionRequestCreateNestedManyWithoutSenderInput
+    companionRequestsReceived?: CompanionRequestCreateNestedManyWithoutRecipientInput
+    messagesSent?: MessageCreateNestedManyWithoutSenderInput
+    ratingsGiven?: RatingCreateNestedManyWithoutAuthorInput
+    reportsFiled?: ReportCreateNestedManyWithoutAuthorInput
+    reportsReceived?: ReportCreateNestedManyWithoutSubjectInput
+    travelDocuments?: TravelDocumentCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutRatingsReceivedInput = {
+    id?: string
+    name: string
+    email: string
+    passwordHash?: string | null
+    phoneNumber?: string | null
+    gender?: $Enums.Gender | null
+    role?: $Enums.UserRole
+    status?: $Enums.UserStatus
+    authProvider?: $Enums.AuthProvider
+    googleId?: string | null
+    emailVerified?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    profileCompleted?: boolean
+    refreshSessions?: RefreshSessionUncheckedCreateNestedManyWithoutUserInput
+    travelOffers?: TravelOfferUncheckedCreateNestedManyWithoutOwnerInput
+    travelRequests?: TravelRequestUncheckedCreateNestedManyWithoutUserInput
+    companionRequestsSent?: CompanionRequestUncheckedCreateNestedManyWithoutSenderInput
+    companionRequestsReceived?: CompanionRequestUncheckedCreateNestedManyWithoutRecipientInput
+    messagesSent?: MessageUncheckedCreateNestedManyWithoutSenderInput
+    ratingsGiven?: RatingUncheckedCreateNestedManyWithoutAuthorInput
+    reportsFiled?: ReportUncheckedCreateNestedManyWithoutAuthorInput
+    reportsReceived?: ReportUncheckedCreateNestedManyWithoutSubjectInput
+    travelDocuments?: TravelDocumentUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutRatingsReceivedInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutRatingsReceivedInput, UserUncheckedCreateWithoutRatingsReceivedInput>
+  }
+
+  export type JourneyUpsertWithoutRatingsInput = {
+    update: XOR<JourneyUpdateWithoutRatingsInput, JourneyUncheckedUpdateWithoutRatingsInput>
+    create: XOR<JourneyCreateWithoutRatingsInput, JourneyUncheckedCreateWithoutRatingsInput>
+    where?: JourneyWhereInput
+  }
+
+  export type JourneyUpdateToOneWithWhereWithoutRatingsInput = {
+    where?: JourneyWhereInput
+    data: XOR<JourneyUpdateWithoutRatingsInput, JourneyUncheckedUpdateWithoutRatingsInput>
+  }
+
+  export type JourneyUpdateWithoutRatingsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: EnumJourneyStatusFieldUpdateOperationsInput | $Enums.JourneyStatus
+    startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    companionRequest?: CompanionRequestUpdateOneRequiredWithoutJourneyNestedInput
+    messages?: MessageUpdateManyWithoutJourneyNestedInput
+    reports?: ReportUpdateManyWithoutJourneyNestedInput
+  }
+
+  export type JourneyUncheckedUpdateWithoutRatingsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    companionRequestId?: StringFieldUpdateOperationsInput | string
+    status?: EnumJourneyStatusFieldUpdateOperationsInput | $Enums.JourneyStatus
+    startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    messages?: MessageUncheckedUpdateManyWithoutJourneyNestedInput
+    reports?: ReportUncheckedUpdateManyWithoutJourneyNestedInput
+  }
+
+  export type UserUpsertWithoutRatingsGivenInput = {
+    update: XOR<UserUpdateWithoutRatingsGivenInput, UserUncheckedUpdateWithoutRatingsGivenInput>
+    create: XOR<UserCreateWithoutRatingsGivenInput, UserUncheckedCreateWithoutRatingsGivenInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutRatingsGivenInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutRatingsGivenInput, UserUncheckedUpdateWithoutRatingsGivenInput>
+  }
+
+  export type UserUpdateWithoutRatingsGivenInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    authProvider?: EnumAuthProviderFieldUpdateOperationsInput | $Enums.AuthProvider
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    profileCompleted?: BoolFieldUpdateOperationsInput | boolean
+    refreshSessions?: RefreshSessionUpdateManyWithoutUserNestedInput
+    travelOffers?: TravelOfferUpdateManyWithoutOwnerNestedInput
+    travelRequests?: TravelRequestUpdateManyWithoutUserNestedInput
+    companionRequestsSent?: CompanionRequestUpdateManyWithoutSenderNestedInput
+    companionRequestsReceived?: CompanionRequestUpdateManyWithoutRecipientNestedInput
+    messagesSent?: MessageUpdateManyWithoutSenderNestedInput
+    ratingsReceived?: RatingUpdateManyWithoutSubjectNestedInput
+    reportsFiled?: ReportUpdateManyWithoutAuthorNestedInput
+    reportsReceived?: ReportUpdateManyWithoutSubjectNestedInput
+    travelDocuments?: TravelDocumentUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutRatingsGivenInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    authProvider?: EnumAuthProviderFieldUpdateOperationsInput | $Enums.AuthProvider
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    profileCompleted?: BoolFieldUpdateOperationsInput | boolean
+    refreshSessions?: RefreshSessionUncheckedUpdateManyWithoutUserNestedInput
+    travelOffers?: TravelOfferUncheckedUpdateManyWithoutOwnerNestedInput
+    travelRequests?: TravelRequestUncheckedUpdateManyWithoutUserNestedInput
+    companionRequestsSent?: CompanionRequestUncheckedUpdateManyWithoutSenderNestedInput
+    companionRequestsReceived?: CompanionRequestUncheckedUpdateManyWithoutRecipientNestedInput
+    messagesSent?: MessageUncheckedUpdateManyWithoutSenderNestedInput
+    ratingsReceived?: RatingUncheckedUpdateManyWithoutSubjectNestedInput
+    reportsFiled?: ReportUncheckedUpdateManyWithoutAuthorNestedInput
+    reportsReceived?: ReportUncheckedUpdateManyWithoutSubjectNestedInput
+    travelDocuments?: TravelDocumentUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUpsertWithoutRatingsReceivedInput = {
+    update: XOR<UserUpdateWithoutRatingsReceivedInput, UserUncheckedUpdateWithoutRatingsReceivedInput>
+    create: XOR<UserCreateWithoutRatingsReceivedInput, UserUncheckedCreateWithoutRatingsReceivedInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutRatingsReceivedInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutRatingsReceivedInput, UserUncheckedUpdateWithoutRatingsReceivedInput>
+  }
+
+  export type UserUpdateWithoutRatingsReceivedInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    authProvider?: EnumAuthProviderFieldUpdateOperationsInput | $Enums.AuthProvider
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    profileCompleted?: BoolFieldUpdateOperationsInput | boolean
+    refreshSessions?: RefreshSessionUpdateManyWithoutUserNestedInput
+    travelOffers?: TravelOfferUpdateManyWithoutOwnerNestedInput
+    travelRequests?: TravelRequestUpdateManyWithoutUserNestedInput
+    companionRequestsSent?: CompanionRequestUpdateManyWithoutSenderNestedInput
+    companionRequestsReceived?: CompanionRequestUpdateManyWithoutRecipientNestedInput
+    messagesSent?: MessageUpdateManyWithoutSenderNestedInput
+    ratingsGiven?: RatingUpdateManyWithoutAuthorNestedInput
+    reportsFiled?: ReportUpdateManyWithoutAuthorNestedInput
+    reportsReceived?: ReportUpdateManyWithoutSubjectNestedInput
+    travelDocuments?: TravelDocumentUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutRatingsReceivedInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    authProvider?: EnumAuthProviderFieldUpdateOperationsInput | $Enums.AuthProvider
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    profileCompleted?: BoolFieldUpdateOperationsInput | boolean
+    refreshSessions?: RefreshSessionUncheckedUpdateManyWithoutUserNestedInput
+    travelOffers?: TravelOfferUncheckedUpdateManyWithoutOwnerNestedInput
+    travelRequests?: TravelRequestUncheckedUpdateManyWithoutUserNestedInput
+    companionRequestsSent?: CompanionRequestUncheckedUpdateManyWithoutSenderNestedInput
+    companionRequestsReceived?: CompanionRequestUncheckedUpdateManyWithoutRecipientNestedInput
+    messagesSent?: MessageUncheckedUpdateManyWithoutSenderNestedInput
+    ratingsGiven?: RatingUncheckedUpdateManyWithoutAuthorNestedInput
+    reportsFiled?: ReportUncheckedUpdateManyWithoutAuthorNestedInput
+    reportsReceived?: ReportUncheckedUpdateManyWithoutSubjectNestedInput
+    travelDocuments?: TravelDocumentUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type JourneyCreateWithoutReportsInput = {
+    id?: string
+    status?: $Enums.JourneyStatus
+    startedAt?: Date | string | null
+    completedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    companionRequest: CompanionRequestCreateNestedOneWithoutJourneyInput
+    messages?: MessageCreateNestedManyWithoutJourneyInput
+    ratings?: RatingCreateNestedManyWithoutJourneyInput
+  }
+
+  export type JourneyUncheckedCreateWithoutReportsInput = {
+    id?: string
+    companionRequestId: string
+    status?: $Enums.JourneyStatus
+    startedAt?: Date | string | null
+    completedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    messages?: MessageUncheckedCreateNestedManyWithoutJourneyInput
+    ratings?: RatingUncheckedCreateNestedManyWithoutJourneyInput
+  }
+
+  export type JourneyCreateOrConnectWithoutReportsInput = {
+    where: JourneyWhereUniqueInput
+    create: XOR<JourneyCreateWithoutReportsInput, JourneyUncheckedCreateWithoutReportsInput>
+  }
+
+  export type UserCreateWithoutReportsFiledInput = {
+    id?: string
+    name: string
+    email: string
+    passwordHash?: string | null
+    phoneNumber?: string | null
+    gender?: $Enums.Gender | null
+    role?: $Enums.UserRole
+    status?: $Enums.UserStatus
+    authProvider?: $Enums.AuthProvider
+    googleId?: string | null
+    emailVerified?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    profileCompleted?: boolean
+    refreshSessions?: RefreshSessionCreateNestedManyWithoutUserInput
+    travelOffers?: TravelOfferCreateNestedManyWithoutOwnerInput
+    travelRequests?: TravelRequestCreateNestedManyWithoutUserInput
+    companionRequestsSent?: CompanionRequestCreateNestedManyWithoutSenderInput
+    companionRequestsReceived?: CompanionRequestCreateNestedManyWithoutRecipientInput
+    messagesSent?: MessageCreateNestedManyWithoutSenderInput
+    ratingsGiven?: RatingCreateNestedManyWithoutAuthorInput
+    ratingsReceived?: RatingCreateNestedManyWithoutSubjectInput
+    reportsReceived?: ReportCreateNestedManyWithoutSubjectInput
+    travelDocuments?: TravelDocumentCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutReportsFiledInput = {
+    id?: string
+    name: string
+    email: string
+    passwordHash?: string | null
+    phoneNumber?: string | null
+    gender?: $Enums.Gender | null
+    role?: $Enums.UserRole
+    status?: $Enums.UserStatus
+    authProvider?: $Enums.AuthProvider
+    googleId?: string | null
+    emailVerified?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    profileCompleted?: boolean
+    refreshSessions?: RefreshSessionUncheckedCreateNestedManyWithoutUserInput
+    travelOffers?: TravelOfferUncheckedCreateNestedManyWithoutOwnerInput
+    travelRequests?: TravelRequestUncheckedCreateNestedManyWithoutUserInput
+    companionRequestsSent?: CompanionRequestUncheckedCreateNestedManyWithoutSenderInput
+    companionRequestsReceived?: CompanionRequestUncheckedCreateNestedManyWithoutRecipientInput
+    messagesSent?: MessageUncheckedCreateNestedManyWithoutSenderInput
+    ratingsGiven?: RatingUncheckedCreateNestedManyWithoutAuthorInput
+    ratingsReceived?: RatingUncheckedCreateNestedManyWithoutSubjectInput
+    reportsReceived?: ReportUncheckedCreateNestedManyWithoutSubjectInput
+    travelDocuments?: TravelDocumentUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutReportsFiledInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutReportsFiledInput, UserUncheckedCreateWithoutReportsFiledInput>
+  }
+
+  export type UserCreateWithoutReportsReceivedInput = {
+    id?: string
+    name: string
+    email: string
+    passwordHash?: string | null
+    phoneNumber?: string | null
+    gender?: $Enums.Gender | null
+    role?: $Enums.UserRole
+    status?: $Enums.UserStatus
+    authProvider?: $Enums.AuthProvider
+    googleId?: string | null
+    emailVerified?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    profileCompleted?: boolean
+    refreshSessions?: RefreshSessionCreateNestedManyWithoutUserInput
+    travelOffers?: TravelOfferCreateNestedManyWithoutOwnerInput
+    travelRequests?: TravelRequestCreateNestedManyWithoutUserInput
+    companionRequestsSent?: CompanionRequestCreateNestedManyWithoutSenderInput
+    companionRequestsReceived?: CompanionRequestCreateNestedManyWithoutRecipientInput
+    messagesSent?: MessageCreateNestedManyWithoutSenderInput
+    ratingsGiven?: RatingCreateNestedManyWithoutAuthorInput
+    ratingsReceived?: RatingCreateNestedManyWithoutSubjectInput
+    reportsFiled?: ReportCreateNestedManyWithoutAuthorInput
+    travelDocuments?: TravelDocumentCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutReportsReceivedInput = {
+    id?: string
+    name: string
+    email: string
+    passwordHash?: string | null
+    phoneNumber?: string | null
+    gender?: $Enums.Gender | null
+    role?: $Enums.UserRole
+    status?: $Enums.UserStatus
+    authProvider?: $Enums.AuthProvider
+    googleId?: string | null
+    emailVerified?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    profileCompleted?: boolean
+    refreshSessions?: RefreshSessionUncheckedCreateNestedManyWithoutUserInput
+    travelOffers?: TravelOfferUncheckedCreateNestedManyWithoutOwnerInput
+    travelRequests?: TravelRequestUncheckedCreateNestedManyWithoutUserInput
+    companionRequestsSent?: CompanionRequestUncheckedCreateNestedManyWithoutSenderInput
+    companionRequestsReceived?: CompanionRequestUncheckedCreateNestedManyWithoutRecipientInput
+    messagesSent?: MessageUncheckedCreateNestedManyWithoutSenderInput
+    ratingsGiven?: RatingUncheckedCreateNestedManyWithoutAuthorInput
+    ratingsReceived?: RatingUncheckedCreateNestedManyWithoutSubjectInput
+    reportsFiled?: ReportUncheckedCreateNestedManyWithoutAuthorInput
+    travelDocuments?: TravelDocumentUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutReportsReceivedInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutReportsReceivedInput, UserUncheckedCreateWithoutReportsReceivedInput>
+  }
+
+  export type JourneyUpsertWithoutReportsInput = {
+    update: XOR<JourneyUpdateWithoutReportsInput, JourneyUncheckedUpdateWithoutReportsInput>
+    create: XOR<JourneyCreateWithoutReportsInput, JourneyUncheckedCreateWithoutReportsInput>
+    where?: JourneyWhereInput
+  }
+
+  export type JourneyUpdateToOneWithWhereWithoutReportsInput = {
+    where?: JourneyWhereInput
+    data: XOR<JourneyUpdateWithoutReportsInput, JourneyUncheckedUpdateWithoutReportsInput>
+  }
+
+  export type JourneyUpdateWithoutReportsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: EnumJourneyStatusFieldUpdateOperationsInput | $Enums.JourneyStatus
+    startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    companionRequest?: CompanionRequestUpdateOneRequiredWithoutJourneyNestedInput
+    messages?: MessageUpdateManyWithoutJourneyNestedInput
+    ratings?: RatingUpdateManyWithoutJourneyNestedInput
+  }
+
+  export type JourneyUncheckedUpdateWithoutReportsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    companionRequestId?: StringFieldUpdateOperationsInput | string
+    status?: EnumJourneyStatusFieldUpdateOperationsInput | $Enums.JourneyStatus
+    startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    messages?: MessageUncheckedUpdateManyWithoutJourneyNestedInput
+    ratings?: RatingUncheckedUpdateManyWithoutJourneyNestedInput
+  }
+
+  export type UserUpsertWithoutReportsFiledInput = {
+    update: XOR<UserUpdateWithoutReportsFiledInput, UserUncheckedUpdateWithoutReportsFiledInput>
+    create: XOR<UserCreateWithoutReportsFiledInput, UserUncheckedCreateWithoutReportsFiledInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutReportsFiledInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutReportsFiledInput, UserUncheckedUpdateWithoutReportsFiledInput>
+  }
+
+  export type UserUpdateWithoutReportsFiledInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    authProvider?: EnumAuthProviderFieldUpdateOperationsInput | $Enums.AuthProvider
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    profileCompleted?: BoolFieldUpdateOperationsInput | boolean
+    refreshSessions?: RefreshSessionUpdateManyWithoutUserNestedInput
+    travelOffers?: TravelOfferUpdateManyWithoutOwnerNestedInput
+    travelRequests?: TravelRequestUpdateManyWithoutUserNestedInput
+    companionRequestsSent?: CompanionRequestUpdateManyWithoutSenderNestedInput
+    companionRequestsReceived?: CompanionRequestUpdateManyWithoutRecipientNestedInput
+    messagesSent?: MessageUpdateManyWithoutSenderNestedInput
+    ratingsGiven?: RatingUpdateManyWithoutAuthorNestedInput
+    ratingsReceived?: RatingUpdateManyWithoutSubjectNestedInput
+    reportsReceived?: ReportUpdateManyWithoutSubjectNestedInput
+    travelDocuments?: TravelDocumentUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutReportsFiledInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    authProvider?: EnumAuthProviderFieldUpdateOperationsInput | $Enums.AuthProvider
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    profileCompleted?: BoolFieldUpdateOperationsInput | boolean
+    refreshSessions?: RefreshSessionUncheckedUpdateManyWithoutUserNestedInput
+    travelOffers?: TravelOfferUncheckedUpdateManyWithoutOwnerNestedInput
+    travelRequests?: TravelRequestUncheckedUpdateManyWithoutUserNestedInput
+    companionRequestsSent?: CompanionRequestUncheckedUpdateManyWithoutSenderNestedInput
+    companionRequestsReceived?: CompanionRequestUncheckedUpdateManyWithoutRecipientNestedInput
+    messagesSent?: MessageUncheckedUpdateManyWithoutSenderNestedInput
+    ratingsGiven?: RatingUncheckedUpdateManyWithoutAuthorNestedInput
+    ratingsReceived?: RatingUncheckedUpdateManyWithoutSubjectNestedInput
+    reportsReceived?: ReportUncheckedUpdateManyWithoutSubjectNestedInput
+    travelDocuments?: TravelDocumentUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUpsertWithoutReportsReceivedInput = {
+    update: XOR<UserUpdateWithoutReportsReceivedInput, UserUncheckedUpdateWithoutReportsReceivedInput>
+    create: XOR<UserCreateWithoutReportsReceivedInput, UserUncheckedCreateWithoutReportsReceivedInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutReportsReceivedInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutReportsReceivedInput, UserUncheckedUpdateWithoutReportsReceivedInput>
+  }
+
+  export type UserUpdateWithoutReportsReceivedInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    authProvider?: EnumAuthProviderFieldUpdateOperationsInput | $Enums.AuthProvider
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    profileCompleted?: BoolFieldUpdateOperationsInput | boolean
+    refreshSessions?: RefreshSessionUpdateManyWithoutUserNestedInput
+    travelOffers?: TravelOfferUpdateManyWithoutOwnerNestedInput
+    travelRequests?: TravelRequestUpdateManyWithoutUserNestedInput
+    companionRequestsSent?: CompanionRequestUpdateManyWithoutSenderNestedInput
+    companionRequestsReceived?: CompanionRequestUpdateManyWithoutRecipientNestedInput
+    messagesSent?: MessageUpdateManyWithoutSenderNestedInput
+    ratingsGiven?: RatingUpdateManyWithoutAuthorNestedInput
+    ratingsReceived?: RatingUpdateManyWithoutSubjectNestedInput
+    reportsFiled?: ReportUpdateManyWithoutAuthorNestedInput
+    travelDocuments?: TravelDocumentUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutReportsReceivedInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    authProvider?: EnumAuthProviderFieldUpdateOperationsInput | $Enums.AuthProvider
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    profileCompleted?: BoolFieldUpdateOperationsInput | boolean
+    refreshSessions?: RefreshSessionUncheckedUpdateManyWithoutUserNestedInput
+    travelOffers?: TravelOfferUncheckedUpdateManyWithoutOwnerNestedInput
+    travelRequests?: TravelRequestUncheckedUpdateManyWithoutUserNestedInput
+    companionRequestsSent?: CompanionRequestUncheckedUpdateManyWithoutSenderNestedInput
+    companionRequestsReceived?: CompanionRequestUncheckedUpdateManyWithoutRecipientNestedInput
+    messagesSent?: MessageUncheckedUpdateManyWithoutSenderNestedInput
+    ratingsGiven?: RatingUncheckedUpdateManyWithoutAuthorNestedInput
+    ratingsReceived?: RatingUncheckedUpdateManyWithoutSubjectNestedInput
+    reportsFiled?: ReportUncheckedUpdateManyWithoutAuthorNestedInput
+    travelDocuments?: TravelDocumentUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserCreateWithoutTravelDocumentsInput = {
+    id?: string
+    name: string
+    email: string
+    passwordHash?: string | null
+    phoneNumber?: string | null
+    gender?: $Enums.Gender | null
+    role?: $Enums.UserRole
+    status?: $Enums.UserStatus
+    authProvider?: $Enums.AuthProvider
+    googleId?: string | null
+    emailVerified?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    profileCompleted?: boolean
+    refreshSessions?: RefreshSessionCreateNestedManyWithoutUserInput
+    travelOffers?: TravelOfferCreateNestedManyWithoutOwnerInput
+    travelRequests?: TravelRequestCreateNestedManyWithoutUserInput
+    companionRequestsSent?: CompanionRequestCreateNestedManyWithoutSenderInput
+    companionRequestsReceived?: CompanionRequestCreateNestedManyWithoutRecipientInput
+    messagesSent?: MessageCreateNestedManyWithoutSenderInput
+    ratingsGiven?: RatingCreateNestedManyWithoutAuthorInput
+    ratingsReceived?: RatingCreateNestedManyWithoutSubjectInput
+    reportsFiled?: ReportCreateNestedManyWithoutAuthorInput
+    reportsReceived?: ReportCreateNestedManyWithoutSubjectInput
+  }
+
+  export type UserUncheckedCreateWithoutTravelDocumentsInput = {
+    id?: string
+    name: string
+    email: string
+    passwordHash?: string | null
+    phoneNumber?: string | null
+    gender?: $Enums.Gender | null
+    role?: $Enums.UserRole
+    status?: $Enums.UserStatus
+    authProvider?: $Enums.AuthProvider
+    googleId?: string | null
+    emailVerified?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    profileCompleted?: boolean
+    refreshSessions?: RefreshSessionUncheckedCreateNestedManyWithoutUserInput
+    travelOffers?: TravelOfferUncheckedCreateNestedManyWithoutOwnerInput
+    travelRequests?: TravelRequestUncheckedCreateNestedManyWithoutUserInput
+    companionRequestsSent?: CompanionRequestUncheckedCreateNestedManyWithoutSenderInput
+    companionRequestsReceived?: CompanionRequestUncheckedCreateNestedManyWithoutRecipientInput
+    messagesSent?: MessageUncheckedCreateNestedManyWithoutSenderInput
+    ratingsGiven?: RatingUncheckedCreateNestedManyWithoutAuthorInput
+    ratingsReceived?: RatingUncheckedCreateNestedManyWithoutSubjectInput
+    reportsFiled?: ReportUncheckedCreateNestedManyWithoutAuthorInput
+    reportsReceived?: ReportUncheckedCreateNestedManyWithoutSubjectInput
+  }
+
+  export type UserCreateOrConnectWithoutTravelDocumentsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutTravelDocumentsInput, UserUncheckedCreateWithoutTravelDocumentsInput>
+  }
+
+  export type UserUpsertWithoutTravelDocumentsInput = {
+    update: XOR<UserUpdateWithoutTravelDocumentsInput, UserUncheckedUpdateWithoutTravelDocumentsInput>
+    create: XOR<UserCreateWithoutTravelDocumentsInput, UserUncheckedCreateWithoutTravelDocumentsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutTravelDocumentsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutTravelDocumentsInput, UserUncheckedUpdateWithoutTravelDocumentsInput>
+  }
+
+  export type UserUpdateWithoutTravelDocumentsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    authProvider?: EnumAuthProviderFieldUpdateOperationsInput | $Enums.AuthProvider
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    profileCompleted?: BoolFieldUpdateOperationsInput | boolean
+    refreshSessions?: RefreshSessionUpdateManyWithoutUserNestedInput
+    travelOffers?: TravelOfferUpdateManyWithoutOwnerNestedInput
+    travelRequests?: TravelRequestUpdateManyWithoutUserNestedInput
+    companionRequestsSent?: CompanionRequestUpdateManyWithoutSenderNestedInput
+    companionRequestsReceived?: CompanionRequestUpdateManyWithoutRecipientNestedInput
+    messagesSent?: MessageUpdateManyWithoutSenderNestedInput
+    ratingsGiven?: RatingUpdateManyWithoutAuthorNestedInput
+    ratingsReceived?: RatingUpdateManyWithoutSubjectNestedInput
+    reportsFiled?: ReportUpdateManyWithoutAuthorNestedInput
+    reportsReceived?: ReportUpdateManyWithoutSubjectNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutTravelDocumentsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    authProvider?: EnumAuthProviderFieldUpdateOperationsInput | $Enums.AuthProvider
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    profileCompleted?: BoolFieldUpdateOperationsInput | boolean
+    refreshSessions?: RefreshSessionUncheckedUpdateManyWithoutUserNestedInput
+    travelOffers?: TravelOfferUncheckedUpdateManyWithoutOwnerNestedInput
+    travelRequests?: TravelRequestUncheckedUpdateManyWithoutUserNestedInput
+    companionRequestsSent?: CompanionRequestUncheckedUpdateManyWithoutSenderNestedInput
+    companionRequestsReceived?: CompanionRequestUncheckedUpdateManyWithoutRecipientNestedInput
+    messagesSent?: MessageUncheckedUpdateManyWithoutSenderNestedInput
+    ratingsGiven?: RatingUncheckedUpdateManyWithoutAuthorNestedInput
+    ratingsReceived?: RatingUncheckedUpdateManyWithoutSubjectNestedInput
+    reportsFiled?: ReportUncheckedUpdateManyWithoutAuthorNestedInput
+    reportsReceived?: ReportUncheckedUpdateManyWithoutSubjectNestedInput
+  }
+
   export type RefreshSessionCreateManyUserInput = {
     id?: string
     tokenHash: string
@@ -11024,6 +21281,67 @@ export namespace Prisma {
     status?: $Enums.CompanionRequestStatus
     expiresAt: Date | string
     respondedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MessageCreateManySenderInput = {
+    id?: string
+    journeyId: string
+    requestId: string
+    body: string
+    createdAt?: Date | string
+  }
+
+  export type RatingCreateManyAuthorInput = {
+    id?: string
+    journeyId: string
+    subjectId: string
+    stars: number
+    comment?: string | null
+    createdAt?: Date | string
+  }
+
+  export type RatingCreateManySubjectInput = {
+    id?: string
+    journeyId: string
+    authorId: string
+    stars: number
+    comment?: string | null
+    createdAt?: Date | string
+  }
+
+  export type ReportCreateManyAuthorInput = {
+    id?: string
+    journeyId?: string | null
+    subjectId: string
+    reason: string
+    status?: $Enums.ReportStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ReportCreateManySubjectInput = {
+    id?: string
+    journeyId?: string | null
+    authorId: string
+    reason: string
+    status?: $Enums.ReportStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type TravelDocumentCreateManyUserInput = {
+    id?: string
+    originalName: string
+    mimeType: string
+    ocrStatus?: $Enums.TravelDocumentStatus
+    rawText?: string | null
+    source?: string | null
+    destination?: string | null
+    departureAt?: Date | string | null
+    transportMode?: $Enums.TransportMode | null
+    errorMessage?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -11144,6 +21462,8 @@ export namespace Prisma {
     recipient?: UserUpdateOneRequiredWithoutCompanionRequestsReceivedNestedInput
     travelRequest?: TravelRequestUpdateOneRequiredWithoutCompanionRequestsNestedInput
     offer?: TravelOfferUpdateOneRequiredWithoutCompanionRequestsNestedInput
+    journey?: JourneyUpdateOneWithoutCompanionRequestNestedInput
+    messages?: MessageUpdateManyWithoutRequestNestedInput
   }
 
   export type CompanionRequestUncheckedUpdateWithoutSenderInput = {
@@ -11156,6 +21476,8 @@ export namespace Prisma {
     respondedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    journey?: JourneyUncheckedUpdateOneWithoutCompanionRequestNestedInput
+    messages?: MessageUncheckedUpdateManyWithoutRequestNestedInput
   }
 
   export type CompanionRequestUncheckedUpdateManyWithoutSenderInput = {
@@ -11180,6 +21502,8 @@ export namespace Prisma {
     sender?: UserUpdateOneRequiredWithoutCompanionRequestsSentNestedInput
     travelRequest?: TravelRequestUpdateOneRequiredWithoutCompanionRequestsNestedInput
     offer?: TravelOfferUpdateOneRequiredWithoutCompanionRequestsNestedInput
+    journey?: JourneyUpdateOneWithoutCompanionRequestNestedInput
+    messages?: MessageUpdateManyWithoutRequestNestedInput
   }
 
   export type CompanionRequestUncheckedUpdateWithoutRecipientInput = {
@@ -11192,6 +21516,8 @@ export namespace Prisma {
     respondedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    journey?: JourneyUncheckedUpdateOneWithoutCompanionRequestNestedInput
+    messages?: MessageUncheckedUpdateManyWithoutRequestNestedInput
   }
 
   export type CompanionRequestUncheckedUpdateManyWithoutRecipientInput = {
@@ -11202,6 +21528,189 @@ export namespace Prisma {
     status?: EnumCompanionRequestStatusFieldUpdateOperationsInput | $Enums.CompanionRequestStatus
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
     respondedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MessageUpdateWithoutSenderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    journey?: JourneyUpdateOneRequiredWithoutMessagesNestedInput
+    request?: CompanionRequestUpdateOneRequiredWithoutMessagesNestedInput
+  }
+
+  export type MessageUncheckedUpdateWithoutSenderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    journeyId?: StringFieldUpdateOperationsInput | string
+    requestId?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MessageUncheckedUpdateManyWithoutSenderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    journeyId?: StringFieldUpdateOperationsInput | string
+    requestId?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RatingUpdateWithoutAuthorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    stars?: IntFieldUpdateOperationsInput | number
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    journey?: JourneyUpdateOneRequiredWithoutRatingsNestedInput
+    subject?: UserUpdateOneRequiredWithoutRatingsReceivedNestedInput
+  }
+
+  export type RatingUncheckedUpdateWithoutAuthorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    journeyId?: StringFieldUpdateOperationsInput | string
+    subjectId?: StringFieldUpdateOperationsInput | string
+    stars?: IntFieldUpdateOperationsInput | number
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RatingUncheckedUpdateManyWithoutAuthorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    journeyId?: StringFieldUpdateOperationsInput | string
+    subjectId?: StringFieldUpdateOperationsInput | string
+    stars?: IntFieldUpdateOperationsInput | number
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RatingUpdateWithoutSubjectInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    stars?: IntFieldUpdateOperationsInput | number
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    journey?: JourneyUpdateOneRequiredWithoutRatingsNestedInput
+    author?: UserUpdateOneRequiredWithoutRatingsGivenNestedInput
+  }
+
+  export type RatingUncheckedUpdateWithoutSubjectInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    journeyId?: StringFieldUpdateOperationsInput | string
+    authorId?: StringFieldUpdateOperationsInput | string
+    stars?: IntFieldUpdateOperationsInput | number
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RatingUncheckedUpdateManyWithoutSubjectInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    journeyId?: StringFieldUpdateOperationsInput | string
+    authorId?: StringFieldUpdateOperationsInput | string
+    stars?: IntFieldUpdateOperationsInput | number
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ReportUpdateWithoutAuthorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    reason?: StringFieldUpdateOperationsInput | string
+    status?: EnumReportStatusFieldUpdateOperationsInput | $Enums.ReportStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    journey?: JourneyUpdateOneWithoutReportsNestedInput
+    subject?: UserUpdateOneRequiredWithoutReportsReceivedNestedInput
+  }
+
+  export type ReportUncheckedUpdateWithoutAuthorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    journeyId?: NullableStringFieldUpdateOperationsInput | string | null
+    subjectId?: StringFieldUpdateOperationsInput | string
+    reason?: StringFieldUpdateOperationsInput | string
+    status?: EnumReportStatusFieldUpdateOperationsInput | $Enums.ReportStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ReportUncheckedUpdateManyWithoutAuthorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    journeyId?: NullableStringFieldUpdateOperationsInput | string | null
+    subjectId?: StringFieldUpdateOperationsInput | string
+    reason?: StringFieldUpdateOperationsInput | string
+    status?: EnumReportStatusFieldUpdateOperationsInput | $Enums.ReportStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ReportUpdateWithoutSubjectInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    reason?: StringFieldUpdateOperationsInput | string
+    status?: EnumReportStatusFieldUpdateOperationsInput | $Enums.ReportStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    journey?: JourneyUpdateOneWithoutReportsNestedInput
+    author?: UserUpdateOneRequiredWithoutReportsFiledNestedInput
+  }
+
+  export type ReportUncheckedUpdateWithoutSubjectInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    journeyId?: NullableStringFieldUpdateOperationsInput | string | null
+    authorId?: StringFieldUpdateOperationsInput | string
+    reason?: StringFieldUpdateOperationsInput | string
+    status?: EnumReportStatusFieldUpdateOperationsInput | $Enums.ReportStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ReportUncheckedUpdateManyWithoutSubjectInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    journeyId?: NullableStringFieldUpdateOperationsInput | string | null
+    authorId?: StringFieldUpdateOperationsInput | string
+    reason?: StringFieldUpdateOperationsInput | string
+    status?: EnumReportStatusFieldUpdateOperationsInput | $Enums.ReportStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TravelDocumentUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    originalName?: StringFieldUpdateOperationsInput | string
+    mimeType?: StringFieldUpdateOperationsInput | string
+    ocrStatus?: EnumTravelDocumentStatusFieldUpdateOperationsInput | $Enums.TravelDocumentStatus
+    rawText?: NullableStringFieldUpdateOperationsInput | string | null
+    source?: NullableStringFieldUpdateOperationsInput | string | null
+    destination?: NullableStringFieldUpdateOperationsInput | string | null
+    departureAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    transportMode?: NullableEnumTransportModeFieldUpdateOperationsInput | $Enums.TransportMode | null
+    errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TravelDocumentUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    originalName?: StringFieldUpdateOperationsInput | string
+    mimeType?: StringFieldUpdateOperationsInput | string
+    ocrStatus?: EnumTravelDocumentStatusFieldUpdateOperationsInput | $Enums.TravelDocumentStatus
+    rawText?: NullableStringFieldUpdateOperationsInput | string | null
+    source?: NullableStringFieldUpdateOperationsInput | string | null
+    destination?: NullableStringFieldUpdateOperationsInput | string | null
+    departureAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    transportMode?: NullableEnumTransportModeFieldUpdateOperationsInput | $Enums.TransportMode | null
+    errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TravelDocumentUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    originalName?: StringFieldUpdateOperationsInput | string
+    mimeType?: StringFieldUpdateOperationsInput | string
+    ocrStatus?: EnumTravelDocumentStatusFieldUpdateOperationsInput | $Enums.TravelDocumentStatus
+    rawText?: NullableStringFieldUpdateOperationsInput | string | null
+    source?: NullableStringFieldUpdateOperationsInput | string | null
+    destination?: NullableStringFieldUpdateOperationsInput | string | null
+    departureAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    transportMode?: NullableEnumTransportModeFieldUpdateOperationsInput | $Enums.TransportMode | null
+    errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -11228,6 +21737,8 @@ export namespace Prisma {
     sender?: UserUpdateOneRequiredWithoutCompanionRequestsSentNestedInput
     recipient?: UserUpdateOneRequiredWithoutCompanionRequestsReceivedNestedInput
     travelRequest?: TravelRequestUpdateOneRequiredWithoutCompanionRequestsNestedInput
+    journey?: JourneyUpdateOneWithoutCompanionRequestNestedInput
+    messages?: MessageUpdateManyWithoutRequestNestedInput
   }
 
   export type CompanionRequestUncheckedUpdateWithoutOfferInput = {
@@ -11240,6 +21751,8 @@ export namespace Prisma {
     respondedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    journey?: JourneyUncheckedUpdateOneWithoutCompanionRequestNestedInput
+    messages?: MessageUncheckedUpdateManyWithoutRequestNestedInput
   }
 
   export type CompanionRequestUncheckedUpdateManyWithoutOfferInput = {
@@ -11276,6 +21789,8 @@ export namespace Prisma {
     sender?: UserUpdateOneRequiredWithoutCompanionRequestsSentNestedInput
     recipient?: UserUpdateOneRequiredWithoutCompanionRequestsReceivedNestedInput
     offer?: TravelOfferUpdateOneRequiredWithoutCompanionRequestsNestedInput
+    journey?: JourneyUpdateOneWithoutCompanionRequestNestedInput
+    messages?: MessageUpdateManyWithoutRequestNestedInput
   }
 
   export type CompanionRequestUncheckedUpdateWithoutTravelRequestInput = {
@@ -11288,6 +21803,8 @@ export namespace Prisma {
     respondedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    journey?: JourneyUncheckedUpdateOneWithoutCompanionRequestNestedInput
+    messages?: MessageUncheckedUpdateManyWithoutRequestNestedInput
   }
 
   export type CompanionRequestUncheckedUpdateManyWithoutTravelRequestInput = {
@@ -11298,6 +21815,146 @@ export namespace Prisma {
     status?: EnumCompanionRequestStatusFieldUpdateOperationsInput | $Enums.CompanionRequestStatus
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
     respondedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MessageCreateManyRequestInput = {
+    id?: string
+    journeyId: string
+    senderId: string
+    body: string
+    createdAt?: Date | string
+  }
+
+  export type MessageUpdateWithoutRequestInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    journey?: JourneyUpdateOneRequiredWithoutMessagesNestedInput
+    sender?: UserUpdateOneRequiredWithoutMessagesSentNestedInput
+  }
+
+  export type MessageUncheckedUpdateWithoutRequestInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    journeyId?: StringFieldUpdateOperationsInput | string
+    senderId?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MessageUncheckedUpdateManyWithoutRequestInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    journeyId?: StringFieldUpdateOperationsInput | string
+    senderId?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MessageCreateManyJourneyInput = {
+    id?: string
+    requestId: string
+    senderId: string
+    body: string
+    createdAt?: Date | string
+  }
+
+  export type RatingCreateManyJourneyInput = {
+    id?: string
+    authorId: string
+    subjectId: string
+    stars: number
+    comment?: string | null
+    createdAt?: Date | string
+  }
+
+  export type ReportCreateManyJourneyInput = {
+    id?: string
+    authorId: string
+    subjectId: string
+    reason: string
+    status?: $Enums.ReportStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MessageUpdateWithoutJourneyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    request?: CompanionRequestUpdateOneRequiredWithoutMessagesNestedInput
+    sender?: UserUpdateOneRequiredWithoutMessagesSentNestedInput
+  }
+
+  export type MessageUncheckedUpdateWithoutJourneyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    requestId?: StringFieldUpdateOperationsInput | string
+    senderId?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MessageUncheckedUpdateManyWithoutJourneyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    requestId?: StringFieldUpdateOperationsInput | string
+    senderId?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RatingUpdateWithoutJourneyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    stars?: IntFieldUpdateOperationsInput | number
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    author?: UserUpdateOneRequiredWithoutRatingsGivenNestedInput
+    subject?: UserUpdateOneRequiredWithoutRatingsReceivedNestedInput
+  }
+
+  export type RatingUncheckedUpdateWithoutJourneyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authorId?: StringFieldUpdateOperationsInput | string
+    subjectId?: StringFieldUpdateOperationsInput | string
+    stars?: IntFieldUpdateOperationsInput | number
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RatingUncheckedUpdateManyWithoutJourneyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authorId?: StringFieldUpdateOperationsInput | string
+    subjectId?: StringFieldUpdateOperationsInput | string
+    stars?: IntFieldUpdateOperationsInput | number
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ReportUpdateWithoutJourneyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    reason?: StringFieldUpdateOperationsInput | string
+    status?: EnumReportStatusFieldUpdateOperationsInput | $Enums.ReportStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    author?: UserUpdateOneRequiredWithoutReportsFiledNestedInput
+    subject?: UserUpdateOneRequiredWithoutReportsReceivedNestedInput
+  }
+
+  export type ReportUncheckedUpdateWithoutJourneyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authorId?: StringFieldUpdateOperationsInput | string
+    subjectId?: StringFieldUpdateOperationsInput | string
+    reason?: StringFieldUpdateOperationsInput | string
+    status?: EnumReportStatusFieldUpdateOperationsInput | $Enums.ReportStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ReportUncheckedUpdateManyWithoutJourneyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authorId?: StringFieldUpdateOperationsInput | string
+    subjectId?: StringFieldUpdateOperationsInput | string
+    reason?: StringFieldUpdateOperationsInput | string
+    status?: EnumReportStatusFieldUpdateOperationsInput | $Enums.ReportStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
