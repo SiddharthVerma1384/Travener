@@ -1,4 +1,5 @@
 import {body} from "express-validator"
+import { SHAREABLE_RIDE_MODES } from "../utils/travel-matching.js"
 
 
 const registerValidator = () => {
@@ -64,8 +65,8 @@ const profileValidator = () => {
 const createTravelOfferValidator = () => {
     return [
         body("transportMode")
-            .isIn(["CAB", "BUS", "TRAIN", "FLIGHT", "CAR", "OTHER"])
-            .withMessage("Invalid transport mode"),
+            .isIn(SHAREABLE_RIDE_MODES)
+            .withMessage("Ride sharing is currently available for cab and auto only"),
         
         body("availableSeats")
             .notEmpty()
@@ -88,6 +89,7 @@ const createTravelOfferValidator = () => {
             .withMessage("Departure time is required")
             .isISO8601()
             .withMessage("Departure time must be a valid ISO 8601 date"),
+
     ]
 }
 
@@ -111,8 +113,8 @@ const createTravelRequestValidator = () => {
 
         body("transportMode")
             .optional({ nullable: true })
-            .isIn(["CAB", "BUS", "TRAIN", "FLIGHT", "CAR", "OTHER"])
-            .withMessage("Invalid transport mode"),
+            .isIn(SHAREABLE_RIDE_MODES)
+            .withMessage("Ride sharing is currently available for cab and auto only"),
 
         body("passengersRequired")
             .optional()

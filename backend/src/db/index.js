@@ -8,6 +8,7 @@ const prisma = new PrismaClient({ adapter });
 const connectDB = async () => {
     try {
         await prisma.$connect();
+        await prisma.$queryRaw`SELECT 1`;
         console.log("✅ PostgreSQL connected");
     } catch (error) {
         console.error("❌ PostgreSQL connection error", error);

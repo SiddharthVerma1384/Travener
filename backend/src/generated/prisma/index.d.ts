@@ -105,6 +105,7 @@ export type AuthProvider = (typeof AuthProvider)[keyof typeof AuthProvider]
 
 export const TransportMode: {
   CAB: 'CAB',
+  AUTO: 'AUTO',
   BUS: 'BUS',
   TRAIN: 'TRAIN',
   FLIGHT: 'FLIGHT',
@@ -113,6 +114,15 @@ export const TransportMode: {
 };
 
 export type TransportMode = (typeof TransportMode)[keyof typeof TransportMode]
+
+
+export const ArrivalTerminalType: {
+  RAILWAY_STATION: 'RAILWAY_STATION',
+  AIRPORT: 'AIRPORT',
+  BUS_STAND: 'BUS_STAND'
+};
+
+export type ArrivalTerminalType = (typeof ArrivalTerminalType)[keyof typeof ArrivalTerminalType]
 
 
 export const CompanionRequestStatus: {
@@ -176,6 +186,10 @@ export const AuthProvider: typeof $Enums.AuthProvider
 export type TransportMode = $Enums.TransportMode
 
 export const TransportMode: typeof $Enums.TransportMode
+
+export type ArrivalTerminalType = $Enums.ArrivalTerminalType
+
+export const ArrivalTerminalType: typeof $Enums.ArrivalTerminalType
 
 export type CompanionRequestStatus = $Enums.CompanionRequestStatus
 
@@ -4665,10 +4679,12 @@ export namespace Prisma {
   }
 
   export type TravelOfferAvgAggregateOutputType = {
+    timeFlexibilityMinutes: number | null
     availableSeats: number | null
   }
 
   export type TravelOfferSumAggregateOutputType = {
+    timeFlexibilityMinutes: number | null
     availableSeats: number | null
   }
 
@@ -4677,8 +4693,12 @@ export namespace Prisma {
     ownerId: string | null
     source: string | null
     destination: string | null
+    terminalType: $Enums.ArrivalTerminalType | null
+    terminalName: string | null
+    terminalKey: string | null
     departureAt: Date | null
     expiresAt: Date | null
+    timeFlexibilityMinutes: number | null
     transportMode: $Enums.TransportMode | null
     availableSeats: number | null
     isActive: boolean | null
@@ -4691,8 +4711,12 @@ export namespace Prisma {
     ownerId: string | null
     source: string | null
     destination: string | null
+    terminalType: $Enums.ArrivalTerminalType | null
+    terminalName: string | null
+    terminalKey: string | null
     departureAt: Date | null
     expiresAt: Date | null
+    timeFlexibilityMinutes: number | null
     transportMode: $Enums.TransportMode | null
     availableSeats: number | null
     isActive: boolean | null
@@ -4705,8 +4729,12 @@ export namespace Prisma {
     ownerId: number
     source: number
     destination: number
+    terminalType: number
+    terminalName: number
+    terminalKey: number
     departureAt: number
     expiresAt: number
+    timeFlexibilityMinutes: number
     transportMode: number
     availableSeats: number
     isActive: number
@@ -4717,10 +4745,12 @@ export namespace Prisma {
 
 
   export type TravelOfferAvgAggregateInputType = {
+    timeFlexibilityMinutes?: true
     availableSeats?: true
   }
 
   export type TravelOfferSumAggregateInputType = {
+    timeFlexibilityMinutes?: true
     availableSeats?: true
   }
 
@@ -4729,8 +4759,12 @@ export namespace Prisma {
     ownerId?: true
     source?: true
     destination?: true
+    terminalType?: true
+    terminalName?: true
+    terminalKey?: true
     departureAt?: true
     expiresAt?: true
+    timeFlexibilityMinutes?: true
     transportMode?: true
     availableSeats?: true
     isActive?: true
@@ -4743,8 +4777,12 @@ export namespace Prisma {
     ownerId?: true
     source?: true
     destination?: true
+    terminalType?: true
+    terminalName?: true
+    terminalKey?: true
     departureAt?: true
     expiresAt?: true
+    timeFlexibilityMinutes?: true
     transportMode?: true
     availableSeats?: true
     isActive?: true
@@ -4757,8 +4795,12 @@ export namespace Prisma {
     ownerId?: true
     source?: true
     destination?: true
+    terminalType?: true
+    terminalName?: true
+    terminalKey?: true
     departureAt?: true
     expiresAt?: true
+    timeFlexibilityMinutes?: true
     transportMode?: true
     availableSeats?: true
     isActive?: true
@@ -4858,8 +4900,12 @@ export namespace Prisma {
     ownerId: string
     source: string
     destination: string
+    terminalType: $Enums.ArrivalTerminalType | null
+    terminalName: string | null
+    terminalKey: string | null
     departureAt: Date
     expiresAt: Date
+    timeFlexibilityMinutes: number | null
     transportMode: $Enums.TransportMode
     availableSeats: number
     isActive: boolean
@@ -4891,8 +4937,12 @@ export namespace Prisma {
     ownerId?: boolean
     source?: boolean
     destination?: boolean
+    terminalType?: boolean
+    terminalName?: boolean
+    terminalKey?: boolean
     departureAt?: boolean
     expiresAt?: boolean
+    timeFlexibilityMinutes?: boolean
     transportMode?: boolean
     availableSeats?: boolean
     isActive?: boolean
@@ -4908,8 +4958,12 @@ export namespace Prisma {
     ownerId?: boolean
     source?: boolean
     destination?: boolean
+    terminalType?: boolean
+    terminalName?: boolean
+    terminalKey?: boolean
     departureAt?: boolean
     expiresAt?: boolean
+    timeFlexibilityMinutes?: boolean
     transportMode?: boolean
     availableSeats?: boolean
     isActive?: boolean
@@ -4923,8 +4977,12 @@ export namespace Prisma {
     ownerId?: boolean
     source?: boolean
     destination?: boolean
+    terminalType?: boolean
+    terminalName?: boolean
+    terminalKey?: boolean
     departureAt?: boolean
     expiresAt?: boolean
+    timeFlexibilityMinutes?: boolean
     transportMode?: boolean
     availableSeats?: boolean
     isActive?: boolean
@@ -4938,8 +4996,12 @@ export namespace Prisma {
     ownerId?: boolean
     source?: boolean
     destination?: boolean
+    terminalType?: boolean
+    terminalName?: boolean
+    terminalKey?: boolean
     departureAt?: boolean
     expiresAt?: boolean
+    timeFlexibilityMinutes?: boolean
     transportMode?: boolean
     availableSeats?: boolean
     isActive?: boolean
@@ -4947,7 +5009,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type TravelOfferOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "ownerId" | "source" | "destination" | "departureAt" | "expiresAt" | "transportMode" | "availableSeats" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["travelOffer"]>
+  export type TravelOfferOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "ownerId" | "source" | "destination" | "terminalType" | "terminalName" | "terminalKey" | "departureAt" | "expiresAt" | "timeFlexibilityMinutes" | "transportMode" | "availableSeats" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["travelOffer"]>
   export type TravelOfferInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     owner?: boolean | UserDefaultArgs<ExtArgs>
     companionRequests?: boolean | TravelOffer$companionRequestsArgs<ExtArgs>
@@ -4971,8 +5033,12 @@ export namespace Prisma {
       ownerId: string
       source: string
       destination: string
+      terminalType: $Enums.ArrivalTerminalType | null
+      terminalName: string | null
+      terminalKey: string | null
       departureAt: Date
       expiresAt: Date
+      timeFlexibilityMinutes: number | null
       transportMode: $Enums.TransportMode
       availableSeats: number
       isActive: boolean
@@ -5407,8 +5473,12 @@ export namespace Prisma {
     readonly ownerId: FieldRef<"TravelOffer", 'String'>
     readonly source: FieldRef<"TravelOffer", 'String'>
     readonly destination: FieldRef<"TravelOffer", 'String'>
+    readonly terminalType: FieldRef<"TravelOffer", 'ArrivalTerminalType'>
+    readonly terminalName: FieldRef<"TravelOffer", 'String'>
+    readonly terminalKey: FieldRef<"TravelOffer", 'String'>
     readonly departureAt: FieldRef<"TravelOffer", 'DateTime'>
     readonly expiresAt: FieldRef<"TravelOffer", 'DateTime'>
+    readonly timeFlexibilityMinutes: FieldRef<"TravelOffer", 'Int'>
     readonly transportMode: FieldRef<"TravelOffer", 'TransportMode'>
     readonly availableSeats: FieldRef<"TravelOffer", 'Int'>
     readonly isActive: FieldRef<"TravelOffer", 'Boolean'>
@@ -5870,10 +5940,12 @@ export namespace Prisma {
   }
 
   export type TravelRequestAvgAggregateOutputType = {
+    timeFlexibilityMinutes: number | null
     passengersRequired: number | null
   }
 
   export type TravelRequestSumAggregateOutputType = {
+    timeFlexibilityMinutes: number | null
     passengersRequired: number | null
   }
 
@@ -5882,8 +5954,13 @@ export namespace Prisma {
     userId: string | null
     source: string | null
     destination: string | null
+    terminalType: $Enums.ArrivalTerminalType | null
+    terminalName: string | null
+    terminalKey: string | null
     departureAt: Date | null
     expiresAt: Date | null
+    timeFlexibilityMinutes: number | null
+    cancelledAt: Date | null
     transportMode: $Enums.TransportMode | null
     passengersRequired: number | null
     isActive: boolean | null
@@ -5896,8 +5973,13 @@ export namespace Prisma {
     userId: string | null
     source: string | null
     destination: string | null
+    terminalType: $Enums.ArrivalTerminalType | null
+    terminalName: string | null
+    terminalKey: string | null
     departureAt: Date | null
     expiresAt: Date | null
+    timeFlexibilityMinutes: number | null
+    cancelledAt: Date | null
     transportMode: $Enums.TransportMode | null
     passengersRequired: number | null
     isActive: boolean | null
@@ -5910,8 +5992,13 @@ export namespace Prisma {
     userId: number
     source: number
     destination: number
+    terminalType: number
+    terminalName: number
+    terminalKey: number
     departureAt: number
     expiresAt: number
+    timeFlexibilityMinutes: number
+    cancelledAt: number
     transportMode: number
     passengersRequired: number
     isActive: number
@@ -5922,10 +6009,12 @@ export namespace Prisma {
 
 
   export type TravelRequestAvgAggregateInputType = {
+    timeFlexibilityMinutes?: true
     passengersRequired?: true
   }
 
   export type TravelRequestSumAggregateInputType = {
+    timeFlexibilityMinutes?: true
     passengersRequired?: true
   }
 
@@ -5934,8 +6023,13 @@ export namespace Prisma {
     userId?: true
     source?: true
     destination?: true
+    terminalType?: true
+    terminalName?: true
+    terminalKey?: true
     departureAt?: true
     expiresAt?: true
+    timeFlexibilityMinutes?: true
+    cancelledAt?: true
     transportMode?: true
     passengersRequired?: true
     isActive?: true
@@ -5948,8 +6042,13 @@ export namespace Prisma {
     userId?: true
     source?: true
     destination?: true
+    terminalType?: true
+    terminalName?: true
+    terminalKey?: true
     departureAt?: true
     expiresAt?: true
+    timeFlexibilityMinutes?: true
+    cancelledAt?: true
     transportMode?: true
     passengersRequired?: true
     isActive?: true
@@ -5962,8 +6061,13 @@ export namespace Prisma {
     userId?: true
     source?: true
     destination?: true
+    terminalType?: true
+    terminalName?: true
+    terminalKey?: true
     departureAt?: true
     expiresAt?: true
+    timeFlexibilityMinutes?: true
+    cancelledAt?: true
     transportMode?: true
     passengersRequired?: true
     isActive?: true
@@ -6063,8 +6167,13 @@ export namespace Prisma {
     userId: string
     source: string
     destination: string
+    terminalType: $Enums.ArrivalTerminalType | null
+    terminalName: string | null
+    terminalKey: string | null
     departureAt: Date
     expiresAt: Date
+    timeFlexibilityMinutes: number | null
+    cancelledAt: Date | null
     transportMode: $Enums.TransportMode | null
     passengersRequired: number
     isActive: boolean
@@ -6096,8 +6205,13 @@ export namespace Prisma {
     userId?: boolean
     source?: boolean
     destination?: boolean
+    terminalType?: boolean
+    terminalName?: boolean
+    terminalKey?: boolean
     departureAt?: boolean
     expiresAt?: boolean
+    timeFlexibilityMinutes?: boolean
+    cancelledAt?: boolean
     transportMode?: boolean
     passengersRequired?: boolean
     isActive?: boolean
@@ -6113,8 +6227,13 @@ export namespace Prisma {
     userId?: boolean
     source?: boolean
     destination?: boolean
+    terminalType?: boolean
+    terminalName?: boolean
+    terminalKey?: boolean
     departureAt?: boolean
     expiresAt?: boolean
+    timeFlexibilityMinutes?: boolean
+    cancelledAt?: boolean
     transportMode?: boolean
     passengersRequired?: boolean
     isActive?: boolean
@@ -6128,8 +6247,13 @@ export namespace Prisma {
     userId?: boolean
     source?: boolean
     destination?: boolean
+    terminalType?: boolean
+    terminalName?: boolean
+    terminalKey?: boolean
     departureAt?: boolean
     expiresAt?: boolean
+    timeFlexibilityMinutes?: boolean
+    cancelledAt?: boolean
     transportMode?: boolean
     passengersRequired?: boolean
     isActive?: boolean
@@ -6143,8 +6267,13 @@ export namespace Prisma {
     userId?: boolean
     source?: boolean
     destination?: boolean
+    terminalType?: boolean
+    terminalName?: boolean
+    terminalKey?: boolean
     departureAt?: boolean
     expiresAt?: boolean
+    timeFlexibilityMinutes?: boolean
+    cancelledAt?: boolean
     transportMode?: boolean
     passengersRequired?: boolean
     isActive?: boolean
@@ -6152,7 +6281,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type TravelRequestOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "source" | "destination" | "departureAt" | "expiresAt" | "transportMode" | "passengersRequired" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["travelRequest"]>
+  export type TravelRequestOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "source" | "destination" | "terminalType" | "terminalName" | "terminalKey" | "departureAt" | "expiresAt" | "timeFlexibilityMinutes" | "cancelledAt" | "transportMode" | "passengersRequired" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["travelRequest"]>
   export type TravelRequestInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     companionRequests?: boolean | TravelRequest$companionRequestsArgs<ExtArgs>
@@ -6176,8 +6305,13 @@ export namespace Prisma {
       userId: string
       source: string
       destination: string
+      terminalType: $Enums.ArrivalTerminalType | null
+      terminalName: string | null
+      terminalKey: string | null
       departureAt: Date
       expiresAt: Date
+      timeFlexibilityMinutes: number | null
+      cancelledAt: Date | null
       transportMode: $Enums.TransportMode | null
       passengersRequired: number
       isActive: boolean
@@ -6612,8 +6746,13 @@ export namespace Prisma {
     readonly userId: FieldRef<"TravelRequest", 'String'>
     readonly source: FieldRef<"TravelRequest", 'String'>
     readonly destination: FieldRef<"TravelRequest", 'String'>
+    readonly terminalType: FieldRef<"TravelRequest", 'ArrivalTerminalType'>
+    readonly terminalName: FieldRef<"TravelRequest", 'String'>
+    readonly terminalKey: FieldRef<"TravelRequest", 'String'>
     readonly departureAt: FieldRef<"TravelRequest", 'DateTime'>
     readonly expiresAt: FieldRef<"TravelRequest", 'DateTime'>
+    readonly timeFlexibilityMinutes: FieldRef<"TravelRequest", 'Int'>
+    readonly cancelledAt: FieldRef<"TravelRequest", 'DateTime'>
     readonly transportMode: FieldRef<"TravelRequest", 'TransportMode'>
     readonly passengersRequired: FieldRef<"TravelRequest", 'Int'>
     readonly isActive: FieldRef<"TravelRequest", 'Boolean'>
@@ -14028,8 +14167,12 @@ export namespace Prisma {
     ownerId: 'ownerId',
     source: 'source',
     destination: 'destination',
+    terminalType: 'terminalType',
+    terminalName: 'terminalName',
+    terminalKey: 'terminalKey',
     departureAt: 'departureAt',
     expiresAt: 'expiresAt',
+    timeFlexibilityMinutes: 'timeFlexibilityMinutes',
     transportMode: 'transportMode',
     availableSeats: 'availableSeats',
     isActive: 'isActive',
@@ -14045,8 +14188,13 @@ export namespace Prisma {
     userId: 'userId',
     source: 'source',
     destination: 'destination',
+    terminalType: 'terminalType',
+    terminalName: 'terminalName',
+    terminalKey: 'terminalKey',
     departureAt: 'departureAt',
     expiresAt: 'expiresAt',
+    timeFlexibilityMinutes: 'timeFlexibilityMinutes',
+    cancelledAt: 'cancelledAt',
     transportMode: 'transportMode',
     passengersRequired: 'passengersRequired',
     isActive: 'isActive',
@@ -14265,16 +14413,16 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'TransportMode'
+   * Reference to a field of type 'ArrivalTerminalType'
    */
-  export type EnumTransportModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TransportMode'>
+  export type EnumArrivalTerminalTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ArrivalTerminalType'>
     
 
 
   /**
-   * Reference to a field of type 'TransportMode[]'
+   * Reference to a field of type 'ArrivalTerminalType[]'
    */
-  export type ListEnumTransportModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TransportMode[]'>
+  export type ListEnumArrivalTerminalTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ArrivalTerminalType[]'>
     
 
 
@@ -14289,6 +14437,20 @@ export namespace Prisma {
    * Reference to a field of type 'Int[]'
    */
   export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'TransportMode'
+   */
+  export type EnumTransportModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TransportMode'>
+    
+
+
+  /**
+   * Reference to a field of type 'TransportMode[]'
+   */
+  export type ListEnumTransportModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TransportMode[]'>
     
 
 
@@ -14563,8 +14725,12 @@ export namespace Prisma {
     ownerId?: StringFilter<"TravelOffer"> | string
     source?: StringFilter<"TravelOffer"> | string
     destination?: StringFilter<"TravelOffer"> | string
+    terminalType?: EnumArrivalTerminalTypeNullableFilter<"TravelOffer"> | $Enums.ArrivalTerminalType | null
+    terminalName?: StringNullableFilter<"TravelOffer"> | string | null
+    terminalKey?: StringNullableFilter<"TravelOffer"> | string | null
     departureAt?: DateTimeFilter<"TravelOffer"> | Date | string
     expiresAt?: DateTimeFilter<"TravelOffer"> | Date | string
+    timeFlexibilityMinutes?: IntNullableFilter<"TravelOffer"> | number | null
     transportMode?: EnumTransportModeFilter<"TravelOffer"> | $Enums.TransportMode
     availableSeats?: IntFilter<"TravelOffer"> | number
     isActive?: BoolFilter<"TravelOffer"> | boolean
@@ -14579,8 +14745,12 @@ export namespace Prisma {
     ownerId?: SortOrder
     source?: SortOrder
     destination?: SortOrder
+    terminalType?: SortOrderInput | SortOrder
+    terminalName?: SortOrderInput | SortOrder
+    terminalKey?: SortOrderInput | SortOrder
     departureAt?: SortOrder
     expiresAt?: SortOrder
+    timeFlexibilityMinutes?: SortOrderInput | SortOrder
     transportMode?: SortOrder
     availableSeats?: SortOrder
     isActive?: SortOrder
@@ -14598,8 +14768,12 @@ export namespace Prisma {
     ownerId?: StringFilter<"TravelOffer"> | string
     source?: StringFilter<"TravelOffer"> | string
     destination?: StringFilter<"TravelOffer"> | string
+    terminalType?: EnumArrivalTerminalTypeNullableFilter<"TravelOffer"> | $Enums.ArrivalTerminalType | null
+    terminalName?: StringNullableFilter<"TravelOffer"> | string | null
+    terminalKey?: StringNullableFilter<"TravelOffer"> | string | null
     departureAt?: DateTimeFilter<"TravelOffer"> | Date | string
     expiresAt?: DateTimeFilter<"TravelOffer"> | Date | string
+    timeFlexibilityMinutes?: IntNullableFilter<"TravelOffer"> | number | null
     transportMode?: EnumTransportModeFilter<"TravelOffer"> | $Enums.TransportMode
     availableSeats?: IntFilter<"TravelOffer"> | number
     isActive?: BoolFilter<"TravelOffer"> | boolean
@@ -14614,8 +14788,12 @@ export namespace Prisma {
     ownerId?: SortOrder
     source?: SortOrder
     destination?: SortOrder
+    terminalType?: SortOrderInput | SortOrder
+    terminalName?: SortOrderInput | SortOrder
+    terminalKey?: SortOrderInput | SortOrder
     departureAt?: SortOrder
     expiresAt?: SortOrder
+    timeFlexibilityMinutes?: SortOrderInput | SortOrder
     transportMode?: SortOrder
     availableSeats?: SortOrder
     isActive?: SortOrder
@@ -14636,8 +14814,12 @@ export namespace Prisma {
     ownerId?: StringWithAggregatesFilter<"TravelOffer"> | string
     source?: StringWithAggregatesFilter<"TravelOffer"> | string
     destination?: StringWithAggregatesFilter<"TravelOffer"> | string
+    terminalType?: EnumArrivalTerminalTypeNullableWithAggregatesFilter<"TravelOffer"> | $Enums.ArrivalTerminalType | null
+    terminalName?: StringNullableWithAggregatesFilter<"TravelOffer"> | string | null
+    terminalKey?: StringNullableWithAggregatesFilter<"TravelOffer"> | string | null
     departureAt?: DateTimeWithAggregatesFilter<"TravelOffer"> | Date | string
     expiresAt?: DateTimeWithAggregatesFilter<"TravelOffer"> | Date | string
+    timeFlexibilityMinutes?: IntNullableWithAggregatesFilter<"TravelOffer"> | number | null
     transportMode?: EnumTransportModeWithAggregatesFilter<"TravelOffer"> | $Enums.TransportMode
     availableSeats?: IntWithAggregatesFilter<"TravelOffer"> | number
     isActive?: BoolWithAggregatesFilter<"TravelOffer"> | boolean
@@ -14653,8 +14835,13 @@ export namespace Prisma {
     userId?: StringFilter<"TravelRequest"> | string
     source?: StringFilter<"TravelRequest"> | string
     destination?: StringFilter<"TravelRequest"> | string
+    terminalType?: EnumArrivalTerminalTypeNullableFilter<"TravelRequest"> | $Enums.ArrivalTerminalType | null
+    terminalName?: StringNullableFilter<"TravelRequest"> | string | null
+    terminalKey?: StringNullableFilter<"TravelRequest"> | string | null
     departureAt?: DateTimeFilter<"TravelRequest"> | Date | string
     expiresAt?: DateTimeFilter<"TravelRequest"> | Date | string
+    timeFlexibilityMinutes?: IntNullableFilter<"TravelRequest"> | number | null
+    cancelledAt?: DateTimeNullableFilter<"TravelRequest"> | Date | string | null
     transportMode?: EnumTransportModeNullableFilter<"TravelRequest"> | $Enums.TransportMode | null
     passengersRequired?: IntFilter<"TravelRequest"> | number
     isActive?: BoolFilter<"TravelRequest"> | boolean
@@ -14669,8 +14856,13 @@ export namespace Prisma {
     userId?: SortOrder
     source?: SortOrder
     destination?: SortOrder
+    terminalType?: SortOrderInput | SortOrder
+    terminalName?: SortOrderInput | SortOrder
+    terminalKey?: SortOrderInput | SortOrder
     departureAt?: SortOrder
     expiresAt?: SortOrder
+    timeFlexibilityMinutes?: SortOrderInput | SortOrder
+    cancelledAt?: SortOrderInput | SortOrder
     transportMode?: SortOrderInput | SortOrder
     passengersRequired?: SortOrder
     isActive?: SortOrder
@@ -14688,8 +14880,13 @@ export namespace Prisma {
     userId?: StringFilter<"TravelRequest"> | string
     source?: StringFilter<"TravelRequest"> | string
     destination?: StringFilter<"TravelRequest"> | string
+    terminalType?: EnumArrivalTerminalTypeNullableFilter<"TravelRequest"> | $Enums.ArrivalTerminalType | null
+    terminalName?: StringNullableFilter<"TravelRequest"> | string | null
+    terminalKey?: StringNullableFilter<"TravelRequest"> | string | null
     departureAt?: DateTimeFilter<"TravelRequest"> | Date | string
     expiresAt?: DateTimeFilter<"TravelRequest"> | Date | string
+    timeFlexibilityMinutes?: IntNullableFilter<"TravelRequest"> | number | null
+    cancelledAt?: DateTimeNullableFilter<"TravelRequest"> | Date | string | null
     transportMode?: EnumTransportModeNullableFilter<"TravelRequest"> | $Enums.TransportMode | null
     passengersRequired?: IntFilter<"TravelRequest"> | number
     isActive?: BoolFilter<"TravelRequest"> | boolean
@@ -14704,8 +14901,13 @@ export namespace Prisma {
     userId?: SortOrder
     source?: SortOrder
     destination?: SortOrder
+    terminalType?: SortOrderInput | SortOrder
+    terminalName?: SortOrderInput | SortOrder
+    terminalKey?: SortOrderInput | SortOrder
     departureAt?: SortOrder
     expiresAt?: SortOrder
+    timeFlexibilityMinutes?: SortOrderInput | SortOrder
+    cancelledAt?: SortOrderInput | SortOrder
     transportMode?: SortOrderInput | SortOrder
     passengersRequired?: SortOrder
     isActive?: SortOrder
@@ -14726,8 +14928,13 @@ export namespace Prisma {
     userId?: StringWithAggregatesFilter<"TravelRequest"> | string
     source?: StringWithAggregatesFilter<"TravelRequest"> | string
     destination?: StringWithAggregatesFilter<"TravelRequest"> | string
+    terminalType?: EnumArrivalTerminalTypeNullableWithAggregatesFilter<"TravelRequest"> | $Enums.ArrivalTerminalType | null
+    terminalName?: StringNullableWithAggregatesFilter<"TravelRequest"> | string | null
+    terminalKey?: StringNullableWithAggregatesFilter<"TravelRequest"> | string | null
     departureAt?: DateTimeWithAggregatesFilter<"TravelRequest"> | Date | string
     expiresAt?: DateTimeWithAggregatesFilter<"TravelRequest"> | Date | string
+    timeFlexibilityMinutes?: IntNullableWithAggregatesFilter<"TravelRequest"> | number | null
+    cancelledAt?: DateTimeNullableWithAggregatesFilter<"TravelRequest"> | Date | string | null
     transportMode?: EnumTransportModeNullableWithAggregatesFilter<"TravelRequest"> | $Enums.TransportMode | null
     passengersRequired?: IntWithAggregatesFilter<"TravelRequest"> | number
     isActive?: BoolWithAggregatesFilter<"TravelRequest"> | boolean
@@ -15444,8 +15651,12 @@ export namespace Prisma {
     id?: string
     source: string
     destination: string
+    terminalType?: $Enums.ArrivalTerminalType | null
+    terminalName?: string | null
+    terminalKey?: string | null
     departureAt: Date | string
     expiresAt: Date | string
+    timeFlexibilityMinutes?: number | null
     transportMode: $Enums.TransportMode
     availableSeats: number
     isActive?: boolean
@@ -15460,8 +15671,12 @@ export namespace Prisma {
     ownerId: string
     source: string
     destination: string
+    terminalType?: $Enums.ArrivalTerminalType | null
+    terminalName?: string | null
+    terminalKey?: string | null
     departureAt: Date | string
     expiresAt: Date | string
+    timeFlexibilityMinutes?: number | null
     transportMode: $Enums.TransportMode
     availableSeats: number
     isActive?: boolean
@@ -15474,8 +15689,12 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     source?: StringFieldUpdateOperationsInput | string
     destination?: StringFieldUpdateOperationsInput | string
+    terminalType?: NullableEnumArrivalTerminalTypeFieldUpdateOperationsInput | $Enums.ArrivalTerminalType | null
+    terminalName?: NullableStringFieldUpdateOperationsInput | string | null
+    terminalKey?: NullableStringFieldUpdateOperationsInput | string | null
     departureAt?: DateTimeFieldUpdateOperationsInput | Date | string
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    timeFlexibilityMinutes?: NullableIntFieldUpdateOperationsInput | number | null
     transportMode?: EnumTransportModeFieldUpdateOperationsInput | $Enums.TransportMode
     availableSeats?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -15490,8 +15709,12 @@ export namespace Prisma {
     ownerId?: StringFieldUpdateOperationsInput | string
     source?: StringFieldUpdateOperationsInput | string
     destination?: StringFieldUpdateOperationsInput | string
+    terminalType?: NullableEnumArrivalTerminalTypeFieldUpdateOperationsInput | $Enums.ArrivalTerminalType | null
+    terminalName?: NullableStringFieldUpdateOperationsInput | string | null
+    terminalKey?: NullableStringFieldUpdateOperationsInput | string | null
     departureAt?: DateTimeFieldUpdateOperationsInput | Date | string
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    timeFlexibilityMinutes?: NullableIntFieldUpdateOperationsInput | number | null
     transportMode?: EnumTransportModeFieldUpdateOperationsInput | $Enums.TransportMode
     availableSeats?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -15505,8 +15728,12 @@ export namespace Prisma {
     ownerId: string
     source: string
     destination: string
+    terminalType?: $Enums.ArrivalTerminalType | null
+    terminalName?: string | null
+    terminalKey?: string | null
     departureAt: Date | string
     expiresAt: Date | string
+    timeFlexibilityMinutes?: number | null
     transportMode: $Enums.TransportMode
     availableSeats: number
     isActive?: boolean
@@ -15518,8 +15745,12 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     source?: StringFieldUpdateOperationsInput | string
     destination?: StringFieldUpdateOperationsInput | string
+    terminalType?: NullableEnumArrivalTerminalTypeFieldUpdateOperationsInput | $Enums.ArrivalTerminalType | null
+    terminalName?: NullableStringFieldUpdateOperationsInput | string | null
+    terminalKey?: NullableStringFieldUpdateOperationsInput | string | null
     departureAt?: DateTimeFieldUpdateOperationsInput | Date | string
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    timeFlexibilityMinutes?: NullableIntFieldUpdateOperationsInput | number | null
     transportMode?: EnumTransportModeFieldUpdateOperationsInput | $Enums.TransportMode
     availableSeats?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -15532,8 +15763,12 @@ export namespace Prisma {
     ownerId?: StringFieldUpdateOperationsInput | string
     source?: StringFieldUpdateOperationsInput | string
     destination?: StringFieldUpdateOperationsInput | string
+    terminalType?: NullableEnumArrivalTerminalTypeFieldUpdateOperationsInput | $Enums.ArrivalTerminalType | null
+    terminalName?: NullableStringFieldUpdateOperationsInput | string | null
+    terminalKey?: NullableStringFieldUpdateOperationsInput | string | null
     departureAt?: DateTimeFieldUpdateOperationsInput | Date | string
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    timeFlexibilityMinutes?: NullableIntFieldUpdateOperationsInput | number | null
     transportMode?: EnumTransportModeFieldUpdateOperationsInput | $Enums.TransportMode
     availableSeats?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -15545,8 +15780,13 @@ export namespace Prisma {
     id?: string
     source: string
     destination: string
+    terminalType?: $Enums.ArrivalTerminalType | null
+    terminalName?: string | null
+    terminalKey?: string | null
     departureAt: Date | string
     expiresAt: Date | string
+    timeFlexibilityMinutes?: number | null
+    cancelledAt?: Date | string | null
     transportMode?: $Enums.TransportMode | null
     passengersRequired?: number
     isActive?: boolean
@@ -15561,8 +15801,13 @@ export namespace Prisma {
     userId: string
     source: string
     destination: string
+    terminalType?: $Enums.ArrivalTerminalType | null
+    terminalName?: string | null
+    terminalKey?: string | null
     departureAt: Date | string
     expiresAt: Date | string
+    timeFlexibilityMinutes?: number | null
+    cancelledAt?: Date | string | null
     transportMode?: $Enums.TransportMode | null
     passengersRequired?: number
     isActive?: boolean
@@ -15575,8 +15820,13 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     source?: StringFieldUpdateOperationsInput | string
     destination?: StringFieldUpdateOperationsInput | string
+    terminalType?: NullableEnumArrivalTerminalTypeFieldUpdateOperationsInput | $Enums.ArrivalTerminalType | null
+    terminalName?: NullableStringFieldUpdateOperationsInput | string | null
+    terminalKey?: NullableStringFieldUpdateOperationsInput | string | null
     departureAt?: DateTimeFieldUpdateOperationsInput | Date | string
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    timeFlexibilityMinutes?: NullableIntFieldUpdateOperationsInput | number | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     transportMode?: NullableEnumTransportModeFieldUpdateOperationsInput | $Enums.TransportMode | null
     passengersRequired?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -15591,8 +15841,13 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     source?: StringFieldUpdateOperationsInput | string
     destination?: StringFieldUpdateOperationsInput | string
+    terminalType?: NullableEnumArrivalTerminalTypeFieldUpdateOperationsInput | $Enums.ArrivalTerminalType | null
+    terminalName?: NullableStringFieldUpdateOperationsInput | string | null
+    terminalKey?: NullableStringFieldUpdateOperationsInput | string | null
     departureAt?: DateTimeFieldUpdateOperationsInput | Date | string
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    timeFlexibilityMinutes?: NullableIntFieldUpdateOperationsInput | number | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     transportMode?: NullableEnumTransportModeFieldUpdateOperationsInput | $Enums.TransportMode | null
     passengersRequired?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -15606,8 +15861,13 @@ export namespace Prisma {
     userId: string
     source: string
     destination: string
+    terminalType?: $Enums.ArrivalTerminalType | null
+    terminalName?: string | null
+    terminalKey?: string | null
     departureAt: Date | string
     expiresAt: Date | string
+    timeFlexibilityMinutes?: number | null
+    cancelledAt?: Date | string | null
     transportMode?: $Enums.TransportMode | null
     passengersRequired?: number
     isActive?: boolean
@@ -15619,8 +15879,13 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     source?: StringFieldUpdateOperationsInput | string
     destination?: StringFieldUpdateOperationsInput | string
+    terminalType?: NullableEnumArrivalTerminalTypeFieldUpdateOperationsInput | $Enums.ArrivalTerminalType | null
+    terminalName?: NullableStringFieldUpdateOperationsInput | string | null
+    terminalKey?: NullableStringFieldUpdateOperationsInput | string | null
     departureAt?: DateTimeFieldUpdateOperationsInput | Date | string
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    timeFlexibilityMinutes?: NullableIntFieldUpdateOperationsInput | number | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     transportMode?: NullableEnumTransportModeFieldUpdateOperationsInput | $Enums.TransportMode | null
     passengersRequired?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -15633,8 +15898,13 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     source?: StringFieldUpdateOperationsInput | string
     destination?: StringFieldUpdateOperationsInput | string
+    terminalType?: NullableEnumArrivalTerminalTypeFieldUpdateOperationsInput | $Enums.ArrivalTerminalType | null
+    terminalName?: NullableStringFieldUpdateOperationsInput | string | null
+    terminalKey?: NullableStringFieldUpdateOperationsInput | string | null
     departureAt?: DateTimeFieldUpdateOperationsInput | Date | string
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    timeFlexibilityMinutes?: NullableIntFieldUpdateOperationsInput | number | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     transportMode?: NullableEnumTransportModeFieldUpdateOperationsInput | $Enums.TransportMode | null
     passengersRequired?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -16495,6 +16765,24 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
+  export type EnumArrivalTerminalTypeNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.ArrivalTerminalType | EnumArrivalTerminalTypeFieldRefInput<$PrismaModel> | null
+    in?: $Enums.ArrivalTerminalType[] | ListEnumArrivalTerminalTypeFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.ArrivalTerminalType[] | ListEnumArrivalTerminalTypeFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumArrivalTerminalTypeNullableFilter<$PrismaModel> | $Enums.ArrivalTerminalType | null
+  }
+
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
   export type EnumTransportModeFilter<$PrismaModel = never> = {
     equals?: $Enums.TransportMode | EnumTransportModeFieldRefInput<$PrismaModel>
     in?: $Enums.TransportMode[] | ListEnumTransportModeFieldRefInput<$PrismaModel>
@@ -16518,8 +16806,12 @@ export namespace Prisma {
     ownerId?: SortOrder
     source?: SortOrder
     destination?: SortOrder
+    terminalType?: SortOrder
+    terminalName?: SortOrder
+    terminalKey?: SortOrder
     departureAt?: SortOrder
     expiresAt?: SortOrder
+    timeFlexibilityMinutes?: SortOrder
     transportMode?: SortOrder
     availableSeats?: SortOrder
     isActive?: SortOrder
@@ -16528,6 +16820,7 @@ export namespace Prisma {
   }
 
   export type TravelOfferAvgOrderByAggregateInput = {
+    timeFlexibilityMinutes?: SortOrder
     availableSeats?: SortOrder
   }
 
@@ -16536,8 +16829,12 @@ export namespace Prisma {
     ownerId?: SortOrder
     source?: SortOrder
     destination?: SortOrder
+    terminalType?: SortOrder
+    terminalName?: SortOrder
+    terminalKey?: SortOrder
     departureAt?: SortOrder
     expiresAt?: SortOrder
+    timeFlexibilityMinutes?: SortOrder
     transportMode?: SortOrder
     availableSeats?: SortOrder
     isActive?: SortOrder
@@ -16550,8 +16847,12 @@ export namespace Prisma {
     ownerId?: SortOrder
     source?: SortOrder
     destination?: SortOrder
+    terminalType?: SortOrder
+    terminalName?: SortOrder
+    terminalKey?: SortOrder
     departureAt?: SortOrder
     expiresAt?: SortOrder
+    timeFlexibilityMinutes?: SortOrder
     transportMode?: SortOrder
     availableSeats?: SortOrder
     isActive?: SortOrder
@@ -16560,7 +16861,34 @@ export namespace Prisma {
   }
 
   export type TravelOfferSumOrderByAggregateInput = {
+    timeFlexibilityMinutes?: SortOrder
     availableSeats?: SortOrder
+  }
+
+  export type EnumArrivalTerminalTypeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.ArrivalTerminalType | EnumArrivalTerminalTypeFieldRefInput<$PrismaModel> | null
+    in?: $Enums.ArrivalTerminalType[] | ListEnumArrivalTerminalTypeFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.ArrivalTerminalType[] | ListEnumArrivalTerminalTypeFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumArrivalTerminalTypeNullableWithAggregatesFilter<$PrismaModel> | $Enums.ArrivalTerminalType | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumArrivalTerminalTypeNullableFilter<$PrismaModel>
+    _max?: NestedEnumArrivalTerminalTypeNullableFilter<$PrismaModel>
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type EnumTransportModeWithAggregatesFilter<$PrismaModel = never> = {
@@ -16601,8 +16929,13 @@ export namespace Prisma {
     userId?: SortOrder
     source?: SortOrder
     destination?: SortOrder
+    terminalType?: SortOrder
+    terminalName?: SortOrder
+    terminalKey?: SortOrder
     departureAt?: SortOrder
     expiresAt?: SortOrder
+    timeFlexibilityMinutes?: SortOrder
+    cancelledAt?: SortOrder
     transportMode?: SortOrder
     passengersRequired?: SortOrder
     isActive?: SortOrder
@@ -16611,6 +16944,7 @@ export namespace Prisma {
   }
 
   export type TravelRequestAvgOrderByAggregateInput = {
+    timeFlexibilityMinutes?: SortOrder
     passengersRequired?: SortOrder
   }
 
@@ -16619,8 +16953,13 @@ export namespace Prisma {
     userId?: SortOrder
     source?: SortOrder
     destination?: SortOrder
+    terminalType?: SortOrder
+    terminalName?: SortOrder
+    terminalKey?: SortOrder
     departureAt?: SortOrder
     expiresAt?: SortOrder
+    timeFlexibilityMinutes?: SortOrder
+    cancelledAt?: SortOrder
     transportMode?: SortOrder
     passengersRequired?: SortOrder
     isActive?: SortOrder
@@ -16633,8 +16972,13 @@ export namespace Prisma {
     userId?: SortOrder
     source?: SortOrder
     destination?: SortOrder
+    terminalType?: SortOrder
+    terminalName?: SortOrder
+    terminalKey?: SortOrder
     departureAt?: SortOrder
     expiresAt?: SortOrder
+    timeFlexibilityMinutes?: SortOrder
+    cancelledAt?: SortOrder
     transportMode?: SortOrder
     passengersRequired?: SortOrder
     isActive?: SortOrder
@@ -16643,6 +16987,7 @@ export namespace Prisma {
   }
 
   export type TravelRequestSumOrderByAggregateInput = {
+    timeFlexibilityMinutes?: SortOrder
     passengersRequired?: SortOrder
   }
 
@@ -17501,6 +17846,18 @@ export namespace Prisma {
     connect?: CompanionRequestWhereUniqueInput | CompanionRequestWhereUniqueInput[]
   }
 
+  export type NullableEnumArrivalTerminalTypeFieldUpdateOperationsInput = {
+    set?: $Enums.ArrivalTerminalType | null
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
   export type EnumTransportModeFieldUpdateOperationsInput = {
     set?: $Enums.TransportMode
   }
@@ -18252,11 +18609,55 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
+  export type NestedEnumArrivalTerminalTypeNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.ArrivalTerminalType | EnumArrivalTerminalTypeFieldRefInput<$PrismaModel> | null
+    in?: $Enums.ArrivalTerminalType[] | ListEnumArrivalTerminalTypeFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.ArrivalTerminalType[] | ListEnumArrivalTerminalTypeFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumArrivalTerminalTypeNullableFilter<$PrismaModel> | $Enums.ArrivalTerminalType | null
+  }
+
   export type NestedEnumTransportModeFilter<$PrismaModel = never> = {
     equals?: $Enums.TransportMode | EnumTransportModeFieldRefInput<$PrismaModel>
     in?: $Enums.TransportMode[] | ListEnumTransportModeFieldRefInput<$PrismaModel>
     notIn?: $Enums.TransportMode[] | ListEnumTransportModeFieldRefInput<$PrismaModel>
     not?: NestedEnumTransportModeFilter<$PrismaModel> | $Enums.TransportMode
+  }
+
+  export type NestedEnumArrivalTerminalTypeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.ArrivalTerminalType | EnumArrivalTerminalTypeFieldRefInput<$PrismaModel> | null
+    in?: $Enums.ArrivalTerminalType[] | ListEnumArrivalTerminalTypeFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.ArrivalTerminalType[] | ListEnumArrivalTerminalTypeFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumArrivalTerminalTypeNullableWithAggregatesFilter<$PrismaModel> | $Enums.ArrivalTerminalType | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumArrivalTerminalTypeNullableFilter<$PrismaModel>
+    _max?: NestedEnumArrivalTerminalTypeNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
   export type NestedEnumTransportModeWithAggregatesFilter<$PrismaModel = never> = {
@@ -18411,8 +18812,12 @@ export namespace Prisma {
     id?: string
     source: string
     destination: string
+    terminalType?: $Enums.ArrivalTerminalType | null
+    terminalName?: string | null
+    terminalKey?: string | null
     departureAt: Date | string
     expiresAt: Date | string
+    timeFlexibilityMinutes?: number | null
     transportMode: $Enums.TransportMode
     availableSeats: number
     isActive?: boolean
@@ -18425,8 +18830,12 @@ export namespace Prisma {
     id?: string
     source: string
     destination: string
+    terminalType?: $Enums.ArrivalTerminalType | null
+    terminalName?: string | null
+    terminalKey?: string | null
     departureAt: Date | string
     expiresAt: Date | string
+    timeFlexibilityMinutes?: number | null
     transportMode: $Enums.TransportMode
     availableSeats: number
     isActive?: boolean
@@ -18449,8 +18858,13 @@ export namespace Prisma {
     id?: string
     source: string
     destination: string
+    terminalType?: $Enums.ArrivalTerminalType | null
+    terminalName?: string | null
+    terminalKey?: string | null
     departureAt: Date | string
     expiresAt: Date | string
+    timeFlexibilityMinutes?: number | null
+    cancelledAt?: Date | string | null
     transportMode?: $Enums.TransportMode | null
     passengersRequired?: number
     isActive?: boolean
@@ -18463,8 +18877,13 @@ export namespace Prisma {
     id?: string
     source: string
     destination: string
+    terminalType?: $Enums.ArrivalTerminalType | null
+    terminalName?: string | null
+    terminalKey?: string | null
     departureAt: Date | string
     expiresAt: Date | string
+    timeFlexibilityMinutes?: number | null
+    cancelledAt?: Date | string | null
     transportMode?: $Enums.TransportMode | null
     passengersRequired?: number
     isActive?: boolean
@@ -18793,8 +19212,12 @@ export namespace Prisma {
     ownerId?: StringFilter<"TravelOffer"> | string
     source?: StringFilter<"TravelOffer"> | string
     destination?: StringFilter<"TravelOffer"> | string
+    terminalType?: EnumArrivalTerminalTypeNullableFilter<"TravelOffer"> | $Enums.ArrivalTerminalType | null
+    terminalName?: StringNullableFilter<"TravelOffer"> | string | null
+    terminalKey?: StringNullableFilter<"TravelOffer"> | string | null
     departureAt?: DateTimeFilter<"TravelOffer"> | Date | string
     expiresAt?: DateTimeFilter<"TravelOffer"> | Date | string
+    timeFlexibilityMinutes?: IntNullableFilter<"TravelOffer"> | number | null
     transportMode?: EnumTransportModeFilter<"TravelOffer"> | $Enums.TransportMode
     availableSeats?: IntFilter<"TravelOffer"> | number
     isActive?: BoolFilter<"TravelOffer"> | boolean
@@ -18826,8 +19249,13 @@ export namespace Prisma {
     userId?: StringFilter<"TravelRequest"> | string
     source?: StringFilter<"TravelRequest"> | string
     destination?: StringFilter<"TravelRequest"> | string
+    terminalType?: EnumArrivalTerminalTypeNullableFilter<"TravelRequest"> | $Enums.ArrivalTerminalType | null
+    terminalName?: StringNullableFilter<"TravelRequest"> | string | null
+    terminalKey?: StringNullableFilter<"TravelRequest"> | string | null
     departureAt?: DateTimeFilter<"TravelRequest"> | Date | string
     expiresAt?: DateTimeFilter<"TravelRequest"> | Date | string
+    timeFlexibilityMinutes?: IntNullableFilter<"TravelRequest"> | number | null
+    cancelledAt?: DateTimeNullableFilter<"TravelRequest"> | Date | string | null
     transportMode?: EnumTransportModeNullableFilter<"TravelRequest"> | $Enums.TransportMode | null
     passengersRequired?: IntFilter<"TravelRequest"> | number
     isActive?: BoolFilter<"TravelRequest"> | boolean
@@ -19639,8 +20067,13 @@ export namespace Prisma {
     id?: string
     source: string
     destination: string
+    terminalType?: $Enums.ArrivalTerminalType | null
+    terminalName?: string | null
+    terminalKey?: string | null
     departureAt: Date | string
     expiresAt: Date | string
+    timeFlexibilityMinutes?: number | null
+    cancelledAt?: Date | string | null
     transportMode?: $Enums.TransportMode | null
     passengersRequired?: number
     isActive?: boolean
@@ -19654,8 +20087,13 @@ export namespace Prisma {
     userId: string
     source: string
     destination: string
+    terminalType?: $Enums.ArrivalTerminalType | null
+    terminalName?: string | null
+    terminalKey?: string | null
     departureAt: Date | string
     expiresAt: Date | string
+    timeFlexibilityMinutes?: number | null
+    cancelledAt?: Date | string | null
     transportMode?: $Enums.TransportMode | null
     passengersRequired?: number
     isActive?: boolean
@@ -19672,8 +20110,12 @@ export namespace Prisma {
     id?: string
     source: string
     destination: string
+    terminalType?: $Enums.ArrivalTerminalType | null
+    terminalName?: string | null
+    terminalKey?: string | null
     departureAt: Date | string
     expiresAt: Date | string
+    timeFlexibilityMinutes?: number | null
     transportMode: $Enums.TransportMode
     availableSeats: number
     isActive?: boolean
@@ -19687,8 +20129,12 @@ export namespace Prisma {
     ownerId: string
     source: string
     destination: string
+    terminalType?: $Enums.ArrivalTerminalType | null
+    terminalName?: string | null
+    terminalKey?: string | null
     departureAt: Date | string
     expiresAt: Date | string
+    timeFlexibilityMinutes?: number | null
     transportMode: $Enums.TransportMode
     availableSeats: number
     isActive?: boolean
@@ -19901,8 +20347,13 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     source?: StringFieldUpdateOperationsInput | string
     destination?: StringFieldUpdateOperationsInput | string
+    terminalType?: NullableEnumArrivalTerminalTypeFieldUpdateOperationsInput | $Enums.ArrivalTerminalType | null
+    terminalName?: NullableStringFieldUpdateOperationsInput | string | null
+    terminalKey?: NullableStringFieldUpdateOperationsInput | string | null
     departureAt?: DateTimeFieldUpdateOperationsInput | Date | string
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    timeFlexibilityMinutes?: NullableIntFieldUpdateOperationsInput | number | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     transportMode?: NullableEnumTransportModeFieldUpdateOperationsInput | $Enums.TransportMode | null
     passengersRequired?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -19916,8 +20367,13 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     source?: StringFieldUpdateOperationsInput | string
     destination?: StringFieldUpdateOperationsInput | string
+    terminalType?: NullableEnumArrivalTerminalTypeFieldUpdateOperationsInput | $Enums.ArrivalTerminalType | null
+    terminalName?: NullableStringFieldUpdateOperationsInput | string | null
+    terminalKey?: NullableStringFieldUpdateOperationsInput | string | null
     departureAt?: DateTimeFieldUpdateOperationsInput | Date | string
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    timeFlexibilityMinutes?: NullableIntFieldUpdateOperationsInput | number | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     transportMode?: NullableEnumTransportModeFieldUpdateOperationsInput | $Enums.TransportMode | null
     passengersRequired?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -19940,8 +20396,12 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     source?: StringFieldUpdateOperationsInput | string
     destination?: StringFieldUpdateOperationsInput | string
+    terminalType?: NullableEnumArrivalTerminalTypeFieldUpdateOperationsInput | $Enums.ArrivalTerminalType | null
+    terminalName?: NullableStringFieldUpdateOperationsInput | string | null
+    terminalKey?: NullableStringFieldUpdateOperationsInput | string | null
     departureAt?: DateTimeFieldUpdateOperationsInput | Date | string
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    timeFlexibilityMinutes?: NullableIntFieldUpdateOperationsInput | number | null
     transportMode?: EnumTransportModeFieldUpdateOperationsInput | $Enums.TransportMode
     availableSeats?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -19955,8 +20415,12 @@ export namespace Prisma {
     ownerId?: StringFieldUpdateOperationsInput | string
     source?: StringFieldUpdateOperationsInput | string
     destination?: StringFieldUpdateOperationsInput | string
+    terminalType?: NullableEnumArrivalTerminalTypeFieldUpdateOperationsInput | $Enums.ArrivalTerminalType | null
+    terminalName?: NullableStringFieldUpdateOperationsInput | string | null
+    terminalKey?: NullableStringFieldUpdateOperationsInput | string | null
     departureAt?: DateTimeFieldUpdateOperationsInput | Date | string
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    timeFlexibilityMinutes?: NullableIntFieldUpdateOperationsInput | number | null
     transportMode?: EnumTransportModeFieldUpdateOperationsInput | $Enums.TransportMode
     availableSeats?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -21239,8 +21703,12 @@ export namespace Prisma {
     id?: string
     source: string
     destination: string
+    terminalType?: $Enums.ArrivalTerminalType | null
+    terminalName?: string | null
+    terminalKey?: string | null
     departureAt: Date | string
     expiresAt: Date | string
+    timeFlexibilityMinutes?: number | null
     transportMode: $Enums.TransportMode
     availableSeats: number
     isActive?: boolean
@@ -21252,8 +21720,13 @@ export namespace Prisma {
     id?: string
     source: string
     destination: string
+    terminalType?: $Enums.ArrivalTerminalType | null
+    terminalName?: string | null
+    terminalKey?: string | null
     departureAt: Date | string
     expiresAt: Date | string
+    timeFlexibilityMinutes?: number | null
+    cancelledAt?: Date | string | null
     transportMode?: $Enums.TransportMode | null
     passengersRequired?: number
     isActive?: boolean
@@ -21374,8 +21847,12 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     source?: StringFieldUpdateOperationsInput | string
     destination?: StringFieldUpdateOperationsInput | string
+    terminalType?: NullableEnumArrivalTerminalTypeFieldUpdateOperationsInput | $Enums.ArrivalTerminalType | null
+    terminalName?: NullableStringFieldUpdateOperationsInput | string | null
+    terminalKey?: NullableStringFieldUpdateOperationsInput | string | null
     departureAt?: DateTimeFieldUpdateOperationsInput | Date | string
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    timeFlexibilityMinutes?: NullableIntFieldUpdateOperationsInput | number | null
     transportMode?: EnumTransportModeFieldUpdateOperationsInput | $Enums.TransportMode
     availableSeats?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -21388,8 +21865,12 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     source?: StringFieldUpdateOperationsInput | string
     destination?: StringFieldUpdateOperationsInput | string
+    terminalType?: NullableEnumArrivalTerminalTypeFieldUpdateOperationsInput | $Enums.ArrivalTerminalType | null
+    terminalName?: NullableStringFieldUpdateOperationsInput | string | null
+    terminalKey?: NullableStringFieldUpdateOperationsInput | string | null
     departureAt?: DateTimeFieldUpdateOperationsInput | Date | string
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    timeFlexibilityMinutes?: NullableIntFieldUpdateOperationsInput | number | null
     transportMode?: EnumTransportModeFieldUpdateOperationsInput | $Enums.TransportMode
     availableSeats?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -21402,8 +21883,12 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     source?: StringFieldUpdateOperationsInput | string
     destination?: StringFieldUpdateOperationsInput | string
+    terminalType?: NullableEnumArrivalTerminalTypeFieldUpdateOperationsInput | $Enums.ArrivalTerminalType | null
+    terminalName?: NullableStringFieldUpdateOperationsInput | string | null
+    terminalKey?: NullableStringFieldUpdateOperationsInput | string | null
     departureAt?: DateTimeFieldUpdateOperationsInput | Date | string
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    timeFlexibilityMinutes?: NullableIntFieldUpdateOperationsInput | number | null
     transportMode?: EnumTransportModeFieldUpdateOperationsInput | $Enums.TransportMode
     availableSeats?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -21415,8 +21900,13 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     source?: StringFieldUpdateOperationsInput | string
     destination?: StringFieldUpdateOperationsInput | string
+    terminalType?: NullableEnumArrivalTerminalTypeFieldUpdateOperationsInput | $Enums.ArrivalTerminalType | null
+    terminalName?: NullableStringFieldUpdateOperationsInput | string | null
+    terminalKey?: NullableStringFieldUpdateOperationsInput | string | null
     departureAt?: DateTimeFieldUpdateOperationsInput | Date | string
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    timeFlexibilityMinutes?: NullableIntFieldUpdateOperationsInput | number | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     transportMode?: NullableEnumTransportModeFieldUpdateOperationsInput | $Enums.TransportMode | null
     passengersRequired?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -21429,8 +21919,13 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     source?: StringFieldUpdateOperationsInput | string
     destination?: StringFieldUpdateOperationsInput | string
+    terminalType?: NullableEnumArrivalTerminalTypeFieldUpdateOperationsInput | $Enums.ArrivalTerminalType | null
+    terminalName?: NullableStringFieldUpdateOperationsInput | string | null
+    terminalKey?: NullableStringFieldUpdateOperationsInput | string | null
     departureAt?: DateTimeFieldUpdateOperationsInput | Date | string
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    timeFlexibilityMinutes?: NullableIntFieldUpdateOperationsInput | number | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     transportMode?: NullableEnumTransportModeFieldUpdateOperationsInput | $Enums.TransportMode | null
     passengersRequired?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -21443,8 +21938,13 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     source?: StringFieldUpdateOperationsInput | string
     destination?: StringFieldUpdateOperationsInput | string
+    terminalType?: NullableEnumArrivalTerminalTypeFieldUpdateOperationsInput | $Enums.ArrivalTerminalType | null
+    terminalName?: NullableStringFieldUpdateOperationsInput | string | null
+    terminalKey?: NullableStringFieldUpdateOperationsInput | string | null
     departureAt?: DateTimeFieldUpdateOperationsInput | Date | string
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    timeFlexibilityMinutes?: NullableIntFieldUpdateOperationsInput | number | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     transportMode?: NullableEnumTransportModeFieldUpdateOperationsInput | $Enums.TransportMode | null
     passengersRequired?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean

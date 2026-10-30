@@ -2,9 +2,22 @@ import { prisma } from "../db/index.js";
 import { ApiError } from "../utils/api-error.js";
 import { ApiResponse } from "../utils/api-response.js";
 import { asyncHandler } from "../utils/async-handler.js";
+import {
+    DEPARTURE_TOLERANCE_MINUTES,
+    getDepartureCompatibility,
+    isDuplicateActiveRequest,
+    isOfferEligibleForRequest,
+    SHAREABLE_RIDE_MODES
+} from "../utils/travel-matching.js";
 
 const createTravelRequest = asyncHandler(async (req, res) => {
-    const {source,destination,departureAt,transportMode,passengersRequired = 1} = req.body;
+    const {
+        source,
+        destination,
+        departureAt,
+        transportMode,
+        passengersRequired = 1
+    } = req.body;
 
     const normalizedSource = source.trim();
     const normalizedDestination = destination.trim();
@@ -48,58 +61,80 @@ const createTravelRequest = asyncHandler(async (req, res) => {
         departureDate.getTime() + 10 * 60 * 1000
     );
 
-    const existingRequest = await prisma.travelRequest.findFirst({
-        where: {
-            userId: req.user.id,
-            source: normalizedSource,
-            destination: normalizedDestination,
-            isActive: true,
-            expiresAt: { gt: now },
-            departureAt: {
-                gte: duplicateWindowStart,
-                lte: duplicateWindowEnd
-            }
-        }
-    });
+    let travelRequest;
+    for (let attempt = 0; attempt < 3; attempt += 1) {
+        try {
+            travelRequest = await prisma.$transaction(async (transaction) => {
+                const possibleDuplicates = await transaction.travelRequest.findMany({
+                    where: {
+                        userId: req.user.id,
+                        isActive: true,
+                        expiresAt: { gt: now },
+                        departureAt: {
+                            gte: duplicateWindowStart,
+                            lte: duplicateWindowEnd
+                        }
+                    },
+                    select: {
+                        id: true,
+                        userId: true,
+                        source: true,
+                        destination: true,
+                        departureAt: true,
+                        expiresAt: true,
+                        transportMode: true,
+                        passengersRequired: true,
+                        isActive: true
+                    }
+                });
+                const existingRequest = possibleDuplicates.find((candidate) =>
+                    isDuplicateActiveRequest({
+                        userId: req.user.id,
+                        source: normalizedSource,
+                        destination: normalizedDestination,
+                        departureAt: departureDate
+                    }, candidate, now)
+                );
 
-    if (existingRequest) {
-        throw new ApiError(
-            409,
-            "You already have a similar active travel request"
-        );
-    }
-
-    
-    const travelRequest = await prisma.travelRequest.create({
-        data: {
-            userId: req.user.id,
-            source: normalizedSource,
-            destination: normalizedDestination,
-            departureAt: departureDate,
-            expiresAt,
-            transportMode: transportMode ?? null,
-            passengersRequired
-        },
-        select: {
-            id: true,
-            source: true,
-            destination: true,
-            departureAt: true,
-            expiresAt: true,
-            transportMode: true,
-            passengersRequired: true,
-            isActive: true,
-            createdAt: true,
-
-            user: {
-                select: {
-                    id: true,
-                    name: true
+                if (existingRequest) {
+                    throw new ApiError(
+                        409,
+                        "You already have a similar active travel request",
+                        [{ existingRequest }]
+                    );
                 }
-            }
-        }
-    });
 
+                return transaction.travelRequest.create({
+                    data: {
+                        userId: req.user.id,
+                        source: normalizedSource,
+                        destination: normalizedDestination,
+                        departureAt: departureDate,
+                        expiresAt,
+                        transportMode: transportMode ?? null,
+                        passengersRequired
+                    },
+                    select: {
+                        id: true,
+                        source: true,
+                        destination: true,
+                        departureAt: true,
+                        expiresAt: true,
+                        transportMode: true,
+                        passengersRequired: true,
+                        isActive: true,
+                        createdAt: true,
+                        user: { select: { id: true, name: true } }
+                    }
+                });
+            }, { isolationLevel: "Serializable" });
+            break;
+        } catch (error) {
+            if (error instanceof ApiError) throw error;
+            if (error.code === "P2034" && attempt < 2) continue;
+            throw error;
+        }
+    }
 
     return res.status(201).json(
         new ApiResponse(
@@ -173,6 +208,92 @@ const getTravelRequests = asyncHandler(async (req, res) => {
     );
 });
 
+const getMyTravelRequests = asyncHandler(async (req, res) => {
+    const requests = await prisma.travelRequest.findMany({
+        where: { userId: req.user.id },
+        orderBy: { createdAt: "desc" },
+        take: 20,
+        select: {
+            id: true,
+            source: true,
+            destination: true,
+            departureAt: true,
+            expiresAt: true,
+            transportMode: true,
+            passengersRequired: true,
+            isActive: true,
+            cancelledAt: true,
+            createdAt: true,
+            companionRequests: { select: { status: true } }
+        }
+    });
+    const now = new Date();
+    const displayedRequests = requests.map((request) => {
+        const { companionRequests, ...requestDetails } = request;
+        const hasAcceptedJourney = companionRequests.some((item) => item.status === "ACCEPTED");
+        const isActive = request.isActive &&
+            request.expiresAt > now &&
+            request.departureAt > now;
+        return {
+            ...requestDetails,
+            status: hasAcceptedJourney
+                ? "MATCHED"
+                : request.cancelledAt
+                    ? "CANCELLED"
+                    : isActive
+                        ? "ACTIVE"
+                        : "EXPIRED",
+            canCancel: isActive && !hasAcceptedJourney
+        };
+    });
+
+    return res.status(200).json(
+        new ApiResponse(200, displayedRequests, "Your travel requests fetched successfully")
+    );
+});
+
+const cancelTravelRequest = asyncHandler(async (req, res) => {
+    const now = new Date();
+    const result = await prisma.$transaction(async (transaction) => {
+        const cancelled = await transaction.travelRequest.updateMany({
+            where: {
+                id: req.params.requestId,
+                userId: req.user.id,
+                isActive: true,
+                expiresAt: { gt: now },
+                departureAt: { gt: now }
+            },
+            data: { isActive: false, cancelledAt: now }
+        });
+        if (cancelled.count === 1) {
+            await transaction.companionRequest.updateMany({
+                where: {
+                    travelRequestId: req.params.requestId,
+                    status: "PENDING"
+                },
+                data: { status: "CANCELLED", respondedAt: now }
+            });
+        }
+        return cancelled;
+    });
+
+    if (result.count !== 1) {
+        const request = await prisma.travelRequest.findUnique({
+            where: { id: req.params.requestId },
+            select: { userId: true, isActive: true, expiresAt: true, departureAt: true }
+        });
+        if (!request) throw new ApiError(404, "Travel request not found");
+        if (request.userId !== req.user.id) {
+            throw new ApiError(403, "You cannot cancel another user's travel request");
+        }
+        throw new ApiError(409, "This travel request is no longer active and cannot be cancelled");
+    }
+
+    return res.status(200).json(
+        new ApiResponse(200, { id: req.params.requestId, status: "CANCELLED" }, "Travel request cancelled successfully")
+    );
+});
+
 
 const getTravelRequestMatches = asyncHandler(async (req, res) => {
     const { requestId } = req.params;
@@ -218,15 +339,15 @@ const getTravelRequestMatches = asyncHandler(async (req, res) => {
         );
     }
 
-    // 5. Calculate the allowed departure window: +/- 30 minutes
+    // Keep candidate retrieval within the shared departure tolerance.
     const requestedDeparture = travelRequest.departureAt;
 
     const windowStart = new Date(
-        requestedDeparture.getTime() - 60 * 60 * 1000
+        requestedDeparture.getTime() - DEPARTURE_TOLERANCE_MINUTES * 60 * 1000
     );
 
     const windowEnd = new Date(
-        requestedDeparture.getTime() + 60 * 60 * 1000
+        requestedDeparture.getTime() + DEPARTURE_TOLERANCE_MINUTES * 60 * 1000
     );
 
     // 6. Find offers that satisfy the hard constraints
@@ -265,7 +386,8 @@ const getTravelRequestMatches = asyncHandler(async (req, res) => {
                 ? {
                     transportMode: travelRequest.transportMode
                 }
-                : {})
+                : { transportMode: { in: SHAREABLE_RIDE_MODES } }),
+
         },
 
         select: {
@@ -277,6 +399,7 @@ const getTravelRequestMatches = asyncHandler(async (req, res) => {
             transportMode: true,
             availableSeats: true,
             createdAt: true,
+            isActive: true,
 
             owner: {
                 select: {
@@ -288,7 +411,18 @@ const getTravelRequestMatches = asyncHandler(async (req, res) => {
     });
 
     // 7. Rank eligible offers by departure-time closeness
-    matchingOffers.sort((a, b) => {
+    const rankedOffers = matchingOffers
+        .filter((offer) => isOfferEligibleForRequest(travelRequest, offer, now))
+        .map((offer) => {
+            const departureCompatibility = getDepartureCompatibility(travelRequest, offer);
+            const { isActive, ...offerDetails } = offer;
+            return {
+                ...offerDetails,
+                departureCompatibility
+            };
+        });
+
+    rankedOffers.sort((a, b) => {
         const differenceA = Math.abs(
             a.departureAt.getTime() - requestedDeparture.getTime()
         );
@@ -304,10 +438,10 @@ const getTravelRequestMatches = asyncHandler(async (req, res) => {
     });
 
     // 8. Apply pagination after ranking
-    const totalOffers = matchingOffers.length;
+    const totalOffers = rankedOffers.length;
     const totalPages = Math.ceil(totalOffers / pageSize);
 
-    const offers = matchingOffers.slice(
+    const offers = rankedOffers.slice(
         (page - 1) * pageSize,
         page * pageSize
     );
@@ -332,4 +466,10 @@ const getTravelRequestMatches = asyncHandler(async (req, res) => {
 });
 
 
-export { createTravelRequest, getTravelRequests, getTravelRequestMatches};
+export {
+    createTravelRequest,
+    getTravelRequests,
+    getMyTravelRequests,
+    cancelTravelRequest,
+    getTravelRequestMatches
+};

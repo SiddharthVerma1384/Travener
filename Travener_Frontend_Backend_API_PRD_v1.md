@@ -34,13 +34,13 @@ This is **API Contract v1.0**. UI design may change independently, but changes t
 Local development:
 
 ```text
-http://localhost:5000/api
+http://localhost:3000/api/v1
 ```
 
 Production:
 
 ```text
-https://<production-domain>/api
+https://<production-domain>/api/v1
 ```
 
 The frontend should keep the base URL in an environment variable.
@@ -48,7 +48,7 @@ The frontend should keep the base URL in an environment variable.
 Example:
 
 ```text
-VITE_API_BASE_URL=http://localhost:5000/api
+VITE_API_URL=http://localhost:3000/api/v1
 ```
 
 ---
@@ -61,7 +61,7 @@ Authenticated endpoints use:
 Authorization: Bearer <JWT>
 ```
 
-The frontend sends the JWT.
+The browser frontend sends the HTTP-only `accessToken` and rotating `refreshToken` cookies with `credentials: include`; it does not read or manually send the token. The frontend attempts one refresh after a `401` on non-auth requests. The backend also accepts a Bearer access token for non-browser API clients.
 
 The backend derives the following from the JWT/session:
 
@@ -94,7 +94,7 @@ Depending on the endpoint:
 - path parameters
 - query parameters
 - request body
-- authorization header
+- session cookies (or a Bearer access token for non-browser API clients)
 - uploaded files where required
 
 ## Backend derives
@@ -1610,6 +1610,38 @@ The API contract is the agreement between the two halves of Travener.
                       ↓
                  PostgreSQL
 ```
+
+---
+
+# 31. Addendum — OCR Search and Shareable Modes
+
+This addendum documents the behavior implemented by the current `/api/v1` Express routes. Ticket transport and ride-sharing preferences are separate concepts: tickets may still represent bus, train, flight, cab, auto, car, or other travel, while new shared ride requests and offers accept only `CAB` or `AUTO`.
+
+## Confirmed ticket to search
+
+After ticket confirmation, the frontend carries the ticket origin, destination, separately extracted travel date and departure time, and ticket mode to `/search-trips` using one-time React Router navigation state. The ride pickup remains blank: ticket origin is displayed for context only and is never submitted as the pickup. Destination and local departure date/time are prefilled and editable. Only `CAB`/`AUTO` can prefill the shareable ride preference. The navigation state is cleared after the search page initializes; opening search directly continues to show blank defaults.
+
+Ticket confirmation accepts the existing correction fields and an optional ISO-8601 `corrections.departureAt`. When supplied, the timestamp preserves the reviewer's local timezone conversion. Existing `travelDate` and `departureTime` corrections remain supported.
+
+## Active request and offer fields
+
+New requests and offers use their route, departure timestamp, shareable mode, and passenger/seat counts. Arrival terminal and departure-flexibility fields are not part of active forms or API behavior; legacy terminal/flexibility fields sent by an older client are ignored. Matching requires the same normalized source and destination and departures within a fixed 30-minute tolerance. Match results include `departureCompatibility` with the measured difference and fixed tolerance. Match search and companion-request creation use the same helper and eligibility rules.
+
+## Duplicate requests
+
+Creating a similar active request continues to return HTTP `409`. The `errors` array includes an `existingRequest` object with its identifier and trip details so the frontend can offer to resume matching that request instead of creating duplicates. Duplicate matching remains route-, owner-, active/expiry-, and 10-minute-window-based; creation runs in a serializable transaction and retries serialization conflicts.
+
+`GET /api/v1/travel-requests/mine` returns the authenticated user's 20 most recent requests, including their computed `ACTIVE`, `MATCHED`, `CANCELLED`, or `EXPIRED` status and whether cancellation is available. `PATCH /api/v1/travel-requests/:requestId/cancel` cancels only the authenticated owner's active, unexpired, future request; it atomically closes its pending companion requests and rejects repeat, matched, or invalid cancellation attempts with HTTP `409`.
+
+Accepting a companion request atomically consumes the required offer seats, marks the travel request as matched/inactive, creates the journey, and closes other pending companion requests for that travel request. A submitted/pending companion request is not a confirmed journey.
+
+## Journeys
+
+Journey transitions are enforced server-side: `CONFIRMED` may become `IN_PROGRESS` or `CANCELLED`; `IN_PROGRESS` may become `COMPLETED` or `CANCELLED`; `COMPLETED` and `CANCELLED` are terminal. Concurrent updates use a conditional status update. Ratings remain available only after completion, and reports return their actual status. Admin report status updates use `PATCH /api/v1/journeys/admin/reports/:reportId`; only admins can move reports from `OPEN` to `REVIEWED`, `RESOLVED`, or `DISMISSED`, or from `REVIEWED` to `RESOLVED` or `DISMISSED`.
+
+## Database migration
+
+Migrations `20261030090000_terminal_aware_matching` and `20261030093000_flexible_departure_windows_and_request_cancellation` remain in migration history. Their nullable terminal and flexibility columns, including existing stored values, are retained for compatibility and data preservation; no destructive migration is required. The cancellation timestamp and `AUTO` ride mode remain active. Apply migrations with `npx prisma migrate deploy` only after confirming the `DATABASE_URL` points to the intended development database; do not reset or recreate shared databases.
 
 Frontend asks:
 

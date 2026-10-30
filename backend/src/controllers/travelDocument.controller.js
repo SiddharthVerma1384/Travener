@@ -39,8 +39,13 @@ export const uploadTravelDocument = asyncHandler(async (req, res) => {
   try {
     const rawText = await readDocument(req.file);
     const extracted = extractTicketFields(rawText);
-    const updated = await prisma.travelDocument.update({ where: { id: document.id }, data: { ...extracted, rawText, ocrStatus: "COMPLETED" }, select: documentSelect });
-    return res.status(201).json(new ApiResponse(201, { documentId: updated.id, ocrStatus: updated.ocrStatus, extractedData: updated }, "Ticket processed successfully"));
+    const { travelDate, departureTime, ...documentFields } = extracted;
+    const updated = await prisma.travelDocument.update({ where: { id: document.id }, data: { ...documentFields, rawText, ocrStatus: "COMPLETED" }, select: documentSelect });
+    return res.status(201).json(new ApiResponse(201, {
+      documentId: updated.id,
+      ocrStatus: updated.ocrStatus,
+      extractedData: { ...updated, travelDate, departureTime }
+    }, "Ticket processed successfully"));
   } catch (error) {
     await prisma.travelDocument.update({ where: { id: document.id }, data: { ocrStatus: "FAILED", errorMessage: error.message } });
     if (error instanceof ApiError) throw error;
@@ -58,7 +63,10 @@ export const confirmTravelDocument = asyncHandler(async (req, res) => {
   const dateText = corrections.travelDate;
   const timeText = corrections.departureTime;
   let departureAt = document.departureAt;
-  if (dateText) {
+  if (corrections.departureAt) {
+    departureAt = new Date(corrections.departureAt);
+    if (Number.isNaN(departureAt.getTime())) throw new ApiError(400, "Invalid corrected departure date or time");
+  } else if (dateText) {
     const date = new Date(`${dateText}T${timeText || "00:00"}`);
     if (Number.isNaN(date.getTime())) throw new ApiError(400, "Invalid corrected departure date or time");
     departureAt = date;

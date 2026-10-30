@@ -12,6 +12,8 @@ test('extracts route, date, time, and train mode from ticket text', () => {
   assert.equal(result.departureAt.getFullYear(), 2030)
   assert.equal(result.departureAt.getMonth(), 11)
   assert.equal(result.departureAt.getDate(), 31)
+  assert.equal(result.travelDate, '2030-12-31')
+  assert.equal(result.departureTime, '18:45')
 })
 
 test('normalizes AM/PM flight times', () => {
@@ -31,6 +33,15 @@ test('keeps missing fields explicit for review correction', () => {
   assert.equal(result.departureAt.getFullYear(), 2028)
   assert.equal(result.departureAt.getMonth(), 3)
   assert.equal(result.departureAt.getDate(), 1)
+  assert.equal(result.travelDate, '2028-04-01')
+  assert.equal(result.departureTime, '')
+})
+
+test('preserves a detected departure time when the ticket date is missing', () => {
+  const result = extractTicketFields('BUS TICKET\nDeparture Time: 07:25 PM')
+  assert.equal(result.departureAt, null)
+  assert.equal(result.travelDate, '')
+  assert.equal(result.departureTime, '19:25')
 })
 
 test('extracts Indian railway e-ticket station labels', () => {
@@ -47,6 +58,13 @@ test('extracts station pairs when OCR puts route on one line', () => {
   assert.equal(result.source, 'Bengaluru (SBC)')
   assert.equal(result.destination, 'Chennai Central (MAS)')
   assert.equal(result.transportMode, 'TRAIN')
+})
+
+test('preserves public transport ticket categories and detects auto tickets', () => {
+  assert.equal(extractTicketFields('AUTO RICKSHAW RECEIPT').transportMode, 'AUTO')
+  assert.equal(extractTicketFields('BUS TICKET').transportMode, 'BUS')
+  assert.equal(extractTicketFields('INDIAN RAILWAYS TRAIN TICKET').transportMode, 'TRAIN')
+  assert.equal(extractTicketFields('FLIGHT BOARDING PASS').transportMode, 'FLIGHT')
 })
 
 test('recovers duplicated railway columns and ignores the To label as source', () => {

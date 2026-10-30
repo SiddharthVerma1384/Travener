@@ -151,8 +151,12 @@ exports.Prisma.TravelOfferScalarFieldEnum = {
   ownerId: 'ownerId',
   source: 'source',
   destination: 'destination',
+  terminalType: 'terminalType',
+  terminalName: 'terminalName',
+  terminalKey: 'terminalKey',
   departureAt: 'departureAt',
   expiresAt: 'expiresAt',
+  timeFlexibilityMinutes: 'timeFlexibilityMinutes',
   transportMode: 'transportMode',
   availableSeats: 'availableSeats',
   isActive: 'isActive',
@@ -165,8 +169,13 @@ exports.Prisma.TravelRequestScalarFieldEnum = {
   userId: 'userId',
   source: 'source',
   destination: 'destination',
+  terminalType: 'terminalType',
+  terminalName: 'terminalName',
+  terminalKey: 'terminalKey',
   departureAt: 'departureAt',
   expiresAt: 'expiresAt',
+  timeFlexibilityMinutes: 'timeFlexibilityMinutes',
+  cancelledAt: 'cancelledAt',
   transportMode: 'transportMode',
   passengersRequired: 'passengersRequired',
   isActive: 'isActive',
@@ -280,8 +289,15 @@ exports.AuthProvider = exports.$Enums.AuthProvider = {
   GOOGLE: 'GOOGLE'
 };
 
+exports.ArrivalTerminalType = exports.$Enums.ArrivalTerminalType = {
+  RAILWAY_STATION: 'RAILWAY_STATION',
+  AIRPORT: 'AIRPORT',
+  BUS_STAND: 'BUS_STAND'
+};
+
 exports.TransportMode = exports.$Enums.TransportMode = {
   CAB: 'CAB',
+  AUTO: 'AUTO',
   BUS: 'BUS',
   TRAIN: 'TRAIN',
   FLIGHT: 'FLIGHT',

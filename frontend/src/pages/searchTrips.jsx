@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import '../styles/search.css'
+import { SHAREABLE_MODE_OPTIONS } from '../utils/travel-prefill'
 
 function SearchTrips() {
   const navigate = useNavigate()
@@ -182,25 +183,9 @@ function SearchTrips() {
                   Select transport mode
                 </option>
 
-                <option value="BUS">
-                  Bus
-                </option>
-
-                <option value="TRAIN">
-                  Train
-                </option>
-
-                <option value="FLIGHT">
-                  Flight
-                </option>
-
-                <option value="CAB">
-                  Cab
-                </option>
-
-                <option value="OTHER">
-                  Other
-                </option>
+                {SHAREABLE_MODE_OPTIONS.map((mode) => (
+                  <option key={mode.value} value={mode.value}>{mode.label}</option>
+                ))}
 
               </select>
 

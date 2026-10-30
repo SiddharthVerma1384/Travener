@@ -1,7 +1,8 @@
-import { BrowserRouter, Routes, Route, Link, Navigate } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import UploadTicketPage from './pages/uploadTicketLive'
 import ReviewOCRPage from './pages/reviewOCRProper'
 import './App.css'
+import './styles/product-polish.css'
 // Legacy ticket/OCR screens are not routed because the backend has no travel-documents API.
  
 

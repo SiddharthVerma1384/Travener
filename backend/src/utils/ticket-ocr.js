@@ -4,6 +4,7 @@ const normalizeMode = (text = '') => {
   if (/\b(IRCTC|RAILWAYS?|TRAIN|SLEEPER|BERTH|COACH|EXPRESS|EXP)\b/.test(v)) return 'TRAIN';
   if (/\b(FLIGHT|AIRLINES?|AIRWAYS|BOARDING PASS)\b/.test(v)) return 'FLIGHT';
   if (/\b(BUS|REDBUS|TNSTC|KSRTC|SETC|VOLVO)\b/.test(v)) return 'BUS';
+  if (/\b(AUTO(?:\s*(?:RICKSHAW|RICK|3[- ]?WHEELER))?|TUK[\s-]?TUK)\b/.test(v)) return 'AUTO';
   if (/\b(CAB|TAXI|OLA|UBER)\b/.test(v)) return 'CAB';
   if (/\bCAR\b/.test(v)) return 'CAR';
   return 'OTHER';
@@ -54,7 +55,8 @@ const findTimes = (text) => {
     let hours = Number(m[1]);
     const minutes = Number(m[3]);
     const mer = m[4]?.toUpperCase();
-    if (m[2] === '.' && !mer) continue; // "12.50" / "04.11" are not times
+    const timeLabel = text.slice(Math.max(0, m.index - 28), m.index);
+    if (m[2] === '.' && !mer && !/(?:time|departure|depart|arrival|arrive)\s*[:\-]?\s*$/i.test(timeLabel)) continue;
     if (hours > 23 || minutes > 59) continue;
     if (mer && hours > 12) continue;
     if (mer === 'PM' && hours < 12) hours += 12;
@@ -219,10 +221,23 @@ export const extractTicketFields = (rawText = '') => {
   const text = rawText.replace(/\r/g, '').replace(/[ \t\u00a0]+/g, ' ');
   const { source, destination } = extractRoute(text);
   const { date, time } = extractDateTime(text);
+  const travelDate = date
+    ? `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`
+    : '';
+  const departureTime = time
+    ? `${String(time.hours).padStart(2, '0')}:${String(time.minutes).padStart(2, '0')}`
+    : '';
 
   const departureAt = date && time
     ? new Date(date.getFullYear(), date.getMonth(), date.getDate(), time.hours, time.minutes)
     : date;
 
-  return { source, destination, departureAt, transportMode: normalizeMode(text) };
+  return {
+    source,
+    destination,
+    departureAt,
+    travelDate,
+    departureTime,
+    transportMode: normalizeMode(text)
+  };
 };

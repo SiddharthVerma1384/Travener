@@ -1,0 +1,52 @@
+warning: in the working copy of 'backend/prisma/schema.prisma', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'backend/src/generated/prisma/client.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'backend/src/generated/prisma/default.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'backend/src/generated/prisma/edge.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'backend/src/generated/prisma/index-browser.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'backend/src/generated/prisma/index.d.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'backend/src/generated/prisma/index.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'backend/src/generated/prisma/package.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'backend/src/generated/prisma/query_compiler_fast_bg.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'backend/src/generated/prisma/query_compiler_fast_bg.wasm-base64.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'backend/src/generated/prisma/runtime/client.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'backend/src/generated/prisma/runtime/index-browser.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'backend/src/generated/prisma/runtime/wasm-compiler-edge.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'backend/src/generated/prisma/schema.prisma', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'backend/src/generated/prisma/wasm-edge-light-loader.mjs', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'backend/src/generated/prisma/wasm-worker-loader.mjs', LF will be replaced by CRLF the next time Git touches it
+ Travener_Frontend_Backend_API_PRD_v1.md            |  42 [32m+[m[31m-[m
+ backend/.env.example                               |  31 [32m+[m[31m-[m
+ backend/prisma/schema.prisma                       | 143 [32m+++[m[31m---[m
+ .../src/controllers/companionRequest.controller.js | 197 [32m++++++[m[31m--[m
+ backend/src/controllers/journey.controller.js      |  78 [32m+++[m[31m-[m
+ .../src/controllers/travelDocument.controller.js   |  14 [32m+[m[31m-[m
+ backend/src/controllers/travelOffer.controller.js  |   8 [32m+[m[31m-[m
+ .../src/controllers/travelRequest.controller.js    | 258 [32m++++++++[m[31m---[m
+ backend/src/db/index.js                            |   1 [32m+[m
+ backend/src/generated/prisma/edge.js               |  24 [32m+[m[31m-[m
+ backend/src/generated/prisma/index-browser.js      |  16 [32m+[m
+ backend/src/generated/prisma/index.d.ts            | 512 [32m++++++++++++++++++++[m[31m-[m
+ backend/src/generated/prisma/index.js              |  24 [32m+[m[31m-[m
+ backend/src/generated/prisma/package.json          |   2 [32m+[m[31m-[m
+ backend/src/generated/prisma/schema.prisma         |  36 [32m+[m[31m-[m
+ backend/src/middlewares/validator.middleware.js    |   2 [32m+[m[31m-[m
+ backend/src/routes/journey.routes.js               |   3 [32m+[m[31m-[m
+ backend/src/routes/travelRequest.routes.js         |  14 [32m+[m[31m-[m
+ backend/src/utils/ticket-ocr.js                    |  19 [32m+[m[31m-[m
+ backend/src/validators/index.js                    |  10 [32m+[m[31m-[m
+ backend/test/ticket-ocr.test.js                    |  18 [32m+[m
+ frontend/package.json                              |   1 [32m+[m
+ frontend/src/App.css                               |   1 [31m-[m
+ frontend/src/App.jsx                               |   3 [32m+[m[31m-[m
+ frontend/src/api/client.js                         |  11 [32m+[m[31m-[m
+ frontend/src/api/config.js                         |   2 [32m+[m[31m-[m
+ frontend/src/pages/admin.jsx                       |  97 [32m+++[m[31m-[m
+ frontend/src/pages/createTripLive.jsx              | 105 [32m++++[m[31m-[m
+ frontend/src/pages/dashboardProper.jsx             | 211 [32m++++++++[m[31m-[m
+ frontend/src/pages/journeysProper.jsx              | 241 [32m+++++++++[m[31m-[m
+ frontend/src/pages/reviewOCR.jsx                   |   4 [32m+[m
+ frontend/src/pages/reviewOCRLive.jsx               |   2 [32m+[m[31m-[m
+ frontend/src/pages/reviewOCRProper.jsx             |  37 [32m+[m[31m-[m
+ frontend/src/pages/searchTrips.jsx                 |  23 [32m+[m[31m-[m
+ frontend/src/pages/searchTripsLive.jsx             | 187 [32m+++++++[m[31m-[m
+ 35 files changed, 2076 insertions(+), 301 deletions(-)

@@ -295,6 +295,10 @@ function ReviewOCR() {
                 Cab
               </option>
 
+              <option value="AUTO">
+                Auto
+              </option>
+
               <option value="OTHER">
                 Other
               </option>

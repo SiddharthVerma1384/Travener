@@ -32,11 +32,18 @@ enum AuthProvider {
 
 enum TransportMode {
   CAB
+  AUTO
   BUS
   TRAIN
   FLIGHT
   CAR
   OTHER
+}
+
+enum ArrivalTerminalType {
+  RAILWAY_STATION
+  AIRPORT
+  BUS_STAND
 }
 
 enum CompanionRequestStatus {
@@ -103,12 +110,16 @@ model TravelOffer {
   ownerId String
   owner   User   @relation(fields: [ownerId], references: [id])
 
-  source         String
-  destination    String
-  departureAt    DateTime
-  expiresAt      DateTime
-  transportMode  TransportMode
-  availableSeats Int
+  source                 String
+  destination            String
+  terminalType           ArrivalTerminalType?
+  terminalName           String?
+  terminalKey            String?
+  departureAt            DateTime
+  expiresAt              DateTime
+  timeFlexibilityMinutes Int?
+  transportMode          TransportMode
+  availableSeats         Int
 
   isActive Boolean @default(true)
 
@@ -122,10 +133,15 @@ model TravelRequest {
   userId String
   user   User   @relation(fields: [userId], references: [id])
 
-  source      String
-  destination String
-  departureAt DateTime
-  expiresAt   DateTime
+  source                 String
+  destination            String
+  terminalType           ArrivalTerminalType?
+  terminalName           String?
+  terminalKey            String?
+  departureAt            DateTime
+  expiresAt              DateTime
+  timeFlexibilityMinutes Int?
+  cancelledAt            DateTime?
 
   transportMode      TransportMode?
   passengersRequired Int            @default(1)

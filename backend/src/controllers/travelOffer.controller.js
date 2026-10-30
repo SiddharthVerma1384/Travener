@@ -4,7 +4,13 @@ import { ApiResponse } from "../utils/api-response.js";
 import { asyncHandler } from "../utils/async-handler.js";
 
 const createTravelOffer = asyncHandler(async(req, res) => {
-    const {source, destination, departureAt, transportMode, availableSeats} = req.body;
+    const {
+        source,
+        destination,
+        departureAt,
+        transportMode,
+        availableSeats
+    } = req.body;
 
     const normalizedSource = source.trim();
     const normalizedDestination = destination.trim();

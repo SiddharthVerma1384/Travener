@@ -450,7 +450,6 @@
 }
 
 .navbar .logo,
-.navbar .nav-links,
 .navbar .nav-actions {
   display: flex !important;
   visibility: visible !important;
